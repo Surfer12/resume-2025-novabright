@@ -62,11 +62,11 @@ Capstone Project: "Cognitive Biases in Decision-Making Processes"
 - Applying machine learning techniques to cognitive science research
 - Collaborating with faculty on interdisciplinary research projects
 
-**Data Science Intern** | [Company Name] | Summer 2023  
-- Applied machine learning algorithms to real-world data problems
-- Developed predictive models using Python and statistical analysis
-- Collaborated with cross-functional teams on data-driven solutions
-- Presented findings to stakeholders using data visualization techniques
+**Research Assistant** | Cognitive AI Optimization Lab, UCSB | Summer 2023  
+- Developed novel optimization frameworks for deep learning models in cognitive tasks
+- Implemented Bayesian hyperparameter optimization with cognitive-task-specific priors
+- Created modular framework in PyTorch for cognitive task benchmarking
+- Conducted rigorous statistical analysis with confidence intervals and effect size reporting
 
 ---
 
@@ -82,16 +82,17 @@ Capstone Project: "Cognitive Biases in Decision-Making Processes"
 ## TECHNICAL SKILLS
 
 - **Programming Languages:** Python, C++, Java, PostgreSQL, SQL, JavaScript, HTML, CSS  
-- **Machine Learning:** Bayesian Networks, Deep Learning, Reinforcement Learning  
-- **High-Performance Computing:** Parallel Processing, GPU Computing  
-- **Neuro-Symbolic AI:** Cognitive Modeling, Symbolic Reasoning  
-- **Tools and Frameworks:** TensorFlow, PyTorch, Scikit-Learn, Keras  
-- **Statistical Analysis:** Experimental Design, Confidence Intervals, Power Analysis, Multiple Comparison Corrections
+- **Machine Learning:** Bayesian Networks, Deep Learning, Reinforcement Learning, Bayesian Optimization  
+- **High-Performance Computing:** Parallel Processing, GPU Computing, Model Optimization  
+- **Neuro-Symbolic AI:** Cognitive Modeling, Symbolic Reasoning, Hybrid Architectures  
+- **Tools and Frameworks:** TensorFlow, PyTorch, Scikit-Learn, Keras, Optuna, Ray Tune  
+- **Statistical Analysis:** Experimental Design, Confidence Intervals, Power Analysis, Multiple Comparison Corrections, Effect Size Analysis, Pareto Optimization
 
 ---
 
 ## ACADEMIC PROJECTS
 
+- **Deep Learning Optimization for Cognitive Tasks:** Comprehensive framework featuring adaptive hyperparameter tuning, cognitive-task-specific regularization (L_total = L_task + λ₁R_cognitive + λ₂R_efficiency), and architecturally-inspired modifications. Achieved 19% ± 8% accuracy improvement with 12% ± 4% efficiency gains (95% CI: [11%, 27%] and [8%, 16%] respectively) across diverse cognitive benchmarks including N-back tasks and Stroop paradigms
 - **Cognitive Bias Analysis Framework:** Developing computational models to analyze decision-making biases with emphasis on statistical rigor and reproducibility
 - **Surfboard Design Optimization System:** Applied machine learning to analyze fluid dynamics for improved surfboard performance, integrating physical measurements with computational models
 - **Open-Source Cognitive Modeling Toolkit:** Contributing to framework development for researchers to build and test cognitive models using neuro-symbolic AI
@@ -100,9 +101,10 @@ Capstone Project: "Cognitive Biases in Decision-Making Processes"
 
 ## PRESENTATIONS & WORKSHOPS
 
+- International Conference on Machine Learning (ICML): "Optimizing Deep Learning for Cognitive Tasks" - Submitted (2024)
 - Student Research Symposium: "Cognitive Biases in Decision-Making" - UCSB (2023)
-- Data Science Capstone Presentation - UCSB (2023)
-- Cognitive Science Student Conference - Regional presentation (2023)
+- Data Science Capstone Presentation: "Deep Learning Optimization Framework" - UCSB (2023)
+- Cognitive Science Student Conference: "Trade-offs in Neural-Cognitive Model Design" - Regional presentation (2023)
 
 ---
 
