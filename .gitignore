@@ -1,1 +1,6 @@
 Student Profile-Cursor.pdf
+# pixi environments
+.pixi
+*.egg-info
+# magic environments
+.magic
