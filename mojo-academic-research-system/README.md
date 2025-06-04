@@ -155,12 +155,41 @@ readiness = workflow.check_publication_readiness(paper_id)
 1. **No Autonomous Publishing**: This system cannot and will not publish research without explicit human approval
 2. **Advisory Role Only**: All recommendations are advisory and require human judgment
 3. **Not a Replacement**: Designed to assist, not replace, human academic processes
-4. **Compliance Required**: Users must ensure compliance with their institutional policies
+4.  **Compliance Required**: Users must ensure compliance with their institutional policies
+
+## Personalization Notes
+
+This system is designed to be adapted to specific research needs and institutional requirements. Here are some key areas you can modify:
+
+### 1. Author Profile and Research Focus
+
+-   **Update `AuthorProfile`:** Modify the `create_oates_research_system` function in `academic_research_workflow.mojo` to define the `AuthorProfile` for your specific researcher, including their name, domains, signatures, frameworks, and institution.
+-   **Customize Research Patterns:** Edit the `create_oates_signature` function in `pattern_matcher.mojo` to refine the `ResearchPattern` list with keywords, types, weights, and context windows specific to the researcher's work and writing style. Adjust `minimum_confidence` and `combination_rules` as needed.
+
+### 2. Validation and Review
+
+-   **Modify Review Criteria:** Update the `_initialize_review_criteria` function in `validation_system.mojo` to add, remove, or adjust review criteria and their weights to match disciplinary standards or specific project needs.
+-   **Manage Reviewer Pool:** Add or modify `PeerReviewer` entries in the `validation_system.mojo` to include relevant experts for assigning reviews. Enhance the `assign_reviewers` logic for more sophisticated matching or conflict detection.
+-   **Refine Validation Checks:** The `validate_statistics` and `check_reproducibility` functions in `validation_system.mojo` contain placeholder logic. Extend these functions to integrate with external tools, scripts, or manual verification steps for more rigorous validation.
+
+### 3. Ethical and Workflow Configuration
+
+-   **Adapt Ethical Guidelines:** Modify the `create_ethics_guidelines` function in `research_config.mojo` to reflect specific institutional review board (IRB) requirements, data privacy regulations (e.g., GDPR, HIPAA), and consent protocols.
+-   **Configure Journal Requirements:** Update the `create_journal_requirements` function in `research_config.mojo` to add submission formats, peer review types, and ethical requirements for target journals.
+-   **Adjust Workflow Safeguards:** Review and modify the `ResearchWorkflowConfig` and `create_workflow_safeguards` in `research_config.mojo`. Adjust `min_reviewers`, `approval_timeout_days`, `require_unanimous_approval`, etc., to align with institutional policies, ensuring that critical human oversight is maintained.
+-   **Customize Approval Workflows:** Adapt the `initiate_approval_workflow` and `record_approval_decision` functions in `academic_research_workflow.mojo` to fit specific organizational structures and approval hierarchies.
+
+### 4. Data Sources and Processing
+
+-   **Integrate Content Streams:** The `identify_research_contributions` function in `academic_research_workflow.mojo` takes a `List[String]` `content_streams`. Extend this to integrate with actual data sources like local file systems, online repositories (with appropriate access), or internal databases, ensuring privacy and security.
+-   **Enhance Metadata Extraction:** Improve the `_extract_paper_metadata` and `extract_research_metadata` functions to parse different file formats and extract more detailed information from research documents.
+
+Remember to always maintain the core principle of **mandatory human oversight** for all publication-related decisions when personalizing the system.
 
 ## Future Enhancements
 
-- Integration with preprint servers (with human approval)
-- Advanced collaboration features
+-   Integration with preprint servers (with human approval)
+-   Advanced collaboration features
 - Multi-institutional workflow support
 - Enhanced statistical analysis tools
 - Expanded domain coverage
