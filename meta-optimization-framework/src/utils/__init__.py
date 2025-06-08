@@ -1,21 +1,55 @@
 """
-Utility modules for the meta-optimization framework.
+Utility Components of Meta-Optimization Framework
 
-Provides shared functionality for statistical analysis, data processing,
-visualization, and failure documentation.
+This module contains utility classes and functions that support the core
+meta-optimization framework functionality:
+
+- StatisticalAnalyzer: Statistical validation and analysis tools
+- DataProcessor: Cognitive task data generation and processing
+- FailureDocumenter: Systematic failure tracking and learning
+- Visualizer: Plotting and visualization tools
+
+These utilities enable:
+- Rigorous statistical validation of results
+- Cognitive task benchmark generation
+- Transparent failure documentation and learning
+- Comprehensive visualization of optimization processes
 """
 
-from .statistical_analysis import ConfidenceInterval, EffectSize, StatisticalAnalyzer
-from .failure_documentation import FailureDocumenter, FailureMode
+from .statistical_analysis import (
+    StatisticalAnalyzer,
+    ConfidenceInterval,
+    EffectSize,
+    HypothesisTest,
+)
+
 from .data_processing import DataProcessor
+
+from .failure_documentation import (
+    FailureDocumenter,
+    FailureMode,
+    FailureType,
+    FailureSeverity,
+)
+
 from .visualization import Visualizer
 
 __all__ = [
-    "ConfidenceInterval",
-    "EffectSize", 
+    # Statistical analysis
     "StatisticalAnalyzer",
+    "ConfidenceInterval",
+    "EffectSize",
+    "HypothesisTest",
+    
+    # Data processing
+    "DataProcessor",
+    
+    # Failure documentation
     "FailureDocumenter",
     "FailureMode",
-    "DataProcessor",
+    "FailureType",
+    "FailureSeverity",
+    
+    # Visualization
     "Visualizer",
 ]

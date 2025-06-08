@@ -1,76 +1,83 @@
+#!/usr/bin/env python3
 """
-Meta-Optimization Framework: Bridging Minds and Machines
-A comprehensive framework for cognitive-inspired deep learning optimization.
+Setup script for Meta-Optimization Framework
 """
 
 from setuptools import setup, find_packages
 import os
 
 # Read the README file
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+def read_readme():
+    with open("README.md", "r", encoding="utf-8") as fh:
+        return fh.read()
 
 # Read requirements
-with open("requirements.txt", "r", encoding="utf-8") as fh:
-    requirements = [line.strip() for line in fh if line.strip() and not line.startswith("#")]
+def read_requirements():
+    with open("requirements.txt", "r", encoding="utf-8") as fh:
+        return [line.strip() for line in fh if line.strip() and not line.startswith("#")]
 
 setup(
     name="meta-optimization-framework",
     version="0.1.0",
     author="Ryan Oates",
     author_email="ryan.oates@ucsb.edu",
-    description="Cognitive-inspired deep learning optimization framework",
-    long_description=long_description,
+    description="A comprehensive framework for cognitive-inspired deep learning optimization",
+    long_description=read_readme(),
     long_description_content_type="text/markdown",
     url="https://github.com/Surfer12/meta-optimization-framework",
-    packages=find_packages(),
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Science/Research",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
-        "Topic :: Scientific/Engineering :: Artificial Intelligence",
-        "Topic :: Scientific/Engineering :: Information Analysis",
+        "Programming Language :: Python :: 3.12",
     ],
     python_requires=">=3.8",
-    install_requires=requirements,
+    install_requires=read_requirements(),
     extras_require={
         "dev": [
-            "pytest>=6.2.0",
-            "pytest-cov>=3.0.0",
-            "black>=22.0.0",
-            "flake8>=4.0.0",
-            "mypy>=0.910",
-            "pre-commit>=2.15.0",
+            "pytest>=7.0",
+            "pytest-cov>=4.0",
+            "black>=22.0",
+            "flake8>=5.0",
+            "mypy>=1.0",
+            "pre-commit>=2.20",
+            "sphinx>=5.0",
+            "sphinx-rtd-theme>=1.2",
+            "jupyter>=1.0",
+            "notebook>=6.5",
         ],
         "docs": [
-            "sphinx>=4.0.0",
-            "sphinx-rtd-theme>=1.0.0",
-            "sphinx-autodoc-typehints>=1.12.0",
+            "sphinx>=5.0",
+            "sphinx-rtd-theme>=1.2",
+            "myst-parser>=0.18",
+            "sphinx-autodoc-typehints>=1.19",
         ],
         "experiments": [
-            "wandb>=0.12.0",
-            "tensorboard>=2.8.0",
-            "psychopy>=2022.1.0",
+            "wandb>=0.13",
+            "optuna>=3.0",
+            "mlflow>=2.0",
+            "tensorboard>=2.10",
         ],
     },
     entry_points={
         "console_scripts": [
-            "meta-optimize=src.core.meta_optimization:main",
-            "cognitive-benchmark=src.evaluation.cognitive_authenticity:main",
-            "failure-analyze=src.utils.failure_documentation:main",
+            "meta-optimize=core.meta_optimization:main",
+            "randomness-study=experiments.randomness_impact_study:main",
+            "failure-museum=utils.failure_documentation:main",
         ],
     },
     include_package_data=True,
     package_data={
-        "": ["*.yaml", "*.json", "*.txt", "*.md"],
+        "": ["*.md", "*.txt", "*.yml", "*.yaml"],
     },
-    keywords="cognitive-science, deep-learning, optimization, neuro-symbolic, bias-modeling",
     project_urls={
         "Bug Reports": "https://github.com/Surfer12/meta-optimization-framework/issues",
         "Source": "https://github.com/Surfer12/meta-optimization-framework",
