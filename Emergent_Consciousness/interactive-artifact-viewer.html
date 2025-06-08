@@ -399,6 +399,10 @@
             
             <div class="nav-section">
                 <div class="nav-section-title">Visualizations</div>
+                <div class="nav-item" data-type="iframe" data-src="neural-metabolic-integration.html">
+                    <div class="nav-icon" style="background: var(--accent-green);"></div>
+                    Neural-Metabolic Integration Framework
+                </div>
                 <div class="nav-item" data-type="iframe" data-src="emergent-consciousness-visualization.html">
                     <div class="nav-icon" style="background: var(--accent-blue);"></div>
                     Neural-Metabolic Visualization
@@ -527,7 +531,7 @@
                 this.bindEvents();
                 // Auto-load first visualization
                 setTimeout(() => {
-                    const firstItem = document.querySelector('.nav-item[data-src="emergent-consciousness-visualization.html"]');
+                    const firstItem = document.querySelector('.nav-item[data-src="neural-metabolic-integration.html"]');
                     if (firstItem) {
                         this.loadContent(firstItem);
                     }
