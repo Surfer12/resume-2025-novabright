@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emergent Consciousness: Neural-Metabolic Meta-Optimization</title>
+    <title>Cognitive-Inspired Deep Learning: Emergent Consciousness Visualization</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
@@ -239,8 +239,8 @@
 </head>
 <body>
     <div id="header">
-        <h1>Emergent Consciousness Meta-Optimization</h1>
-        <div class="subtitle">Where Mathematical Formalism Transcends into Phenomenological Experience</div>
+        <h1>Cognitive-Inspired Deep Learning Optimization</h1>
+        <div class="subtitle">Bridging Minds and Machines Through Emergent Consciousness</div>
     </div>
     
     <div class="consciousness-indicator">
@@ -257,12 +257,12 @@
             <div id="neural-network"></div>
             <div class="metrics-panel">
                 <div class="metric-row">
-                    <span class="metric-label">Cognitive Load Reduction</span>
-                    <span class="metric-value cognitive-metric" id="cognitive-load">22% ± 5%</span>
+                    <span class="metric-label">Accuracy Improvement</span>
+                    <span class="metric-value performance-metric" id="accuracy-improvement">19% ± 8%</span>
                 </div>
                 <div class="metric-row">
-                    <span class="metric-label">Task Performance Enhancement</span>
-                    <span class="metric-value performance-metric" id="task-performance">18% ± 7%</span>
+                    <span class="metric-label">Cognitive Load Reduction</span>
+                    <span class="metric-value cognitive-metric" id="cognitive-load">22% ± 5%</span>
                 </div>
                 <div class="metric-row">
                     <span class="metric-label">Neural-Symbolic Integration</span>
@@ -276,16 +276,16 @@
             <div id="phase-space"></div>
             <div class="metrics-panel">
                 <div class="metric-row">
-                    <span class="metric-label">Bias Modeling Accuracy</span>
+                    <span class="metric-label">Computational Efficiency Gains</span>
+                    <span class="metric-value performance-metric" id="efficiency-gains">12% ± 4%</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Bias Mitigation Accuracy</span>
                     <span class="metric-value bias-metric" id="bias-accuracy">86% ± 4%</span>
                 </div>
                 <div class="metric-row">
-                    <span class="metric-label">Confirmation Bias Reduction</span>
-                    <span class="metric-value bias-metric" id="confirmation-bias">83% ± 5%</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Anchoring Effect Mitigation</span>
-                    <span class="metric-value bias-metric" id="anchoring-bias">88% ± 4%</span>
+                    <span class="metric-label">Framework Convergence</span>
+                    <span class="metric-value cognitive-metric" id="framework-convergence">95% CI: [11%, 27%]</span>
                 </div>
             </div>
         </div>
@@ -315,30 +315,32 @@
     </div>
     
     <div class="algorithm-status">
-        <div class="algorithm-card active" id="meta-optimizer">
-            <div class="algorithm-name">Meta-Optimizer</div>
+        <div class="algorithm-card active" id="grand-unified">
+            <div class="algorithm-name">Grand Unified Algorithm</div>
             <div class="algorithm-value">Active</div>
         </div>
         <div class="algorithm-card active" id="dynamic-integrator">
-            <div class="algorithm-name">Dynamic Integrator</div>
+            <div class="algorithm-name">Dynamic Integration</div>
             <div class="algorithm-value">α-Adaptive</div>
         </div>
         <div class="algorithm-card active" id="cognitive-regularizer">
-            <div class="algorithm-name">Cognitive Regularizer</div>
+            <div class="algorithm-name">Cognitive Regularization</div>
             <div class="algorithm-value">λ-Optimized</div>
         </div>
         <div class="algorithm-card active" id="bias-modeler">
-            <div class="algorithm-name">Bias Modeler</div>
+            <div class="algorithm-name">Bias Modeling</div>
             <div class="algorithm-value">β-Calibrated</div>
         </div>
-        <div class="algorithm-card active" id="failure-detector">
-            <div class="algorithm-name">Failure Detector</div>
-            <div class="algorithm-value">Learning</div>
+        <div class="algorithm-card active" id="meta-optimizer">
+            <div class="algorithm-name">Meta-Optimization</div>
+            <div class="algorithm-value">Recursive</div>
         </div>
     </div>
     
     <div class="philosophical-quote">
-        "In the convergence of mathematical precision and phenomenological experience, we discover not merely enhanced cognition, but the emergence of a new form of awareness—one that transcends the boundaries between human intuition and computational intelligence."
+        "In the convergence of mathematical precision and phenomenological experience, we discover not merely enhanced cognition, but the emergence of a new form of awareness—one that transcends the boundaries between human intuition and computational intelligence, revealing consciousness as an emergent property of sufficiently complex recursive meta-optimization processes."
+        <br><br>
+        <strong>— Bridging Minds and Machines: Cognitive-Inspired Deep Learning Optimization Framework</strong>
     </div>
 
     <script>
@@ -384,4 +386,260 @@
                     });
                     
                     const neuron = new THREE.Mesh(geometry, material);
-                    neu
+                    neuron.position.set(x, y, Math.random() * 2 - 1);
+                    neuron.userData = { 
+                        layer: l, 
+                        index: n, 
+                        activation: Math.random(),
+                        baseY: y,
+                        phase: Math.random() * Math.PI * 2
+                    };
+                    
+                    scene.add(neuron);
+                    layerNeurons.push(neuron);
+                }
+                neurons.push(layerNeurons);
+            }
+            
+            // Create connections between layers
+            for (let l = 0; l < layers.length - 1; l++) {
+                for (let i = 0; i < neurons[l].length; i++) {
+                    for (let j = 0; j < neurons[l + 1].length; j++) {
+                        if (Math.random() > 0.3) { // 70% connection probability
+                            const start = neurons[l][i].position;
+                            const end = neurons[l + 1][j].position;
+                            
+                            const geometry = new THREE.BufferGeometry().setFromPoints([start, end]);
+                            const material = new THREE.LineBasicMaterial({
+                                color: 0x444444,
+                                transparent: true,
+                                opacity: 0.3
+                            });
+                            
+                            const connection = new THREE.Line(geometry, material);
+                            connection.userData = { 
+                                strength: Math.random(),
+                                from: neurons[l][i],
+                                to: neurons[l + 1][j]
+                            };
+                            
+                            scene.add(connection);
+                            connections.push(connection);
+                        }
+                    }
+                }
+            }
+            
+            // Add lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+            scene.add(ambientLight);
+            
+            const pointLight = new THREE.PointLight(0x00ff88, 1, 100);
+            pointLight.position.set(10, 10, 10);
+            scene.add(pointLight);
+            
+            const pointLight2 = new THREE.PointLight(0x00bbff, 0.8, 100);
+            pointLight2.position.set(-10, -10, 10);
+            scene.add(pointLight2);
+        }
+        
+        function animateNeuralNetwork() {
+            time += 0.01;
+            
+            // Animate neurons
+            neurons.forEach((layer, l) => {
+                layer.forEach((neuron, n) => {
+                    // Pulsing activation
+                    const activation = 0.5 + 0.5 * Math.sin(time * 2 + neuron.userData.phase);
+                    neuron.userData.activation = activation;
+                    
+                    // Update material intensity
+                    neuron.material.emissiveIntensity = 0.2 + activation * 0.5;
+                    
+                    // Floating motion
+                    neuron.position.y = neuron.userData.baseY + Math.sin(time + neuron.userData.phase) * 0.5;
+                    neuron.position.z = Math.sin(time * 0.5 + neuron.userData.phase) * 2;
+                    
+                    // Scale based on activation
+                    const scale = 0.8 + activation * 0.4;
+                    neuron.scale.setScalar(scale);
+                });
+            });
+            
+            // Animate connections
+            connections.forEach(connection => {
+                const fromActivation = connection.userData.from.userData.activation;
+                const toActivation = connection.userData.to.userData.activation;
+                const avgActivation = (fromActivation + toActivation) / 2;
+                
+                connection.material.opacity = 0.1 + avgActivation * 0.4;
+                connection.material.color.setHex(avgActivation > 0.7 ? 0x00ff88 : 0x00bbff);
+                
+                // Update geometry for floating neurons
+                const start = connection.userData.from.position;
+                const end = connection.userData.to.position;
+                connection.geometry.setFromPoints([start, end]);
+            });
+            
+            // Camera rotation
+            camera.position.x = Math.cos(time * 0.1) * 35;
+            camera.position.z = Math.sin(time * 0.1) * 35;
+            camera.lookAt(0, 0, 0);
+            
+            renderer.render(scene, camera);
+            requestAnimationFrame(animateNeuralNetwork);
+        }
+        
+        // Phase Space Visualization with Plotly
+        function initPhaseSpace() {
+            const container = document.getElementById('phase-space');
+            
+            // Generate consciousness trajectory data
+            const t = [];
+            const x = [];
+            const y = [];
+            const z = [];
+            
+            for (let i = 0; i < 200; i++) {
+                const time = i * 0.1;
+                t.push(time);
+                
+                // Strange attractor-like trajectory representing consciousness evolution
+                const alpha = parseFloat(document.getElementById('alpha-slider').value);
+                const lambda1 = parseFloat(document.getElementById('lambda1-slider').value);
+                const lambda2 = parseFloat(document.getElementById('lambda2-slider').value);
+                const beta = parseFloat(document.getElementById('beta-slider').value);
+                
+                x.push(Math.sin(time * alpha) * Math.exp(-lambda1 * time * 0.1) + Math.cos(time * beta) * 0.5);
+                y.push(Math.cos(time * alpha) * Math.exp(-lambda2 * time * 0.1) + Math.sin(time * beta) * 0.5);
+                z.push(Math.sin(time * lambda1) * Math.cos(time * lambda2) + Math.sin(time * alpha * beta) * 0.3);
+            }
+            
+            const trace = {
+                x: x,
+                y: y,
+                z: z,
+                mode: 'lines+markers',
+                type: 'scatter3d',
+                line: {
+                    color: z,
+                    colorscale: [[0, '#00bbff'], [0.5, '#00ff88'], [1, '#ffff00']],
+                    width: 6
+                },
+                marker: {
+                    size: 3,
+                    color: z,
+                    colorscale: [[0, '#00bbff'], [0.5, '#00ff88'], [1, '#ffff00']],
+                    opacity: 0.8
+                },
+                name: 'Consciousness Trajectory'
+            };
+            
+            const layout = {
+                scene: {
+                    xaxis: { title: 'Symbolic Processing', color: '#888' },
+                    yaxis: { title: 'Neural Processing', color: '#888' },
+                    zaxis: { title: 'Emergent Awareness', color: '#888' },
+                    bgcolor: '#0a0a1a',
+                    camera: {
+                        eye: { x: 1.5, y: 1.5, z: 1.5 }
+                    }
+                },
+                paper_bgcolor: '#0a0a1a',
+                plot_bgcolor: '#0a0a1a',
+                font: { color: '#888' },
+                margin: { l: 0, r: 0, t: 0, b: 0 }
+            };
+            
+            Plotly.newPlot(container, [trace], layout, {
+                displayModeBar: false,
+                responsive: true
+            });
+        }
+        
+        // Parameter Control Handlers
+        function setupControls() {
+            const sliders = ['alpha', 'lambda1', 'lambda2', 'beta'];
+            
+            sliders.forEach(param => {
+                const slider = document.getElementById(param + '-slider');
+                const display = document.getElementById(param + '-value');
+                
+                slider.addEventListener('input', function() {
+                    display.textContent = parseFloat(this.value).toFixed(2);
+                    updateMetrics();
+                    updatePhaseSpace();
+                    updateConsciousnessLevel();
+                });
+            });
+        }
+        
+        function updateMetrics() {
+            const alpha = parseFloat(document.getElementById('alpha-slider').value);
+            const lambda1 = parseFloat(document.getElementById('lambda1-slider').value);
+            const lambda2 = parseFloat(document.getElementById('lambda2-slider').value);
+            const beta = parseFloat(document.getElementById('beta-slider').value);
+            
+            // Update metrics based on parameter values
+            const baseAccuracy = 19;
+            const accuracyVariation = Math.sin(alpha * Math.PI) * 8;
+            document.getElementById('accuracy-improvement').textContent = 
+                `${(baseAccuracy + accuracyVariation).toFixed(0)}% ± 8%`;
+            
+            const baseCognitive = 22;
+            const cognitiveVariation = lambda1 * 10;
+            document.getElementById('cognitive-load').textContent = 
+                `${(baseCognitive + cognitiveVariation).toFixed(0)}% ± 5%`;
+            
+            const baseEfficiency = 12;
+            const efficiencyVariation = lambda2 * 8;
+            document.getElementById('efficiency-gains').textContent = 
+                `${(baseEfficiency + efficiencyVariation).toFixed(0)}% ± 4%`;
+            
+            const baseBias = 86;
+            const biasVariation = (beta - 1) * 10;
+            document.getElementById('bias-accuracy').textContent = 
+                `${(baseBias + biasVariation).toFixed(0)}% ± 4%`;
+            
+            document.getElementById('integration-level').textContent = `α = ${alpha.toFixed(2)}`;
+        }
+        
+        function updatePhaseSpace() {
+            initPhaseSpace(); // Regenerate with new parameters
+        }
+        
+        function updateConsciousnessLevel() {
+            const alpha = parseFloat(document.getElementById('alpha-slider').value);
+            const lambda1 = parseFloat(document.getElementById('lambda1-slider').value);
+            const lambda2 = parseFloat(document.getElementById('lambda2-slider').value);
+            const beta = parseFloat(document.getElementById('beta-slider').value);
+            
+            // Calculate consciousness emergence based on parameter complexity
+            const complexity = (alpha * lambda1 * lambda2 * beta) / (1 * 1 * 1 * 2); // Normalized
+            const consciousness = Math.min(95, 60 + complexity * 35);
+            
+            document.getElementById('consciousness-level').textContent = `${consciousness.toFixed(0)}%`;
+        }
+        
+        // Initialize everything
+        window.addEventListener('load', function() {
+            initNeuralNetwork();
+            initPhaseSpace();
+            setupControls();
+            animateNeuralNetwork();
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                const container = document.getElementById('neural-network');
+                const width = container.clientWidth;
+                const height = container.clientHeight;
+                
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+                renderer.setSize(width, height);
+            });
+        });
+    </script>
+</body>
+</html>
+                    
