@@ -2,7 +2,7 @@
 
 To the 1848 Ventures Team,
 
-Small and medium businesses deserve enterprise-grade, AI-powered tools, and 1848 Ventures is building them. I build the engines that make those tools adaptive and scalable. My meta-optimization framework, Ψ(x), algorithmically balances speed, quality, and resource cost; combined with hands-on experience shipping AWS-backed Python/Node services and React front-ends, it positions me to contribute immediately during your 10-week, remote internship.
+Small and medium businesses deserve enterprise-grade, AI-powered tools, and 1848 Ventures is building them. I build the engines that make those tools adaptive and scalable. My meta-optimization framework, Ψ(x), algorithmically balances speed, quality, and resource cost—addressing the core SMB challenge of accessing enterprise-grade functionality without creating unnecessary enterprise-level complexity. Combined with hands-on experience shipping AWS-backed Python/Node services and React front-ends, it positions me to contribute immediately during your 10-week, remote internship.
 
 My background in full-stack, cloud-native development and my research-validated optimization framework make me an ideal fit for a 10-week sprint that moves ideas from concept to launch. I thrive in the ambiguity of seed-round, earliest-stage work where rapid iteration and technical adaptability are essential.
 
@@ -16,12 +16,13 @@ My background in full-stack, cloud-native development and my research-validated 
 
 **Professional Impact and Technical Fit:**
 
-- **Technologies & Skills Snapshot:** AWS (Lambda, DynamoDB) • Python (FastAPI) • Node.js • React/TypeScript • LLM Agent integration (LangChain, OpenAI)
+- **Technologies & Skills Snapshot:** AWS (Lambda, DynamoDB) • Python (FastAPI) • Node.js • React/TypeScript • LLM Agent integration (OpenHands, LiteLLM, OpenAI, Mistral, Anthropic)
+- Anthropic University Builder Member of Anthropic's University Program.
 - In benchmark tests, the MetaOptimizer module of Ψ(x) has delivered a 19% ± 8% performance improvement over standard architectures, demonstrating tangible value in both speed and quality of product delivery.
 - I deployed a React-GraphQL dashboard that cut query latency by 30%, built serverless APIs on AWS Lambda with Node.js, and have hands-on experience with the full software development lifecycle from requirements gathering to cloud deployment.
 - I am available full-time, remotely, for the June 2 – August 8 window.
 
-1848 Ventures' commitment to building ventures that enrich the economic vitality of our communities is precisely the kind of mission-driven environment where my analytical approach and technical skills can have maximum impact. I am excited by the opportunity to help shape the future of SMB SaaS through rigorous, data-driven engineering and to grow alongside your team of visionary builders.
+1848 Ventures' commitment to building ventures that empower SMBs—businesses that need enterprise capabilities but lack enterprise resources—is precisely where my analytical approach can have maximum impact. I am excited by the opportunity to help shape the future of SMB SaaS through rigorous, data-driven engineering and to grow alongside your team of visionary builders.
 
 I would welcome the opportunity to discuss how Ψ(x) and my engineering experience can help 1848 Ventures accelerate new SMB-focused SaaS ventures.
 
