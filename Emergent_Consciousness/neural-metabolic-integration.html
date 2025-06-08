@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural-Metabolic Integration Framework</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neural-blue: #0066cc;
+            --metabolic-green: #00cc66;
+            --integration-purple: #6600cc;
+            --energy-orange: #ff6600;
+            --background-dark: #0a0a0f;
+            --background-mid: #1a1a25;
+            --background-light: #2a2a35;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0c0;
+            --border-color: #333344;
+            --glow-blue: rgba(0, 102, 204, 0.3);
+            --glow-green: rgba(0, 204, 102, 0.3);
+            --glow-purple: rgba(102, 0, 204, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .framework-container {
+            display: grid;
+            grid-template-areas: 
+                "header header header"
+                "neural metabolic integration"
+                "controls controls controls"
+                "equations equations equations";
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto 1fr auto auto;
+            gap: 15px;
+            padding: 15px;
+            min-height: 100vh;
+        }
+
+        .framework-header {
+            grid-area: header;
+            background: linear-gradient(135deg, var(--neural-blue), var(--metabolic-green), var(--integration-purple));
+            padding: 2rem;
+            text-align: center;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .framework-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"><animate attributeName="r" values="1;3;1" dur="4s" repeatCount="indefinite"/></circle><circle cx="80" cy="30" r="1.5" fill="white" opacity="0.1"><animate attributeName="r" values="1.5;2.5;1.5" dur="6s" repeatCount="indefinite"/></circle><circle cx="30" cy="80" r="1" fill="white" opacity="0.1"><animate attributeName="r" values="1;2;1" dur="5s" repeatCount="indefinite"/></circle></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            z-index: 2;
+            position: relative;
+        }
+
+        .header-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            z-index: 2;
+            position: relative;
+            font-style: italic;
+        }
+
+        .neural-section {
+            grid-area: neural;
+            background: var(--background-mid);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 2px solid var(--neural-blue);
+            box-shadow: 0 0 20px var(--glow-blue);
+            position: relative;
+        }
+
+        .metabolic-section {
+            grid-area: metabolic;
+            background: var(--background-mid);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 2px solid var(--metabolic-green);
+            box-shadow: 0 0 20px var(--glow-green);
+            position: relative;
+        }
+
+        .integration-section {
+            grid-area: integration;
+            background: var(--background-mid);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 2px solid var(--integration-purple);
+            box-shadow: 0 0 20px var(--glow-purple);
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .neural-icon {
+            background: var(--neural-blue);
+            color: white;
+        }
+
+        .metabolic-icon {
+            background: var(--metabolic-green);
+            color: white;
+        }
+
+        .integration-icon {
+            background: var(--integration-purple);
+            color: white;
+        }
+
+        .visualization-container {
+            height: 400px;
+            background: var(--background-dark);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .controls-section {
+            grid-area: controls;
+            background: var(--background-mid);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .control-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .control-value {
+            color: var(--neural-blue);
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: var(--background-light);
+            outline: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neural-blue), var(--metabolic-green));
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neural-blue), var(--metabolic-green));
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .equations-section {
+            grid-area: equations;
+            background: var(--background-mid);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .equation-container {
+            background: var(--background-dark);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--integration-purple);
+        }
+
+        .equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .equation-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .metrics-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: var(--background-dark);
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .metric-title {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .neural-metric { color: var(--neural-blue); }
+        .metabolic-metric { color: var(--metabolic-green); }
+        .integration-metric { color: var(--integration-purple); }
+        .energy-metric { color: var(--energy-orange); }
+
+        .pathway-visualization {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: radial-gradient(circle at center, rgba(0,102,204,0.1), transparent);
+        }
+
+        .neural-network-canvas {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        .status-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: var(--neural-blue);
+            color: white;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .integration-flow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: conic-gradient(from 0deg, var(--neural-blue), var(--metabolic-green), var(--integration-purple), var(--neural-blue));
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @media (max-width: 1200px) {
+            .framework-container {
+                grid-template-areas: 
+                    "header"
+                    "neural"
+                    "metabolic"
+                    "integration"
+                    "controls"
+                    "equations";
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-title { font-size: 2rem; }
+            .controls-grid { grid-template-columns: 1fr; }
+            .metrics-display { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="framework-container">
+        <div class="framework-header">
+            <h1 class="header-title">Neural-Metabolic Integration Framework</h1>
+            <p class="header-subtitle">Dynamic Visualization of Consciousness-Metabolism Synthesis</p>
+        </div>
+
+        <div class="neural-section">
+            <h2 class="section-title">
+                <div class="section-icon neural-icon">🧠</div>
+                Neural Processing Networks
+            </h2>
+            <div class="visualization-container">
+                <div class="status-indicator" id="neural-status">Neural Activity: Active</div>
+                <canvas id="neural-canvas" class="neural-network-canvas"></canvas>
+                <div class="pathway-visualization"></div>
+            </div>
+            <div class="metrics-display">
+                <div class="metric-card">
+                    <div class="metric-title">Neural Efficiency</div>
+                    <div class="metric-value neural-metric" id="neural-efficiency">87%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Synaptic Density</div>
+                    <div class="metric-value neural-metric" id="synaptic-density">94.2k</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="metabolic-section">
+            <h2 class="section-title">
+                <div class="section-icon metabolic-icon">⚡</div>
+                Metabolic Pathways
+            </h2>
+            <div class="visualization-container">
+                <div class="status-indicator" id="metabolic-status">Metabolism: Optimized</div>
+                <canvas id="metabolic-canvas" class="neural-network-canvas"></canvas>
+                <div class="pathway-visualization" style="background: radial-gradient(circle at center, rgba(0,204,102,0.1), transparent);"></div>
+            </div>
+            <div class="metrics-display">
+                <div class="metric-card">
+                    <div class="metric-title">Energy Production</div>
+                    <div class="metric-value metabolic-metric" id="energy-production">142%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Glucose Uptake</div>
+                    <div class="metric-value metabolic-metric" id="glucose-uptake">78 mg/dL</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="integration-section">
+            <h2 class="section-title">
+                <div class="section-icon integration-icon">🔄</div>
+                Integration Synthesis
+            </h2>
+            <div class="visualization-container">
+                <div class="status-indicator" id="integration-status">Integration: Synchronized</div>
+                <canvas id="integration-canvas" class="neural-network-canvas"></canvas>
+                <div class="integration-flow"></div>
+            </div>
+            <div class="metrics-display">
+                <div class="metric-card">
+                    <div class="metric-title">Coherence Index</div>
+                    <div class="metric-value integration-metric" id="coherence-index">0.89</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Sync Rate</div>
+                    <div class="metric-value integration-metric" id="sync-rate">94.7 Hz</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-section">
+            <h2 class="section-title">Integration Control Parameters</h2>
+            <div class="controls-grid">
+                <div class="control-group">
+                    <label class="control-label">
+                        Neural Plasticity (α)
+                        <span class="control-value" id="plasticity-value">0.75</span>
+                    </label>
+                    <input type="range" id="plasticity-slider" class="slider" min="0" max="1" step="0.01" value="0.75">
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">
+                        Metabolic Rate (β)
+                        <span class="control-value" id="metabolic-value">0.68</span>
+                    </label>
+                    <input type="range" id="metabolic-slider" class="slider" min="0" max="1" step="0.01" value="0.68">
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">
+                        Integration Coupling (γ)
+                        <span class="control-value" id="coupling-value">0.82</span>
+                    </label>
+                    <input type="range" id="coupling-slider" class="slider" min="0" max="1" step="0.01" value="0.82">
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">
+                        Energy Efficiency (δ)
+                        <span class="control-value" id="efficiency-value">0.91</span>
+                    </label>
+                    <input type="range" id="efficiency-slider" class="slider" min="0" max="1" step="0.01" value="0.91">
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">
+                        Cognitive Load (λ)
+                        <span class="control-value" id="load-value">0.43</span>
+                    </label>
+                    <input type="range" id="load-slider" class="slider" min="0" max="1" step="0.01" value="0.43">
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">
+                        Adaptation Rate (ε)
+                        <span class="control-value" id="adaptation-value">0.57</span>
+                    </label>
+                    <input type="range" id="adaptation-slider" class="slider" min="0" max="1" step="0.01" value="0.57">
+                </div>
+            </div>
+        </div>
+
+        <div class="equations-section">
+            <h2 class="section-title">Mathematical Framework</h2>
+            
+            <div class="equation-container">
+                <div class="equation-label">Neural-Metabolic Integration Function</div>
+                <div class="equation">
+                    Ψ<sub>NM</sub>(t) = ∫[α(t)N(x) + β(t)M(x)] × exp(-γ|N-M|) × δE(t) dt
+                </div>
+            </div>
+
+            <div class="equation-container">
+                <div class="equation-label">Synaptic-Metabolic Coupling</div>
+                <div class="equation">
+                    C<sub>sync</sub> = γ × cos(2πf<sub>neural</sub>t) × exp(-λL<sub>cognitive</sub>) × ε<sub>adapt</sub>
+                </div>
+            </div>
+
+            <div class="equation-container">
+                <div class="equation-label">Energy Optimization Constraint</div>
+                <div class="equation">
+                    E<sub>opt</sub> = δ × [ATP<sub>production</sub> - λ<sub>consumption</sub>] × Φ<sub>efficiency</sub>
+                </div>
+            </div>
+
+            <div class="metrics-display">
+                <div class="metric-card">
+                    <div class="metric-title">Integration Score</div>
+                    <div class="metric-value integration-metric" id="integration-score">8.7/10</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Energy Balance</div>
+                    <div class="metric-value energy-metric" id="energy-balance">+23.4 kJ</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Optimization Rate</div>
+                    <div class="metric-value neural-metric" id="optimization-rate">94.2%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Coherence Level</div>
+                    <div class="metric-value metabolic-metric" id="coherence-level">High</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class NeuralMetabolicFramework {
+            constructor() {
+                this.parameters = {
+                    plasticity: 0.75,
+                    metabolicRate: 0.68,
+                    coupling: 0.82,
+                    efficiency: 0.91,
+                    cognitiveLoad: 0.43,
+                    adaptationRate: 0.57
+                };
+
+                this.neuralScene = null;
+                this.metabolicScene = null;
+                this.integrationScene = null;
+                this.time = 0;
+                this.animationId = null;
+
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.initializeVisualizations();
+                this.startAnimation();
+                this.updateMetrics();
+            }
+
+            setupEventListeners() {
+                const sliders = {
+                    'plasticity-slider': 'plasticity',
+                    'metabolic-slider': 'metabolicRate',
+                    'coupling-slider': 'coupling',
+                    'efficiency-slider': 'efficiency',
+                    'load-slider': 'cognitiveLoad',
+                    'adaptation-slider': 'adaptationRate'
+                };
+
+                Object.entries(sliders).forEach(([sliderId, paramName]) => {
+                    const slider = document.getElementById(sliderId);
+                    const valueDisplay = document.getElementById(paramName.replace(/([A-Z])/g, '-$1').toLowerCase() + '-value');
+                    
+                    slider.addEventListener('input', (e) => {
+                        const value = parseFloat(e.target.value);
+                        this.parameters[paramName] = value;
+                        valueDisplay.textContent = value.toFixed(2);
+                        this.updateMetrics();
+                        this.updateVisualizations();
+                    });
+                });
+            }
+
+            initializeVisualizations() {
+                this.initNeuralVisualization();
+                this.initMetabolicVisualization();
+                this.initIntegrationVisualization();
+            }
+
+            initNeuralVisualization() {
+                const canvas = document.getElementById('neural-canvas');
+                const ctx = canvas.getContext('2d');
+                
+                // Set canvas size
+                const container = canvas.parentElement;
+                canvas.width = container.clientWidth - 40;
+                canvas.height = container.clientHeight - 40;
+
+                this.neuralScene = {
+                    canvas,
+                    ctx,
+                    neurons: this.generateNeurons(25, canvas.width, canvas.height),
+                    connections: []
+                };
+
+                // Generate connections
+                this.neuralScene.connections = this.generateConnections(this.neuralScene.neurons);
+            }
+
+            initMetabolicVisualization() {
+                const canvas = document.getElementById('metabolic-canvas');
+                const ctx = canvas.getContext('2d');
+                
+                const container = canvas.parentElement;
+                canvas.width = container.clientWidth - 40;
+                canvas.height = container.clientHeight - 40;
+
+                this.metabolicScene = {
+                    canvas,
+                    ctx,
+                    molecules: this.generateMolecules(40, canvas.width, canvas.height),
+                    pathways: []
+                };
+
+                this.metabolicScene.pathways = this.generatePathways(this.metabolicScene.molecules);
+            }
+
+            initIntegrationVisualization() {
+                const canvas = document.getElementById('integration-canvas');
+                const ctx = canvas.getContext('2d');
+                
+                const container = canvas.parentElement;
+                canvas.width = container.clientWidth - 40;
+                canvas.height = container.clientHeight - 40;
+
+                this.integrationScene = {
+                    canvas,
+                    ctx,
+                    integrationNodes: this.generateIntegrationNodes(15, canvas.width, canvas.height),
+                    syncWaves: []
+                };
+            }
+
+            generateNeurons(count, width, height) {
+                const neurons = [];
+                for (let i = 0; i < count; i++) {
+                    neurons.push({
+                        x: Math.random() * (width - 60) + 30,
+                        y: Math.random() * (height - 60) + 30,
+                        size: Math.random() * 8 + 4,
+                        activity: Math.random(),
+                        phase: Math.random() * Math.PI * 2,
+                        type: Math.random() > 0.7 ? 'inhibitory' : 'excitatory'
+                    });
+                }
+                return neurons;
+            }
+
+            generateConnections(neurons) {
+                const connections = [];
+                for (let i = 0; i < neurons.length; i++) {
+                    for (let j = i + 1; j < neurons.length; j++) {
+                        const distance = Math.hypot(neurons[i].x - neurons[j].x, neurons[i].y - neurons[j].y);
+                        if (distance < 120 && Math.random() > 0.6) {
+                            connections.push({
+                                from: neurons[i],
+                                to: neurons[j],
+                                strength: Math.random() * 0.8 + 0.2,
+                                active: false
+                            });
+                        }
+                    }
+                }
+                return connections;
+            }
+
+            generateMolecules(count, width, height) {
+                const molecules = [];
+                const types = ['glucose', 'atp', 'neurotransmitter', 'oxygen'];
+                
+                for (let i = 0; i < count; i++) {
+                    molecules.push({
+                        x: Math.random() * (width - 40) + 20,
+                        y: Math.random() * (height - 40) + 20,
+                        vx: (Math.random() - 0.5) * 2,
+                        vy: (Math.random() - 0.5) * 2,
+                        size: Math.random() * 6 + 3,
+                        type: types[Math.floor(Math.random() * types.length)],
+                        energy: Math.random()
+                    });
+                }
+                return molecules;
+            }
+
+            generatePathways(molecules) {
+                const pathways = [];
+                for (let i = 0; i < molecules.length; i++) {
+                    if (Math.random() > 0.8) {
+                        const target = molecules[Math.floor(Math.random() * molecules.length)];
+                        if (target !== molecules[i]) {
+                            pathways.push({
+                                from: molecules[i],
+                                to: target,
+                                flow: Math.random(),
+                                active: Math.random() > 0.5
+                            });
+                        }
+                    }
+                }
+                return pathways;
+            }
+
+            generateIntegrationNodes(count, width, height) {
+                const nodes = [];
+                for (let i = 0; i < count; i++) {
+                    nodes.push({
+                        x: Math.random() * (width - 60) + 30,
+                        y: Math.random() * (height - 60) + 30,
+                        size: Math.random() * 12 + 8,
+                        integration: Math.random(),
+                        phase: Math.random() * Math.PI * 2,
+                        connections: []
+                    });
+                }
+
+                // Create integration connections
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        if (Math.random() > 0.7) {
+                            nodes[i].connections.push(nodes[j]);
+                        }
+                    }
+                }
+
+                return nodes;
+            }
+
+            updateVisualizations() {
+                this.renderNeuralNetwork();
+                this.renderMetabolicPathways();
+                this.renderIntegrationSynthesis();
+            }
+
+            renderNeuralNetwork() {
+                if (!this.neuralScene) return;
+
+                const { ctx, canvas, neurons, connections } = this.neuralScene;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Update neural activity based on parameters
+                neurons.forEach(neuron => {
+                    neuron.activity = Math.sin(this.time * 0.01 + neuron.phase) * 0.5 + 0.5;
+                    neuron.activity *= this.parameters.plasticity;
+                });
+
+                // Render connections
+                connections.forEach(conn => {
+                    const activity = (conn.from.activity + conn.to.activity) / 2;
+                    conn.active = activity > 0.4;
+
+                    if (conn.active) {
+                        ctx.beginPath();
+                        ctx.moveTo(conn.from.x, conn.from.y);
+                        ctx.lineTo(conn.to.x, conn.to.y);
+                        ctx.strokeStyle = `rgba(0, 102, 204, ${activity * conn.strength})`;
+                        ctx.lineWidth = activity * 3;
+                        ctx.stroke();
+                    }
+                });
+
+                // Render neurons
+                neurons.forEach(neuron => {
+                    const glow = neuron.activity * 20;
+                    
+                    // Glow effect
+                    ctx.beginPath();
+                    ctx.arc(neuron.x, neuron.y, neuron.size + glow, 0, Math.PI * 2);
+                    const gradient = ctx.createRadialGradient(neuron.x, neuron.y, 0, neuron.x, neuron.y, neuron.size + glow);
+                    gradient.addColorStop(0, `rgba(0, 102, 204, ${neuron.activity})`);
+                    gradient.addColorStop(1, 'rgba(0, 102, 204, 0)');
+                    ctx.fillStyle = gradient;
+                    ctx.fill();
+
+                    // Neuron body
+                    ctx.beginPath();
+                    ctx.arc(neuron.x, neuron.y, neuron.size, 0, Math.PI * 2);
+                    ctx.fillStyle = neuron.type === 'excitatory' ? '#0066cc' : '#cc6600';
+                    ctx.fill();
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                });
+            }
+
+            renderMetabolicPathways() {
+                if (!this.metabolicScene) return;
+
+                const { ctx, canvas, molecules, pathways } = this.metabolicScene;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Update molecule positions
+                molecules.forEach(molecule => {
+                    molecule.x += molecule.vx * this.parameters.metabolicRate;
+                    molecule.y += molecule.vy * this.parameters.metabolicRate;
+
+                    // Boundary collision
+                    if (molecule.x <= molecule.size || molecule.x >= canvas.width - molecule.size) {
+                        molecule.vx *= -1;
+                    }
+                    if (molecule.y <= molecule.size || molecule.y >= canvas.height - molecule.size) {
+                        molecule.vy *= -1;
+                    }
+
+                    molecule.energy = Math.sin(this.time * 0.02) * 0.3 + 0.7;
+                });
+
+                // Render pathways
+                pathways.forEach(pathway => {
+                    if (pathway.active) {
+                        const flow = pathway.flow * this.parameters.efficiency;
+                        ctx.beginPath();
+                        ctx.moveTo(pathway.from.x, pathway.from.y);
+                        ctx.lineTo(pathway.to.x, pathway.to.y);
+                        ctx.strokeStyle = `rgba(0, 204, 102, ${flow})`;
+                        ctx.lineWidth = flow * 4;
+                        ctx.stroke();
+
+                        // Flow particles
+                        const dx = pathway.to.x - pathway.from.x;
+                        const dy = pathway.to.y - pathway.from.y;
+                        const flowPos = (this.time * 0.1) % 1;
+                        const particleX = pathway.from.x + dx * flowPos;
+                        const particleY = pathway.from.y + dy * flowPos;
+
+                        ctx.beginPath();
+                        ctx.arc(particleX, particleY, 3, 0, Math.PI * 2);
+                        ctx.fillStyle = '#00ff66';
+                        ctx.fill();
+                    }
+                });
+
+                // Render molecules
+                molecules.forEach(molecule => {
+                    const colors = {
+                        glucose: '#ffcc00',
+                        atp: '#ff6600',
+                        neurotransmitter: '#00ccff',
+                        oxygen: '#ff3366'
+                    };
+
+                    // Glow effect
+                    const glow = molecule.energy * 15;
+                    ctx.beginPath();
+                    ctx.arc(molecule.x, molecule.y, molecule.size + glow, 0, Math.PI * 2);
+                    const gradient = ctx.createRadialGradient(molecule.x, molecule.y, 0, molecule.x, molecule.y, molecule.size + glow);
+                    gradient.addColorStop(0, `${colors[molecule.type]}66`);
+                    gradient.addColorStop(1, `${colors[molecule.type]}00`);
+                    ctx.fillStyle = gradient;
+                    ctx.fill();
+
+                    // Molecule body
+                    ctx.beginPath();
+                    ctx.arc(molecule.x, molecule.y, molecule.size, 0, Math.PI * 2);
+                    ctx.fillStyle = colors[molecule.type];
+                    ctx.fill();
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                });
+            }
+
+            renderIntegrationSynthesis() {
+                if (!this.integrationScene) return;
+
+                const { ctx, canvas, integrationNodes } = this.integrationScene;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Update integration levels
+                integrationNodes.forEach(node => {
+                    node.integration = Math.sin(this.time * 0.015 + node.phase) * 0.4 + 0.6;
+                    node.integration *= this.parameters.coupling;
+                });
+
+                // Render integration field
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const fieldRadius = Math.min(canvas.width, canvas.height) * 0.4;
+                
+                for (let angle = 0; angle < Math.PI * 2; angle += 0.2) {
+                    const wavePhase = this.time * 0.02 + angle;
+                    const radius = fieldRadius + Math.sin(wavePhase) * 20;
+                    const x = centerX + Math.cos(angle) * radius;
+                    const y = centerY + Math.sin(angle) * radius;
+                    
+                    ctx.beginPath();
+                    ctx.arc(x, y, 3, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(102, 0, 204, ${this.parameters.coupling})`;
+                    ctx.fill();
+                }
+
+                // Render integration connections
+                integrationNodes.forEach(node => {
+                    node.connections.forEach(target => {
+                        const integration = (node.integration + target.integration) / 2;
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(node.x, node.y);
+                        ctx.lineTo(target.x, target.y);
+                        ctx.strokeStyle = `rgba(102, 0, 204, ${integration})`;
+                        ctx.lineWidth = integration * 4;
+                        ctx.stroke();
+                    });
+                });
+
+                // Render integration nodes
+                integrationNodes.forEach(node => {
+                    const glow = node.integration * 25;
+                    
+                    // Glow effect
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, node.size + glow, 0, Math.PI * 2);
+                    const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.size + glow);
+                    gradient.addColorStop(0, `rgba(102, 0, 204, ${node.integration})`);
+                    gradient.addColorStop(1, 'rgba(102, 0, 204, 0)');
+                    ctx.fillStyle = gradient;
+                    ctx.fill();
+
+                    // Node body
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
+                    ctx.fillStyle = '#6600cc';
+                    ctx.fill();
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+
+                    // Integration level indicator
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, node.size * 0.6, 0, Math.PI * 2 * node.integration);
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                });
+            }
+
+            updateMetrics() {
+                // Calculate derived metrics based on parameters
+                const neuralEfficiency = Math.round(this.parameters.plasticity * 100 + Math.random() * 10);
+                const energyProduction = Math.round(this.parameters.metabolicRate * this.parameters.efficiency * 200);
+                const coherenceIndex = (this.parameters.coupling * this.parameters.adaptationRate).toFixed(2);
+                const integrationScore = ((this.parameters.plasticity + this.parameters.coupling + this.parameters.efficiency) / 3 * 10).toFixed(1);
+                
+                // Update metric displays
+                document.getElementById('neural-efficiency').textContent = `${neuralEfficiency}%`;
+                document.getElementById('synaptic-density').textContent = `${(94.2 + Math.random() * 5).toFixed(1)}k`;
+                document.getElementById('energy-production').textContent = `${energyProduction}%`;
+                document.getElementById('glucose-uptake').textContent = `${(78 + Math.random() * 20).toFixed(0)} mg/dL`;
+                document.getElementById('coherence-index').textContent = coherenceIndex;
+                document.getElementById('sync-rate').textContent = `${(94.7 + Math.random() * 10).toFixed(1)} Hz`;
+                document.getElementById('integration-score').textContent = `${integrationScore}/10`;
+                document.getElementById('energy-balance').textContent = `+${(23.4 + Math.random() * 10).toFixed(1)} kJ`;
+                document.getElementById('optimization-rate').textContent = `${(this.parameters.efficiency * 100).toFixed(1)}%`;
+                document.getElementById('coherence-level').textContent = coherenceIndex > 0.7 ? 'High' : coherenceIndex > 0.4 ? 'Medium' : 'Low';
+            }
+
+            animate() {
+                this.time++;
+                this.updateVisualizations();
+                this.animationId = requestAnimationFrame(() => this.animate());
+            }
+
+            startAnimation() {
+                this.animate();
+            }
+
+            stop() {
+                if (this.animationId) {
+                    cancelAnimationFrame(this.animationId);
+                }
+            }
+        }
+
+        // Initialize the framework when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            window.neuralMetabolicFramework = new NeuralMetabolicFramework();
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.neuralMetabolicFramework) {
+                setTimeout(() => {
+                    window.neuralMetabolicFramework.initializeVisualizations();
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>
