@@ -1,0 +1,40 @@
+{
+  "name": "dashboard-infrastructure",
+  "version": "1.0.0",
+  "description": "AWS CDK infrastructure for optimized React-GraphQL dashboard",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "deploy": "npm run build && cdk deploy --all --require-approval never",
+    "deploy:prod": "npm run build && cdk deploy --all --require-approval never -c environment=production",
+    "destroy": "cdk destroy --all",
+    "diff": "cdk diff",
+    "synth": "cdk synth",
+    "bootstrap": "cdk bootstrap",
+    "test": "jest",
+    "lint": "eslint lib --ext .ts"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-apigatewayv2-alpha": "^2.110.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.110.0-alpha.0",
+    "aws-cdk-lib": "^2.110.0",
+    "constructs": "^10.3.0"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "^2.110.0",
+    "@types/jest": "^29.5.8",
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "aws-cdk": "^2.110.0",
+    "eslint": "^8.54.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
