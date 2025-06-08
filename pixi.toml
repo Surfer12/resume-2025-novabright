@@ -8,8 +8,8 @@ version = "0.1.0"
 [tasks]
 
 [dependencies]
-openai = ">=1.82.1,<2"
+openai = ">=1.84.0,<2"
 pip = ">=25.1.1,<26"
-max = ">=25.4.0.dev2025060220,<26"
+max = ">=25.4.0.dev2025060721,<26"
 numpy = ">=2.2.6,<3"
 matplotlib = ">=3.10.3,<4"
