@@ -16,22 +16,19 @@ These utilities enable:
 - Comprehensive visualization of optimization processes
 """
 
-from .statistical_analysis import (
-    StatisticalAnalyzer,
-    ConfidenceInterval,
-    EffectSize,
-    HypothesisTest,
-)
-
 from .data_processing import DataProcessor
-
 from .failure_documentation import (
     FailureDocumenter,
     FailureMode,
-    FailureType,
     FailureSeverity,
+    FailureType,
 )
-
+from .statistical_analysis import (
+    ConfidenceInterval,
+    EffectSize,
+    HypothesisTest,
+    StatisticalAnalyzer,
+)
 from .visualization import Visualizer
 
 __all__ = [
@@ -40,16 +37,13 @@ __all__ = [
     "ConfidenceInterval",
     "EffectSize",
     "HypothesisTest",
-    
     # Data processing
     "DataProcessor",
-    
     # Failure documentation
     "FailureDocumenter",
     "FailureMode",
     "FailureType",
     "FailureSeverity",
-    
     # Visualization
     "Visualizer",
 ]
