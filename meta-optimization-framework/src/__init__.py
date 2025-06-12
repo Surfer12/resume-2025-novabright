@@ -34,37 +34,40 @@ __email__ = "ryan.oates@ucsb.edu"
 __institution__ = "University of California, Santa Barbara"
 __license__ = "MIT"
 
-# Core framework imports
-from .core.meta_optimization import MetaOptimizer, TaskSpecification, OptimizationResult
-from .core.dynamic_integration import DynamicIntegrator
-from .core.cognitive_regularization import CognitiveRegularizer
 from .core.bias_modeling import BiasModeler, BiasType
+from .core.cognitive_regularization import CognitiveRegularizer
+from .core.dynamic_integration import DynamicIntegrator
 
-# Utility imports
-from .utils.statistical_analysis import StatisticalAnalyzer, ConfidenceInterval, EffectSize
+# Core framework imports
+from .core.meta_optimization import MetaOptimizer, OptimizationResult, TaskSpecification
 from .utils.data_processing import DataProcessor
 from .utils.failure_documentation import FailureDocumenter
+
+# Utility imports
+from .utils.statistical_analysis import (
+    ConfidenceInterval,
+    EffectSize,
+    StatisticalAnalyzer,
+)
 from .utils.visualization import Visualizer
 
 # Export main classes and functions
 __all__ = [
     # Core components
     "MetaOptimizer",
-    "TaskSpecification", 
+    "TaskSpecification",
     "OptimizationResult",
     "DynamicIntegrator",
     "CognitiveRegularizer",
     "BiasModeler",
     "BiasType",
-    
     # Utilities
     "StatisticalAnalyzer",
     "ConfidenceInterval",
-    "EffectSize", 
+    "EffectSize",
     "DataProcessor",
     "FailureDocumenter",
     "Visualizer",
-    
     # Metadata
     "__version__",
     "__author__",
@@ -78,17 +81,18 @@ import logging
 
 # Configure basic logging
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 
 # Create logger for the package
 logger = logging.getLogger(__name__)
 logger.info(f"Meta-Optimization Framework v{__version__} initialized")
 
+
 def get_version() -> str:
     """Get the current version of the package."""
     return __version__
+
 
 def get_info() -> dict:
     """Get package information."""
@@ -101,6 +105,7 @@ def get_info() -> dict:
         "license": __license__,
         "description": "A comprehensive framework for cognitive-inspired deep learning optimization",
     }
+
 
 def print_equation():
     """Print the core mathematical equation."""
@@ -120,6 +125,7 @@ def print_equation():
     - β: Bias modeling parameter
     """
     print(equation)
+
 
 def print_targets():
     """Print target performance metrics."""

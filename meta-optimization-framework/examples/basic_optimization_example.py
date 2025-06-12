@@ -27,6 +27,8 @@ from pathlib import Path
 import logging
 
 # Import framework components
+import sys
+sys.path.append('..')
 from src.core.meta_optimization import MetaOptimizer, TaskSpecification
 from src.utils.data_processing import DataProcessor
 from src.utils.statistical_analysis import StatisticalAnalyzer

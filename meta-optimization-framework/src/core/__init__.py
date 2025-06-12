@@ -13,54 +13,47 @@ Components:
 - BiasModeler: Human-like bias simulation (β parameter)
 """
 
-from .meta_optimization import (
-    MetaOptimizer,
-    TaskSpecification,
-    OptimizationResult,
-    SymbolicReasoner,
-    NeuralProcessor,
-    CognitiveSymbolicReasoner,
-    CognitiveNeuralProcessor,
-)
-
-from .dynamic_integration import DynamicIntegrator
-
-from .cognitive_regularization import (
-    CognitiveRegularizer,
-    CognitiveConstraint,
-    WorkingMemoryConstraint,
-    AttentionConstraint,
-    ProcessingSpeedConstraint,
-    BiasConsistencyConstraint,
-)
-
 from .bias_modeling import (
-    BiasModeler,
-    CognitiveBias,
-    BiasType,
-    ConfirmationBias,
     AnchoringBias,
     AvailabilityBias,
+    BiasModeler,
+    BiasType,
+    CognitiveBias,
+    ConfirmationBias,
     OverconfidenceBias,
+)
+from .cognitive_regularization import (
+    AttentionConstraint,
+    BiasConsistencyConstraint,
+    CognitiveConstraint,
+    CognitiveRegularizer,
+    ProcessingSpeedConstraint,
+    WorkingMemoryConstraint,
+)
+from .dynamic_integration import DynamicIntegrator
+from .meta_optimization import (
+    CognitiveNeuralProcessor,
+    CognitiveSymbolicReasoner,
+    MetaOptimizer,
+    NeuralProcessor,
+    OptimizationResult,
+    SymbolicReasoner,
+    TaskSpecification,
 )
 
 __all__ = [
     # Main classes
     "MetaOptimizer",
-    "TaskSpecification", 
+    "TaskSpecification",
     "OptimizationResult",
-    
     # Abstract base classes
     "SymbolicReasoner",
     "NeuralProcessor",
-    
     # Concrete implementations
     "CognitiveSymbolicReasoner",
     "CognitiveNeuralProcessor",
-    
     # Dynamic integration
     "DynamicIntegrator",
-    
     # Cognitive regularization
     "CognitiveRegularizer",
     "CognitiveConstraint",
@@ -68,13 +61,12 @@ __all__ = [
     "AttentionConstraint",
     "ProcessingSpeedConstraint",
     "BiasConsistencyConstraint",
-    
     # Bias modeling
     "BiasModeler",
     "CognitiveBias",
     "BiasType",
     "ConfirmationBias",
-    "AnchoringBias", 
+    "AnchoringBias",
     "AvailabilityBias",
     "OverconfidenceBias",
 ]
