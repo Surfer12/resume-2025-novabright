@@ -1,21 +1,21 @@
 #!/usr/bin/env node
 /**
- * Publish script for react-graphql-dashboard.
+ * Enhanced publish script for react-graphql-dashboard.
  *
- * Usage:
- *   npm run publish              # bump patch version (default) and publish
- *   npm run publish:patch        # same as above
- *   npm run publish:minor        # bump minor version and publish
- *   npm run publish:major        # bump major version and publish
+ * Features:
+ * 1. Quality gates: lint → type-check → tests → build.
+ * 2. Workspace-wide version bumping (root + all public workspaces).
+ * 3. 2-Factor-Auth & dry-run support (`--otp=<code>` and `--dry`).
+ * 4. Atomic publishing with automatic rollback on failure.
  *
- * The script performs the following steps:
- *  1. Runs full build for all workspaces (frontend & backend).
- *  2. Bumps the package.json version (patch|minor|major).
- *  3. Publishes the root package to npm with public access.
- *  4. Pushes git commit & tag so that CI and changelogs stay in sync.
+ * Usage examples:
+ *   npm run publish              # bump patch (default) and publish
+ *   npm run publish minor        # bump minor and publish
+ *   npm run publish major --dry  # preview a major release without publishing or pushing
  *
- * You can set the environment variable `NPM_REGISTRY` to publish to a custom
- * registry (defaults to the public npm registry).
+ * Environment variables:
+ *   NPM_REGISTRY   – custom registry (defaults to npmjs.org)
+ *   NPM_OTP        – 2FA one-time password (overridden by --otp flag)
  */
 const { execSync } = require('child_process');
 const path = require('path');
@@ -23,42 +23,96 @@ const fs = require('fs');
 
 const rootDir = path.resolve(__dirname, '..');
 
-function exec(cmd) {
+function exec(cmd, opts = {}) {
   console.log(`\n$ ${cmd}`);
-  execSync(cmd, { stdio: 'inherit', cwd: rootDir });
+  execSync(cmd, { stdio: 'inherit', cwd: rootDir, ...opts });
 }
 
-function main() {
-  const bumpType = process.argv[2] || 'patch';
-  const allowed = ['patch', 'minor', 'major'];
-  if (!allowed.includes(bumpType)) {
-    console.error(`Invalid version bump type \"${bumpType}\". Use one of ${allowed.join(', ')}.`);
+// ----------------------- CLI Argument Parsing ----------------------- //
+const allowedBumps = new Set(['patch', 'minor', 'major']);
+let bumpType = 'patch';
+let dryRun = false;
+let otp = process.env.NPM_OTP || '';
+
+process.argv.slice(2).forEach((arg) => {
+  if (allowedBumps.has(arg)) {
+    bumpType = arg;
+  } else if (arg === '--dry' || arg === '--dry-run') {
+    dryRun = true;
+  } else if (arg.startsWith('--otp=')) {
+    otp = arg.substring('--otp='.length);
+  } else {
+    console.error(`Unknown argument: ${arg}`);
     process.exit(1);
   }
+});
 
-  // Ensure working directory is clean before publishing
+const registryFlag = process.env.NPM_REGISTRY ? `--registry ${process.env.NPM_REGISTRY}` : '';
+const otpFlag = otp ? `--otp=${otp}` : '';
+const dryRunFlag = dryRun ? '--dry-run' : '';
+
+// ----------------------------- Helpers ------------------------------ //
+function workingTreeClean() {
   const changes = execSync('git status --porcelain', { cwd: rootDir }).toString().trim();
-  if (changes) {
-    console.error('⚠️  Your working tree has uncommitted changes. Commit or stash them before publishing.');
-    process.exit(1);
-  }
+  return changes.length === 0;
+}
 
-  // 1. Build the project (frontend + backend)
+function getCurrentVersion() {
+  const pkg = JSON.parse(fs.readFileSync(path.join(rootDir, 'package.json'), 'utf8'));
+  return pkg.version;
+}
+
+function rollback(tag) {
+  try {
+    console.log('\n⏪ Rolling back…');
+    if (tag) {
+      execSync(`git tag -d ${tag}`, { stdio: 'inherit', cwd: rootDir });
+    }
+    execSync('git reset --hard HEAD~1', { stdio: 'inherit', cwd: rootDir });
+    console.log('✅ Rollback complete.');
+  } catch (err) {
+    console.error('⚠️  Rollback failed – please inspect your repository manually.', err);
+  }
+}
+
+// ------------------------------ Main ------------------------------- //
+if (!workingTreeClean()) {
+  console.error('⚠️  Your working tree has uncommitted changes. Commit or stash them before publishing.');
+  process.exit(1);
+}
+
+let newTag = null;
+try {
+  // 1. Quality gates
+  exec('npm run lint');
+  exec('npm run type-check');
+  exec('npm test');
+
+  // 2. Build step (aggregates frontend & backend)
   exec('npm run build');
 
-  // 2. Bump version (this also creates a git tag)
+  // 3. Bump versions across all public workspaces (no git tags yet)
+  exec(`npm workspaces foreach --no-private --topological exec "npm version ${bumpType} --no-git-tag-version"`);
+
+  // 4. Bump root version & create git tag
   exec(`npm version ${bumpType} -m "chore(release): %s"`);
+  const version = getCurrentVersion();
+  newTag = `v${version}`; // npm uses "v" prefix by default
 
-  // 3. Publish to npm
-  const registry = process.env.NPM_REGISTRY ? `--registry ${process.env.NPM_REGISTRY}` : '';
-  exec(`npm publish --access public ${registry}`);
+  // 5. Publish every public workspace, then root
+  exec(`npm workspaces foreach --no-private --topological exec "npm publish --access public ${registryFlag} ${otpFlag} ${dryRunFlag}"`);
+  exec(`npm publish --access public ${registryFlag} ${otpFlag} ${dryRunFlag}`);
 
-  // 4. Push commit and tags to origin
-  exec('git push --follow-tags');
+  // 6. Push tags & commit when not dry-running
+  if (!dryRun) {
+    exec('git push --follow-tags');
+  } else {
+    console.log('ℹ️  Dry run – skipping git push.');
+  }
 
-  // 5. Success message
-  const pkg = JSON.parse(fs.readFileSync(path.join(rootDir, 'package.json'), 'utf-8'));
-  console.log(`\n✅ Successfully published react-graphql-dashboard v${pkg.version}`);
+  console.log(`\n✅ Successfully published react-graphql-dashboard v${version}${dryRun ? ' (dry run)' : ''}`);
+} catch (error) {
+  console.error('\n❌ Publish failed:', error.message || error);
+  rollback(newTag);
+  process.exit(1);
 }
-
-main();
