@@ -1,6 +1,4 @@
-import { gql } from 'graphql-tag';
-
-export const typeDefs = gql`
+export const typeDefs = `
   # Custom scalars for better type safety
   scalar DateTime
   scalar JSON
@@ -78,6 +76,20 @@ export const typeDefs = gql`
     ACTIVITY
   }
 
+  # Consciousness-specific enums
+  enum EvolutionStage {
+    LINEAR
+    RECURSIVE
+    EMERGENT
+  }
+
+  enum ConsciousnessUpdateType {
+    PARAMETER_CHANGE
+    METRIC_UPDATE
+    STAGE_TRANSITION
+    OPTIMIZATION_COMPLETE
+  }
+
   # Core types with optimized field selection
   type User {
     id: ID!
@@ -91,7 +103,7 @@ export const typeDefs = gql`
     updatedAt: DateTime!
     
     # Computed fields with caching
-    statistics: UserStatistics @cached(ttl: 300)
+    statistics: UserStatistics
   }
 
   type UserStatistics {
@@ -111,7 +123,7 @@ export const typeDefs = gql`
     timestamp: DateTime!
     
     # Trend data for charts (cached for better performance)
-    trend: [TrendPoint!]! @cached(ttl: 180)
+    trend: [TrendPoint!]!
   }
 
   type TrendPoint {
@@ -148,6 +160,165 @@ export const typeDefs = gql`
     
     # Owner relationship with DataLoader
     owner: User!
+  }
+
+  # Consciousness Types
+  type ConsciousnessMetrics {
+    accuracyImprovement: Float!
+    cognitiveLoadReduction: Float!
+    integrationLevel: Float!
+    efficiencyGains: Float!
+    biasAccuracy: Float!
+    consciousnessLevel: Float!
+    evolutionStage: EvolutionStage!
+    alpha: Float!
+    lambda1: Float!
+    lambda2: Float!
+    beta: Float!
+    timestamp: DateTime!
+    
+    # Advanced visualization data
+    phaseSpaceData: PhaseSpaceData!
+    neuralNetworkState: NeuralNetworkState!
+    algorithmStatus: AlgorithmStatus!
+  }
+
+  type PhaseSpaceData {
+    x: [Float!]!
+    y: [Float!]!
+    z: [Float!]!
+    timestamp: DateTime!
+  }
+
+  type NeuralNetworkState {
+    layers: [NeuralLayer!]!
+    globalWorkspace: GlobalWorkspace!
+  }
+
+  type NeuralLayer {
+    id: ID!
+    neurons: [Neuron!]!
+  }
+
+  type Neuron {
+    id: ID!
+    activation: Float!
+    position: Position3D!
+    connections: [NeuralConnection!]!
+    consciousness: Float!
+    stage: EvolutionStage!
+  }
+
+  type Position3D {
+    x: Float!
+    y: Float!
+    z: Float!
+  }
+
+  type NeuralConnection {
+    targetId: ID!
+    strength: Float!
+    type: String!
+  }
+
+  type GlobalWorkspace {
+    integration: Float!
+    consciousness: Float!
+    emergence: Float!
+  }
+
+  type AlgorithmStatus {
+    grandUnified: String!
+    dynamicIntegration: String!
+    cognitiveRegularization: String!
+    biasModeling: String!
+    metaOptimization: String!
+  }
+
+  type ConsciousnessPerformance {
+    optimizationHistory: [OptimizationPoint!]!
+    convergenceMetrics: ConvergenceMetrics!
+    emergenceIndicators: EmergenceIndicators!
+    benchmarkComparison: BenchmarkComparison!
+  }
+
+  type OptimizationPoint {
+    timestamp: DateTime!
+    accuracy: Float!
+    efficiency: Float!
+    consciousness: Float!
+    stage: EvolutionStage!
+  }
+
+  type ConvergenceMetrics {
+    rate: Float!
+    stability: Float!
+    oscillation: Float!
+    targetDistance: Float!
+  }
+
+  type EmergenceIndicators {
+    complexity: Float!
+    selfOrganization: Float!
+    adaptation: Float!
+    creativity: Float!
+  }
+
+  type BenchmarkComparison {
+    baseline: PerformanceStats!
+    optimized: PerformanceStats!
+    improvement: ImprovementStats!
+  }
+
+  type PerformanceStats {
+    latency: Float!
+    accuracy: Float!
+    efficiency: Float!
+  }
+
+  type ImprovementStats {
+    latencyReduction: Float!
+    accuracyGain: Float!
+    efficiencyGain: Float!
+  }
+
+  type ConsciousnessInsights {
+    recommendations: [ParameterRecommendation!]!
+    patterns: [ConsciousnessPattern!]!
+    emergentBehaviors: [EmergentBehavior!]!
+    performanceThresholds: PerformanceThresholds!
+  }
+
+  type ParameterRecommendation {
+    parameter: String!
+    currentValue: Float!
+    suggestedValue: Float!
+    expectedImprovement: Float!
+    reasoning: String!
+    confidence: Float!
+  }
+
+  type ConsciousnessPattern {
+    type: String!
+    description: String!
+    frequency: Float!
+    significance: Float!
+    trend: String!
+  }
+
+  type EmergentBehavior {
+    behavior: String!
+    strength: Float!
+    stability: Float!
+    conditions: [String!]!
+    implications: String!
+  }
+
+  type PerformanceThresholds {
+    consciousness: Float!
+    accuracy: Float!
+    efficiency: Float!
+    emergence: Float!
   }
 
   # Performance metrics for monitoring the GraphQL API itself
@@ -265,19 +436,33 @@ export const typeDefs = gql`
     error: String!
   }
 
+  # Consciousness mutation response types
+  type UpdateConsciousnessParametersResponse {
+    success: Boolean!
+    metrics: ConsciousnessMetrics
+    errors: [FieldError!]!
+    performance: ParameterUpdatePerformance!
+  }
+
+  type ParameterUpdatePerformance {
+    updateTime: Float!
+    convergenceTime: Float!
+    stabilityScore: Float!
+  }
+
   # Root types with optimized resolvers
   type Query {
     # Dashboard data with aggressive caching
     dashboardMetrics(
       timeRange: TimeRange!
       metrics: [MetricType!]!
-    ): [Metrics!]! @cached(ttl: 300)
+    ): [Metrics!]!
     
     # Recent activity with moderate caching
-    recentActivity(limit: Int = 10): [Activity!]! @cached(ttl: 60)
+    recentActivity(limit: Int = 10): [Activity!]!
     
     # System status with short-term caching
-    systemStatus: SystemStatus @cached(ttl: 30)
+    systemStatus: SystemStatus
     
     # User queries with pagination
     users(
@@ -286,25 +471,37 @@ export const typeDefs = gql`
       filters: UserFilters
       sortBy: UserSortField = CREATED_AT
       sortOrder: SortOrder = DESC
-    ): UserConnection! @cached(ttl: 120)
+    ): UserConnection!
     
-    user(id: ID!): User @cached(ttl: 300)
+    user(id: ID!): User
     
     # Search with moderate caching
     search(
       query: String!
       types: [SearchType!] = [USER, PROJECT, ACTIVITY]
       limit: Int = 10
-    ): [SearchResult!]! @cached(ttl: 180)
+    ): [SearchResult!]!
     
     # Performance monitoring (shorter cache for real-time monitoring)
-    performanceMetrics(timeRange: TimeRange!): PerformanceMetrics @cached(ttl: 60)
+    performanceMetrics(timeRange: TimeRange!): PerformanceMetrics
     
     # Critical data for initial page load
-    criticalMetrics: CriticalMetrics @cached(ttl: 30)
+    criticalMetrics: CriticalMetrics
     
     # Secondary data that can be deferred
-    secondaryData: SecondaryData @defer
+    secondaryData: SecondaryData
+
+    # Consciousness queries
+    consciousnessMetrics(
+      alpha: Float!
+      lambda1: Float!
+      lambda2: Float!
+      beta: Float!
+    ): ConsciousnessMetrics
+
+    consciousnessPerformance(timeRange: TimeRange!): ConsciousnessPerformance
+
+    consciousnessInsights: ConsciousnessInsights
   }
 
   type CriticalMetrics {
@@ -326,6 +523,15 @@ export const typeDefs = gql`
     # Cache invalidation mutations
     invalidateCache(keys: [String!]!): Boolean!
     warmCache(queries: [String!]!): Boolean!
+
+    # Consciousness mutations
+    updateConsciousnessParameters(
+      alpha: Float!
+      lambda1: Float!
+      lambda2: Float!
+      beta: Float!
+      realTime: Boolean = true
+    ): UpdateConsciousnessParametersResponse!
   }
 
   type Subscription {
@@ -336,6 +542,11 @@ export const typeDefs = gql`
     
     # User-specific subscriptions
     userUpdated(userId: ID!): User!
+
+    # Consciousness subscriptions
+    consciousnessUpdated: ConsciousnessMetrics!
+    neuralNetworkUpdated: NeuralNetworkState!
+    algorithmStatusChanged: AlgorithmStatus!
   }
 `;
 
