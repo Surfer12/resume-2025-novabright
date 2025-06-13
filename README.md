@@ -1,4 +1,3 @@
-
 # Repository Organization Summary
 
 ## Completed Organization: Cognitive-Inspired Deep Learning Optimization Research
@@ -78,6 +77,34 @@ resume-2025-novabright/
     ├── resume-2025-novabright.code-workspace
     └── resume-revision/
 ```
+
+## Quick Repository Overview
+
+**Top-level layout**
+
+- `README.md` – master overview of the research project, table of contents, usage instructions, and key metrics.  
+- `chapters/` – 12 numbered Markdown chapters (≈150–200 pages) that comprise the complete research paper.  
+- `appendices/` – four supplemental documents: a public-facing blog post, concise executive summary, extra technical details, and collaboration notes.  
+- `supporting_materials/` – career assets (resumes, cover-letter templates, tailoring guide) plus a VS Code workspace file and revision history.  
+- `react-graphql-dashboard/` – full-stack demo app illustrating algorithms from Chapters 7-8:  
+  - `frontend/` (Vite + React + TypeScript)  
+  - `backend/` (Node + Apollo GraphQL with schema, resolvers, and AWS Lambda handlers)  
+  - `infrastructure/` & `scripts/` for CI/CD automation; see `DEPLOYMENT_GUIDE.md`.  
+- Auxiliary files: `start-local-server.py`, `total.ini`, `magic.lock`, `pixi.toml`, `.github/` workflows, `.magic/` AI-tool metadata, and `misc/` prototypes.
+
+**How the pieces fit together**
+
+1. The research narrative lives in `chapters/` and `appendices/`.  
+2. The documentation trio—`README.md`, `TABLE_OF_CONTENTS.md`, and `ORGANIZATION_SUMMARY.md`—guides readers through the material.  
+3. The React GraphQL dashboard delivers a concrete code artefact that demonstrates the repository's architectural principles.  
+4. Supporting materials provide professional collateral referenced in Appendix A.  
+5. Environment snapshots (`*.ini`, `pixi.toml`, etc.) ensure reproducible builds and experiments.
+
+**Navigation tips**
+
+- Start with `README.md` for the big picture, then use `TABLE_OF_CONTENTS.md` for a clickable outline.  
+- To run the demo app, follow `react-graphql-dashboard/README.md` for setup instructions.  
+- For publication logistics, consult Chapter 9 (documentation standards) and Chapter 10 (workflow).
 
 ---
 
