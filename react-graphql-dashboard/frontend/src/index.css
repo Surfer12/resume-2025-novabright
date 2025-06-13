@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for consciousness visualization */
+@layer utilities {
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+  
+  .bg-gradient-conic {
+    background: conic-gradient(var(--tw-gradient-stops));
+  }
+  
+  .text-shadow-glow {
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  }
+  
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+  
+  .slider-green::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #00ff88;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+  }
+  
+  .slider-green::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #00ff88;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+  }
+}

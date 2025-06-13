@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, Suspense } from 'react';
+import React, { useMemo, useCallback, Suspense, useState } from 'react';
 import { useQuery, useSubscription } from '@apollo/client';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -13,6 +13,7 @@ const MetricsCard = React.lazy(() => import('./MetricsCard'));
 const PerformanceChart = React.lazy(() => import('./PerformanceChart'));
 const ActivityFeed = React.lazy(() => import('./ActivityFeed'));
 const SystemStatus = React.lazy(() => import('./SystemStatus'));
+const ConsciousnessVisualization = React.lazy(() => import('./ConsciousnessVisualization'));
 
 interface DashboardProps {
   timeRange?: 'hour' | 'day' | 'week' | 'month';
@@ -23,6 +24,9 @@ const Dashboard: React.FC<DashboardProps> = ({
   timeRange = 'day',
   refreshInterval = 30000, // 30 seconds
 }) => {
+  // State for active tab
+  const [activeTab, setActiveTab] = useState<'performance' | 'consciousness'>('performance');
+
   // Performance monitoring for GraphQL queries
   const performanceMonitor = useMemo(() => {
     return queryPerformanceMonitor.startTiming('DashboardData');
@@ -153,6 +157,83 @@ const Dashboard: React.FC<DashboardProps> = ({
     );
   }
 
+  const renderPerformanceDashboard = () => (
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <AnimatePresence mode="wait">
+        {dashboardLoading && !dashboardData ? (
+          <motion.div
+            key="loading"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+          >
+            {[...Array(4)].map((_, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow animate-pulse">
+                <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
+                <div className="h-8 bg-gray-200 rounded w-3/4 mb-2"></div>
+                <div className="h-3 bg-gray-200 rounded w-1/4"></div>
+              </div>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Metrics Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              <Suspense fallback={<div className="bg-white p-6 rounded-lg shadow animate-pulse h-32" />}>
+                {metrics.map((metric, index) => (
+                  <MetricsCard
+                    key={metric.id}
+                    metric={metric}
+                    index={index}
+                  />
+                ))}
+              </Suspense>
+            </div>
+
+            {/* Charts and Status */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+              <div className="lg:col-span-2">
+                <Suspense fallback={<div className="bg-white p-6 rounded-lg shadow animate-pulse h-96" />}>
+                  <PerformanceChart
+                    data={metrics}
+                    timeRange={timeRange}
+                    performanceData={performanceData?.performanceMetrics}
+                  />
+                </Suspense>
+              </div>
+              
+              <div>
+                <Suspense fallback={<div className="bg-white p-6 rounded-lg shadow animate-pulse h-96" />}>
+                  <SystemStatus
+                    status={systemHealth}
+                    loading={dashboardLoading}
+                  />
+                </Suspense>
+              </div>
+            </div>
+
+            {/* Activity Feed */}
+            <div className="bg-white rounded-lg shadow">
+              <Suspense fallback={<div className="p-6 animate-pulse h-64" />}>
+                <ActivityFeed
+                  activities={dashboardData?.recentActivity || []}
+                  loading={dashboardLoading}
+                />
+              </Suspense>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </main>
+  );
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -161,10 +242,10 @@ const Dashboard: React.FC<DashboardProps> = ({
           <div className="flex justify-between items-center py-4">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">
-                Performance Dashboard
+                Cognitive Dashboard
               </h1>
               <p className="text-sm text-gray-600">
-                Real-time system monitoring with 30% optimized query latency
+                Performance monitoring with consciousness visualization
               </p>
             </div>
             
@@ -186,84 +267,63 @@ const Dashboard: React.FC<DashboardProps> = ({
               </button>
             </div>
           </div>
+          
+          {/* Tab Navigation */}
+          <div className="flex space-x-8 border-t pt-4">
+            <button
+              onClick={() => setActiveTab('performance')}
+              className={`pb-2 px-1 border-b-2 font-medium text-sm ${
+                activeTab === 'performance'
+                  ? 'border-blue-500 text-blue-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              Performance Dashboard
+            </button>
+            <button
+              onClick={() => setActiveTab('consciousness')}
+              className={`pb-2 px-1 border-b-2 font-medium text-sm ${
+                activeTab === 'consciousness'
+                  ? 'border-green-500 text-green-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              Consciousness Visualization
+            </button>
+          </div>
         </div>
       </header>
 
       {/* Main content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <AnimatePresence mode="wait">
-          {dashboardLoading && !dashboardData ? (
-            <motion.div
-              key="loading"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
-            >
-              {[...Array(4)].map((_, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow animate-pulse">
-                  <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
-                  <div className="h-8 bg-gray-200 rounded w-3/4 mb-2"></div>
-                  <div className="h-3 bg-gray-200 rounded w-1/4"></div>
-                </div>
-              ))}
-            </motion.div>
-          ) : (
-            <motion.div
-              key="content"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Metrics Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <Suspense fallback={<div className="bg-white p-6 rounded-lg shadow animate-pulse h-32" />}>
-                  {metrics.map((metric, index) => (
-                    <MetricsCard
-                      key={metric.id}
-                      metric={metric}
-                      index={index}
-                    />
-                  ))}
-                </Suspense>
+      <AnimatePresence mode="wait">
+        {activeTab === 'performance' ? (
+          <motion.div
+            key="performance"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.3 }}
+          >
+            {renderPerformanceDashboard()}
+          </motion.div>
+        ) : (
+          <motion.div
+            key="consciousness"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Suspense fallback={
+              <div className="flex items-center justify-center min-h-[60vh]">
+                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-500"></div>
               </div>
-
-              {/* Charts and Status */}
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-                <div className="lg:col-span-2">
-                  <Suspense fallback={<div className="bg-white p-6 rounded-lg shadow animate-pulse h-96" />}>
-                    <PerformanceChart
-                      data={metrics}
-                      timeRange={timeRange}
-                      performanceData={performanceData?.performanceMetrics}
-                    />
-                  </Suspense>
-                </div>
-                
-                <div>
-                  <Suspense fallback={<div className="bg-white p-6 rounded-lg shadow animate-pulse h-96" />}>
-                    <SystemStatus
-                      status={systemHealth}
-                      loading={dashboardLoading}
-                    />
-                  </Suspense>
-                </div>
-              </div>
-
-              {/* Activity Feed */}
-              <div className="bg-white rounded-lg shadow">
-                <Suspense fallback={<div className="p-6 animate-pulse h-64" />}>
-                  <ActivityFeed
-                    activities={dashboardData?.recentActivity || []}
-                    loading={dashboardLoading}
-                  />
-                </Suspense>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </main>
+            }>
+              <ConsciousnessVisualization />
+            </Suspense>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
