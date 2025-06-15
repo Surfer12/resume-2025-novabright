@@ -76,7 +76,7 @@ const cache = new InMemoryCache({
       fields: {
         // Cache dashboard data for 5 minutes
         dashboardMetrics: {
-          read(existing, { args, canRead }) {
+          read(existing, { canRead }) {
             // Custom cache logic for dashboard metrics
             if (existing && canRead(existing)) {
               const cacheTime = existing.__timestamp;

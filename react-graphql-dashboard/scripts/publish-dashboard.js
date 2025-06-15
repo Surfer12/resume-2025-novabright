@@ -62,7 +62,7 @@ function getCurrentVersion() {
   return pkg.version;
 }
 
-afunction rollback(tag) {
+function rollback(tag) {
   try {
     console.log('\n⏪ Rolling back…');
     if (tag) {

@@ -9,7 +9,6 @@ interface PerformanceChartProps {
     changePercent?: number;
     trend?: Array<{ timestamp: string | number; value?: number }>;
   }>;
-  timeRange: string;
   performanceData?: {
     queryLatency?: {
       average: number;
@@ -21,7 +20,6 @@ interface PerformanceChartProps {
 
 const PerformanceChart: React.FC<PerformanceChartProps> = ({ 
   data, 
-  timeRange, 
   performanceData 
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);

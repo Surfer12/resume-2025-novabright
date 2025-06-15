@@ -8,10 +8,9 @@ interface MetricsCardProps {
     changePercent?: number;
     // Add other expected metric properties here
   };
-  index: number;
 }
 
-const MetricsCard: React.FC<MetricsCardProps> = ({ metric, index }) => {
+const MetricsCard: React.FC<MetricsCardProps> = ({ metric }) => {
   // Provide default values for metric properties to prevent runtime errors
   const type = metric?.type || 'Metric Type';
   const value = metric?.value !== undefined ? String(metric.value) : 'N/A';

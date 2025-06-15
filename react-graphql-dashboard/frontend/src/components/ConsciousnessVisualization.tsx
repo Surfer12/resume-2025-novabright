@@ -5,7 +5,6 @@ import Plot from 'react-plotly.js';
 
 interface ConsciousnessVisualizationProps {
   className?: string;
-  realTime?: boolean;
 }
 
 interface ConsciousnessMetrics {
@@ -27,7 +26,6 @@ interface ConsciousnessConnection {
 
 const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
   className = '',
-  realTime = true,
 }) => {
   const neuralNetworkRef = useRef<HTMLDivElement>(null);
   const [scene, setScene] = useState<THREE.Scene | null>(null);
