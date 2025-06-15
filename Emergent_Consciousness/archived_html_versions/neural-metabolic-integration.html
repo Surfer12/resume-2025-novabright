@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural-Metabolic Integration Framework</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+    <style>
+        :root {
+            --neural-blue: #0066cc;
+            --metabolic-green: #00cc66;
+            --integration-purple: #6600cc;
+            --energy-orange: #ff6600;
+            --background-dark: #0a0a0f;
+            --background-mid: #1a1a25;
+            --background-light: #2a2a35;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0c0;
+            --border-color: #333344;
+            --glow-blue: rgba(0, 102, 204, 0.3);
+            --glow-green: rgba(0, 204, 102, 0.3);
+            --glow-purple: rgba(102, 0, 204, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--background-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--neural-blue) 0%, var(--metabolic-green) 50%, var(--integration-purple) 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--metabolic-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, var(--glow-green) 0%, transparent 70%);
+            animation: consciousness-pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes consciousness-pulse {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--neural-blue), var(--metabolic-green), var(--integration-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px var(--glow-green);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .framework-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            padding: 40px 20px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .framework-section {
+            background: var(--background-mid);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            min-height: 600px;
+        }
+
+        .framework-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(45deg, var(--neural-blue), var(--metabolic-green), var(--integration-purple));
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask-composite: xor;
+        }
+
+        .framework-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--glow-green);
+        }
+
+        .neural-section::before {
+            background: linear-gradient(45deg, var(--neural-blue), var(--neural-blue));
+        }
+
+        .metabolic-section::before {
+            background: linear-gradient(45deg, var(--metabolic-green), var(--metabolic-green));
+        }
+
+        .integration-section::before {
+            background: linear-gradient(45deg, var(--integration-purple), var(--integration-purple));
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .neural-section .section-title { color: var(--neural-blue); }
+        .metabolic-section .section-title { color: var(--metabolic-green); }
+        .integration-section .section-title { color: var(--integration-purple); }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, currentColor, transparent);
+        }
+
+        .visualization-container {
+            width: 100%;
+            height: 350px;
+            background: var(--background-dark);
+            border-radius: 10px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .metric-card {
+            background: var(--background-dark);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px var(--glow-green);
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-value {
+            font-size: 1.6rem;
+            font-weight: bold;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .neural-metric { color: var(--neural-blue); }
+        .metabolic-metric { color: var(--metabolic-green); }
+        .integration-metric { color: var(--integration-purple); }
+
+        .interactive-controls {
+            background: var(--background-mid);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 20px;
+            border: 1px solid var(--metabolic-green);
+        }
+
+        .controls-title {
+            font-size: 1.5rem;
+            color: var(--metabolic-green);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .control-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .control-group {
+            background: var(--background-dark);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--neural-blue);
+        }
+
+        .control-label {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .value-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--metabolic-green);
+            font-weight: bold;
+        }
+
+        .slider-container {
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            background: var(--background-light);
+            border-radius: 4px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--metabolic-green);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--glow-green);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: var(--metabolic-green);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 0 10px var(--glow-green);
+        }
+
+        .equation-display {
+            background: var(--background-mid);
+            padding: 30px;
+            border-radius: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--neural-blue);
+            margin: 30px auto;
+            text-align: center;
+            font-size: 1.4rem;
+            border: 2px solid var(--neural-blue);
+            box-shadow: 0 0 20px var(--glow-blue);
+            max-width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .equation-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.1), transparent);
+            animation: equation-shine 3s ease-in-out infinite;
+        }
+
+        @keyframes equation-shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @media (max-width: 1200px) {
+            .framework-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .control-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .equation-display {
+                font-size: 1rem;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="main-title">Neural-Metabolic Integration Framework</h1>
+        <p class="subtitle">Dynamic Visualization of Consciousness-Metabolism Synthesis</p>
+    </div>
+
+    <div class="equation-display">
+        <div style="position: relative; z-index: 1;">
+            Ψ<sub>NM</sub>(x) = ∫[α(t)N(x) + β(t)M(x) + γ(t)I(x)] × exp(-[λ₁R<sub>neural</sub> + λ₂R<sub>metabolic</sub>]) dt
+        </div>
+    </div>
+
+    <div class="framework-container">
+        <div class="framework-section neural-section">
+            <h2 class="section-title">
+                <div class="section-icon">🧠</div>
+                Neural Processing Networks
+            </h2>
+            <div class="visualization-container" id="neural-viz"></div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Neural Efficiency</div>
+                    <div class="metric-value neural-metric" id="neural-efficiency">83%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Synaptic Density</div>
+                    <div class="metric-value neural-metric" id="synaptic-density">98.1k</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="framework-section metabolic-section">
+            <h2 class="section-title">
+                <div class="section-icon">⚡</div>
+                Metabolic Pathways
+            </h2>
+            <div class="visualization-container" id="metabolic-viz"></div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Energy Production</div>
+                    <div class="metric-value metabolic-metric" id="energy-production">124%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Glucose Uptake</div>
+                    <div class="metric-value metabolic-metric" id="glucose-uptake">82 mg/dL</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="framework-section integration-section">
+            <h2 class="section-title">
+                <div class="section-icon">🔄</div>
+                Integration Synthesis
+            </h2>
+            <div class="visualization-container" id="integration-viz"></div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Coherence Index</div>
+                    <div class="metric-value integration-metric" id="coherence-index">8.47</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Sync Rate</div>
+                    <div class="metric-value integration-metric" id="sync-rate">99.3 Hz</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="interactive-controls">
+        <h2 class="controls-title">Integration Control Parameters</h2>
+        <div class="control-grid">
+            <div class="control-group">
+                <div class="control-label">
+                    Neural Plasticity (α)
+                    <span class="value-display" id="alpha-value">0.75</span>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="alpha-slider" min="0" max="1" step="0.01" value="0.75">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">
+                    Metabolic Rate (β)
+                    <span class="value-display" id="beta-value">0.68</span>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="beta-slider" min="0" max="1" step="0.01" value="0.68">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">
+                    Integration Coupling (γ)
+                    <span class="value-display" id="gamma-value">0.82</span>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="gamma-slider" min="0" max="1" step="0.01" value="0.82">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">
+                    Energy Efficiency (δ)
+                    <span class="value-display" id="delta-value">0.91</span>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="delta-slider" min="0" max="1" step="0.01" value="0.91">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">
+                    Neural Regulation (λ₁)
+                    <span class="value-display" id="lambda1-value">0.43</span>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="lambda1-slider" min="0" max="1" step="0.01" value="0.43">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">
+                    Metabolic Regulation (λ₂)
+                    <span class="value-display" id="lambda2-value">0.37</span>
+                </div>
+                <div class="slider-container">
+                    <input type="range" class="slider" id="lambda2-slider" min="0" max="1" step="0.01" value="0.37">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables for visualizations
+        let scenes = {};
+        let cameras = {};
+        let renderers = {};
+        let animationFrames = {};
+        let time = 0;
+
+        // Framework parameters
+        let params = {
+            alpha: 0.75,    // Neural plasticity
+            beta: 0.68,     // Metabolic rate
+            gamma: 0.82,    // Integration coupling
+            delta: 0.91,    // Energy efficiency
+            lambda1: 0.43,  // Neural regulation
+            lambda2: 0.37   // Metabolic regulation
+        };
+
+        // Initialize all visualizations
+        function initializeVisualizations() {
+            initNeuralVisualization();
+            initMetabolicVisualization();
+            initIntegrationVisualization();
+            setupEventListeners();
+            startAnimations();
+        }
+
+        // Neural Network Visualization
+        function initNeuralVisualization() {
+            const container = document.getElementById('neural-viz');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setClearColor(0x0a0a0f, 1);
+            container.appendChild(renderer.domElement);
+            
+            // Create neural network nodes
+            const nodeGeometry = new THREE.SphereGeometry(0.15, 16, 16);
+            const nodes = [];
+            
+            // Create network structure
+            for (let layer = 0; layer < 4; layer++) {
+                const layerNodes = [];
+                const nodesInLayer = layer === 0 || layer === 3 ? 3 : 5;
+                
+                for (let i = 0; i < nodesInLayer; i++) {
+                    const nodeMaterial = new THREE.MeshPhongMaterial({ 
+                        color: 0x0066cc, 
+                        emissive: 0x0066cc, 
+                        emissiveIntensity: 0.3 
+                    });
+                    const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
+                    
+                    node.position.x = (layer - 1.5) * 2;
+                    node.position.y = (i - (nodesInLayer - 1) / 2) * 0.8;
+                    node.position.z = (Math.random() - 0.5) * 0.5;
+                    
+                    scene.add(node);
+                    layerNodes.push({ mesh: node, activation: Math.random() });
+                }
+                nodes.push(layerNodes);
+            }
+            
+            // Create connections between layers
+            const connections = [];
+            for (let layer = 0; layer < nodes.length - 1; layer++) {
+                for (let i = 0; i < nodes[layer].length; i++) {
+                    for (let j = 0; j < nodes[layer + 1].length; j++) {
+                        if (Math.random() > 0.3) { // 70% connection probability
+                            const connection = createNeuralConnection(
+                                nodes[layer][i].mesh.position,
+                                nodes[layer + 1][j].mesh.position
+                            );
+                            scene.add(connection);
+                            connections.push({
+                                line: connection,
+                                from: nodes[layer][i],
+                                to: nodes[layer + 1][j],
+                                weight: Math.random()
+                            });
+                        }
+                    }
+                }
+            }
+            
+            // Add lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+            scene.add(ambientLight);
+            const pointLight = new THREE.PointLight(0x0066cc, 1, 100);
+            pointLight.position.set(0, 5, 5);
+            scene.add(pointLight);
+            
+            camera.position.z = 6;
+            
+            scenes.neural = { scene, nodes, connections };
+            cameras.neural = camera;
+            renderers.neural = renderer;
+        }
+
+        // Metabolic Pathways Visualization
+        function initMetabolicVisualization() {
+            const container = document.getElementById('metabolic-viz');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setClearColor(0x0a0a0f, 1);
+            container.appendChild(renderer.domElement);
+            
+            // Create metabolic molecules as particles
+            const particleCount = 150;
+            const particleGeometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(particleCount * 3);
+            const colors = new Float32Array(particleCount * 3);
+            const sizes = new Float32Array(particleCount);
+            
+            const metaboliteColors = [
+                { r: 1.0, g: 0.8, b: 0.0 }, // Glucose - yellow
+                { r: 1.0, g: 0.4, b: 0.0 }, // ATP - orange
+                { r: 0.0, g: 0.8, b: 1.0 }, // Oxygen - cyan
+                { r: 1.0, g: 0.0, b: 0.4 }  // Neurotransmitters - pink
+            ];
+            
+            for (let i = 0; i < particleCount; i++) {
+                const i3 = i * 3;
+                // Create flowing pathways
+                const angle = (i / particleCount) * Math.PI * 4;
+                const radius = Math.random() * 3 + 1;
+                const height = (Math.random() - 0.5) * 2;
+                
+                positions[i3] = Math.cos(angle) * radius;
+                positions[i3 + 1] = height;
+                positions[i3 + 2] = Math.sin(angle) * radius;
+                
+                const colorType = Math.floor(Math.random() * metaboliteColors.length);
+                colors[i3] = metaboliteColors[colorType].r;
+                colors[i3 + 1] = metaboliteColors[colorType].g;
+                colors[i3 + 2] = metaboliteColors[colorType].b;
+                
+                sizes[i] = Math.random() * 4 + 2;
+            }
+            
+            particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            particleGeometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+            
+            const particleMaterial = new THREE.PointsMaterial({
+                size: 4,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending,
+                sizeAttenuation: true
+            });
+            
+            const particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+            scene.add(particleSystem);
+            
+            // Create central metabolic core
+            const coreGeometry = new THREE.SphereGeometry(0.3, 32, 32);
+            const coreMaterial = new THREE.MeshPhongMaterial({
+                color: 0x00cc66,
+                emissive: 0x00cc66,
+                emissiveIntensity: 0.5,
+                transparent: true,
+                opacity: 0.8
+            });
+            const metabolicCore = new THREE.Mesh(coreGeometry, coreMaterial);
+            scene.add(metabolicCore);
+            
+            // Add lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+            scene.add(ambientLight);
+            const pointLight = new THREE.PointLight(0x00cc66, 2, 100);
+            pointLight.position.set(0, 0, 0);
+            scene.add(pointLight);
+            
+            camera.position.z = 8;
+            
+            scenes.metabolic = { scene, particleSystem, metabolicCore };
+            cameras.metabolic = camera;
+            renderers.metabolic = renderer;
+        }
+
+        // Integration Synthesis Visualization
+        function initIntegrationVisualization() {
+            const container = document.getElementById('integration-viz');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setClearColor(0x0a0a0f, 1);
+            container.appendChild(renderer.domElement);
+            
+            // Create integration nodes in a double helix pattern
+            const nodes = [];
+            const nodeCount = 20;
+            
+            for (let i = 0; i < nodeCount; i++) {
+                const angle1 = (i / nodeCount) * Math.PI * 4;
+                const angle2 = angle1 + Math.PI;
+                const height = (i / nodeCount - 0.5) * 6;
+                const radius = 2;
+                
+                // First helix
+                const nodeGeometry1 = new THREE.SphereGeometry(0.1, 16, 16);
+                const nodeMaterial1 = new THREE.MeshPhongMaterial({
+                    color: 0x6600cc,
+                    emissive: 0x6600cc,
+                    emissiveIntensity: 0.4
+                });
+                const node1 = new THREE.Mesh(nodeGeometry1, nodeMaterial1);
+                node1.position.set(
+                    Math.cos(angle1) * radius,
+                    height,
+                    Math.sin(angle1) * radius
+                );
+                scene.add(node1);
+                nodes.push({ mesh: node1, type: 'neural' });
+                
+                // Second helix
+                const nodeGeometry2 = new THREE.SphereGeometry(0.1, 16, 16);
+                const nodeMaterial2 = new THREE.MeshPhongMaterial({
+                    color: 0x00cc66,
+                    emissive: 0x00cc66,
+                    emissiveIntensity: 0.4
+                });
+                const node2 = new THREE.Mesh(nodeGeometry2, nodeMaterial2);
+                node2.position.set(
+                    Math.cos(angle2) * radius,
+                    height,
+                    Math.sin(angle2) * radius
+                );
+                scene.add(node2);
+                nodes.push({ mesh: node2, type: 'metabolic' });
+            }
+            
+            // Create integration field
+            const fieldGeometry = new THREE.RingGeometry(1, 3, 32);
+            const fieldMaterial = new THREE.MeshBasicMaterial({
+                color: 0x6600cc,
+                transparent: true,
+                opacity: 0.1,
+                side: THREE.DoubleSide
+            });
+            const integrationField = new THREE.Mesh(fieldGeometry, fieldMaterial);
+            integrationField.rotation.x = Math.PI / 2;
+            scene.add(integrationField);
+            
+            // Add lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+            scene.add(ambientLight);
+            const pointLight = new THREE.PointLight(0x6600cc, 1.5, 100);
+            pointLight.position.set(0, 5, 5);
+            scene.add(pointLight);
+            
+            camera.position.set(5, 5, 5);
+            camera.lookAt(0, 0, 0);
+            
+            scenes.integration = { scene, nodes, integrationField };
+            cameras.integration = camera;
+            renderers.integration = renderer;
+        }
+
+        // Helper function to create neural connections
+        function createNeuralConnection(start, end) {
+            const lineGeometry = new THREE.BufferGeometry();
+            const positions = new Float32Array([
+                start.x, start.y, start.z,
+                end.x, end.y, end.z
+            ]);
+            lineGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            
+            const lineMaterial = new THREE.LineBasicMaterial({ 
+                color: 0x0066cc, 
+                opacity: 0.3, 
+                transparent: true 
+            });
+            return new THREE.Line(lineGeometry, lineMaterial);
+        }
+
+        // Animation functions
+        function animateNeural() {
+            if (!scenes.neural) return;
+            
+            const { scene, nodes, connections } = scenes.neural;
+            const camera = cameras.neural;
+            const renderer = renderers.neural;
+            
+            time += 0.02;
+            
+            // Animate neural activity propagation
+            nodes.forEach((layer, layerIndex) => {
+                layer.forEach((node, nodeIndex) => {
+                    const phase = time * 2 + layerIndex * 0.5 + nodeIndex * 0.1;
+                    node.activation = 0.3 + Math.sin(phase) * 0.4 * params.alpha;
+                    
+                    const intensity = 0.3 + node.activation * 0.5;
+                    node.mesh.material.emissiveIntensity = intensity;
+                    node.mesh.scale.setScalar(1 + node.activation * 0.3);
+                });
+            });
+            
+            // Animate connections
+            connections.forEach((conn, index) => {
+                const activity = (conn.from.activation + conn.to.activation) / 2;
+                const opacity = activity * conn.weight * (1 - params.lambda1);
+                conn.line.material.opacity = Math.max(0.1, opacity);
+            });
+            
+            renderer.render(scene, camera);
+        }
+
+        function animateMetabolic() {
+            if (!scenes.metabolic) return;
+            
+            const { scene, particleSystem, metabolicCore } = scenes.metabolic;
+            const camera = cameras.metabolic;
+            const renderer = renderers.metabolic;
+            
+            time += 0.01;
+            
+            // Animate metabolic flow
+            const positions = particleSystem.geometry.attributes.position.array;
+            const colors = particleSystem.geometry.attributes.color.array;
+            
+            for (let i = 0; i < positions.length; i += 3) {
+                // Circular flow pattern
+                const angle = Math.atan2(positions[i + 2], positions[i]);
+                const radius = Math.sqrt(positions[i] ** 2 + positions[i + 2] ** 2);
+                const newAngle = angle + (0.01 * params.beta / radius);
+                
+                positions[i] = radius * Math.cos(newAngle);
+                positions[i + 2] = radius * Math.sin(newAngle);
+                
+                // Metabolic energy pulsing
+                const energyLevel = Math.sin(time * 3 + i * 0.01) * 0.3 + 0.7;
+                colors[i] *= energyLevel * params.delta;
+                colors[i + 1] *= energyLevel * params.delta;
+                colors[i + 2] *= energyLevel * params.delta;
+            }
+            
+            particleSystem.geometry.attributes.position.needsUpdate = true;
+            particleSystem.geometry.attributes.color.needsUpdate = true;
+            
+            // Animate metabolic core
+            metabolicCore.rotation.y += 0.02 * params.beta;
+            const coreIntensity = 0.5 + Math.sin(time * 2) * 0.3 * params.delta;
+            metabolicCore.material.emissiveIntensity = coreIntensity;
+            metabolicCore.scale.setScalar(1 + Math.sin(time * 2) * 0.2);
+            
+            renderer.render(scene, camera);
+        }
+
+        function animateIntegration() {
+            if (!scenes.integration) return;
+            
+            const { scene, nodes, integrationField } = scenes.integration;
+            const camera = cameras.integration;
+            const renderer = renderers.integration;
+            
+            time += 0.01;
+            
+            // Animate integration nodes
+            nodes.forEach((node, index) => {
+                const phaseOffset = index * 0.1;
+                const integrationLevel = Math.sin(time * 1.5 + phaseOffset) * 0.4 + 0.6;
+                
+                if (node.type === 'neural') {
+                    node.mesh.material.emissiveIntensity = integrationLevel * params.gamma;
+                } else {
+                    node.mesh.material.emissiveIntensity = integrationLevel * params.gamma;
+                }
+                
+                // Helix rotation
+                const helixRotation = time * 0.5;
+                const currentY = node.mesh.position.y;
+                const radius = 2;
+                
+                if (node.type === 'neural') {
+                    const angle = (index / 2) * 0.314 + helixRotation;
+                    node.mesh.position.x = Math.cos(angle) * radius;
+                    node.mesh.position.z = Math.sin(angle) * radius;
+                } else {
+                    const angle = (index / 2) * 0.314 + helixRotation + Math.PI;
+                    node.mesh.position.x = Math.cos(angle) * radius;
+                    node.mesh.position.z = Math.sin(angle) * radius;
+                }
+            });
+            
+            // Animate integration field
+            integrationField.rotation.z += 0.005 * params.gamma;
+            integrationField.material.opacity = 0.1 + Math.sin(time) * 0.05;
+            
+            renderer.render(scene, camera);
+        }
+
+        function startAnimations() {
+            function animate() {
+                animateNeural();
+                animateMetabolic();
+                animateIntegration();
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        // Event listeners for interactive controls
+        function setupEventListeners() {
+            const sliders = ['alpha', 'beta', 'gamma', 'delta', 'lambda1', 'lambda2'];
+            
+            sliders.forEach(param => {
+                const slider = document.getElementById(`${param}-slider`);
+                const valueDisplay = document.getElementById(`${param}-value`);
+                
+                slider.addEventListener('input', (e) => {
+                    const value = parseFloat(e.target.value);
+                    params[param] = value;
+                    valueDisplay.textContent = value.toFixed(2);
+                    updateMetrics();
+                });
+            });
+            
+            // Resize handlers
+            window.addEventListener('resize', () => {
+                Object.keys(renderers).forEach(key => {
+                    const container = renderers[key].domElement.parentElement;
+                    const camera = cameras[key];
+                    const renderer = renderers[key];
+                    
+                    camera.aspect = container.clientWidth / container.clientHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(container.clientWidth, container.clientHeight);
+                });
+            });
+        }
+
+        // Update metrics based on parameters
+        function updateMetrics() {
+            // Neural efficiency
+            const neuralEff = Math.round(75 + params.alpha * 20 + Math.random() * 5);
+            document.getElementById('neural-efficiency').textContent = `${neuralEff}%`;
+            
+            // Synaptic density
+            const synapticDens = (95 + params.alpha * 8 + Math.random() * 3).toFixed(1);
+            document.getElementById('synaptic-density').textContent = `${synapticDens}k`;
+            
+            // Energy production
+            const energyProd = Math.round(100 + params.beta * 50 + Math.random() * 10);
+            document.getElementById('energy-production').textContent = `${energyProd}%`;
+            
+            // Glucose uptake
+            const glucose = Math.round(70 + params.beta * 20 + Math.random() * 10);
+            document.getElementById('glucose-uptake').textContent = `${glucose} mg/dL`;
+            
+            // Coherence index
+            const coherence = (6 + params.gamma * 4 + Math.random() * 0.5).toFixed(2);
+            document.getElementById('coherence-index').textContent = coherence;
+            
+            // Sync rate
+            const syncRate = (90 + params.gamma * 15 + Math.random() * 5).toFixed(1);
+            document.getElementById('sync-rate').textContent = `${syncRate} Hz`;
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeVisualizations();
+            updateMetrics();
+        });
+    </script>
+</body>
+</html>

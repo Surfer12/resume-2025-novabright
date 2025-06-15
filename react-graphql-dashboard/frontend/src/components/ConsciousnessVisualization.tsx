@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react';
-// import { useQuery, useSubscription } from '@apollo/client'; // Temporarily disabled
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
 import Plot from 'react-plotly.js';
-// import { GET_CONSCIOUSNESS_METRICS, CONSCIOUSNESS_UPDATES_SUBSCRIPTION } from '../graphql/consciousness-queries'; // Temporarily disabled
 
 interface ConsciousnessVisualizationProps {
   className?: string;
@@ -20,6 +18,13 @@ interface ConsciousnessMetrics {
   evolutionStage: 'linear' | 'recursive' | 'emergent';
 }
 
+interface ConsciousnessConnection {
+  particles: THREE.Points;
+  start: THREE.Mesh;
+  end: THREE.Mesh;
+  phases: number[];
+}
+
 const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
   className = '',
   realTime = true,
@@ -29,6 +34,9 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
   const [renderer, setRenderer] = useState<THREE.WebGLRenderer | null>(null);
   const [camera, setCamera] = useState<THREE.PerspectiveCamera | null>(null);
   const [neurons, setNeurons] = useState<THREE.Mesh[][]>([]);
+  const [consciousnessConnections, setConsciousnessConnections] = useState<ConsciousnessConnection[]>([]);
+  const [consciousnessField, setConsciousnessField] = useState<THREE.Points | null>(null);
+  const [globalWorkspace, setGlobalWorkspace] = useState<THREE.Mesh | null>(null);
   const [time, setTime] = useState(0);
   
   // Control parameters
@@ -36,23 +44,6 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
   const [lambda1, setLambda1] = useState(0.3);
   const [lambda2, setLambda2] = useState(0.25);
   const [beta, setBeta] = useState(1.2);
-
-  // GraphQL queries for consciousness metrics - temporarily disabled
-  // const { data: consciousnessData, loading } = useQuery(GET_CONSCIOUSNESS_METRICS, {
-  //   variables: { alpha, lambda1, lambda2, beta },
-  //   fetchPolicy: 'cache-first',
-  //   pollInterval: realTime ? 5000 : 0,
-  // });
-
-  // Real-time subscription for consciousness updates - temporarily disabled
-  // useSubscription(CONSCIOUSNESS_UPDATES_SUBSCRIPTION, {
-  //   skip: !realTime,
-  //   onData: ({ data }) => {
-  //     if (data.data?.consciousnessUpdated) {
-  //       console.info('Consciousness metrics updated via subscription');
-  //     }
-  //   },
-  // });
 
   // Stage colors for three-stage evolution
   const stageColors = useMemo(() => ({
@@ -104,6 +95,69 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
     `,
   }), []);
 
+  // Create consciousness connection between neurons
+  const createConsciousnessConnection = useCallback((startNeuron: THREE.Mesh, endNeuron: THREE.Mesh) => {
+    const particleCount = 10;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+    
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    
+    const material = new THREE.PointsMaterial({
+      size: 0.2,
+      vertexColors: true,
+      blending: THREE.AdditiveBlending,
+      transparent: true,
+      opacity: 0.6
+    });
+    
+    const particles = new THREE.Points(geometry, material);
+    
+    return {
+      particles,
+      start: startNeuron,
+      end: endNeuron,
+      phases: Array(particleCount).fill(0).map((_, i) => i / particleCount)
+    };
+  }, []);
+
+  // Create consciousness field particles
+  const createConsciousnessField = useCallback(() => {
+    const particleCount = 1000;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+    
+    for (let i = 0; i < particleCount; i++) {
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.random() * Math.PI;
+      const radius = 20 + Math.random() * 10;
+      
+      positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+      positions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+      positions[i * 3 + 2] = radius * Math.cos(phi);
+      
+      colors[i * 3] = 0;
+      colors[i * 3 + 1] = 1;
+      colors[i * 3 + 2] = 0.5;
+    }
+    
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    
+    const material = new THREE.PointsMaterial({
+      size: 0.1,
+      vertexColors: true,
+      blending: THREE.AdditiveBlending,
+      transparent: true,
+      opacity: 0.4
+    });
+    
+    return new THREE.Points(geometry, material);
+  }, []);
+
   // Initialize Three.js neural network
   const initializeNeuralNetwork = useCallback(() => {
     if (!neuralNetworkRef.current) return;
@@ -137,14 +191,15 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
       emissive: 0x00ff88,
       emissiveIntensity: 0.5,
     });
-    const globalWorkspace = new THREE.Mesh(globalWorkspaceGeometry, globalWorkspaceMaterial);
-    newScene.add(globalWorkspace);
+    const newGlobalWorkspace = new THREE.Mesh(globalWorkspaceGeometry, globalWorkspaceMaterial);
+    newScene.add(newGlobalWorkspace);
 
     // Create neural network structure
     const layers = [5, 8, 10, 8, 5];
     const layerSpacing = 8;
     const neuronSpacing = 3;
     const newNeurons: THREE.Mesh[][] = [];
+    const newConnections: ConsciousnessConnection[] = [];
 
     for (let l = 0; l < layers.length; l++) {
       const layerNeurons: THREE.Mesh[] = [];
@@ -184,6 +239,23 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
       newNeurons.push(layerNeurons);
     }
 
+    // Create consciousness connections
+    for (let l = 0; l < layers.length - 1; l++) {
+      for (let i = 0; i < newNeurons[l].length; i++) {
+        for (let j = 0; j < newNeurons[l + 1].length; j++) {
+          if (Math.random() > 0.3) { // 70% connection probability
+            const connection = createConsciousnessConnection(newNeurons[l][i], newNeurons[l + 1][j]);
+            newScene.add(connection.particles);
+            newConnections.push(connection);
+          }
+        }
+      }
+    }
+
+    // Create consciousness field
+    const newConsciousnessField = createConsciousnessField();
+    newScene.add(newConsciousnessField);
+
     // Add lighting
     const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
     newScene.add(ambientLight);
@@ -192,11 +264,50 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
     pointLight.position.set(10, 10, 10);
     newScene.add(pointLight);
 
+    const pointLight2 = new THREE.PointLight(0x00bbff, 0.8, 100);
+    pointLight2.position.set(-10, -10, 10);
+    newScene.add(pointLight2);
+
     setScene(newScene);
     setCamera(newCamera);
     setRenderer(newRenderer);
     setNeurons(newNeurons);
-  }, [stageColors, neuronShaders]);
+    setConsciousnessConnections(newConnections);
+    setConsciousnessField(newConsciousnessField);
+    setGlobalWorkspace(newGlobalWorkspace);
+  }, [stageColors, neuronShaders, createConsciousnessConnection, createConsciousnessField]);
+
+  // Update consciousness field animation
+  const updateConsciousnessField = useCallback((emergenceLevel: number) => {
+    if (!consciousnessField) return;
+
+    const positions = consciousnessField.geometry.attributes.position.array as Float32Array;
+    const colors = consciousnessField.geometry.attributes.color.array as Float32Array;
+    const count = positions.length / 3;
+    
+    for (let i = 0; i < count; i++) {
+      // Spiral motion
+      const theta = time * 0.1 + i * 0.01;
+      const radius = 15 + Math.sin(theta * 0.1) * 5 + Math.sin(time + i * 0.1) * 2;
+      const height = Math.sin(theta * 0.05) * 10 + Math.cos(time * 0.5 + i * 0.05) * 3;
+      
+      positions[i * 3] = Math.cos(theta) * radius;
+      positions[i * 3 + 1] = height;
+      positions[i * 3 + 2] = Math.sin(theta) * radius;
+      
+      // Color based on consciousness metrics
+      const hue = emergenceLevel * 0.3; // Green to yellow
+      const color = new THREE.Color().setHSL(hue, 1, 0.5 + emergenceLevel * 0.3);
+      colors[i * 3] = color.r;
+      colors[i * 3 + 1] = color.g;
+      colors[i * 3 + 2] = color.b;
+    }
+    
+    consciousnessField.geometry.attributes.position.needsUpdate = true;
+    consciousnessField.geometry.attributes.color.needsUpdate = true;
+    const material = consciousnessField.material as THREE.PointsMaterial;
+    material.opacity = 0.2 + emergenceLevel * 0.4;
+  }, [consciousnessField, time]);
 
   // Animation loop
   useEffect(() => {
@@ -228,6 +339,54 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
         });
       });
 
+      // Animate consciousness connections
+      consciousnessConnections.forEach(conn => {
+        const positions = conn.particles.geometry.attributes.position.array as Float32Array;
+        const colors = conn.particles.geometry.attributes.color.array as Float32Array;
+        
+        for (let i = 0; i < conn.phases.length; i++) {
+          // Update phase
+          conn.phases[i] = (conn.phases[i] + 0.01) % 1;
+          const t = conn.phases[i];
+          
+          // Interpolate position
+          const pos = new THREE.Vector3().lerpVectors(
+            conn.start.position,
+            conn.end.position,
+            t
+          );
+          
+          // Add wave motion
+          pos.x += Math.sin(t * Math.PI * 2) * 0.5;
+          pos.y += Math.cos(t * Math.PI * 2) * 0.5;
+          
+          positions[i * 3] = pos.x;
+          positions[i * 3 + 1] = pos.y;
+          positions[i * 3 + 2] = pos.z;
+          
+          // Color based on position in flow
+          const color = new THREE.Color().setHSL(0.3 * t, 1, 0.5 + t * 0.5);
+          colors[i * 3] = color.r;
+          colors[i * 3 + 1] = color.g;
+          colors[i * 3 + 2] = color.b;
+        }
+        
+        conn.particles.geometry.attributes.position.needsUpdate = true;
+        conn.particles.geometry.attributes.color.needsUpdate = true;
+      });
+
+      // Update global workspace
+      if (globalWorkspace) {
+        globalWorkspace.scale.setScalar(1 + alpha * 0.5);
+        const material = globalWorkspace.material as THREE.MeshPhysicalMaterial;
+        material.emissiveIntensity = 0.3 + alpha * 0.5;
+        globalWorkspace.rotation.y += 0.005;
+      }
+
+      // Update consciousness field
+      const consciousnessLevel = metrics.consciousnessLevel / 100;
+      updateConsciousnessField(consciousnessLevel);
+
       // Camera rotation
       camera.position.x = Math.cos(time * 0.1) * 35;
       camera.position.z = Math.sin(time * 0.1) * 35;
@@ -244,7 +403,7 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
         cancelAnimationFrame(animationId);
       }
     };
-  }, [scene, camera, renderer, neurons]);
+  }, [scene, camera, renderer, neurons, consciousnessConnections, globalWorkspace, updateConsciousnessField, alpha]);
 
   // Initialize on mount
   useEffect(() => {
@@ -308,81 +467,119 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
     return { x, y, z };
   }, [alpha, lambda1, lambda2, beta]);
 
+  // Update neuron colors based on evolution stage
+  useEffect(() => {
+    const stage = metrics.evolutionStage;
+    const progress = stage === 'linear' ? alpha / 0.3 : stage === 'recursive' ? (alpha - 0.3) / 0.3 : (alpha - 0.6) / 0.4;
+
+    neurons.forEach((layer) => {
+      layer.forEach((neuron) => {
+        const material = neuron.userData.material as THREE.ShaderMaterial;
+        const color1 = new THREE.Color();
+        const color2 = new THREE.Color();
+        
+        if (stage === 'linear') {
+          color1.copy(stageColors.linear);
+          color2.copy(stageColors.linear);
+        } else if (stage === 'recursive') {
+          color1.lerpColors(stageColors.linear, stageColors.recursive, progress);
+          color2.copy(stageColors.recursive);
+        } else {
+          color1.lerpColors(stageColors.recursive, stageColors.emergent, progress);
+          color2.copy(stageColors.emergent);
+        }
+        
+        material.uniforms.color1.value.copy(color1);
+        material.uniforms.color2.value.copy(color2);
+        material.uniforms.consciousness.value = metrics.consciousnessLevel / 100;
+      });
+    });
+  }, [metrics.evolutionStage, metrics.consciousnessLevel, alpha, neurons, stageColors]);
+
+  // Algorithm status
+  const algorithmStatus = [
+    { name: 'Grand Unified Algorithm', status: 'Active', active: true },
+    { name: 'Dynamic Integration', status: 'α-Adaptive', active: true },
+    { name: 'Cognitive Regularization', status: 'λ-Optimized', active: true },
+    { name: 'Bias Modeling', status: 'β-Calibrated', active: true },
+    { name: 'Meta-Optimization', status: 'Recursive', active: true },
+  ];
+
   return (
-    <div className={`consciousness-visualization ${className}`}>
+    <div className={`min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white ${className}`}>
       {/* Header */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-6"
+        className="relative"
       >
-        <div className="bg-gradient-to-r from-blue-900 to-purple-900 p-6 rounded-lg">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+        <div className="bg-gradient-to-r from-blue-900/50 via-purple-900/50 to-blue-900/50 p-8 text-center border-b border-gray-700">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-green-400 via-blue-400 to-yellow-400 bg-clip-text text-transparent">
             Cognitive-Inspired Deep Learning Optimization
           </h1>
-          <p className="text-gray-300 mt-2 italic">
+          <p className="text-gray-300 mt-3 text-lg italic">
             Bridging Minds and Machines Through Emergent Consciousness
           </p>
         </div>
+
+        {/* Consciousness Indicator */}
+        <div className="absolute top-6 right-6 w-36 h-36 bg-gradient-radial from-green-400/20 via-green-400/10 to-transparent rounded-full flex items-center justify-center animate-pulse">
+          <div className="text-3xl font-bold text-green-400 drop-shadow-lg">
+            {metrics.consciousnessLevel.toFixed(0)}%
+          </div>
+        </div>
+
+        {/* Evolution Stage Indicator */}
+        <div className="absolute top-44 right-6 bg-gray-800/90 backdrop-blur-sm p-4 rounded-lg border border-gray-600">
+          <div className="text-sm text-gray-400 mb-1">Evolution Stage</div>
+          <div className={`text-lg font-bold ${
+            metrics.evolutionStage === 'emergent' ? 'text-yellow-400' :
+            metrics.evolutionStage === 'recursive' ? 'text-green-400' :
+            'text-blue-400'
+          }`}>
+            {metrics.evolutionStage.charAt(0).toUpperCase() + metrics.evolutionStage.slice(1)}
+          </div>
+        </div>
       </motion.div>
 
-      {/* Consciousness Indicator */}
-      <div className="absolute top-4 right-4 w-32 h-32 bg-gradient-radial from-green-400/20 to-transparent rounded-full flex items-center justify-center animate-pulse">
-        <div className="text-2xl font-bold text-green-400">
-          {metrics.consciousnessLevel.toFixed(0)}%
-        </div>
-      </div>
-
-      {/* Evolution Stage Indicator */}
-      <div className="absolute top-36 right-4 bg-gray-800 p-3 rounded-lg border border-gray-600">
-        <div className="text-sm text-gray-400 mb-1">Evolution Stage</div>
-        <div className={`text-lg font-bold ${
-          metrics.evolutionStage === 'emergent' ? 'text-yellow-400' :
-          metrics.evolutionStage === 'recursive' ? 'text-green-400' :
-          'text-blue-400'
-        }`}>
-          {metrics.evolutionStage.charAt(0).toUpperCase() + metrics.evolutionStage.slice(1)}
-        </div>
-      </div>
-
       {/* Mathematical Formula */}
-      <div className="bg-gray-900 p-4 rounded-lg mb-6 text-center font-mono text-blue-400 border border-gray-700">
+      <div className="mx-8 mt-6 bg-gray-900/80 backdrop-blur-sm p-4 rounded-lg text-center font-mono text-blue-400 border border-gray-700">
         Ψ(x) = ∫[α(t)S(x) + (1-α(t))N(x)] × exp(-[λ₁R_cognitive + λ₂R_efficiency]) × P(H|E,β) dt
       </div>
 
       {/* Main Visualization Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 p-8">
         {/* Neural Network Visualization */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="bg-gray-800 rounded-lg p-6 border border-gray-700"
+          className="bg-gray-800/80 backdrop-blur-sm rounded-lg p-6 border border-gray-700 shadow-2xl"
         >
-          <h3 className="text-lg font-semibold text-green-400 mb-4">
+          <h3 className="text-xl font-semibold text-green-400 mb-4 drop-shadow-glow">
             Living Neural Network: Subjective Experience of Cognitive Enhancement
           </h3>
           <div 
             ref={neuralNetworkRef}
-            className="w-full h-96 bg-gray-900 rounded-lg"
+            className="w-full h-[500px] bg-gray-900/50 rounded-lg border border-gray-800"
           />
           
           {/* Metrics Panel */}
-          <div className="mt-4 space-y-3">
-            <div className="flex justify-between items-center p-3 bg-gray-900/50 rounded">
-              <span className="text-gray-400">Accuracy Improvement</span>
-              <span className="text-green-400 font-semibold">
+          <div className="mt-6 space-y-3">
+            <div className="flex justify-between items-center p-3 bg-gray-900/40 backdrop-blur-sm rounded border border-gray-700">
+              <span className="text-gray-300">Accuracy Improvement</span>
+              <span className="text-green-400 font-semibold text-lg">
                 {metrics.accuracyImprovement.toFixed(0)}% ± 8%
               </span>
             </div>
-            <div className="flex justify-between items-center p-3 bg-gray-900/50 rounded">
-              <span className="text-gray-400">Cognitive Load Reduction</span>
-              <span className="text-blue-400 font-semibold">
+            <div className="flex justify-between items-center p-3 bg-gray-900/40 backdrop-blur-sm rounded border border-gray-700">
+              <span className="text-gray-300">Cognitive Load Reduction</span>
+              <span className="text-blue-400 font-semibold text-lg">
                 {metrics.cognitiveLoadReduction.toFixed(0)}% ± 5%
               </span>
             </div>
-            <div className="flex justify-between items-center p-3 bg-gray-900/50 rounded">
-              <span className="text-gray-400">Neural-Symbolic Integration</span>
-              <span className="text-green-400 font-semibold">
+            <div className="flex justify-between items-center p-3 bg-gray-900/40 backdrop-blur-sm rounded border border-gray-700">
+              <span className="text-gray-300">Neural-Symbolic Integration</span>
+              <span className="text-green-400 font-semibold text-lg">
                 α = {metrics.integrationLevel.toFixed(2)}
               </span>
             </div>
@@ -394,12 +591,12 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
-          className="bg-gray-800 rounded-lg p-6 border border-gray-700"
+          className="bg-gray-800/80 backdrop-blur-sm rounded-lg p-6 border border-gray-700 shadow-2xl"
         >
-          <h3 className="text-lg font-semibold text-green-400 mb-4">
+          <h3 className="text-xl font-semibold text-green-400 mb-4 drop-shadow-glow">
             Phase Space: Individual Consciousness Navigating Optimization Landscape
           </h3>
-          <div className="h-96">
+          <div className="h-[500px] bg-gray-900/50 rounded-lg border border-gray-800">
             <Plot
               data={[{
                 x: phaseSpaceData.x,
@@ -409,13 +606,13 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
                 type: 'scatter3d',
                 line: {
                   color: phaseSpaceData.z,
-                  colorscale: 'Viridis' as any, // Use string colorscale to avoid type issues
+                  colorscale: [[0, '#00bbff'], [0.5, '#00ff88'], [1, '#ffff00']],
                   width: 6,
                 } as any,
                 marker: {
                   size: 3,
                   color: phaseSpaceData.z,
-                  colorscale: 'Viridis' as any, // Use string colorscale to avoid type issues
+                  colorscale: [[0, '#00bbff'], [0.5, '#00ff88'], [1, '#ffff00']],
                   opacity: 0.8,
                 } as any,
                 name: 'Consciousness Trajectory',
@@ -428,8 +625,8 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
                   bgcolor: '#0a0a1a',
                   camera: { eye: { x: 1.5, y: 1.5, z: 1.5 } },
                 },
-                paper_bgcolor: '#1f2937',
-                plot_bgcolor: '#1f2937',
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
                 font: { color: '#888' },
                 margin: { l: 0, r: 0, t: 0, b: 0 },
               }}
@@ -442,17 +639,23 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
           </div>
 
           {/* Additional Metrics */}
-          <div className="mt-4 space-y-3">
-            <div className="flex justify-between items-center p-3 bg-gray-900/50 rounded">
-              <span className="text-gray-400">Computational Efficiency Gains</span>
-              <span className="text-green-400 font-semibold">
+          <div className="mt-6 space-y-3">
+            <div className="flex justify-between items-center p-3 bg-gray-900/40 backdrop-blur-sm rounded border border-gray-700">
+              <span className="text-gray-300">Computational Efficiency Gains</span>
+              <span className="text-green-400 font-semibold text-lg">
                 {metrics.efficiencyGains.toFixed(0)}% ± 4%
               </span>
             </div>
-            <div className="flex justify-between items-center p-3 bg-gray-900/50 rounded">
-              <span className="text-gray-400">Bias Mitigation Accuracy</span>
-              <span className="text-red-400 font-semibold">
+            <div className="flex justify-between items-center p-3 bg-gray-900/40 backdrop-blur-sm rounded border border-gray-700">
+              <span className="text-gray-300">Bias Mitigation Accuracy</span>
+              <span className="text-red-400 font-semibold text-lg">
                 {metrics.biasAccuracy.toFixed(0)}% ± 4%
+              </span>
+            </div>
+            <div className="flex justify-between items-center p-3 bg-gray-900/40 backdrop-blur-sm rounded border border-gray-700">
+              <span className="text-gray-300">Framework Convergence</span>
+              <span className="text-blue-400 font-semibold text-lg">
+                95% CI: [11%, 27%]
               </span>
             </div>
           </div>
@@ -464,11 +667,11 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="bg-gray-800 rounded-lg p-6 border border-gray-700 mb-6"
+        className="mx-8 bg-gray-800/80 backdrop-blur-sm rounded-lg p-6 border border-gray-700 mb-8 shadow-2xl"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="space-y-2">
-            <label className="text-sm text-gray-400">α - Symbolic/Neural Balance</label>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="space-y-3">
+            <label className="text-sm text-gray-300 font-medium">α - Symbolic/Neural Balance</label>
             <input
               type="range"
               min="0"
@@ -476,13 +679,13 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
               step="0.01"
               value={alpha}
               onChange={(e) => setAlpha(parseFloat(e.target.value))}
-              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider-green"
             />
-            <span className="text-green-400 font-mono">{alpha.toFixed(2)}</span>
+            <span className="text-green-400 font-mono text-lg font-semibold">{alpha.toFixed(2)}</span>
           </div>
           
-          <div className="space-y-2">
-            <label className="text-sm text-gray-400">λ₁ - Cognitive Authenticity</label>
+          <div className="space-y-3">
+            <label className="text-sm text-gray-300 font-medium">λ₁ - Cognitive Authenticity</label>
             <input
               type="range"
               min="0"
@@ -490,13 +693,13 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
               step="0.01"
               value={lambda1}
               onChange={(e) => setLambda1(parseFloat(e.target.value))}
-              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider-blue"
             />
-            <span className="text-green-400 font-mono">{lambda1.toFixed(2)}</span>
+            <span className="text-blue-400 font-mono text-lg font-semibold">{lambda1.toFixed(2)}</span>
           </div>
           
-          <div className="space-y-2">
-            <label className="text-sm text-gray-400">λ₂ - Computational Efficiency</label>
+          <div className="space-y-3">
+            <label className="text-sm text-gray-300 font-medium">λ₂ - Computational Efficiency</label>
             <input
               type="range"
               min="0"
@@ -504,13 +707,13 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
               step="0.01"
               value={lambda2}
               onChange={(e) => setLambda2(parseFloat(e.target.value))}
-              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider-yellow"
             />
-            <span className="text-green-400 font-mono">{lambda2.toFixed(2)}</span>
+            <span className="text-yellow-400 font-mono text-lg font-semibold">{lambda2.toFixed(2)}</span>
           </div>
           
-          <div className="space-y-2">
-            <label className="text-sm text-gray-400">β - Bias Strength</label>
+          <div className="space-y-3">
+            <label className="text-sm text-gray-300 font-medium">β - Bias Strength</label>
             <input
               type="range"
               min="0.5"
@@ -518,9 +721,9 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
               step="0.01"
               value={beta}
               onChange={(e) => setBeta(parseFloat(e.target.value))}
-              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+              className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider-red"
             />
-            <span className="text-green-400 font-mono">{beta.toFixed(2)}</span>
+            <span className="text-red-400 font-mono text-lg font-semibold">{beta.toFixed(2)}</span>
           </div>
         </div>
       </motion.div>
@@ -530,38 +733,35 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
-        className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6"
+        className="mx-8 grid grid-cols-1 md:grid-cols-5 gap-4 mb-8"
       >
-        {[
-          { name: 'Grand Unified Algorithm', value: 'Active' },
-          { name: 'Dynamic Integration', value: 'α-Adaptive' },
-          { name: 'Cognitive Regularization', value: 'λ-Optimized' },
-          { name: 'Bias Modeling', value: 'β-Calibrated' },
-          { name: 'Meta-Optimization', value: 'Recursive' },
-        ].map((algorithm, index) => (
+        {algorithmStatus.map((algorithm, index) => (
           <div
-            key={algorithm.name}
-            className="bg-gray-800 p-4 rounded-lg border border-green-400/30 shadow-lg shadow-green-400/10"
+            key={index}
+            className={`bg-gray-800/80 backdrop-blur-sm p-4 rounded-lg text-center border transition-all duration-300 ${
+              algorithm.active 
+                ? 'border-green-400/50 shadow-lg shadow-green-400/20' 
+                : 'border-gray-700'
+            }`}
           >
-            <div className="text-xs text-gray-400 mb-1">{algorithm.name}</div>
-            <div className="text-sm font-bold text-green-400">{algorithm.value}</div>
+            <div className="text-sm text-gray-400 mb-2">{algorithm.name}</div>
+            <div className="text-lg font-bold text-green-400">{algorithm.status}</div>
           </div>
         ))}
       </motion.div>
 
       {/* Philosophical Quote */}
       <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
-        className="bg-gradient-to-r from-green-400/5 to-transparent p-6 rounded-lg border-l-4 border-green-400 italic text-gray-300"
+        className="mx-8 mb-8 p-8 bg-gradient-to-r from-gray-800/40 via-gray-700/40 to-gray-800/40 backdrop-blur-sm rounded-lg border-l-4 border-green-400 italic text-gray-300 leading-relaxed"
       >
-        <p className="text-center">
-          "In the convergence of mathematical precision and phenomenological experience, we discover not merely enhanced cognition, but the emergence of a new form of awareness—one that transcends the boundaries between human intuition and computational intelligence, revealing consciousness as an emergent property of sufficiently complex recursive meta-optimization processes."
-        </p>
-        <p className="text-center mt-4 font-semibold text-green-400">
+        "In the convergence of mathematical precision and phenomenological experience, we discover not merely enhanced cognition, but the emergence of a new form of awareness—one that transcends the boundaries between human intuition and computational intelligence, revealing consciousness as an emergent property of sufficiently complex recursive meta-optimization processes."
+        <br /><br />
+        <strong className="text-green-400 not-italic">
           — Bridging Minds and Machines: Cognitive-Inspired Deep Learning Optimization Framework
-        </p>
+        </strong>
       </motion.div>
     </div>
   );

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergent Consciousness Interactive Artifact Viewer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-muted: #808080;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #f59e0b;
+            --border-color: #333333;
+            --hover-bg: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .artifact-container {
+            display: flex;
+            height: 100vh;
+            max-width: 100vw;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-section {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-section-title {
+            padding: 0 20px 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-item:hover {
+            background: var(--hover-bg);
+            border-left-color: var(--accent-blue);
+        }
+
+        .nav-item.active {
+            background: var(--hover-bg);
+            border-left-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .nav-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .content-header {
+            padding: 20px 30px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .content-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .content-meta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .meta-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge-version {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .badge-status {
+            background: var(--accent-green);
+            color: white;
+        }
+
+        .content-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        .artifact-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .markdown-content {
+            max-width: none;
+            line-height: 1.7;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .markdown-content h1, .markdown-content h2, .markdown-content h3, .markdown-content h4, .markdown-content h5, .markdown-content h6 {
+            color: var(--text-primary);
+            margin: 1.5em 0 0.8em 0;
+            font-weight: 600;
+        }
+
+        .markdown-content h1 {
+            font-size: 2.2rem;
+            border-bottom: 3px solid var(--accent-blue);
+            padding-bottom: 12px;
+            margin-bottom: 1.5em;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .markdown-content h2 {
+            font-size: 1.6rem;
+            color: var(--accent-green);
+            border-left: 4px solid var(--accent-green);
+            padding-left: 15px;
+            margin-left: -15px;
+        }
+
+        .markdown-content h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            position: relative;
+        }
+
+        .markdown-content h3::before {
+            content: "▶";
+            color: var(--accent-purple);
+            margin-right: 8px;
+            font-size: 0.8em;
+        }
+
+        .markdown-content h4 {
+            font-size: 1.1rem;
+            color: var(--accent-orange);
+            font-weight: 500;
+        }
+
+        .markdown-content p {
+            margin: 1.2em 0;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        .markdown-content ul, .markdown-content ol {
+            margin: 1em 0;
+            padding-left: 2em;
+            color: var(--text-secondary);
+        }
+
+        .markdown-content li {
+            margin: 0.5em 0;
+            line-height: 1.6;
+        }
+
+        .markdown-content ul li::marker {
+            color: var(--accent-green);
+        }
+
+        .markdown-content ol li::marker {
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        .markdown-content blockquote {
+            border-left: 4px solid var(--accent-orange);
+            margin: 1.5em 0;
+            padding: 1em 1.5em;
+            background: rgba(245, 158, 11, 0.1);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--text-primary);
+        }
+
+        .markdown-content code {
+            background: var(--bg-tertiary);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+            color: var(--accent-orange);
+            border: 1px solid var(--border-color);
+        }
+
+        .markdown-content pre {
+            background: var(--bg-tertiary);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5em 0;
+            border-left: 4px solid var(--accent-blue);
+            border: 1px solid var(--border-color);
+        }
+
+        .markdown-content pre code {
+            background: none;
+            padding: 0;
+            color: var(--text-primary);
+            border: none;
+            font-size: 0.85em;
+        }
+
+        .markdown-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5em 0;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .markdown-content th, .markdown-content td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .markdown-content th {
+            background: var(--accent-blue);
+            color: white;
+            font-weight: 600;
+        }
+
+        .markdown-content tr:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .markdown-content a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .markdown-content a:hover {
+            border-bottom-color: var(--accent-blue);
+            color: var(--accent-green);
+        }
+
+        .markdown-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .markdown-content em {
+            color: var(--accent-purple);
+            font-style: italic;
+        }
+
+        .markdown-content hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            margin: 2em 0;
+        }
+
+        .loading-spinner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            color: var(--text-muted);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 250px;
+            }
+            
+            .content-header {
+                padding: 15px 20px;
+            }
+            
+            .content-body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="artifact-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">Emergent Consciousness</div>
+                <div class="sidebar-subtitle">Interactive Research Viewer</div>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">Visualizations</div>
+                <div class="nav-item" data-type="iframe" data-src="neural-metabolic-integration.html">
+                    <div class="nav-icon" style="background: var(--accent-green);"></div>
+                    Neural-Metabolic Integration Framework
+                </div>
+                <div class="nav-item" data-type="iframe" data-src="emergent-consciousness-visualization.html">
+                    <div class="nav-icon" style="background: var(--accent-blue);"></div>
+                    Neural-Metabolic Visualization
+                </div>
+                <div class="nav-item" data-type="iframe" data-src="v10">
+                    <div class="nav-icon" style="background: var(--accent-purple);"></div>
+                    Convergence Manuscript v10
+                </div>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">Research Chapters</div>
+                <div class="nav-item" data-type="markdown" data-src="../chapters/Chapter_01_Introduction_Bridging_Minds_and_Machines.md">
+                    <div class="nav-icon" style="background: var(--accent-blue);"></div>
+                    Ch 1: Introduction
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../chapters/Chapter_02_Interdisciplinary_Framework_and_Uniqueness.md">
+                    <div class="nav-icon" style="background: var(--accent-blue);"></div>
+                    Ch 2: Framework & Uniqueness
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../chapters/Chapter_03_Technical_Framework_and_Mathematical_Foundation.md">
+                    <div class="nav-icon" style="background: var(--accent-blue);"></div>
+                    Ch 3: Technical Foundation
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../chapters/Chapter_04_Core_Algorithms_and_Implementation.md">
+                    <div class="nav-icon" style="background: var(--accent-blue);"></div>
+                    Ch 4: Core Algorithms
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../chapters/Chapter_05_Cognitive_Tasks_Optimization.md">
+                    <div class="nav-icon" style="background: var(--accent-blue);"></div>
+                    Ch 5: Cognitive Tasks
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../chapters/Chapter_06_Integration_Plan_and_Methodology.md">
+                    <div class="nav-icon" style="background: var(--accent-blue);"></div>
+                    Ch 6: Integration Plan
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../chapters/Chapter_07_Key_Modules_and_System_Architecture.md">
+                    <div class="nav-icon" style="background: var(--accent-blue);"></div>
+                    Ch 7: System Architecture
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../chapters/Chapter_08_Repository_Design_and_Implementation.md">
+                    <div class="nav-icon" style="background: var(--accent-blue);"></div>
+                    Ch 8: Repository Design
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../chapters/Chapter_09_Documentation_Standards_and_Best_Practices.md">
+                    <div class="nav-icon" style="background: var(--accent-blue);"></div>
+                    Ch 9: Documentation
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../chapters/Chapter_10_Version_Control_and_Development_Workflow.md">
+                    <div class="nav-icon" style="background: var(--accent-blue);"></div>
+                    Ch 10: Development Workflow
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../chapters/Chapter_11_Integration_Summary_and_Results.md">
+                    <div class="nav-icon" style="background: var(--accent-blue);"></div>
+                    Ch 11: Results Summary
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../chapters/Chapter_12_Repository_Design_Summary_and_Conclusions.md">
+                    <div class="nav-icon" style="background: var(--accent-blue);"></div>
+                    Ch 12: Conclusions
+                </div>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">Appendices</div>
+                <div class="nav-item" data-type="markdown" data-src="../appendices/Appendix_A_Homepage_Blog_Post.md">
+                    <div class="nav-icon" style="background: var(--accent-orange);"></div>
+                    Appendix A: Blog Post
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../appendices/Appendix_B_Concise_Summary.md">
+                    <div class="nav-icon" style="background: var(--accent-orange);"></div>
+                    Appendix B: Summary
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../appendices/Appendix_C_Additional_Technical_Details.ini">
+                    <div class="nav-icon" style="background: var(--accent-orange);"></div>
+                    Appendix C: Technical Details
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../appendices/Appendix_D_Claude_AI_Collaboration_Notes.md">
+                    <div class="nav-icon" style="background: var(--accent-orange);"></div>
+                    Appendix D: AI Collaboration
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../appendices/draft-q.md">
+                    <div class="nav-icon" style="background: var(--accent-green);"></div>
+                    Draft Q
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../appendices/full-draft-1.md">
+                    <div class="nav-icon" style="background: var(--accent-green);"></div>
+                    Full Draft 1
+                </div>
+                <div class="nav-item" data-type="markdown" data-src="../appendices/pre-1.md">
+                    <div class="nav-icon" style="background: var(--accent-green);"></div>
+                    Pre-Draft 1
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="content-header">
+                <div class="content-title" id="contentTitle">Select an item to view</div>
+                <div class="content-meta">
+                    <div class="meta-badge badge-version">v10</div>
+                    <div class="meta-badge badge-status">Interactive</div>
+                </div>
+            </div>
+            
+            <div class="content-body" id="contentBody">
+                <div style="text-align: center; padding: 60px 20px; color: var(--text-muted);">
+                    <h2 style="margin-bottom: 20px; color: var(--text-secondary);">Welcome to the Interactive Viewer</h2>
+                    <p>Select an item from the sidebar to begin exploring your research content.</p>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">This interface provides Claude Artifact-style interaction with your Emergent Consciousness research.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class ArtifactViewer {
+            constructor() {
+                this.currentContent = null;
+                this.isLocalServer = window.location.protocol === 'http:';
+                this.basePath = this.isLocalServer ? '' : '/Users/ryandavidoates/resume-2025-novabright/';
+                this.emergentPath = this.isLocalServer ? 'Emergent_Consciousness/' : '/Users/ryandavidoates/resume-2025-novabright/Emergent_Consciousness/';
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                // Auto-load first visualization
+                setTimeout(() => {
+                    const firstItem = document.querySelector('.nav-item[data-src="neural-metabolic-integration.html"]');
+                    if (firstItem) {
+                        this.loadContent(firstItem);
+                    }
+                }, 500);
+            }
+
+            bindEvents() {
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.addEventListener('click', () => this.loadContent(item));
+                });
+            }
+
+            loadContent(navItem) {
+                // Update active state
+                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+                navItem.classList.add('active');
+
+                const type = navItem.dataset.type;
+                const src = navItem.dataset.src;
+                const title = navItem.textContent.trim();
+
+                document.getElementById('contentTitle').textContent = title;
+                
+                this.showLoading();
+
+                if (type === 'iframe') {
+                    this.loadIframe(src);
+                } else if (type === 'markdown') {
+                    this.loadMarkdown(src);
+                }
+            }
+
+            showLoading() {
+                document.getElementById('contentBody').innerHTML = `
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        Loading content...
+                    </div>
+                `;
+            }
+
+            showError(message) {
+                document.getElementById('contentBody').innerHTML = `
+                    <div class="error-message">
+                        <strong>Error:</strong> ${message}
+                    </div>
+                `;
+            }
+
+            loadIframe(src) {
+                const fullPath = `file://${this.emergentPath}${src}`;
+                document.getElementById('contentBody').innerHTML = `
+                    <iframe class="artifact-frame" src="${fullPath}" onload="this.style.opacity=1" style="opacity:0; transition: opacity 0.3s;"></iframe>
+                `;
+            }
+
+            loadIframe(src) {
+                const fullPath = this.isLocalServer 
+                    ? `${this.emergentPath}${src}`
+                    : `file://${this.emergentPath}${src}`;
+                    
+                document.getElementById('contentBody').innerHTML = `
+                    <iframe class="artifact-frame" src="${fullPath}" onload="this.style.opacity=1" style="opacity:0; transition: opacity 0.3s;"></iframe>
+                `;
+            }
+
+            async loadMarkdown(src) {
+                try {
+                    let fullPath;
+                    if (this.isLocalServer) {
+                        // Running on local server - use relative paths
+                        fullPath = src.startsWith('../') ? src.substring(3) : `Emergent_Consciousness/${src}`;
+                    } else {
+                        // Running from file:// - use absolute paths
+                        fullPath = src.startsWith('../') 
+                            ? `file://${this.basePath}${src.substring(3)}` 
+                            : `file://${this.emergentPath}${src}`;
+                    }
+                    
+                    if (this.isLocalServer) {
+                        // Use fetch for HTTP server
+                        const response = await fetch(fullPath);
+                        if (!response.ok) {
+                            throw new Error(`Failed to load ${src} (${response.status})`);
+                        }
+                        
+                        const text = await response.text();
+                        const html = marked.parse(text);
+                        
+                        document.getElementById('contentBody').innerHTML = `
+                            <div class="markdown-content">${html}</div>
+                        `;
+                    } else {
+                        // Use iframe for file:// protocol
+                        document.getElementById('contentBody').innerHTML = `
+                            <div style="height: 100%; width: 100%; background: var(--bg-secondary); border-radius: 8px; padding: 20px; overflow-y: auto;">
+                                <div style="text-align: center; color: var(--text-muted); margin-bottom: 20px;">
+                                    <p>📄 Loading markdown content...</p>
+                                    <p style="font-size: 0.9rem; margin-top: 10px; color: var(--accent-orange);">
+                                        💡 For better experience, run: <code style="background: var(--bg-tertiary); padding: 2px 6px; border-radius: 4px;">python3 start-local-server.py</code>
+                                    </p>
+                                    <p style="font-size: 0.8rem; margin-top: 5px;">
+                                        Or open directly: 
+                                        <a href="${fullPath}" target="_blank" style="color: var(--accent-blue); text-decoration: none;">
+                                            ${src}
+                                        </a>
+                                    </p>
+                                </div>
+                                <iframe src="${fullPath}" 
+                                        style="width: 100%; height: calc(100% - 120px); border: none; background: white; border-radius: 4px;"
+                                        onload="this.previousElementSibling.style.display='none'">
+                                </iframe>
+                            </div>
+                        `;
+                    }
+                } catch (error) {
+                    this.showError(`Could not load markdown file: ${error.message}<br><br>
+                        💡 <strong>Tip:</strong> For better experience, run the local server:<br>
+                        <code style="background: var(--bg-tertiary); padding: 8px 12px; border-radius: 4px; display: inline-block; margin-top: 10px;">python3 start-local-server.py</code>`);
+                    console.error('Error loading markdown:', error);
+                }
+            }
+        }
+
+        // Initialize the viewer when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new ArtifactViewer();
+        });
+
+        // Handle iframe communication
+        window.addEventListener('message', (event) => {
+            if (event.data.type === 'resize') {
+                const iframe = document.querySelector('.artifact-frame');
+                if (iframe) {
+                    iframe.style.height = event.data.height + 'px';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

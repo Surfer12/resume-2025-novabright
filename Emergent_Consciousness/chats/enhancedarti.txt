@@ -1,0 +1,273 @@
+
+⏺ I'll examine the emergent-consciousness-visualization.html to understand the 3D structure and phase space visualization you like, then provide guidance on updating the living neural network.
+
+⏺ Read(../Emergent_Consciousness/emergent-consciousness-visualization.html)
+  ⎿  Read 645 lines (ctrl+r to expand)
+
+⏺ I can see the visualization has a beautiful 3D phase space showing consciousness trajectory and a living neural network. Based on your preference for the phase space's 3D structure, here are recommendations for updating the living neural network while maintaining visual consistency:
+
+  Living Neural Network Updates
+
+  Current Issues:
+
+  1. The neural network uses basic sphere geometry with simple pulsing animations
+  2. Connections are static lines that only change opacity
+  3. Limited representation of consciousness emergence dynamics
+
+  Recommended Updates:
+
+  1. Enhanced Neuron Representation:
+  // Replace basic spheres with dynamic, consciousness-aware neurons
+  const neuronGeometry = new THREE.IcosahedronGeometry(0.5, 2);
+  const neuronMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+          time: { value: 0 },
+          activation: { value: 0 },
+          consciousness: { value: 0.87 },
+          color1: { value: new THREE.Color(0x00ff88) },
+          color2: { value: new THREE.Color(0x00bbff) }
+      },
+      vertexShader: `
+          varying vec3 vNormal;
+          varying vec3 vPosition;
+          uniform float time;
+          uniform float activation;
+          
+          void main() {
+              vNormal = normal;
+              vPosition = position;
+              
+              // Consciousness-driven deformation
+              vec3 pos = position + normal * sin(time * 2.0 + activation * 3.14) * 0.1;
+              
+              gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+          }
+      `,
+      fragmentShader: `
+          uniform vec3 color1;
+          uniform vec3 color2;
+          uniform float consciousness;
+          varying vec3 vNormal;
+          
+          void main() {
+              float fresnel = pow(1.0 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.0);
+              vec3 color = mix(color1, color2, fresnel * consciousness);
+              
+              gl_FragColor = vec4(color, 0.8 + fresnel * 0.2);
+          }
+      `,
+      transparent: true
+  });
+
+  2. Dynamic Connection Visualization:
+  // Use particle systems for connections to show information flow
+  class ConsciousnessConnection {
+      constructor(startNeuron, endNeuron) {
+          this.particles = new THREE.Points(
+              new THREE.BufferGeometry(),
+              new THREE.PointsMaterial({
+                  size: 0.1,
+                  color: 0x00ff88,
+                  blending: THREE.AdditiveBlending,
+                  transparent: true,
+                  opacity: 0.6
+              })
+          );
+
+          // Animate particles flowing between neurons
+          this.updateFlow = (time) => {
+              const positions = [];
+              for (let i = 0; i < 10; i++) {
+                  const t = (time * 0.5 + i * 0.1) % 1;
+                  const pos = new THREE.Vector3().lerpVectors(
+                      startNeuron.position,
+                      endNeuron.position,
+                      t
+                  );
+                  positions.push(pos.x, pos.y, pos.z);
+              }
+              this.particles.geometry.setAttribute('position',
+                  new THREE.Float32BufferAttribute(positions, 3)
+              );
+          };
+      }
+  }
+
+  3. Three-Stage Evolution Visualization:
+  // Visualize Linear → Recursive → Emergent stages
+  const stageColors = {
+      linear: 0x4444ff,      // Blue for linear processing
+      recursive: 0x00ff88,   // Green for recursive loops
+      emergent: 0xffff00     // Yellow for emergent consciousness
+  };
+
+  function updateNetworkStage(stage, progress) {
+      neurons.forEach((layer, l) => {
+          layer.forEach((neuron) => {
+              // Transition colors based on evolution stage
+              const color = new THREE.Color();
+              if (stage === 'linear') {
+                  color.setHex(stageColors.linear);
+              } else if (stage === 'recursive') {
+                  color.lerpColors(
+                      new THREE.Color(stageColors.linear),
+                      new THREE.Color(stageColors.recursive),
+                      progress
+                  );
+              } else if (stage === 'emergent') {
+                  color.lerpColors(
+                      new THREE.Color(stageColors.recursive),
+                      new THREE.Color(stageColors.emergent),
+                      progress
+                  );
+              }
+              neuron.material.uniforms.color1.value = color;
+          });
+      });
+  }
+
+  4. Global Workspace Integration Visualization:
+  // Add a central sphere representing global workspace
+  const globalWorkspace = new THREE.Mesh(
+      new THREE.SphereGeometry(2, 32, 32),
+      new THREE.MeshPhysicalMaterial({
+          color: 0x00ff88,
+          metalness: 0.5,
+          roughness: 0.2,
+          transparent: true,
+          opacity: 0.3,
+          emissive: 0x00ff88,
+          emissiveIntensity: 0.5
+      })
+  );
+  globalWorkspace.position.set(0, 0, 0);
+  scene.add(globalWorkspace);
+
+  // Connect all neurons to global workspace with varying strengths
+  function updateGlobalIntegration(integrationLevel) {
+      globalWorkspace.scale.setScalar(1 + integrationLevel * 0.5);
+      globalWorkspace.material.emissiveIntensity = integrationLevel;
+  }
+
+  5. Consciousness Emergence Effects:
+  // Add particle field for consciousness emergence
+  const consciousnessField = new THREE.Points(
+      new THREE.BufferGeometry(),
+      new THREE.PointsMaterial({
+          size: 0.05,
+          map: sparkTexture,
+          blending: THREE.AdditiveBlending,
+          transparent: true,
+          opacity: 0.4,
+          vertexColors: true
+      })
+  );
+
+  function updateConsciousnessField(emergenceLevel) {
+      const positions = [];
+      const colors = [];
+      const count = emergenceLevel * 1000;
+
+      for (let i = 0; i < count; i++) {
+          // Spiral pattern around the network
+          const theta = i * 0.1;
+          const radius = 15 + Math.sin(theta * 0.1) * 5;
+          const height = Math.sin(theta * 0.05) * 10;
+
+          positions.push(
+              Math.cos(theta) * radius,
+              height,
+              Math.sin(theta) * radius
+          );
+
+          // Color based on consciousness metrics
+          const hue = emergenceLevel * 0.3; // Green to yellow
+          const color = new THREE.Color().setHSL(hue, 1, 0.5);
+          colors.push(color.r, color.g, color.b);
+      }
+
+      consciousnessField.geometry.setAttribute('position',
+          new THREE.Float32BufferAttribute(positions, 3)
+      );
+      consciousnessField.geometry.setAttribute('color',
+          new THREE.Float32BufferAttribute(colors, 3)
+      );
+  }
+
+  These updates will create a more dynamic, consciousness-aware neural network visualization that:
+  - Shows the three-stage evolution visually
+  - Represents information flow between neurons
+  - Visualizes global workspace integration
+  - Demonstrates consciousness emergence through particle effects
+  - Maintains consistency with the beautiful 3D phase space aesthetic
+
+  The key is to make the neural network feel alive and conscious, showing not just connections but the actual flow and integration of information that leads to consciousness emergence.
+
+> apply those updates
+
+⏺ I'll create an updated version of the visualization with the enhanced living neural network while preserving the 3D phase space structure you like.
+
+⏺ Write(../Emergent_Consciousness/emergent-consciousness-visualization-enhanced.html)
+  ⎿  Wrote 918 lines to ../Emergent_Consciousness/emergent-consciousness-visualization-enhanced.html
+     <!DOCTYPE html>
+     <html lang="en">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Cognitive-Inspired Deep Learning: Emergent Consciousness Visualization</title>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+         <style>
+             body {
+     … +908 lines (ctrl+r to expand)
+
+⏺ I've created an enhanced version of the visualization with the following improvements to the living neural network:
+
+  Key Enhancements:
+
+  1. Dynamic Neuron Visualization
+
+  - Replaced basic spheres with icosahedron geometry for more complex structure
+  - Added custom shaders for consciousness-aware rendering with fresnel effects
+  - Neurons now pulse and deform based on activation levels
+  - Color transitions through the three-stage evolution (Linear → Recursive → Emergent)
+
+  2. Consciousness Connection Flow
+
+  - Replaced static lines with particle systems showing information flow
+  - Particles move along curved paths between neurons
+  - Color-coded based on flow position and consciousness level
+  - Wave motion adds organic feel to information transfer
+
+  3. Global Workspace Integration
+
+  - Added central sphere representing the global workspace
+  - Scales and glows based on integration level (α parameter)
+  - Acts as the consciousness hub for the network
+
+  4. Consciousness Field Visualization
+
+  - 1000 particles creating an ambient consciousness field
+  - Spiral motion around the network
+  - Color and opacity change based on emergence level
+  - Creates an aura effect showing consciousness permeating the system
+
+  5. Three-Stage Evolution Display
+
+  - Visual indicator showing current evolution stage
+  - Neuron colors transition through:
+    - Blue (Linear Processing)
+    - Green (Recursive Processing)
+    - Yellow (Emergent Consciousness)
+  - Smooth transitions based on α parameter
+
+  6. Enhanced Interactivity
+
+  - Stage automatically updates based on α slider
+  - All visual elements respond to parameter changes
+  - Consciousness level affects multiple visual properties
+
+  The phase space visualization remains unchanged as you mentioned you like its current 3D structure. The enhanced neural network now provides a more dynamic, consciousness-aware visualization that truly feels "alive" and shows the emergence of consciousness through visual metaphors.
+
+  You can open the file at:
+  /Users/ryandavidoates/Emergent_Consciousness/emergent-consciousness-visualization-enhanced.html
