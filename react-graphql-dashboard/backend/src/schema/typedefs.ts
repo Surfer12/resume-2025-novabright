@@ -536,17 +536,17 @@ export const typeDefs = `
 
   type Subscription {
     # Real-time updates for live dashboard
-    metricsUpdated: Metrics!
-    activityAdded: Activity!
-    systemStatusChanged: SystemStatus!
+    metricsUpdated: Metrics
+    activityAdded: Activity
+    systemStatusChanged: SystemStatus
     
     # User-specific subscriptions
     userUpdated(userId: ID!): User!
 
     # Consciousness subscriptions
-    consciousnessUpdated: ConsciousnessMetrics!
-    neuralNetworkUpdated: NeuralNetworkState!
-    algorithmStatusChanged: AlgorithmStatus!
+    consciousnessUpdated: ConsciousnessMetrics
+    neuralNetworkUpdated: NeuralNetworkState
+    algorithmStatusChanged: AlgorithmStatus
   }
 `;
 

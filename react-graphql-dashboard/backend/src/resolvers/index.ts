@@ -40,6 +40,92 @@ class ConsciousnessEngine {
 
 // GraphQL Resolvers
 export const resolvers = {
+  Subscription: {
+    metricsUpdated: {
+      subscribe: async function* () {
+        while (true) {
+          await new Promise(resolve => setTimeout(resolve, 5000));
+          
+          // Generate random metrics
+          const metrics = await metricsService.getMetrics('performance', 1);
+          
+          if (metrics && metrics.length > 0) {
+            yield { metricsUpdated: metrics[0] };
+          } else {
+            yield { metricsUpdated: null };
+          }
+        }
+      },
+    },
+    
+    activityAdded: {
+      subscribe: async function* () {
+        while (true) {
+          await new Promise(resolve => setTimeout(resolve, 3000));
+          
+          // Generate random activity
+          const activities = await activityService.getRecentActivities(1);
+          
+          if (activities && activities.length > 0) {
+            yield { activityAdded: activities[0] };
+          } else {
+            yield { activityAdded: null };
+          }
+        }
+      },
+    },
+    
+    systemStatusChanged: {
+      subscribe: async function* () {
+        while (true) {
+          await new Promise(resolve => setTimeout(resolve, 10000));
+          
+          try {
+            const performanceStats = await performanceService.getPerformanceStats();
+            
+            if (performanceStats) {
+              yield { 
+                systemStatusChanged: {
+                  cpu: Math.random() * 100,
+                  memory: Math.random() * 100,
+                  storage: Math.random() * 100,
+                  network: Math.random() * 100,
+                  healthy: true,
+                  lastUpdated: new Date().toISOString()
+                } 
+              };
+            } else {
+              yield { systemStatusChanged: null };
+            }
+          } catch (error) {
+            logger.error('Error in systemStatusChanged subscription', error);
+            yield { systemStatusChanged: null };
+          }
+        }
+      },
+    },
+    
+    userUpdated: {
+      subscribe: async function* (_, { userId }) {
+        while (true) {
+          await new Promise(resolve => setTimeout(resolve, 15000));
+          
+          try {
+            const user = await userService.getUser(userId);
+            
+            if (user) {
+              yield { userUpdated: user };
+            }
+          } catch (error) {
+            logger.error(`Error in userUpdated subscription for userId: ${userId}`, error);
+            // For non-nullable fields, we can't yield null, so we need to throw an error
+            throw new Error(`User with ID ${userId} not found`);
+          }
+        }
+      },
+    },
+  },
+  
   Query: {
     // Dashboard metrics
     dashboardMetrics: async (_: any, { timeRange, metrics }: any) => {

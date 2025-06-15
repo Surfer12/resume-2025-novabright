@@ -3,7 +3,9 @@ import { useQuery, useSubscription } from '@apollo/client';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   GET_DASHBOARD_DATA,
-  DASHBOARD_UPDATES_SUBSCRIPTION,
+  METRICS_UPDATED_SUBSCRIPTION,
+  ACTIVITY_ADDED_SUBSCRIPTION,
+  SYSTEM_STATUS_CHANGED_SUBSCRIPTION,
   GET_PERFORMANCE_METRICS,
 } from '../graphql/queries';
 import { queryPerformanceMonitor } from '../lib/apollo-client';
@@ -13,6 +15,24 @@ const MetricsCard = React.lazy(() => import('./MetricsCard'));
 const PerformanceChart = React.lazy(() => import('./PerformanceChart'));
 const ActivityFeed = React.lazy(() => import('./ActivityFeed'));
 const SystemStatus = React.lazy(() => import('./SystemStatus'));
+
+// Define types for metrics data
+interface DashboardMetricFromQuery {
+  id: string;
+  type?: string; // e.g., 'CPU', 'MEMORY'
+  value: string | number | null;
+  change: number | null;
+  changePercent: number | null;
+  period: string | null;
+  timestamp: string | number;
+  trend: Array<{ timestamp: string | number; value: number | null }> | null;
+  __typename?: 'Metrics';
+}
+
+interface ProcessedDashboardMetric extends DashboardMetricFromQuery {
+  trend: Array<{ timestamp: string | number; value: number | null }>; // Ensure trend is an array
+  changeIndicator: 'up' | 'down' | 'stable';
+}
 
 interface DashboardProps {
   timeRange?: 'hour' | 'day' | 'week' | 'month';
@@ -68,12 +88,39 @@ const Dashboard: React.FC<DashboardProps> = ({
     },
   });
 
-  // Real-time updates subscription
-  useSubscription(DASHBOARD_UPDATES_SUBSCRIPTION, {
+  // Real-time updates subscriptions
+  useSubscription(METRICS_UPDATED_SUBSCRIPTION, {
     onData: ({ data }) => {
       if (data.data?.metricsUpdated) {
         // Update cache with new metrics
-        console.info('Metrics updated via subscription');
+        console.info('Metrics updated via subscription', data.data.metricsUpdated);
+        // Add logic to update Apollo cache for GET_DASHBOARD_DATA query if necessary
+      }
+    },
+    context: {
+      realtime: true,
+    },
+  });
+
+  useSubscription(ACTIVITY_ADDED_SUBSCRIPTION, {
+    onData: ({ data }) => {
+      if (data.data?.activityAdded) {
+        console.info('Activity added via subscription', data.data.activityAdded);
+        // Add logic to update Apollo cache for GET_DASHBOARD_DATA query if necessary
+        // e.g., update recentActivity
+      }
+    },
+    context: {
+      realtime: true,
+    },
+  });
+
+  useSubscription(SYSTEM_STATUS_CHANGED_SUBSCRIPTION, {
+    onData: ({ data }) => {
+      if (data.data?.systemStatusChanged) {
+        console.info('System status changed via subscription', data.data.systemStatusChanged);
+        // Add logic to update Apollo cache for GET_DASHBOARD_DATA query if necessary
+        // e.g., update systemStatus
       }
     },
     context: {
@@ -82,14 +129,15 @@ const Dashboard: React.FC<DashboardProps> = ({
   });
 
   // Memoized calculations for performance
-  const metrics = useMemo(() => {
+  const metrics: ProcessedDashboardMetric[] = useMemo(() => {
     if (!dashboardData?.dashboardMetrics) return [];
-    
-    return dashboardData.dashboardMetrics.map((metric: any) => ({
+
+    const rawMetrics = dashboardData.dashboardMetrics as DashboardMetricFromQuery[];
+
+    return rawMetrics.map((metric: DashboardMetricFromQuery) => ({
       ...metric,
       trend: metric.trend || [],
-      changeIndicator: metric.changePercent > 0 ? 'up' : 
-                       metric.changePercent < 0 ? 'down' : 'stable',
+      changeIndicator: metric.changePercent != null ? (metric.changePercent > 0 ? 'up' : metric.changePercent < 0 ? 'down' : 'stable') : 'stable',
     }));
   }, [dashboardData?.dashboardMetrics]);
 
@@ -219,7 +267,7 @@ const Dashboard: React.FC<DashboardProps> = ({
               {/* Metrics Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Suspense fallback={<div className="bg-white p-6 rounded-lg shadow animate-pulse h-32" />}>
-                  {metrics.map((metric, index) => (
+                  {metrics.map((metric: ProcessedDashboardMetric, index: number) => (
                     <MetricsCard
                       key={metric.id}
                       metric={metric}

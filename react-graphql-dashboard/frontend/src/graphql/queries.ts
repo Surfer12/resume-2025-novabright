@@ -100,12 +100,46 @@ export const GET_USERS = gql`
 `;
 
 // Real-time subscription for live updates (not cached)
-export const DASHBOARD_UPDATES_SUBSCRIPTION = gql`
-  subscription DashboardUpdates {
+// Old subscription - will be removed
+// export const DASHBOARD_UPDATES_SUBSCRIPTION = gql`
+//   subscription DashboardUpdates {
+//     metricsUpdated {
+//       ...MetricsFragment
+//     }
+//     
+//     activityAdded {
+//       id
+//       type
+//       message
+//       timestamp
+//       user {
+//         ...UserFragment
+//       }
+//     }
+//     
+//     systemStatusChanged {
+//       cpu
+//       memory
+//       storage
+//       network
+//       healthy
+//     }
+//   }
+//   ${METRICS_FRAGMENT}
+//   ${USER_FRAGMENT}
+// `;
+
+export const METRICS_UPDATED_SUBSCRIPTION = gql`
+  subscription MetricsUpdatedSubscription {
     metricsUpdated {
       ...MetricsFragment
     }
-    
+  }
+  ${METRICS_FRAGMENT}
+`;
+
+export const ACTIVITY_ADDED_SUBSCRIPTION = gql`
+  subscription ActivityAddedSubscription {
     activityAdded {
       id
       type
@@ -115,7 +149,12 @@ export const DASHBOARD_UPDATES_SUBSCRIPTION = gql`
         ...UserFragment
       }
     }
-    
+  }
+  ${USER_FRAGMENT}
+`;
+
+export const SYSTEM_STATUS_CHANGED_SUBSCRIPTION = gql`
+  subscription SystemStatusChangedSubscription {
     systemStatusChanged {
       cpu
       memory
@@ -124,8 +163,6 @@ export const DASHBOARD_UPDATES_SUBSCRIPTION = gql`
       healthy
     }
   }
-  ${METRICS_FRAGMENT}
-  ${USER_FRAGMENT}
 `;
 
 // Efficient search query with debouncing support

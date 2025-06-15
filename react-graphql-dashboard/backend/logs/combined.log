@@ -1016,3 +1016,2005 @@
   "errors": 0,
   "errorRate": "0.00%"
 }
+2025-06-15T17:21:49.913Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 28,
+  "averageLatency": "6ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T17:22:19.913Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 28,
+  "averageLatency": "6ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T17:22:34.654Z [[32minfo[39m]: [32mShutting down GraphQL server...[39m
+2025-06-15T17:23:13.445Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:23:13.447Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:23:13.447Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:23:13.448Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:23:13.448Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:23:13.477Z [[32minfo[39m]: [32m🚀 GraphQL Server ready at http://localhost:4000/[39m
+2025-06-15T17:23:13.477Z [[32minfo[39m]: [32m🧠 Consciousness visualization endpoints available[39m
+2025-06-15T17:23:13.477Z [[32minfo[39m]: [32m📊 Performance monitoring enabled[39m
+2025-06-15T17:23:30.211Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "12ms",
+  "totalRequests": 1,
+  "avgLatency": "12ms"
+}
+2025-06-15T17:23:35.488Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "9ms",
+  "totalRequests": 2,
+  "avgLatency": "11ms"
+}
+2025-06-15T17:23:40.611Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "9ms",
+  "totalRequests": 3,
+  "avgLatency": "10ms"
+}
+2025-06-15T17:23:43.478Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 3,
+  "averageLatency": "10ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T17:23:45.605Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "2ms",
+  "totalRequests": 4,
+  "avgLatency": "8ms"
+}
+2025-06-15T17:23:57.158Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:23:57.160Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:23:57.160Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:23:57.161Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:23:57.161Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:23:57.192Z [[31merror[39m]: [31muncaughtException: listen EADDRINUSE: address already in use :::4000[39m
+[31mError: listen EADDRINUSE: address already in use :::4000[39m
+[31m    at Server.setupListenHandle [as _listen2] (node:net:1937:16)[39m
+[31m    at listenInCluster (node:net:1994:12)[39m
+[31m    at Server.listen (node:net:2099:7)[39m
+[31m    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16[39m
+[31m    at new Promise (<anonymous>)[39m
+[31m    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)[39m
+[31m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)[39m {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -48,
+    "syscall": "listen",
+    "address": "::",
+    "port": 4000
+  },
+  "stack": "Error: listen EADDRINUSE: address already in use :::4000\n    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n    at listenInCluster (node:net:1994:12)\n    at Server.listen (node:net:2099:7)\n    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16\n    at new Promise (<anonymous>)\n    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 10:23:57 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 52223,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 298958848,
+      "heapTotal": 149651456,
+      "heapUsed": 121742848,
+      "external": 7885331,
+      "arrayBuffers": 4886112
+    }
+  },
+  "os": {
+    "loadavg": [
+      5.88037109375,
+      6.4990234375,
+      7.3271484375
+    ],
+    "uptime": 8114
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1937,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1994,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2099,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": null,
+      "line": 67,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": null,
+      "file": null,
+      "function": "new Promise",
+      "line": null,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 9,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": "startStandaloneServer",
+      "line": 66,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/process/task_queues",
+      "function": "processTicksAndRejections",
+      "line": 105,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts",
+      "function": "async startServer",
+      "line": 62,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-15T17:24:02.868Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 5,
+  "avgLatency": "8ms"
+}
+2025-06-15T17:24:07.866Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 6,
+  "avgLatency": "7ms"
+}
+2025-06-15T17:24:12.867Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 7,
+  "avgLatency": "7ms"
+}
+2025-06-15T17:24:13.480Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 7,
+  "averageLatency": "7ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T17:24:19.076Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 8,
+  "avgLatency": "7ms"
+}
+2025-06-15T17:24:36.129Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "DashboardUpdates"
+}
+2025-06-15T17:24:36.131Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "DashboardUpdates",
+  "duration": "2ms",
+  "totalRequests": 9,
+  "avgLatency": "7ms"
+}
+2025-06-15T17:24:36.139Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Subscription \"DashboardUpdates\" must select only one top level field.",
+      "locations": [
+        {
+          "line": 6,
+          "column": 3
+        },
+        {
+          "line": 17,
+          "column": 3
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "DashboardUpdates"
+}
+2025-06-15T17:24:36.139Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "DashboardUpdates",
+  "duration": "2ms",
+  "totalRequests": 10,
+  "avgLatency": "6ms"
+}
+2025-06-15T17:24:43.482Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 10,
+  "averageLatency": "6ms",
+  "errors": 2,
+  "errorRate": "20.00%"
+}
+2025-06-15T17:25:13.483Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 10,
+  "averageLatency": "6ms",
+  "errors": 2,
+  "errorRate": "20.00%"
+}
+2025-06-15T17:25:28.926Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 11,
+  "avgLatency": "6ms"
+}
+2025-06-15T17:25:29.598Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "DashboardUpdates"
+}
+2025-06-15T17:25:29.598Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "DashboardUpdates",
+  "duration": "0ms",
+  "totalRequests": 12,
+  "avgLatency": "6ms"
+}
+2025-06-15T17:25:29.604Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Subscription \"DashboardUpdates\" must select only one top level field.",
+      "locations": [
+        {
+          "line": 6,
+          "column": 3
+        },
+        {
+          "line": 17,
+          "column": 3
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "DashboardUpdates"
+}
+2025-06-15T17:25:29.604Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "DashboardUpdates",
+  "duration": "3ms",
+  "totalRequests": 13,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:25:39.103Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "DashboardUpdates"
+}
+2025-06-15T17:25:39.104Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "DashboardUpdates",
+  "duration": "1ms",
+  "totalRequests": 14,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:25:39.108Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Subscription \"DashboardUpdates\" must select only one top level field.",
+      "locations": [
+        {
+          "line": 6,
+          "column": 3
+        },
+        {
+          "line": 17,
+          "column": 3
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "DashboardUpdates"
+}
+2025-06-15T17:25:39.109Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "DashboardUpdates",
+  "duration": "3ms",
+  "totalRequests": 15,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:25:41.541Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 16,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:25:43.483Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 16,
+  "averageLatency": "5ms",
+  "errors": 6,
+  "errorRate": "37.50%"
+}
+2025-06-15T17:25:43.609Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:25:43.611Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:25:43.611Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:25:43.612Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:25:43.612Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:25:43.635Z [[31merror[39m]: [31muncaughtException: listen EADDRINUSE: address already in use :::4000[39m
+[31mError: listen EADDRINUSE: address already in use :::4000[39m
+[31m    at Server.setupListenHandle [as _listen2] (node:net:1937:16)[39m
+[31m    at listenInCluster (node:net:1994:12)[39m
+[31m    at Server.listen (node:net:2099:7)[39m
+[31m    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16[39m
+[31m    at new Promise (<anonymous>)[39m
+[31m    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)[39m
+[31m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)[39m {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -48,
+    "syscall": "listen",
+    "address": "::",
+    "port": 4000
+  },
+  "stack": "Error: listen EADDRINUSE: address already in use :::4000\n    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n    at listenInCluster (node:net:1994:12)\n    at Server.listen (node:net:2099:7)\n    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16\n    at new Promise (<anonymous>)\n    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 10:25:43 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 52725,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 287342592,
+      "heapTotal": 150175744,
+      "heapUsed": 121138456,
+      "external": 7885331,
+      "arrayBuffers": 4886112
+    }
+  },
+  "os": {
+    "loadavg": [
+      8.451171875,
+      7.43798828125,
+      7.60595703125
+    ],
+    "uptime": 8220
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1937,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1994,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2099,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": null,
+      "line": 67,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": null,
+      "file": null,
+      "function": "new Promise",
+      "line": null,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 9,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": "startStandaloneServer",
+      "line": 66,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/process/task_queues",
+      "function": "processTicksAndRejections",
+      "line": 105,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts",
+      "function": "async startServer",
+      "line": 62,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-15T17:25:43.991Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "DashboardUpdates"
+}
+2025-06-15T17:25:43.991Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "DashboardUpdates",
+  "duration": "0ms",
+  "totalRequests": 17,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:25:43.994Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Subscription \"DashboardUpdates\" must select only one top level field.",
+      "locations": [
+        {
+          "line": 6,
+          "column": 3
+        },
+        {
+          "line": 17,
+          "column": 3
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "DashboardUpdates"
+}
+2025-06-15T17:25:43.994Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "DashboardUpdates",
+  "duration": "1ms",
+  "totalRequests": 18,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:25:45.455Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "DashboardUpdates"
+}
+2025-06-15T17:25:45.456Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "DashboardUpdates",
+  "duration": "2ms",
+  "totalRequests": 19,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:25:45.460Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Subscription \"DashboardUpdates\" must select only one top level field.",
+      "locations": [
+        {
+          "line": 6,
+          "column": 3
+        },
+        {
+          "line": 17,
+          "column": 3
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "DashboardUpdates"
+}
+2025-06-15T17:25:45.460Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "DashboardUpdates",
+  "duration": "2ms",
+  "totalRequests": 20,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:25:48.711Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "8ms",
+  "totalRequests": 21,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:26:13.484Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 21,
+  "averageLatency": "5ms",
+  "errors": 10,
+  "errorRate": "47.62%"
+}
+2025-06-15T17:26:43.485Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 21,
+  "averageLatency": "5ms",
+  "errors": 10,
+  "errorRate": "47.62%"
+}
+2025-06-15T17:27:13.488Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 21,
+  "averageLatency": "5ms",
+  "errors": 10,
+  "errorRate": "47.62%"
+}
+2025-06-15T17:27:23.274Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 22,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:27:43.490Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 22,
+  "averageLatency": "5ms",
+  "errors": 10,
+  "errorRate": "45.45%"
+}
+2025-06-15T17:28:13.490Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 22,
+  "averageLatency": "5ms",
+  "errors": 10,
+  "errorRate": "45.45%"
+}
+2025-06-15T17:28:43.491Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 22,
+  "averageLatency": "5ms",
+  "errors": 10,
+  "errorRate": "45.45%"
+}
+2025-06-15T17:29:05.404Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "MetricsUpdatedSubscription"
+}
+2025-06-15T17:29:05.404Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "MetricsUpdatedSubscription",
+  "duration": "0ms",
+  "totalRequests": 23,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:29:05.404Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "ActivityAddedSubscription"
+}
+2025-06-15T17:29:05.405Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "ActivityAddedSubscription",
+  "duration": "1ms",
+  "totalRequests": 24,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:29:05.405Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "SystemStatusChangedSubscription"
+}
+2025-06-15T17:29:05.406Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "SystemStatusChangedSubscription",
+  "duration": "1ms",
+  "totalRequests": 25,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:29:05.408Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.metricsUpdated.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "metricsUpdated"
+      ]
+    }
+  ],
+  "operation": "MetricsUpdatedSubscription"
+}
+2025-06-15T17:29:05.409Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "MetricsUpdatedSubscription",
+  "duration": "2ms",
+  "totalRequests": 26,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:29:05.410Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.activityAdded.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "activityAdded"
+      ]
+    }
+  ],
+  "operation": "ActivityAddedSubscription"
+}
+2025-06-15T17:29:05.410Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "ActivityAddedSubscription",
+  "duration": "1ms",
+  "totalRequests": 27,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:29:05.411Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.systemStatusChanged.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "systemStatusChanged"
+      ]
+    }
+  ],
+  "operation": "SystemStatusChangedSubscription"
+}
+2025-06-15T17:29:05.411Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "SystemStatusChangedSubscription",
+  "duration": "0ms",
+  "totalRequests": 28,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:29:07.820Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "8ms",
+  "totalRequests": 29,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:29:09.430Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.metricsUpdated.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "metricsUpdated"
+      ]
+    }
+  ],
+  "operation": "MetricsUpdatedSubscription"
+}
+2025-06-15T17:29:09.430Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "MetricsUpdatedSubscription",
+  "duration": "1ms",
+  "totalRequests": 30,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:29:09.432Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.activityAdded.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "activityAdded"
+      ]
+    }
+  ],
+  "operation": "ActivityAddedSubscription"
+}
+2025-06-15T17:29:09.432Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "ActivityAddedSubscription",
+  "duration": "1ms",
+  "totalRequests": 31,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:29:09.434Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.systemStatusChanged.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "systemStatusChanged"
+      ]
+    }
+  ],
+  "operation": "SystemStatusChangedSubscription"
+}
+2025-06-15T17:29:09.434Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "SystemStatusChangedSubscription",
+  "duration": "1ms",
+  "totalRequests": 32,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:29:13.492Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 32,
+  "averageLatency": "4ms",
+  "errors": 19,
+  "errorRate": "59.38%"
+}
+2025-06-15T17:29:19.498Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:29:19.499Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:29:19.500Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:29:19.500Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:29:19.500Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:29:19.525Z [[31merror[39m]: [31muncaughtException: listen EADDRINUSE: address already in use :::4000[39m
+[31mError: listen EADDRINUSE: address already in use :::4000[39m
+[31m    at Server.setupListenHandle [as _listen2] (node:net:1937:16)[39m
+[31m    at listenInCluster (node:net:1994:12)[39m
+[31m    at Server.listen (node:net:2099:7)[39m
+[31m    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16[39m
+[31m    at new Promise (<anonymous>)[39m
+[31m    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)[39m
+[31m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)[39m {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -48,
+    "syscall": "listen",
+    "address": "::",
+    "port": 4000
+  },
+  "stack": "Error: listen EADDRINUSE: address already in use :::4000\n    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n    at listenInCluster (node:net:1994:12)\n    at Server.listen (node:net:2099:7)\n    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16\n    at new Promise (<anonymous>)\n    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 10:29:19 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 54015,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 292716544,
+      "heapTotal": 150175744,
+      "heapUsed": 121065928,
+      "external": 7885323,
+      "arrayBuffers": 4886104
+    }
+  },
+  "os": {
+    "loadavg": [
+      7.853515625,
+      7.568359375,
+      7.5947265625
+    ],
+    "uptime": 8436
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1937,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1994,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2099,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": null,
+      "line": 67,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": null,
+      "file": null,
+      "function": "new Promise",
+      "line": null,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 9,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": "startStandaloneServer",
+      "line": 66,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/process/task_queues",
+      "function": "processTicksAndRejections",
+      "line": 105,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts",
+      "function": "async startServer",
+      "line": 62,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-15T17:29:23.680Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:29:23.682Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:29:23.682Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:29:23.683Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:29:23.683Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:29:23.706Z [[31merror[39m]: [31muncaughtException: listen EADDRINUSE: address already in use :::4000[39m
+[31mError: listen EADDRINUSE: address already in use :::4000[39m
+[31m    at Server.setupListenHandle [as _listen2] (node:net:1937:16)[39m
+[31m    at listenInCluster (node:net:1994:12)[39m
+[31m    at Server.listen (node:net:2099:7)[39m
+[31m    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16[39m
+[31m    at new Promise (<anonymous>)[39m
+[31m    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)[39m
+[31m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)[39m {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -48,
+    "syscall": "listen",
+    "address": "::",
+    "port": 4000
+  },
+  "stack": "Error: listen EADDRINUSE: address already in use :::4000\n    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n    at listenInCluster (node:net:1994:12)\n    at Server.listen (node:net:2099:7)\n    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16\n    at new Promise (<anonymous>)\n    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 10:29:23 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 54271,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 303939584,
+      "heapTotal": 150175744,
+      "heapUsed": 120542688,
+      "external": 7885419,
+      "arrayBuffers": 4886200
+    }
+  },
+  "os": {
+    "loadavg": [
+      7.625,
+      7.525390625,
+      7.5791015625
+    ],
+    "uptime": 8440
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1937,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1994,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2099,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": null,
+      "line": 67,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": null,
+      "file": null,
+      "function": "new Promise",
+      "line": null,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 9,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": "startStandaloneServer",
+      "line": 66,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/process/task_queues",
+      "function": "processTicksAndRejections",
+      "line": 105,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts",
+      "function": "async startServer",
+      "line": 62,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-15T17:29:24.837Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.metricsUpdated.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "metricsUpdated"
+      ]
+    }
+  ],
+  "operation": "MetricsUpdatedSubscription"
+}
+2025-06-15T17:29:24.838Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "MetricsUpdatedSubscription",
+  "duration": "0ms",
+  "totalRequests": 33,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:29:24.839Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.activityAdded.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "activityAdded"
+      ]
+    }
+  ],
+  "operation": "ActivityAddedSubscription"
+}
+2025-06-15T17:29:24.839Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "ActivityAddedSubscription",
+  "duration": "0ms",
+  "totalRequests": 34,
+  "avgLatency": "3ms"
+}
+2025-06-15T17:29:24.840Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.systemStatusChanged.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "systemStatusChanged"
+      ]
+    }
+  ],
+  "operation": "SystemStatusChangedSubscription"
+}
+2025-06-15T17:29:24.840Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "SystemStatusChangedSubscription",
+  "duration": "0ms",
+  "totalRequests": 35,
+  "avgLatency": "3ms"
+}
+2025-06-15T17:29:26.768Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.metricsUpdated.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "metricsUpdated"
+      ]
+    }
+  ],
+  "operation": "MetricsUpdatedSubscription"
+}
+2025-06-15T17:29:26.768Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "MetricsUpdatedSubscription",
+  "duration": "1ms",
+  "totalRequests": 36,
+  "avgLatency": "3ms"
+}
+2025-06-15T17:29:26.770Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.activityAdded.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "activityAdded"
+      ]
+    }
+  ],
+  "operation": "ActivityAddedSubscription"
+}
+2025-06-15T17:29:26.770Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "ActivityAddedSubscription",
+  "duration": "1ms",
+  "totalRequests": 37,
+  "avgLatency": "3ms"
+}
+2025-06-15T17:29:26.771Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.systemStatusChanged.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "systemStatusChanged"
+      ]
+    }
+  ],
+  "operation": "SystemStatusChangedSubscription"
+}
+2025-06-15T17:29:26.771Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "SystemStatusChangedSubscription",
+  "duration": "0ms",
+  "totalRequests": 38,
+  "avgLatency": "3ms"
+}
+2025-06-15T17:29:29.545Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "3ms",
+  "totalRequests": 39,
+  "avgLatency": "3ms"
+}
+2025-06-15T17:29:31.428Z [[32minfo[39m]: [32mShutting down GraphQL server...[39m
+2025-06-15T17:29:39.859Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:29:39.861Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:29:39.862Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:29:39.863Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:29:39.863Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:29:39.884Z [[32minfo[39m]: [32m🚀 GraphQL Server ready at http://localhost:4000/[39m
+2025-06-15T17:29:39.884Z [[32minfo[39m]: [32m🧠 Consciousness visualization endpoints available[39m
+2025-06-15T17:29:39.884Z [[32minfo[39m]: [32m📊 Performance monitoring enabled[39m
+2025-06-15T17:29:44.645Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "8ms",
+  "totalRequests": 1,
+  "avgLatency": "8ms"
+}
+2025-06-15T17:29:45.421Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "MetricsUpdatedSubscription"
+}
+2025-06-15T17:29:45.424Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "MetricsUpdatedSubscription",
+  "duration": "4ms",
+  "totalRequests": 2,
+  "avgLatency": "6ms"
+}
+2025-06-15T17:29:45.426Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "ActivityAddedSubscription"
+}
+2025-06-15T17:29:45.426Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "ActivityAddedSubscription",
+  "duration": "0ms",
+  "totalRequests": 3,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:29:45.427Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "SystemStatusChangedSubscription"
+}
+2025-06-15T17:29:45.427Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "SystemStatusChangedSubscription",
+  "duration": "0ms",
+  "totalRequests": 4,
+  "avgLatency": "3ms"
+}
+2025-06-15T17:29:45.430Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.metricsUpdated.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "metricsUpdated"
+      ]
+    }
+  ],
+  "operation": "MetricsUpdatedSubscription"
+}
+2025-06-15T17:29:45.430Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "MetricsUpdatedSubscription",
+  "duration": "2ms",
+  "totalRequests": 5,
+  "avgLatency": "3ms"
+}
+2025-06-15T17:29:45.431Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.systemStatusChanged.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "systemStatusChanged"
+      ]
+    }
+  ],
+  "operation": "SystemStatusChangedSubscription"
+}
+2025-06-15T17:29:45.431Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "SystemStatusChangedSubscription",
+  "duration": "0ms",
+  "totalRequests": 6,
+  "avgLatency": "2ms"
+}
+2025-06-15T17:29:45.433Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.activityAdded.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "activityAdded"
+      ]
+    }
+  ],
+  "operation": "ActivityAddedSubscription"
+}
+2025-06-15T17:29:45.433Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "ActivityAddedSubscription",
+  "duration": "1ms",
+  "totalRequests": 7,
+  "avgLatency": "2ms"
+}
+2025-06-15T17:29:46.418Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.metricsUpdated.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "metricsUpdated"
+      ]
+    }
+  ],
+  "operation": "MetricsUpdatedSubscription"
+}
+2025-06-15T17:29:46.418Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "MetricsUpdatedSubscription",
+  "duration": "1ms",
+  "totalRequests": 8,
+  "avgLatency": "2ms"
+}
+2025-06-15T17:29:46.419Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.activityAdded.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "activityAdded"
+      ]
+    }
+  ],
+  "operation": "ActivityAddedSubscription"
+}
+2025-06-15T17:29:46.420Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "ActivityAddedSubscription",
+  "duration": "1ms",
+  "totalRequests": 9,
+  "avgLatency": "2ms"
+}
+2025-06-15T17:29:46.421Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Subscription.systemStatusChanged.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "systemStatusChanged"
+      ]
+    }
+  ],
+  "operation": "SystemStatusChangedSubscription"
+}
+2025-06-15T17:29:46.421Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "SystemStatusChangedSubscription",
+  "duration": "1ms",
+  "totalRequests": 10,
+  "avgLatency": "2ms"
+}
+2025-06-15T17:29:49.743Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "9ms",
+  "totalRequests": 11,
+  "avgLatency": "2ms"
+}
+2025-06-15T17:29:54.739Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 12,
+  "avgLatency": "3ms"
+}
+2025-06-15T17:29:59.742Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "10ms",
+  "totalRequests": 13,
+  "avgLatency": "3ms"
+}
+2025-06-15T17:30:09.885Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 13,
+  "averageLatency": "3ms",
+  "errors": 9,
+  "errorRate": "69.23%"
+}
+2025-06-15T17:30:21.918Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 14,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:30:26.915Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 15,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:30:39.887Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 15,
+  "averageLatency": "4ms",
+  "errors": 9,
+  "errorRate": "60.00%"
+}
+2025-06-15T17:31:09.888Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 15,
+  "averageLatency": "4ms",
+  "errors": 9,
+  "errorRate": "60.00%"
+}
+2025-06-15T17:31:24.204Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:31:24.205Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:31:24.206Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:31:24.206Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:31:24.206Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:31:24.266Z [[32minfo[39m]: [32m🚀 GraphQL Server ready at http://localhost:4000/[39m
+2025-06-15T17:31:24.266Z [[32minfo[39m]: [32m🧠 Consciousness visualization endpoints available[39m
+2025-06-15T17:31:24.266Z [[32minfo[39m]: [32m📊 Performance monitoring enabled[39m
+2025-06-15T17:31:24.204Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:31:24.205Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:31:24.207Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:31:24.208Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:31:24.208Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:31:24.273Z [[31merror[39m]: [31muncaughtException: listen EADDRINUSE: address already in use :::4000[39m
+[31mError: listen EADDRINUSE: address already in use :::4000[39m
+[31m    at Server.setupListenHandle [as _listen2] (node:net:1937:16)[39m
+[31m    at listenInCluster (node:net:1994:12)[39m
+[31m    at Server.listen (node:net:2099:7)[39m
+[31m    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16[39m
+[31m    at new Promise (<anonymous>)[39m
+[31m    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)[39m
+[31m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)[39m {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -48,
+    "syscall": "listen",
+    "address": "::",
+    "port": 4000
+  },
+  "stack": "Error: listen EADDRINUSE: address already in use :::4000\n    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n    at listenInCluster (node:net:1994:12)\n    at Server.listen (node:net:2099:7)\n    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16\n    at new Promise (<anonymous>)\n    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 10:31:24 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 54886,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 294043648,
+      "heapTotal": 150437888,
+      "heapUsed": 120454112,
+      "external": 7874265,
+      "arrayBuffers": 4875046
+    }
+  },
+  "os": {
+    "loadavg": [
+      6.8095703125,
+      7.46826171875,
+      7.56298828125
+    ],
+    "uptime": 8561
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1937,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1994,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2099,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": null,
+      "line": 67,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": null,
+      "file": null,
+      "function": "new Promise",
+      "line": null,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 9,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": "startStandaloneServer",
+      "line": 66,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/process/task_queues",
+      "function": "processTicksAndRejections",
+      "line": 105,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts",
+      "function": "async startServer",
+      "line": 62,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-15T17:31:32.223Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "MetricsUpdatedSubscription"
+}
+2025-06-15T17:31:32.229Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "MetricsUpdatedSubscription",
+  "duration": "6ms",
+  "totalRequests": 1,
+  "avgLatency": "6ms"
+}
+2025-06-15T17:31:32.232Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "ActivityAddedSubscription"
+}
+2025-06-15T17:31:32.232Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "ActivityAddedSubscription",
+  "duration": "0ms",
+  "totalRequests": 2,
+  "avgLatency": "3ms"
+}
+2025-06-15T17:31:32.237Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "MetricsUpdatedSubscription",
+  "duration": "4ms",
+  "totalRequests": 3,
+  "avgLatency": "3ms"
+}
+2025-06-15T17:31:32.238Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "SystemStatusChangedSubscription"
+}
+2025-06-15T17:31:32.238Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "SystemStatusChangedSubscription",
+  "duration": "0ms",
+  "totalRequests": 4,
+  "avgLatency": "3ms"
+}
+2025-06-15T17:31:32.239Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "ActivityAddedSubscription",
+  "duration": "1ms",
+  "totalRequests": 5,
+  "avgLatency": "2ms"
+}
+2025-06-15T17:31:32.243Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "SystemStatusChangedSubscription",
+  "duration": "1ms",
+  "totalRequests": 6,
+  "avgLatency": "2ms"
+}
+2025-06-15T17:31:33.503Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "14ms",
+  "totalRequests": 7,
+  "avgLatency": "4ms"
+}
+2025-06-15T17:31:54.269Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 7,
+  "averageLatency": "4ms",
+  "errors": 3,
+  "errorRate": "42.86%"
+}
+2025-06-15T17:32:24.270Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 7,
+  "averageLatency": "4ms",
+  "errors": 3,
+  "errorRate": "42.86%"
+}
+2025-06-15T17:32:54.272Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 7,
+  "averageLatency": "4ms",
+  "errors": 3,
+  "errorRate": "42.86%"
+}
+2025-06-15T17:32:55.994Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:32:55.996Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:32:55.997Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:32:55.998Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:32:55.998Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:32:56.023Z [[32minfo[39m]: [32m🚀 GraphQL Server ready at http://localhost:4000/[39m
+2025-06-15T17:32:56.023Z [[32minfo[39m]: [32m🧠 Consciousness visualization endpoints available[39m
+2025-06-15T17:32:56.023Z [[32minfo[39m]: [32m📊 Performance monitoring enabled[39m
+2025-06-15T17:32:55.999Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:32:56.001Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:32:56.002Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:32:56.002Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:32:56.002Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:32:56.029Z [[31merror[39m]: [31muncaughtException: listen EADDRINUSE: address already in use :::4000[39m
+[31mError: listen EADDRINUSE: address already in use :::4000[39m
+[31m    at Server.setupListenHandle [as _listen2] (node:net:1937:16)[39m
+[31m    at listenInCluster (node:net:1994:12)[39m
+[31m    at Server.listen (node:net:2099:7)[39m
+[31m    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16[39m
+[31m    at new Promise (<anonymous>)[39m
+[31m    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)[39m
+[31m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)[39m {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -48,
+    "syscall": "listen",
+    "address": "::",
+    "port": 4000
+  },
+  "stack": "Error: listen EADDRINUSE: address already in use :::4000\n    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n    at listenInCluster (node:net:1994:12)\n    at Server.listen (node:net:2099:7)\n    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16\n    at new Promise (<anonymous>)\n    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 10:32:56 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 55388,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 295976960,
+      "heapTotal": 150175744,
+      "heapUsed": 120647360,
+      "external": 7885339,
+      "arrayBuffers": 4886120
+    }
+  },
+  "os": {
+    "loadavg": [
+      6.2099609375,
+      7.123046875,
+      7.4189453125
+    ],
+    "uptime": 8653
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1937,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1994,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2099,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": null,
+      "line": 67,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": null,
+      "file": null,
+      "function": "new Promise",
+      "line": null,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 9,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": "startStandaloneServer",
+      "line": 66,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/process/task_queues",
+      "function": "processTicksAndRejections",
+      "line": 105,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts",
+      "function": "async startServer",
+      "line": 62,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-15T17:33:04.231Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:33:04.233Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:33:04.234Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:33:04.234Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:33:04.235Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:33:04.257Z [[32minfo[39m]: [32m🚀 GraphQL Server ready at http://localhost:4000/[39m
+2025-06-15T17:33:04.258Z [[32minfo[39m]: [32m🧠 Consciousness visualization endpoints available[39m
+2025-06-15T17:33:04.258Z [[32minfo[39m]: [32m📊 Performance monitoring enabled[39m
+2025-06-15T17:33:04.246Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:33:04.248Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:33:04.248Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:33:04.249Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:33:04.249Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:33:04.275Z [[31merror[39m]: [31muncaughtException: listen EADDRINUSE: address already in use :::4000[39m
+[31mError: listen EADDRINUSE: address already in use :::4000[39m
+[31m    at Server.setupListenHandle [as _listen2] (node:net:1937:16)[39m
+[31m    at listenInCluster (node:net:1994:12)[39m
+[31m    at Server.listen (node:net:2099:7)[39m
+[31m    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16[39m
+[31m    at new Promise (<anonymous>)[39m
+[31m    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)[39m
+[31m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)[39m {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -48,
+    "syscall": "listen",
+    "address": "::",
+    "port": 4000
+  },
+  "stack": "Error: listen EADDRINUSE: address already in use :::4000\n    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n    at listenInCluster (node:net:1994:12)\n    at Server.listen (node:net:2099:7)\n    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16\n    at new Promise (<anonymous>)\n    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 10:33:04 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 55521,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 292798464,
+      "heapTotal": 150175744,
+      "heapUsed": 121190224,
+      "external": 7885339,
+      "arrayBuffers": 4886120
+    }
+  },
+  "os": {
+    "loadavg": [
+      6.24462890625,
+      7.1015625,
+      7.4072265625
+    ],
+    "uptime": 8661
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1937,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1994,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2099,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": null,
+      "line": 67,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": null,
+      "file": null,
+      "function": "new Promise",
+      "line": null,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 9,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": "startStandaloneServer",
+      "line": 66,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/process/task_queues",
+      "function": "processTicksAndRejections",
+      "line": 105,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts",
+      "function": "async startServer",
+      "line": 62,
+      "method": null,
+      "native": false
+    }
+  ]
+}
