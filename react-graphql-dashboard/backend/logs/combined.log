@@ -282,3 +282,372 @@
   "errors": 0,
   "errorRate": "0.00%"
 }
+2025-06-15T16:54:28.509Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "3ms",
+  "totalRequests": 3,
+  "avgLatency": "9ms"
+}
+2025-06-15T16:54:33.499Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "2ms",
+  "totalRequests": 4,
+  "avgLatency": "7ms"
+}
+2025-06-15T16:54:38.499Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "2ms",
+  "totalRequests": 5,
+  "avgLatency": "6ms"
+}
+2025-06-15T16:54:41.338Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 5,
+  "averageLatency": "6ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T16:54:43.500Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "2ms",
+  "totalRequests": 6,
+  "avgLatency": "6ms"
+}
+2025-06-15T16:54:48.503Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "2ms",
+  "totalRequests": 7,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:54:53.551Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "3ms",
+  "totalRequests": 8,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:54:58.510Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "3ms",
+  "totalRequests": 9,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:55:03.512Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "3ms",
+  "totalRequests": 10,
+  "avgLatency": "4ms"
+}
+2025-06-15T16:55:08.512Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "2ms",
+  "totalRequests": 11,
+  "avgLatency": "4ms"
+}
+2025-06-15T16:55:11.339Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 11,
+  "averageLatency": "4ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T16:55:41.341Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 11,
+  "averageLatency": "4ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T16:56:11.343Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 11,
+  "averageLatency": "4ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T16:56:20.399Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 12,
+  "avgLatency": "4ms"
+}
+2025-06-15T16:56:28.492Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 13,
+  "avgLatency": "4ms"
+}
+2025-06-15T16:56:33.491Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 14,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:56:39.357Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "2ms",
+  "totalRequests": 15,
+  "avgLatency": "4ms"
+}
+2025-06-15T16:56:41.343Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 15,
+  "averageLatency": "4ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T16:56:44.363Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 16,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:56:49.363Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 17,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:56:54.362Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 18,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:56:59.364Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 19,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:57:04.365Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 20,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:57:09.365Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 21,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:57:11.345Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 21,
+  "averageLatency": "5ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T16:57:14.366Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 22,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:57:19.368Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 23,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:57:24.368Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 24,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:57:29.449Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 25,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:57:40.621Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 26,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:57:41.346Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 26,
+  "averageLatency": "5ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T16:57:45.617Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 27,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:58:11.347Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 27,
+  "averageLatency": "5ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T16:58:41.349Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 27,
+  "averageLatency": "5ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T16:59:02.851Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 28,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:59:07.940Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "3ms",
+  "totalRequests": 29,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:59:11.352Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 29,
+  "averageLatency": "5ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T16:59:12.946Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 30,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:59:22.437Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 31,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:59:27.435Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 32,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:59:32.434Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 33,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:59:37.437Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 34,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:59:41.353Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 34,
+  "averageLatency": "5ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T16:59:42.432Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "2ms",
+  "totalRequests": 35,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:59:47.437Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 36,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:59:52.438Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "3ms",
+  "totalRequests": 37,
+  "avgLatency": "5ms"
+}
+2025-06-15T16:59:57.451Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "4ms",
+  "totalRequests": 38,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:00:02.465Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 39,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:00:07.472Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 40,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:00:11.354Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 40,
+  "averageLatency": "5ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T17:00:12.483Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 41,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:00:17.492Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 42,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:00:22.501Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 43,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:00:27.508Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "3ms",
+  "totalRequests": 44,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:00:32.521Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 45,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:00:37.533Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 46,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:00:41.355Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 46,
+  "averageLatency": "5ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T17:00:48.969Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 47,
+  "avgLatency": "5ms"
+}
+2025-06-15T17:01:11.356Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 47,
+  "averageLatency": "5ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T17:01:41.357Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 47,
+  "averageLatency": "5ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T17:01:47.296Z [[32minfo[39m]: [32mShutting down GraphQL server...[39m
+2025-06-15T17:13:19.863Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:13:19.865Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:13:19.866Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:13:19.866Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:13:19.866Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:13:19.897Z [[32minfo[39m]: [32m🚀 GraphQL Server ready at http://localhost:4000/[39m
+2025-06-15T17:13:19.897Z [[32minfo[39m]: [32m🧠 Consciousness visualization endpoints available[39m
+2025-06-15T17:13:19.897Z [[32minfo[39m]: [32m📊 Performance monitoring enabled[39m

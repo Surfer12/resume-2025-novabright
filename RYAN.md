@@ -1,3 +1,17 @@
+http://localhost:4000/ (Apollo Server / GraphQL Backend):
+This is your data hub and brain.
+It hosts your GraphQL API.
+Its job is to receive queries from your frontend, process them (e.g., fetch data from a database, perform calculations, interact with other services), and send back the requested data.
+The Apollo Sandbox UI you're seeing in the screenshot is a development tool built into Apollo Server that allows you to explore your GraphQL schema and test queries directly against your backend. This is very useful for backend development and debugging.
+All the "consciousness" related data, performance metrics, user data, etc., are served from here.
+
+http://localhost:3001/ (or http://localhost:3002/ - Vite Development Server / React Frontend):
+This is your user interface (UI).
+It serves your React application to the browser. This is what the end-user actually sees and interacts with.
+Your React components, including the Dashboard.tsx and the ConsciousnessVisualization.tsx, are bundled and served by Vite from this address.
+This frontend application makes GraphQL queries to your backend server (http://localhost:4000/) to get the data it needs to display. For example, when the dashboard loads, it will query the backend for metrics, and when the consciousness visualization runs, it will query for consciousness-related data points.
+Vite also provides features like Hot Module Replacement (HMR), so when you make changes to your frontend code, the browser updates automatically without a full page reload, speeding up development.
+
 # Dependency Map – “resume-2025-novabright” repo (June 2025)
 
 Below is a consolidated view of every explicit dependency definition I could find, grouped by language / package-manager and by workspace.
