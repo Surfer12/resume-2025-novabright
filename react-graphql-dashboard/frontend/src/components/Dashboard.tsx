@@ -255,11 +255,10 @@ const Dashboard: React.FC<DashboardProps> = ({
               {/* Metrics Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <Suspense fallback={<div className="bg-white p-6 rounded-lg shadow animate-pulse h-32" />}>
-                  {metrics.map((metric: ProcessedDashboardMetric, index: number) => (
+                  {metrics.map((metric: ProcessedDashboardMetric) => (
                     <MetricsCard
                       key={metric.id}
                       metric={metric}
-                      index={index}
                     />
                   ))}
                 </Suspense>
@@ -271,7 +270,6 @@ const Dashboard: React.FC<DashboardProps> = ({
                   <Suspense fallback={<div className="bg-white p-6 rounded-lg shadow animate-pulse h-96" />}>
                     <PerformanceChart
                       data={metrics}
-                      timeRange={timeRange}
                       performanceData={performanceData?.performanceMetrics}
                     />
                   </Suspense>

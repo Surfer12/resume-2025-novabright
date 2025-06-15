@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import * as THREE from 'three';
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
 
@@ -115,76 +114,6 @@ const SimpleConsciousnessVisualization: React.FC<SimpleConsciousnessVisualizatio
 
   return (
     <div className={`min-h-screen bg-gray-900 text-white ${className}`}>
-      <style jsx>{`
-        .slider-green::-webkit-slider-thumb {
-          appearance: none;
-          height: 20px;
-          width: 20px;
-          border-radius: 50%;
-          background: #22c55e;
-          cursor: pointer;
-          border: 2px solid #16a34a;
-        }
-        .slider-blue::-webkit-slider-thumb {
-          appearance: none;
-          height: 20px;
-          width: 20px;
-          border-radius: 50%;
-          background: #3b82f6;
-          cursor: pointer;
-          border: 2px solid #2563eb;
-        }
-        .slider-yellow::-webkit-slider-thumb {
-          appearance: none;
-          height: 20px;
-          width: 20px;
-          border-radius: 50%;
-          background: #eab308;
-          cursor: pointer;
-          border: 2px solid #ca8a04;
-        }
-        .slider-purple::-webkit-slider-thumb {
-          appearance: none;
-          height: 20px;
-          width: 20px;
-          border-radius: 50%;
-          background: #a855f7;
-          cursor: pointer;
-          border: 2px solid #9333ea;
-        }
-        .slider-green::-moz-range-thumb {
-          height: 20px;
-          width: 20px;
-          border-radius: 50%;
-          background: #22c55e;
-          cursor: pointer;
-          border: 2px solid #16a34a;
-        }
-        .slider-blue::-moz-range-thumb {
-          height: 20px;
-          width: 20px;
-          border-radius: 50%;
-          background: #3b82f6;
-          cursor: pointer;
-          border: 2px solid #2563eb;
-        }
-        .slider-yellow::-moz-range-thumb {
-          height: 20px;
-          width: 20px;
-          border-radius: 50%;
-          background: #eab308;
-          cursor: pointer;
-          border: 2px solid #ca8a04;
-        }
-        .slider-purple::-moz-range-thumb {
-          height: 20px;
-          width: 20px;
-          border-radius: 50%;
-          background: #a855f7;
-          cursor: pointer;
-          border: 2px solid #9333ea;
-        }
-      `}</style>
       <div className="container mx-auto px-6 py-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

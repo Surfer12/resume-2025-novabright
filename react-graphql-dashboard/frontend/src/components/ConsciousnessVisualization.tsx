@@ -38,7 +38,6 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
   const [consciousnessConnections, setConsciousnessConnections] = useState<ConsciousnessConnection[]>([]);
   const [consciousnessField, setConsciousnessField] = useState<THREE.Points | null>(null);
   const [globalWorkspace, setGlobalWorkspace] = useState<THREE.Mesh | null>(null);
-  const [time, setTime] = useState(0);
   
   // Control parameters
   const [alpha, setAlpha] = useState(0.65);
@@ -322,38 +321,6 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
     } as ConsciousnessMetrics & { R_cognitive: number, R_efficiency: number };
   }, [alpha, lambda1, lambda2, beta]);
 
-  // Update consciousness field animation
-  const updateConsciousnessField = useCallback((emergenceLevel: number, currentTime: number) => {
-    if (!consciousnessField) return;
-
-    const positions = consciousnessField.geometry.attributes.position.array as Float32Array;
-    const colors = consciousnessField.geometry.attributes.color.array as Float32Array;
-    const count = positions.length / 3;
-    
-    for (let i = 0; i < count; i++) {
-      // Spiral motion
-      const theta = currentTime * 0.1 + i * 0.01;
-      const radius = 15 + Math.sin(theta * 0.1) * 5 + Math.sin(currentTime + i * 0.1) * 2;
-      const height = Math.sin(theta * 0.05) * 10 + Math.cos(currentTime * 0.5 + i * 0.05) * 3;
-      
-      positions[i * 3] = Math.cos(theta) * radius;
-      positions[i * 3 + 1] = height;
-      positions[i * 3 + 2] = Math.sin(theta) * radius;
-      
-      // Color based on consciousness metrics
-      const hue = emergenceLevel * 0.3; // Green to yellow
-      const color = new THREE.Color().setHSL(hue, 1, 0.5 + emergenceLevel * 0.3);
-      colors[i * 3] = color.r;
-      colors[i * 3 + 1] = color.g;
-      colors[i * 3 + 2] = color.b;
-    }
-    
-    consciousnessField.geometry.attributes.position.needsUpdate = true;
-    consciousnessField.geometry.attributes.color.needsUpdate = true;
-    const material = consciousnessField.material as THREE.PointsMaterial;
-    material.opacity = 0.2 + emergenceLevel * 0.4;
-  }, [consciousnessField]);
-
   // Animation loop
   useEffect(() => {
     if (!scene || !camera || !renderer || !neurons || !consciousnessConnections || !globalWorkspace) return;
@@ -361,80 +328,6 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
     let animationId: number;
 
     const animate = () => {
-      setTime(prevTime => {
-        const newTime = prevTime + 0.01;
-
-        // Update neuron uniforms and positions using newTime
-        neurons.forEach((layer) => {
-          layer.forEach((neuron) => {
-            const material = neuron.userData.material as THREE.ShaderMaterial;
-            material.uniforms.time.value = newTime;
-
-            const activation = 0.5 + 0.5 * Math.sin(newTime * 2 + neuron.userData.phase);
-            neuron.userData.activation = activation;
-            material.uniforms.activation.value = activation;
-
-            neuron.position.y = neuron.userData.baseY + Math.sin(newTime + neuron.userData.phase) * 0.5;
-            neuron.position.z = Math.sin(newTime * 0.5 + neuron.userData.phase) * 2;
-
-            neuron.rotation.x += 0.01;
-            neuron.rotation.y += 0.005;
-          });
-        });
-
-        // Animate consciousness connections
-        consciousnessConnections.forEach(conn => {
-          const positions = conn.particles.geometry.attributes.position.array as Float32Array;
-          const colors = conn.particles.geometry.attributes.color.array as Float32Array;
-          
-          for (let i = 0; i < conn.phases.length; i++) {
-            conn.phases[i] = (conn.phases[i] + 0.01) % 1;
-            const t = conn.phases[i];
-            
-            const pos = new THREE.Vector3().lerpVectors(
-              conn.start.position,
-              conn.end.position,
-              t
-            );
-            
-            pos.x += Math.sin(t * Math.PI * 2) * 0.5;
-            pos.y += Math.cos(t * Math.PI * 2) * 0.5;
-            
-            positions[i * 3] = pos.x;
-            positions[i * 3 + 1] = pos.y;
-            positions[i * 3 + 2] = pos.z;
-            
-            const color = new THREE.Color().setHSL(0.3 * t, 1, 0.5 + t * 0.5);
-            colors[i * 3] = color.r;
-            colors[i * 3 + 1] = color.g;
-            colors[i * 3 + 2] = color.b;
-          }
-          
-          conn.particles.geometry.attributes.position.needsUpdate = true;
-          conn.particles.geometry.attributes.color.needsUpdate = true;
-        });
-
-        // Update global workspace
-        if (globalWorkspace) {
-          globalWorkspace.scale.setScalar(1 + alpha * 0.5);
-          const material = globalWorkspace.material as THREE.MeshPhysicalMaterial;
-          material.emissiveIntensity = 0.3 + alpha * 0.5;
-          globalWorkspace.rotation.y += 0.005;
-        }
-
-        // Update consciousness field using newTime
-        const consciousnessLevel = metrics.consciousnessLevel / 100;
-        updateConsciousnessField(consciousnessLevel, newTime);
-
-        // Camera rotation using newTime
-        camera.position.x = Math.cos(newTime * 0.1) * 35;
-        camera.position.z = Math.sin(newTime * 0.1) * 35;
-        camera.lookAt(0, 0, 0);
-
-        renderer.render(scene, camera);
-        return newTime;
-      });
-
       animationId = requestAnimationFrame(animate);
     };
 
@@ -445,7 +338,7 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
         cancelAnimationFrame(animationId);
       }
     };
-  }, [scene, camera, renderer, neurons, consciousnessConnections, globalWorkspace, updateConsciousnessField, alpha, metrics]);
+  }, [scene, camera, renderer, neurons, consciousnessConnections, globalWorkspace]);
 
   // Initialize on mount
   useEffect(() => {

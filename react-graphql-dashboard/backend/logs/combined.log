@@ -9791,3 +9791,81 @@
   "errors": 19,
   "errorRate": "76.00%"
 }
+2025-06-15T21:02:33.561Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T21:02:33.563Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T21:02:33.564Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T21:02:33.564Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T21:02:33.564Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T21:02:33.565Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T21:02:33.565Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T21:02:33.565Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T21:02:33.594Z [[32minfo[39m]: [32m🚀 GraphQL Server ready at http://localhost:4000/[39m
+2025-06-15T21:02:33.595Z [[32minfo[39m]: [32m🧠 Consciousness visualization endpoints available[39m
+2025-06-15T21:02:33.595Z [[32minfo[39m]: [32m📊 Performance monitoring enabled[39m
+2025-06-15T21:02:33.595Z [[33mwarn[39m]: [33m⚠️  WebSocket subscriptions temporarily disabled - will be re-enabled once setup is fixed[39m
+2025-06-15T21:03:34.827Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "11ms",
+  "totalRequests": 1,
+  "avgLatency": "11ms"
+}
+2025-06-15T21:04:03.598Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 1,
+  "averageLatency": "11ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T21:04:33.598Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 1,
+  "averageLatency": "11ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T21:05:03.599Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 1,
+  "averageLatency": "11ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T21:05:33.600Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 1,
+  "averageLatency": "11ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T21:05:51.229Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "9ms",
+  "totalRequests": 2,
+  "avgLatency": "10ms"
+}
+2025-06-15T21:06:03.601Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 2,
+  "averageLatency": "10ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T21:06:33.602Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 2,
+  "averageLatency": "10ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T21:07:03.603Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 2,
+  "averageLatency": "10ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T21:07:33.603Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 2,
+  "averageLatency": "10ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T21:08:03.604Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 2,
+  "averageLatency": "10ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}

@@ -123,7 +123,7 @@ const App: React.FC = () => {
                       <h1 className="text-3xl font-bold mb-6">Performance Analytics</h1>
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <Dashboard timeRange="week" />
-                        <ConsciousnessVisualization realTime={false} />
+                        <ConsciousnessVisualization />
                       </div>
                     </div>
                   </motion.div>
