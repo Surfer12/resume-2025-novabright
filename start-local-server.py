@@ -33,11 +33,10 @@ def start_server():
             print(f"🚀 Starting local server...")
             print(f"📁 Serving directory: {SERVE_DIR}")
             print(f"🌐 Server running at: http://localhost:{PORT}")
-            print(f"🔗 Interactive viewer: http://localhost:{PORT}/Emergent_Consciousness/interactive-artifact-viewer.html")
+            print(f"🔗 Interactive viewer: http://localhost:{PORT}/Emergent_Consciousness/html_only_verisons_current/emergent-consciousness-visualization-enhanced.html")
             print(f"\n💡 Press Ctrl+C to stop the server")
-            
             # Automatically open the browser
-            viewer_url = f"http://localhost:{PORT}/Emergent_Consciousness/interactive-artifact-viewer.html"
+            viewer_url = f"http://localhost:{PORT}/Emergent_Consciousness/html_only_verisons_current/emergent-consciousness-visualization-enhanced.html"
             print(f"\n🌍 Opening browser to: {viewer_url}")
             webbrowser.open(viewer_url)
             
@@ -56,3 +55,4 @@ def start_server():
 
 if __name__ == "__main__":
     start_server()
+# End of Selection
