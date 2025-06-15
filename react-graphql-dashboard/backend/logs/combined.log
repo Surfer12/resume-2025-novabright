@@ -8906,3 +8906,231 @@
   "avgLatency": "7ms"
 }
 2025-06-15T19:52:45.995Z [[32minfo[39m]: [32mShutting down GraphQL server...[39m
+2025-06-15T20:02:10.956Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T20:02:10.958Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T20:02:10.958Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T20:02:10.959Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T20:02:10.959Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T20:02:10.959Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T20:02:10.959Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T20:02:10.959Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T20:02:10.989Z [[32minfo[39m]: [32m🚀 GraphQL Server ready at http://localhost:4000/[39m
+2025-06-15T20:02:10.989Z [[32minfo[39m]: [32m🧠 Consciousness visualization endpoints available[39m
+2025-06-15T20:02:10.989Z [[32minfo[39m]: [32m📊 Performance monitoring enabled[39m
+2025-06-15T20:02:10.989Z [[33mwarn[39m]: [33m⚠️  WebSocket subscriptions temporarily disabled - will be re-enabled once setup is fixed[39m
+2025-06-15T20:08:58.521Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T20:08:58.521Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "8ms",
+  "totalRequests": 1,
+  "avgLatency": "8ms"
+}
+2025-06-15T20:08:58.524Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field LatencyMetrics.trend.",
+      "locations": [
+        {
+          "line": 7,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency",
+        "trend"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T20:08:58.525Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "2ms",
+  "totalRequests": 2,
+  "avgLatency": "5ms"
+}
+2025-06-15T20:09:08.983Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "12ms",
+  "totalRequests": 3,
+  "avgLatency": "7ms"
+}
+2025-06-15T20:09:11.005Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 3,
+  "averageLatency": "7ms",
+  "errors": 2,
+  "errorRate": "66.67%"
+}
+2025-06-15T20:09:14.133Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "10ms",
+  "totalRequests": 4,
+  "avgLatency": "8ms"
+}
+2025-06-15T20:09:25.292Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "8ms",
+  "totalRequests": 5,
+  "avgLatency": "8ms"
+}
+2025-06-15T20:09:28.555Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T20:09:28.555Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 6,
+  "avgLatency": "7ms"
+}
+2025-06-15T20:09:30.292Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 7,
+  "avgLatency": "7ms"
+}
+2025-06-15T20:09:34.842Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T20:09:34.842Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 8,
+  "avgLatency": "7ms"
+}
+2025-06-15T20:09:34.847Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field LatencyMetrics.trend.",
+      "locations": [
+        {
+          "line": 7,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency",
+        "trend"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T20:09:34.847Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "0ms",
+  "totalRequests": 9,
+  "avgLatency": "6ms"
+}
+2025-06-15T20:09:41.014Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 9,
+  "averageLatency": "6ms",
+  "errors": 5,
+  "errorRate": "55.56%"
+}
+2025-06-15T20:09:48.505Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 10,
+  "avgLatency": "6ms"
+}
+2025-06-15T20:10:00.232Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 11,
+  "avgLatency": "6ms"
+}
+2025-06-15T20:10:05.232Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 12,
+  "avgLatency": "6ms"
+}
+2025-06-15T20:10:10.231Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 13,
+  "avgLatency": "6ms"
+}
+2025-06-15T20:10:11.024Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 13,
+  "averageLatency": "6ms",
+  "errors": 5,
+  "errorRate": "38.46%"
+}
+2025-06-15T20:10:15.233Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 14,
+  "avgLatency": "6ms"
+}
+2025-06-15T20:10:20.233Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 15,
+  "avgLatency": "6ms"
+}
+2025-06-15T20:10:25.234Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 16,
+  "avgLatency": "6ms"
+}
+2025-06-15T20:10:30.235Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 17,
+  "avgLatency": "6ms"
+}
+2025-06-15T20:10:39.970Z [[32minfo[39m]: [32mShutting down GraphQL server...[39m

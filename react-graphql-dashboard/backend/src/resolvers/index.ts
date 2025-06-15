@@ -409,6 +409,8 @@ export const resolvers = {
         if (updatedUser) {
           await activityService.recordActivity({
             userId: id,
+            type: 'UPDATE',
+            message: `User profile updated with fields: ${Object.keys(input).join(', ')}`,
             action: 'update_user',
             resource: 'user_profile',
             metadata: { updatedFields: Object.keys(input) }

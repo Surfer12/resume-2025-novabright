@@ -5317,3 +5317,98 @@
   ],
   "operation": "GetPerformanceMetrics"
 }
+2025-06-15T20:08:58.521Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T20:08:58.524Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field LatencyMetrics.trend.",
+      "locations": [
+        {
+          "line": 7,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency",
+        "trend"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T20:09:28.555Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T20:09:34.842Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T20:09:34.847Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field LatencyMetrics.trend.",
+      "locations": [
+        {
+          "line": 7,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency",
+        "trend"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
