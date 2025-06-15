@@ -5035,3 +5035,235 @@
   ],
   "operation": "GetDashboardData"
 }
+2025-06-15T18:44:02.046Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:44:02.047Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:44:02.949Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:44:02.952Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:44:08.450Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:44:08.453Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:44:09.946Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:44:09.949Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:44:14.965Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}

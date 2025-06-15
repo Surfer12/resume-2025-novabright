@@ -31,7 +31,7 @@ export const GET_CONSCIOUSNESS_METRICS = gql`
       lambda1: $lambda1
       lambda2: $lambda2
       beta: $beta
-    ) @cached(ttl: 60) {
+    ) {
       ...ConsciousnessMetricsFragment
       phaseSpaceData {
         x
@@ -106,7 +106,7 @@ export const CONSCIOUSNESS_UPDATES_SUBSCRIPTION = gql`
 // Query for consciousness performance analytics
 export const GET_CONSCIOUSNESS_PERFORMANCE = gql`
   query GetConsciousnessPerformance($timeRange: TimeRange!) {
-    consciousnessPerformance(timeRange: $timeRange) @cached(ttl: 120) {
+    consciousnessPerformance(timeRange: $timeRange) {
       optimizationHistory {
         timestamp
         accuracy
@@ -187,7 +187,7 @@ export const UPDATE_CONSCIOUSNESS_PARAMETERS = gql`
 // Query for consciousness insights and recommendations
 export const GET_CONSCIOUSNESS_INSIGHTS = gql`
   query GetConsciousnessInsights {
-    consciousnessInsights @cached(ttl: 300) {
+    consciousnessInsights {
       recommendations {
         parameter
         currentValue
