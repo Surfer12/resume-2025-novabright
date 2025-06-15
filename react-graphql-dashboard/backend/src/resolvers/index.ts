@@ -13,26 +13,202 @@ const activityService = new ActivityService();
 const performanceService = new PerformanceService();
 const cacheService = new CacheService();
 
+// Import service types
+import type { Metric } from '../services/MetricsService';
+import type { Activity as ServiceActivity } from '../services/ActivityService';
+import type { PerformanceMetric as ServicePerformanceMetric } from '../services/PerformanceService';
+import type { CacheStats as ServiceCacheStats } from '../services/CacheService';
+
+// Define interfaces for common data structures
+interface ConsciousnessMetric {
+  accuracy: number;
+  cognitive: number;
+  efficiency: number;
+  coherence: number;
+  timestamp: string;
+}
+
+// Use service types directly
+type Activity = ServiceActivity;
+type CacheStats = ServiceCacheStats;
+
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  // ... other user fields
+}
+
+interface PerformanceStats {
+  averageLatency: number;
+  p95Latency: number;
+  p99Latency: number;
+  successRate: number;
+  totalRequests: number;
+  errorsCount: number;
+}
+
+interface SystemStatus {
+  cpu: number;
+  memory: number;
+  storage: number;
+  network: number;
+  healthy: boolean;
+  lastUpdated: string;
+  status: string;
+  uptime: number;
+  performance: PerformanceStats;
+  cache: CacheStats;
+  timestamp: string;
+}
+
+interface PageInfo {
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  startCursor: string | null;
+  endCursor: string | null;
+}
+
+interface UserEdge {
+  node: User;
+  cursor: string;
+}
+
+interface UsersConnection {
+  edges: UserEdge[];
+  pageInfo: PageInfo;
+}
+
+interface QueryLatency {
+  average: number;
+  p95: number;
+  p99: number;
+  current: number;
+}
+
+interface CacheHitRate {
+  overall: number;
+  recent: number;
+  trend: string;
+}
+
+interface PerformanceMetrics {
+  queryLatency: QueryLatency;
+  cacheHitRate: CacheHitRate;
+  averageLatency: number;
+  p95Latency: number;
+  p99Latency: number;
+  successRate: number;
+  totalRequests: number;
+  errorsCount: number;
+  recentMetrics: ServicePerformanceMetric[];
+}
+
+interface CriticalMetrics {
+  systemHealth: number;
+  errorCount: number;
+  alertCount: number;
+}
+
+interface SecondaryData {
+  userCount: number;
+  projectCount: number;
+  recentActivities: Activity[];
+}
+
+interface ConsciousnessMetrics {
+  accuracy: number;
+  cognitive: number;
+  efficiency: number;
+  coherence: number;
+  timestamp: string;
+  neuralActivity: number;
+  synapticStrength: number;
+  networkTopology: {
+    nodes: number;
+    connections: number;
+    clusters: number;
+  };
+}
+
+interface ConsciousnessPerformanceDataPoint {
+  timestamp: string;
+  processingTime: number;
+  accuracy: number;
+  throughput: number;
+}
+
+interface ConsciousnessPerformance {
+  timeRange: string;
+  dataPoints: ConsciousnessPerformanceDataPoint[];
+  averageProcessingTime: number;
+  peakThroughput: number;
+  averageAccuracy: number;
+}
+
+interface ConsciousnessInsights {
+  totalNeurons: number;
+  activeConnections: number;
+  networkEfficiency: number;
+  learningRate: number;
+  insights: string[];
+}
+
+// Helper function to transform Metric to PerformanceMetric
+function transformMetric(metric: Metric): ServicePerformanceMetric {
+  return {
+    id: `${metric.category}_${metric.name}_${Date.now()}`, // Generate a unique ID
+    operation: metric.category,
+    duration: typeof metric.value === 'number' ? metric.value : 0,
+    success: true, // Default to true since original metric doesn't have this info
+    timestamp: metric.timestamp
+  };
+}
+
+// Helper function to format dates consistently
+function formatDate(date: Date): string {
+  return date.toISOString();
+}
+
+// Helper function to ensure all required ConsciousnessMetrics properties
+function createConsciousnessMetrics(baseMetrics: ConsciousnessMetric): ConsciousnessMetrics {
+  return {
+    ...baseMetrics,
+    neuralActivity: Math.random() * 100,
+    synapticStrength: Math.random() * 100,
+    networkTopology: {
+      nodes: Math.floor(Math.random() * 1000) + 500,
+      connections: Math.floor(Math.random() * 5000) + 2000,
+      clusters: Math.floor(Math.random() * 50) + 10
+    }
+  };
+}
+
 // Consciousness calculation engine
 class ConsciousnessEngine {
-  static calculateMetrics(alpha: number, lambda1: number, lambda2: number, beta: number) {
-    const baseAccuracy = 19;
-    const accuracyVariation = Math.sin(alpha * Math.PI) * 8;
+  static calculateMetrics(alpha: number, lambda1: number, lambda2: number, beta: number): ConsciousnessMetric {
+    const BASE_ACCURACY = 19;
+    const ACCURACY_VARIATION_FACTOR = 8;
     
-    const baseCognitive = 22;
-    const cognitiveVariation = lambda1 * 10;
+    const BASE_COGNITIVE = 22;
+    const COGNITIVE_VARIATION_FACTOR = 10;
     
-    const baseEfficiency = 12;
-    const efficiencyVariation = lambda2 * 8;
+    const BASE_EFFICIENCY = 12;
+    const EFFICIENCY_VARIATION_FACTOR = 8;
     
-    const baseCoherence = 15;
-    const coherenceVariation = beta * 6;
+    const BASE_COHERENCE = 15;
+    const COHERENCE_VARIATION_FACTOR = 6;
+    
+    const accuracy = Math.max(0, Math.min(100, BASE_ACCURACY + Math.sin(alpha * Math.PI) * ACCURACY_VARIATION_FACTOR));
+    const cognitive = Math.max(0, Math.min(100, BASE_COGNITIVE + lambda1 * COGNITIVE_VARIATION_FACTOR));
+    const efficiency = Math.max(0, Math.min(100, BASE_EFFICIENCY + lambda2 * EFFICIENCY_VARIATION_FACTOR));
+    const coherence = Math.max(0, Math.min(100, BASE_COHERENCE + beta * COHERENCE_VARIATION_FACTOR));
     
     return {
-      accuracy: Math.max(0, Math.min(100, baseAccuracy + accuracyVariation)),
-      cognitive: Math.max(0, Math.min(100, baseCognitive + cognitiveVariation)),
-      efficiency: Math.max(0, Math.min(100, baseEfficiency + efficiencyVariation)),
-      coherence: Math.max(0, Math.min(100, baseCoherence + coherenceVariation)),
+      accuracy,
+      cognitive,
+      efficiency,
+      coherence,
       timestamp: new Date().toISOString()
     };
   }
@@ -42,15 +218,14 @@ class ConsciousnessEngine {
 export const resolvers = {
   Subscription: {
     metricsUpdated: {
-      subscribe: async function* () {
+      subscribe: async function* (): AsyncGenerator<{ metricsUpdated: ServicePerformanceMetric | null }> {
         while (true) {
           await new Promise(resolve => setTimeout(resolve, 5000));
           
-          // Generate random metrics
           const metrics = await metricsService.getMetrics('performance', 1);
           
           if (metrics && metrics.length > 0) {
-            yield { metricsUpdated: metrics[0] };
+            yield { metricsUpdated: transformMetric(metrics[0]) };
           } else {
             yield { metricsUpdated: null };
           }
@@ -59,7 +234,7 @@ export const resolvers = {
     },
     
     activityAdded: {
-      subscribe: async function* () {
+      subscribe: async function* (): AsyncGenerator<{ activityAdded: Activity | null }> {
         while (true) {
           await new Promise(resolve => setTimeout(resolve, 3000));
           
@@ -67,7 +242,7 @@ export const resolvers = {
           const activities = await activityService.getRecentActivities(1);
           
           if (activities && activities.length > 0) {
-            yield { activityAdded: activities[0] };
+            yield { activityAdded: activities[0] as Activity };
           } else {
             yield { activityAdded: null };
           }
@@ -76,7 +251,7 @@ export const resolvers = {
     },
     
     systemStatusChanged: {
-      subscribe: async function* () {
+      subscribe: async function* (): AsyncGenerator<{ systemStatusChanged: Partial<SystemStatus> | null }> {
         while (true) {
           await new Promise(resolve => setTimeout(resolve, 10000));
           
@@ -106,7 +281,7 @@ export const resolvers = {
     },
     
     userUpdated: {
-      subscribe: async function* (_: any, { userId }: { userId: string }) {
+      subscribe: async function* (_: any, { userId }: { userId: string }): AsyncGenerator<{ userUpdated: User | null }> {
         while (true) {
           await new Promise(resolve => setTimeout(resolve, 15000));
           
@@ -130,20 +305,20 @@ export const resolvers = {
   
   Query: {
     // Dashboard metrics
-    dashboardMetrics: async (_: any, { timeRange, metrics }: any) => {
+    dashboardMetrics: async (_: any, { timeRange, metrics }: { timeRange: string, metrics: string[] }): Promise<ServicePerformanceMetric[]> => {
       try {
         const cacheKey = `dashboard_metrics_${timeRange}_${JSON.stringify(metrics)}`;
         const cached = await cacheService.get(cacheKey);
         
         if (cached) {
-          return cached;
+          return cached as ServicePerformanceMetric[];
         }
 
         const metricsData = await metricsService.getMetrics('performance', 50);
-        const result = metricsData.slice(0, 20);
+        const result = metricsData.map(transformMetric);
 
-        await cacheService.set(cacheKey, result, 60); // Cache for 1 minute
-        return result;
+        await cacheService.set(cacheKey, result, 60);
+        return result.slice(0, 20);
       } catch (error) {
         logger.error('Error fetching dashboard metrics', error);
         throw error;
@@ -151,7 +326,7 @@ export const resolvers = {
     },
 
     // Recent activity (note: singular as per schema)
-    recentActivity: async (_: any, { limit = 10 }: any) => {
+    recentActivity: async (_: any, { limit = 10 }: { limit?: number }): Promise<Activity[]> => {
       try {
         const activities = await activityService.getRecentActivities(60);
         return activities.slice(0, limit);
@@ -162,21 +337,20 @@ export const resolvers = {
     },
 
     // System status
-    systemStatus: async () => {
+    systemStatus: async (): Promise<SystemStatus> => {
       try {
         const performanceStats = await performanceService.getPerformanceStats();
         const cacheStats = await cacheService.getStats();
         
         return {
-          cpu: Math.random() * 100, // Mock CPU usage percentage
-          memory: Math.random() * 100, // Mock memory usage percentage
-          storage: Math.random() * 100, // Mock storage usage percentage
-          network: Math.random() * 100, // Mock network usage percentage
+          cpu: Math.random() * 100,
+          memory: Math.random() * 100,
+          storage: Math.random() * 100,
+          network: Math.random() * 100,
           healthy: performanceStats.successRate > 0.95,
           lastUpdated: new Date().toISOString(),
-          // Legacy fields for backward compatibility
           status: 'healthy',
-          uptime: Date.now() - (24 * 60 * 60 * 1000), // 24 hours ago
+          uptime: Date.now() - (24 * 60 * 60 * 1000),
           performance: performanceStats,
           cache: cacheStats,
           timestamp: new Date().toISOString()
@@ -188,7 +362,7 @@ export const resolvers = {
     },
 
     // Users with pagination
-    users: async (_: any, { first = 20, after, filters, sortBy, sortOrder }: any) => {
+    users: async (_: any, { first = 20, after, filters, sortBy, sortOrder }: { first?: number, after?: string, filters?: any, sortBy?: string, sortOrder?: string }): Promise<UsersConnection> => {
       try {
         const users = await userService.getAllUsers();
         
@@ -216,7 +390,7 @@ export const resolvers = {
     },
 
     // Search functionality
-    search: async (_: any, { query, types, limit = 10 }: any) => {
+    search: async (_: any, { query, types, limit = 10 }: { query: string, types: string[], limit?: number }): Promise<any[]> => {
       try {
         const results: any[] = [];
         
@@ -243,7 +417,7 @@ export const resolvers = {
     },
 
     // Performance metrics
-    performanceMetrics: async (_: any, { timeRange }: any) => {
+    performanceMetrics: async (_: any, { timeRange }: { timeRange: string }): Promise<PerformanceMetrics> => {
       try {
         const stats = await performanceService.getPerformanceStats();
         const recentMetrics = await performanceService.getRealtimePerformance(60);
@@ -266,7 +440,7 @@ export const resolvers = {
           successRate: stats.successRate,
           totalRequests: stats.totalRequests,
           errorsCount: stats.errorsCount,
-          recentMetrics: recentMetrics.slice(0, 20)
+          recentMetrics: recentMetrics.slice(0, 20) as ServicePerformanceMetric[]
         };
       } catch (error) {
         logger.error('Error fetching performance metrics', error);
@@ -275,7 +449,7 @@ export const resolvers = {
     },
 
     // Critical metrics
-    criticalMetrics: async () => {
+    criticalMetrics: async (): Promise<CriticalMetrics> => {
       try {
         const performanceStats = await performanceService.getPerformanceStats();
         
@@ -291,7 +465,7 @@ export const resolvers = {
     },
 
     // Secondary data
-    secondaryData: async () => {
+    secondaryData: async (): Promise<SecondaryData> => {
       try {
         const users = await userService.getAllUsers();
         const activities = await activityService.getRecentActivities(30);
@@ -307,7 +481,7 @@ export const resolvers = {
       }
     },
 
-    user: async (_: any, { id }: any) => {
+    user: async (_: any, { id }: { id: string }): Promise<User | null> => {
       try {
         return await userService.getUser(id);
       } catch (error) {
@@ -317,30 +491,19 @@ export const resolvers = {
     },
 
     // Consciousness metrics
-    consciousnessMetrics: async (_: any, { alpha, lambda1, lambda2, beta }: any) => {
+    consciousnessMetrics: async (_: any, { alpha, lambda1, lambda2, beta }: { alpha: number, lambda1: number, lambda2: number, beta: number }): Promise<ConsciousnessMetrics> => {
       try {
         const cacheKey = `consciousness_${alpha}_${lambda1}_${lambda2}_${beta}`;
         const cached = await cacheService.get(cacheKey);
         
         if (cached) {
-          return cached;
+          return cached as ConsciousnessMetrics;
         }
 
-        const metrics = ConsciousnessEngine.calculateMetrics(alpha, lambda1, lambda2, beta);
-        
-        // Add some additional computed metrics
-        const result = {
-          ...metrics,
-          neuralActivity: Math.random() * 100,
-          synapticStrength: Math.random() * 100,
-          networkTopology: {
-            nodes: Math.floor(Math.random() * 1000) + 500,
-            connections: Math.floor(Math.random() * 5000) + 2000,
-            clusters: Math.floor(Math.random() * 50) + 10
-          }
-        };
+        const baseMetrics = ConsciousnessEngine.calculateMetrics(alpha, lambda1, lambda2, beta);
+        const result = createConsciousnessMetrics(baseMetrics);
 
-        await cacheService.set(cacheKey, result, 30); // Cache for 30 seconds
+        await cacheService.set(cacheKey, result, 30);
         return result;
       } catch (error) {
         logger.error('Error calculating consciousness metrics', error);
@@ -349,7 +512,7 @@ export const resolvers = {
     },
 
     // Consciousness performance
-    consciousnessPerformance: async (_: any, { timeRange }: any) => {
+    consciousnessPerformance: async (_: any, { timeRange }: { timeRange: string }): Promise<ConsciousnessPerformance> => {
       try {
         const history = [];
         const now = new Date();
@@ -379,7 +542,7 @@ export const resolvers = {
     },
 
     // Consciousness insights
-    consciousnessInsights: async () => {
+    consciousnessInsights: async (): Promise<ConsciousnessInsights> => {
       try {
         return {
           totalNeurons: Math.floor(Math.random() * 1000) + 500,
@@ -401,7 +564,7 @@ export const resolvers = {
 
   Mutation: {
     // Update user
-    updateUser: async (_: any, { id, input }: any) => {
+    updateUser: async (_: any, { id, input }: { id: string, input: any }): Promise<{ success: boolean, user: User | null, message: string }> => {
       try {
         const updatedUser = await userService.updateUser(id, input);
         
@@ -433,7 +596,7 @@ export const resolvers = {
     },
 
     // Bulk update users
-    bulkUpdateUsers: async (_: any, { operations }: any) => {
+    bulkUpdateUsers: async (_: any, { operations }: { operations: { id: string, input: any }[] }): Promise<{ success: boolean, results: { id: string, success: boolean, user: User | null }[], totalProcessed: number, successCount: number }> => {
       try {
         const results: any[] = [];
         
@@ -464,7 +627,7 @@ export const resolvers = {
     },
 
     // Invalidate cache
-    invalidateCache: async (_: any, { keys }: any) => {
+    invalidateCache: async (_: any, { keys }: { keys: string[] }): Promise<boolean> => {
       try {
         if (keys && keys.length > 0) {
           const results = await Promise.all(
@@ -482,7 +645,7 @@ export const resolvers = {
     },
 
     // Warm cache
-    warmCache: async (_: any, { queries }: any) => {
+    warmCache: async (_: any, { queries }: { queries: string[] }): Promise<boolean> => {
       try {
         // Mock cache warming - in real implementation, this would pre-execute queries
         logger.info(`Warming cache for ${queries.length} queries`);
@@ -494,7 +657,7 @@ export const resolvers = {
     },
 
     // Update consciousness parameters
-    updateConsciousnessParameters: async (_: any, { alpha, lambda1, lambda2, beta, realTime }: any) => {
+    updateConsciousnessParameters: async (_: any, { alpha, lambda1, lambda2, beta, realTime }: { alpha: number, lambda1: number, lambda2: number, beta: number, realTime?: boolean }): Promise<{ success: boolean, parameters: { alpha: number, lambda1: number, lambda2: number, beta: number } | null, metrics: ConsciousnessMetric | null, message: string }> => {
       try {
         const metrics = ConsciousnessEngine.calculateMetrics(alpha, lambda1, lambda2, beta);
         
