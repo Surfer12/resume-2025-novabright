@@ -19,7 +19,7 @@ const WS_ENDPOINT = process.env.VITE_WS_ENDPOINT || 'wss://api.dashboard.com/gra
 // Performance optimization: Persisted queries for reduced bandwidth
 const persistedQueriesLink = createPersistedQueryLink({
   sha256,
-  useGETForHashedQueries: true, // Use GET for cached queries (better CDN caching)
+  useGETForHashedQueries: false, // Use POST for persisted queries to be compatible with batchHttpLink
 });
 
 // Batch HTTP link for query batching (reduces network round trips)
@@ -78,7 +78,7 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) 
     console.error('Network error:', networkError);
     
     // Retry logic for network errors
-    if (networkError.statusCode === 429) {
+    if (networkError && 'statusCode' in networkError && (networkError as any).statusCode === 429) {
       // Rate limited - implement exponential backoff
       return forward(operation);
     }
@@ -206,7 +206,7 @@ export const queryPerformanceMonitor = {
         console.info(`GraphQL ${operationName}: ${duration.toFixed(2)}ms`);
         
         // Send metrics to monitoring service
-        if (window.gtag) {
+        if (typeof window.gtag === 'function') {
           window.gtag('event', 'graphql_query', {
             event_category: 'performance',
             event_label: operationName,
@@ -235,3 +235,10 @@ export const warmCache = async (queries: Array<{ query: any; variables?: any }>)
   await Promise.allSettled(promises);
   console.info(`Cache warmed with ${queries.length} queries`);
 };
+
+// Extend the Window interface to include gtag
+declare global {
+  interface Window {
+    gtag?: (event: string, action: string, params: Record<string, any>) => void;
+  }
+}
