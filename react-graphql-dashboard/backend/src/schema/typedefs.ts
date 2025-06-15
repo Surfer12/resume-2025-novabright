@@ -541,8 +541,8 @@ export const typeDefs = `
     systemStatusChanged: SystemStatus
     
     # User-specific subscriptions
-    userUpdated(userId: ID!): User!
-
+    userUpdated(userId: ID!): User
+    
     # Consciousness subscriptions
     consciousnessUpdated: ConsciousnessMetrics
     neuralNetworkUpdated: NeuralNetworkState

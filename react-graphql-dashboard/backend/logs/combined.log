@@ -3018,3 +3018,707 @@
     }
   ]
 }
+2025-06-15T17:48:03.757Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:48:03.760Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:48:03.762Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:48:03.763Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:48:03.763Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:48:03.786Z [[31merror[39m]: [31muncaughtException: ⨯ Unable to compile TypeScript:[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m39[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m39[0m       subscribe: () => pubsub.asyncIterator([EVENTS.METRICS_UPDATED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m43[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m43[0m       subscribe: () => pubsub.asyncIterator([EVENTS.ACTIVITY_ADDED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m47[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m47[0m       subscribe: () => pubsub.asyncIterator([EVENTS.SYSTEM_STATUS_CHANGED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m51[0m:[93m19[0m - [91merror[0m[90m TS7006: [0mParameter '_' implicitly has an 'any' type.[39m
+
+[31m[7m51[0m       subscribe: (_, { userId }) => {[39m
+[31m[7m  [0m [91m                  ~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m51[0m:[93m24[0m - [91merror[0m[90m TS7031: [0mBinding element 'userId' implicitly has an 'any' type.[39m
+
+[31m[7m51[0m       subscribe: (_, { userId }) => {[39m
+[31m[7m  [0m [91m                       ~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m53[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m53[0m         return pubsub.asyncIterator([`${EVENTS.USER_UPDATED}.${userId}`]);[39m
+[31m[7m  [0m [91m                      ~~~~~~~~~~~~~[0m[39m
+
+[31mTSError: ⨯ Unable to compile TypeScript:[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m39[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m39[0m       subscribe: () => pubsub.asyncIterator([EVENTS.METRICS_UPDATED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m43[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m43[0m       subscribe: () => pubsub.asyncIterator([EVENTS.ACTIVITY_ADDED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m47[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m47[0m       subscribe: () => pubsub.asyncIterator([EVENTS.SYSTEM_STATUS_CHANGED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m51[0m:[93m19[0m - [91merror[0m[90m TS7006: [0mParameter '_' implicitly has an 'any' type.[39m
+
+[31m[7m51[0m       subscribe: (_, { userId }) => {[39m
+[31m[7m  [0m [91m                  ~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m51[0m:[93m24[0m - [91merror[0m[90m TS7031: [0mBinding element 'userId' implicitly has an 'any' type.[39m
+
+[31m[7m51[0m       subscribe: (_, { userId }) => {[39m
+[31m[7m  [0m [91m                       ~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m53[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m53[0m         return pubsub.asyncIterator([`${EVENTS.USER_UPDATED}.${userId}`]);[39m
+[31m[7m  [0m [91m                      ~~~~~~~~~~~~~[0m[39m
+
+[31m    at createTSError (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:859:12)[39m
+[31m    at reportTSError (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:863:19)[39m
+[31m    at getOutput (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1077:36)[39m
+[31m    at Object.compile (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1433:41)[39m
+[31m    at Module.m._compile (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1617:30)[39m
+[31m    at node:internal/modules/cjs/loader:1706:10[39m
+[31m    at Object.require.extensions.<computed> [as .ts] (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1621:12)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1289:32)[39m
+[31m    at Function._load (node:internal/modules/cjs/loader:1108:12)[39m
+[31m    at TracingChannel.traceSync (node:diagnostics_channel:322:14)[39m {
+  "error": {
+    "diagnosticCodes": [
+      2339,
+      2339,
+      2339,
+      7006,
+      7031,
+      2339
+    ]
+  },
+  "stack": "TSError: ⨯ Unable to compile TypeScript:\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m39\u001b[0m:\u001b[93m31\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.\n\n\u001b[7m39\u001b[0m       subscribe: () => pubsub.asyncIterator([EVENTS.METRICS_UPDATED]),\n\u001b[7m  \u001b[0m \u001b[91m                              ~~~~~~~~~~~~~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m43\u001b[0m:\u001b[93m31\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.\n\n\u001b[7m43\u001b[0m       subscribe: () => pubsub.asyncIterator([EVENTS.ACTIVITY_ADDED]),\n\u001b[7m  \u001b[0m \u001b[91m                              ~~~~~~~~~~~~~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m47\u001b[0m:\u001b[93m31\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.\n\n\u001b[7m47\u001b[0m       subscribe: () => pubsub.asyncIterator([EVENTS.SYSTEM_STATUS_CHANGED]),\n\u001b[7m  \u001b[0m \u001b[91m                              ~~~~~~~~~~~~~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m51\u001b[0m:\u001b[93m19\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS7006: \u001b[0mParameter '_' implicitly has an 'any' type.\n\n\u001b[7m51\u001b[0m       subscribe: (_, { userId }) => {\n\u001b[7m  \u001b[0m \u001b[91m                  ~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m51\u001b[0m:\u001b[93m24\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS7031: \u001b[0mBinding element 'userId' implicitly has an 'any' type.\n\n\u001b[7m51\u001b[0m       subscribe: (_, { userId }) => {\n\u001b[7m  \u001b[0m \u001b[91m                       ~~~~~~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m53\u001b[0m:\u001b[93m23\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.\n\n\u001b[7m53\u001b[0m         return pubsub.asyncIterator([`${EVENTS.USER_UPDATED}.${userId}`]);\n\u001b[7m  \u001b[0m \u001b[91m                      ~~~~~~~~~~~~~\u001b[0m\n\n    at createTSError (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:859:12)\n    at reportTSError (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:863:19)\n    at getOutput (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1077:36)\n    at Object.compile (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1433:41)\n    at Module.m._compile (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1617:30)\n    at node:internal/modules/cjs/loader:1706:10\n    at Object.require.extensions.<computed> [as .ts] (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1621:12)\n    at Module.load (node:internal/modules/cjs/loader:1289:32)\n    at Function._load (node:internal/modules/cjs/loader:1108:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 10:48:03 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 60866,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 292257792,
+      "heapTotal": 148422656,
+      "heapUsed": 124190336,
+      "external": 7880984,
+      "arrayBuffers": 4900209
+    }
+  },
+  "os": {
+    "loadavg": [
+      9.45361328125,
+      8.24560546875,
+      7.5673828125
+    ],
+    "uptime": 9560
+  },
+  "trace": [
+    {
+      "column": 12,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "createTSError",
+      "line": 859,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 19,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "reportTSError",
+      "line": 863,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 36,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "getOutput",
+      "line": 1077,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 41,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "Object.compile",
+      "line": 1433,
+      "method": "compile",
+      "native": false
+    },
+    {
+      "column": 30,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "Module.m._compile",
+      "line": 1617,
+      "method": "m._compile",
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/modules/cjs/loader",
+      "function": null,
+      "line": 1706,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "Object.require.extensions.<computed> [as .ts]",
+      "line": 1621,
+      "method": "require.extensions.<computed> [as .ts]",
+      "native": false
+    },
+    {
+      "column": 32,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Module.load",
+      "line": 1289,
+      "method": "load",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Function._load",
+      "line": 1108,
+      "method": "_load",
+      "native": false
+    },
+    {
+      "column": 14,
+      "file": "node:diagnostics_channel",
+      "function": "TracingChannel.traceSync",
+      "line": 322,
+      "method": "traceSync",
+      "native": false
+    }
+  ]
+}
+2025-06-15T17:49:07.149Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:49:07.150Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:49:07.151Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:49:07.151Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:49:07.151Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:49:07.164Z [[31merror[39m]: [31muncaughtException: ⨯ Unable to compile TypeScript:[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m39[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m39[0m       subscribe: () => pubsub.asyncIterator([EVENTS.METRICS_UPDATED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m43[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m43[0m       subscribe: () => pubsub.asyncIterator([EVENTS.ACTIVITY_ADDED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m47[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m47[0m       subscribe: () => pubsub.asyncIterator([EVENTS.SYSTEM_STATUS_CHANGED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m51[0m:[93m19[0m - [91merror[0m[90m TS7006: [0mParameter '_' implicitly has an 'any' type.[39m
+
+[31m[7m51[0m       subscribe: (_, { userId }) => {[39m
+[31m[7m  [0m [91m                  ~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m51[0m:[93m24[0m - [91merror[0m[90m TS7031: [0mBinding element 'userId' implicitly has an 'any' type.[39m
+
+[31m[7m51[0m       subscribe: (_, { userId }) => {[39m
+[31m[7m  [0m [91m                       ~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m53[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m53[0m         return pubsub.asyncIterator([`${EVENTS.USER_UPDATED}.${userId}`]);[39m
+[31m[7m  [0m [91m                      ~~~~~~~~~~~~~[0m[39m
+
+[31mTSError: ⨯ Unable to compile TypeScript:[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m39[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m39[0m       subscribe: () => pubsub.asyncIterator([EVENTS.METRICS_UPDATED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m43[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m43[0m       subscribe: () => pubsub.asyncIterator([EVENTS.ACTIVITY_ADDED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m47[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m47[0m       subscribe: () => pubsub.asyncIterator([EVENTS.SYSTEM_STATUS_CHANGED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m51[0m:[93m19[0m - [91merror[0m[90m TS7006: [0mParameter '_' implicitly has an 'any' type.[39m
+
+[31m[7m51[0m       subscribe: (_, { userId }) => {[39m
+[31m[7m  [0m [91m                  ~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m51[0m:[93m24[0m - [91merror[0m[90m TS7031: [0mBinding element 'userId' implicitly has an 'any' type.[39m
+
+[31m[7m51[0m       subscribe: (_, { userId }) => {[39m
+[31m[7m  [0m [91m                       ~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m53[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m53[0m         return pubsub.asyncIterator([`${EVENTS.USER_UPDATED}.${userId}`]);[39m
+[31m[7m  [0m [91m                      ~~~~~~~~~~~~~[0m[39m
+
+[31m    at createTSError (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:859:12)[39m
+[31m    at reportTSError (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:863:19)[39m
+[31m    at getOutput (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1077:36)[39m
+[31m    at Object.compile (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1433:41)[39m
+[31m    at Module.m._compile (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1617:30)[39m
+[31m    at node:internal/modules/cjs/loader:1706:10[39m
+[31m    at Object.require.extensions.<computed> [as .ts] (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1621:12)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1289:32)[39m
+[31m    at Function._load (node:internal/modules/cjs/loader:1108:12)[39m
+[31m    at TracingChannel.traceSync (node:diagnostics_channel:322:14)[39m {
+  "error": {
+    "diagnosticCodes": [
+      2339,
+      2339,
+      2339,
+      7006,
+      7031,
+      2339
+    ]
+  },
+  "stack": "TSError: ⨯ Unable to compile TypeScript:\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m39\u001b[0m:\u001b[93m31\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.\n\n\u001b[7m39\u001b[0m       subscribe: () => pubsub.asyncIterator([EVENTS.METRICS_UPDATED]),\n\u001b[7m  \u001b[0m \u001b[91m                              ~~~~~~~~~~~~~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m43\u001b[0m:\u001b[93m31\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.\n\n\u001b[7m43\u001b[0m       subscribe: () => pubsub.asyncIterator([EVENTS.ACTIVITY_ADDED]),\n\u001b[7m  \u001b[0m \u001b[91m                              ~~~~~~~~~~~~~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m47\u001b[0m:\u001b[93m31\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.\n\n\u001b[7m47\u001b[0m       subscribe: () => pubsub.asyncIterator([EVENTS.SYSTEM_STATUS_CHANGED]),\n\u001b[7m  \u001b[0m \u001b[91m                              ~~~~~~~~~~~~~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m51\u001b[0m:\u001b[93m19\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS7006: \u001b[0mParameter '_' implicitly has an 'any' type.\n\n\u001b[7m51\u001b[0m       subscribe: (_, { userId }) => {\n\u001b[7m  \u001b[0m \u001b[91m                  ~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m51\u001b[0m:\u001b[93m24\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS7031: \u001b[0mBinding element 'userId' implicitly has an 'any' type.\n\n\u001b[7m51\u001b[0m       subscribe: (_, { userId }) => {\n\u001b[7m  \u001b[0m \u001b[91m                       ~~~~~~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m53\u001b[0m:\u001b[93m23\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.\n\n\u001b[7m53\u001b[0m         return pubsub.asyncIterator([`${EVENTS.USER_UPDATED}.${userId}`]);\n\u001b[7m  \u001b[0m \u001b[91m                      ~~~~~~~~~~~~~\u001b[0m\n\n    at createTSError (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:859:12)\n    at reportTSError (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:863:19)\n    at getOutput (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1077:36)\n    at Object.compile (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1433:41)\n    at Module.m._compile (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1617:30)\n    at node:internal/modules/cjs/loader:1706:10\n    at Object.require.extensions.<computed> [as .ts] (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1621:12)\n    at Module.load (node:internal/modules/cjs/loader:1289:32)\n    at Function._load (node:internal/modules/cjs/loader:1108:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 10:49:07 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 61196,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 301088768,
+      "heapTotal": 148160512,
+      "heapUsed": 123764696,
+      "external": 7880960,
+      "arrayBuffers": 4900185
+    }
+  },
+  "os": {
+    "loadavg": [
+      7.82666015625,
+      7.97802734375,
+      7.50927734375
+    ],
+    "uptime": 9624
+  },
+  "trace": [
+    {
+      "column": 12,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "createTSError",
+      "line": 859,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 19,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "reportTSError",
+      "line": 863,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 36,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "getOutput",
+      "line": 1077,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 41,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "Object.compile",
+      "line": 1433,
+      "method": "compile",
+      "native": false
+    },
+    {
+      "column": 30,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "Module.m._compile",
+      "line": 1617,
+      "method": "m._compile",
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/modules/cjs/loader",
+      "function": null,
+      "line": 1706,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "Object.require.extensions.<computed> [as .ts]",
+      "line": 1621,
+      "method": "require.extensions.<computed> [as .ts]",
+      "native": false
+    },
+    {
+      "column": 32,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Module.load",
+      "line": 1289,
+      "method": "load",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Function._load",
+      "line": 1108,
+      "method": "_load",
+      "native": false
+    },
+    {
+      "column": 14,
+      "file": "node:diagnostics_channel",
+      "function": "TracingChannel.traceSync",
+      "line": 322,
+      "method": "traceSync",
+      "native": false
+    }
+  ]
+}
+2025-06-15T17:49:09.992Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:49:09.994Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:49:09.994Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:49:09.995Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:49:09.995Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:49:10.006Z [[31merror[39m]: [31muncaughtException: ⨯ Unable to compile TypeScript:[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m39[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m39[0m       subscribe: () => pubsub.asyncIterator([EVENTS.METRICS_UPDATED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m43[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m43[0m       subscribe: () => pubsub.asyncIterator([EVENTS.ACTIVITY_ADDED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m47[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m47[0m       subscribe: () => pubsub.asyncIterator([EVENTS.SYSTEM_STATUS_CHANGED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m51[0m:[93m19[0m - [91merror[0m[90m TS7006: [0mParameter '_' implicitly has an 'any' type.[39m
+
+[31m[7m51[0m       subscribe: (_, { userId }) => {[39m
+[31m[7m  [0m [91m                  ~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m51[0m:[93m24[0m - [91merror[0m[90m TS7031: [0mBinding element 'userId' implicitly has an 'any' type.[39m
+
+[31m[7m51[0m       subscribe: (_, { userId }) => {[39m
+[31m[7m  [0m [91m                       ~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m53[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m53[0m         return pubsub.asyncIterator([`${EVENTS.USER_UPDATED}.${userId}`]);[39m
+[31m[7m  [0m [91m                      ~~~~~~~~~~~~~[0m[39m
+
+[31mTSError: ⨯ Unable to compile TypeScript:[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m39[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m39[0m       subscribe: () => pubsub.asyncIterator([EVENTS.METRICS_UPDATED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m43[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m43[0m       subscribe: () => pubsub.asyncIterator([EVENTS.ACTIVITY_ADDED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m47[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m47[0m       subscribe: () => pubsub.asyncIterator([EVENTS.SYSTEM_STATUS_CHANGED]),[39m
+[31m[7m  [0m [91m                              ~~~~~~~~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m51[0m:[93m19[0m - [91merror[0m[90m TS7006: [0mParameter '_' implicitly has an 'any' type.[39m
+
+[31m[7m51[0m       subscribe: (_, { userId }) => {[39m
+[31m[7m  [0m [91m                  ~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m51[0m:[93m24[0m - [91merror[0m[90m TS7031: [0mBinding element 'userId' implicitly has an 'any' type.[39m
+
+[31m[7m51[0m       subscribe: (_, { userId }) => {[39m
+[31m[7m  [0m [91m                       ~~~~~~[0m[39m
+[31m[96msrc/resolvers/subscriptions.ts[0m:[93m53[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.[39m
+
+[31m[7m53[0m         return pubsub.asyncIterator([`${EVENTS.USER_UPDATED}.${userId}`]);[39m
+[31m[7m  [0m [91m                      ~~~~~~~~~~~~~[0m[39m
+
+[31m    at createTSError (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:859:12)[39m
+[31m    at reportTSError (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:863:19)[39m
+[31m    at getOutput (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1077:36)[39m
+[31m    at Object.compile (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1433:41)[39m
+[31m    at Module.m._compile (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1617:30)[39m
+[31m    at node:internal/modules/cjs/loader:1706:10[39m
+[31m    at Object.require.extensions.<computed> [as .ts] (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1621:12)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1289:32)[39m
+[31m    at Function._load (node:internal/modules/cjs/loader:1108:12)[39m
+[31m    at TracingChannel.traceSync (node:diagnostics_channel:322:14)[39m {
+  "error": {
+    "diagnosticCodes": [
+      2339,
+      2339,
+      2339,
+      7006,
+      7031,
+      2339
+    ]
+  },
+  "stack": "TSError: ⨯ Unable to compile TypeScript:\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m39\u001b[0m:\u001b[93m31\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.\n\n\u001b[7m39\u001b[0m       subscribe: () => pubsub.asyncIterator([EVENTS.METRICS_UPDATED]),\n\u001b[7m  \u001b[0m \u001b[91m                              ~~~~~~~~~~~~~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m43\u001b[0m:\u001b[93m31\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.\n\n\u001b[7m43\u001b[0m       subscribe: () => pubsub.asyncIterator([EVENTS.ACTIVITY_ADDED]),\n\u001b[7m  \u001b[0m \u001b[91m                              ~~~~~~~~~~~~~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m47\u001b[0m:\u001b[93m31\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.\n\n\u001b[7m47\u001b[0m       subscribe: () => pubsub.asyncIterator([EVENTS.SYSTEM_STATUS_CHANGED]),\n\u001b[7m  \u001b[0m \u001b[91m                              ~~~~~~~~~~~~~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m51\u001b[0m:\u001b[93m19\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS7006: \u001b[0mParameter '_' implicitly has an 'any' type.\n\n\u001b[7m51\u001b[0m       subscribe: (_, { userId }) => {\n\u001b[7m  \u001b[0m \u001b[91m                  ~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m51\u001b[0m:\u001b[93m24\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS7031: \u001b[0mBinding element 'userId' implicitly has an 'any' type.\n\n\u001b[7m51\u001b[0m       subscribe: (_, { userId }) => {\n\u001b[7m  \u001b[0m \u001b[91m                       ~~~~~~\u001b[0m\n\u001b[96msrc/resolvers/subscriptions.ts\u001b[0m:\u001b[93m53\u001b[0m:\u001b[93m23\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2339: \u001b[0mProperty 'asyncIterator' does not exist on type 'PubSub<Record<string, never>>'.\n\n\u001b[7m53\u001b[0m         return pubsub.asyncIterator([`${EVENTS.USER_UPDATED}.${userId}`]);\n\u001b[7m  \u001b[0m \u001b[91m                      ~~~~~~~~~~~~~\u001b[0m\n\n    at createTSError (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:859:12)\n    at reportTSError (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:863:19)\n    at getOutput (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1077:36)\n    at Object.compile (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1433:41)\n    at Module.m._compile (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1617:30)\n    at node:internal/modules/cjs/loader:1706:10\n    at Object.require.extensions.<computed> [as .ts] (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts:1621:12)\n    at Module.load (node:internal/modules/cjs/loader:1289:32)\n    at Function._load (node:internal/modules/cjs/loader:1108:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:322:14)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 10:49:10 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 61258,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 299876352,
+      "heapTotal": 148422656,
+      "heapUsed": 124769944,
+      "external": 7872935,
+      "arrayBuffers": 4892160
+    }
+  },
+  "os": {
+    "loadavg": [
+      7.60009765625,
+      7.92822265625,
+      7.494140625
+    ],
+    "uptime": 9627
+  },
+  "trace": [
+    {
+      "column": 12,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "createTSError",
+      "line": 859,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 19,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "reportTSError",
+      "line": 863,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 36,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "getOutput",
+      "line": 1077,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 41,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "Object.compile",
+      "line": 1433,
+      "method": "compile",
+      "native": false
+    },
+    {
+      "column": 30,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "Module.m._compile",
+      "line": 1617,
+      "method": "m._compile",
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/modules/cjs/loader",
+      "function": null,
+      "line": 1706,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/ts-node/src/index.ts",
+      "function": "Object.require.extensions.<computed> [as .ts]",
+      "line": 1621,
+      "method": "require.extensions.<computed> [as .ts]",
+      "native": false
+    },
+    {
+      "column": 32,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Module.load",
+      "line": 1289,
+      "method": "load",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Function._load",
+      "line": 1108,
+      "method": "_load",
+      "native": false
+    },
+    {
+      "column": 14,
+      "file": "node:diagnostics_channel",
+      "function": "TracingChannel.traceSync",
+      "line": 322,
+      "method": "traceSync",
+      "native": false
+    }
+  ]
+}
+2025-06-15T17:52:55.071Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:52:55.072Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:52:55.073Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:52:55.073Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:52:55.073Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:52:55.080Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:52:55.081Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:52:55.081Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:52:55.113Z [[32minfo[39m]: [32m🚀 GraphQL Server ready at http://localhost:4000/[39m
+2025-06-15T17:52:55.113Z [[32minfo[39m]: [32m🧠 Consciousness visualization endpoints available[39m
+2025-06-15T17:52:55.113Z [[32minfo[39m]: [32m📊 Performance monitoring enabled[39m
+2025-06-15T17:52:55.114Z [[32minfo[39m]: [32mSubscription simulation started[39m
+2025-06-15T17:52:55.069Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:52:55.071Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:52:55.072Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:52:55.072Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T17:52:55.072Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T17:52:55.080Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T17:52:55.081Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T17:52:55.081Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T17:52:55.116Z [[31merror[39m]: [31muncaughtException: listen EADDRINUSE: address already in use :::4000[39m
+[31mError: listen EADDRINUSE: address already in use :::4000[39m
+[31m    at Server.setupListenHandle [as _listen2] (node:net:1937:16)[39m
+[31m    at listenInCluster (node:net:1994:12)[39m
+[31m    at Server.listen (node:net:2099:7)[39m
+[31m    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16[39m
+[31m    at new Promise (<anonymous>)[39m
+[31m    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)[39m
+[31m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:84:21)[39m {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -48,
+    "syscall": "listen",
+    "address": "::",
+    "port": 4000
+  },
+  "stack": "Error: listen EADDRINUSE: address already in use :::4000\n    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n    at listenInCluster (node:net:1994:12)\n    at Server.listen (node:net:2099:7)\n    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16\n    at new Promise (<anonymous>)\n    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:84:21)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 10:52:55 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 62318,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 299597824,
+      "heapTotal": 153321472,
+      "heapUsed": 118881760,
+      "external": 7883506,
+      "arrayBuffers": 4884287
+    }
+  },
+  "os": {
+    "loadavg": [
+      7.67236328125,
+      7.43603515625,
+      7.33837890625
+    ],
+    "uptime": 9852
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1937,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1994,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2099,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": null,
+      "line": 67,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": null,
+      "file": null,
+      "function": "new Promise",
+      "line": null,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 9,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": "startStandaloneServer",
+      "line": 66,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/process/task_queues",
+      "function": "processTicksAndRejections",
+      "line": 105,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts",
+      "function": "async startServer",
+      "line": 84,
+      "method": null,
+      "native": false
+    }
+  ]
+}

@@ -20,17 +20,17 @@ const SystemStatus = React.lazy(() => import('./SystemStatus'));
 interface DashboardMetricFromQuery {
   id: string;
   type?: string; // e.g., 'CPU', 'MEMORY'
-  value: string | number | null;
-  change: number | null;
-  changePercent: number | null;
-  period: string | null;
+  value?: string | number;
+  change?: number;
+  changePercent?: number;
+  period?: string;
   timestamp: string | number;
-  trend: Array<{ timestamp: string | number; value: number | null }> | null;
+  trend?: Array<{ timestamp: string | number; value?: number }>;
   __typename?: 'Metrics';
 }
 
-interface ProcessedDashboardMetric extends DashboardMetricFromQuery {
-  trend: Array<{ timestamp: string | number; value: number | null }>; // Ensure trend is an array
+interface ProcessedDashboardMetric extends Omit<DashboardMetricFromQuery, 'trend'> {
+  trend: Array<{ timestamp: string | number; value?: number }>; // Ensure trend is an array
   changeIndicator: 'up' | 'down' | 'stable';
 }
 
@@ -95,6 +95,8 @@ const Dashboard: React.FC<DashboardProps> = ({
         // Update cache with new metrics
         console.info('Metrics updated via subscription', data.data.metricsUpdated);
         // Add logic to update Apollo cache for GET_DASHBOARD_DATA query if necessary
+      } else {
+        console.info('Received null metrics update from subscription');
       }
     },
     context: {
@@ -108,6 +110,8 @@ const Dashboard: React.FC<DashboardProps> = ({
         console.info('Activity added via subscription', data.data.activityAdded);
         // Add logic to update Apollo cache for GET_DASHBOARD_DATA query if necessary
         // e.g., update recentActivity
+      } else {
+        console.info('Received null activity update from subscription');
       }
     },
     context: {
@@ -121,6 +125,8 @@ const Dashboard: React.FC<DashboardProps> = ({
         console.info('System status changed via subscription', data.data.systemStatusChanged);
         // Add logic to update Apollo cache for GET_DASHBOARD_DATA query if necessary
         // e.g., update systemStatus
+      } else {
+        console.info('Received null system status update from subscription');
       }
     },
     context: {
@@ -137,7 +143,7 @@ const Dashboard: React.FC<DashboardProps> = ({
     return rawMetrics.map((metric: DashboardMetricFromQuery) => ({
       ...metric,
       trend: metric.trend || [],
-      changeIndicator: metric.changePercent != null ? (metric.changePercent > 0 ? 'up' : metric.changePercent < 0 ? 'down' : 'stable') : 'stable',
+      changeIndicator: metric.changePercent !== undefined ? (metric.changePercent > 0 ? 'up' : metric.changePercent < 0 ? 'down' : 'stable') : 'stable',
     }));
   }, [dashboardData?.dashboardMetrics]);
 

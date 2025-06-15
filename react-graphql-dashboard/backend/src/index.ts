@@ -2,17 +2,24 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import { ApolloServerPluginCacheControl } from '@apollo/server/plugin/cacheControl';
-import { makeExecutableSchema } from '@graphql-tools/schema';
+import { createServer } from 'http';
+import express from 'express';
 import { WebSocketServer } from 'ws';
 import { useServer } from 'graphql-ws/lib/use/ws';
-import express from 'express';
-import http from 'http';
+import { makeExecutableSchema } from '@graphql-tools/schema';
 import cors from 'cors';
-import bodyParser from 'body-parser';
 import { typeDefs } from './schema/typedefs';
 import { resolvers, createContext } from './resolvers';
-import { consciousnessResolvers } from './resolvers/consciousness';
 import { logger } from './utils/logger';
+import { subscriptionResolvers, startSubscriptionSimulation } from './resolvers/subscriptions';
+import { UserService } from './services/UserService';
+import { MetricsService } from './services/MetricsService';
+import { ActivityService } from './services/ActivityService';
+
+// Initialize services
+const userService = new UserService();
+const metricsService = new MetricsService();
+const activityService = new ActivityService();
 
 // Performance monitoring for development
 const performanceMetrics = {
@@ -25,62 +32,54 @@ const performanceMetrics = {
 const mergedResolvers = {
   Query: {
     ...resolvers.Query,
-    ...consciousnessResolvers.Query,
   },
   Mutation: {
     ...resolvers.Mutation,
-    ...consciousnessResolvers.Mutation,
   },
   Subscription: {
-    ...resolvers.Subscription,
-    ...consciousnessResolvers.Subscription,
+    ...subscriptionResolvers.Subscription,
   },
 };
 
+// Create executable schema
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers: mergedResolvers,
+});
+
 async function startServer() {
   try {
-    // Create Express app and HTTP server
+    // Create Express app
     const app = express();
-    const httpServer = http.createServer(app);
-
+    
+    // Create HTTP server
+    const httpServer = createServer(app);
+    
     // Create WebSocket server for subscriptions
     const wsServer = new WebSocketServer({
       server: httpServer,
       path: '/graphql',
     });
-
-    // Create executable schema
-    const schema = makeExecutableSchema({
-      typeDefs,
-      resolvers: mergedResolvers,
-    });
-
-    // Set up WebSocket server for subscriptions
-    const serverCleanup = useServer({ 
-      schema,
-      onConnect: async (ctx) => {
-        logger.info('Client connected to WebSocket');
-        return true;
+    
+    // Set up WebSocket server for GraphQL subscriptions
+    const serverCleanup = useServer(
+      {
+        schema,
+        context: async (ctx: any) => {
+          // Create context for WebSocket connections
+          return createContext({ req: ctx.extra.request });
+        },
       },
-      onDisconnect: (ctx, code, reason) => {
-        logger.info(`Client disconnected from WebSocket: ${code} - ${reason}`);
-      },
-      onSubscribe: (ctx, msg) => {
-        logger.info(`Subscription started: ${msg.payload.operationName}`);
-        return true;
-      },
-      onError: (ctx, msg, errors) => {
-        logger.error('Subscription error', { errors });
-      },
-    }, wsServer);
+      wsServer
+    );
 
     // Initialize Apollo Server with optimizations
     const server = new ApolloServer({
       schema,
       plugins: [
-        // Proper HTTP server drain plugin
+        // Drain HTTP server plugin
         ApolloServerPluginDrainHttpServer({ httpServer }),
-        // Cleanup for WebSocket server
+        // Clean up WebSocket server
         {
           async serverWillStart() {
             return {
@@ -129,26 +128,37 @@ async function startServer() {
       introspection: true,
     });
 
-    // Start the Apollo Server
+    // Start Apollo Server
     await server.start();
 
-    // Apply Express middleware
-    app.use(
-      '/graphql',
-      cors<cors.CorsRequest>(),
-      bodyParser.json(),
-      expressMiddleware(server, {
-        context: createContext,
-      })
-    );
+    // Apply CORS middleware
+    app.use(cors({
+      origin: ['http://localhost:3000', 'http://localhost:5173'], // Allow both Vite and CRA dev servers
+      credentials: true,
+    }));
 
-    // Start the HTTP server
-    await new Promise<void>((resolve) => httpServer.listen({ port: 4000 }, resolve));
+    // Apply Express JSON middleware
+    app.use('/graphql', express.json());
 
-    logger.info(`🚀 GraphQL Server ready at http://localhost:4000/graphql`);
-    logger.info(`🔌 WebSocket server ready at ws://localhost:4000/graphql`);
-    logger.info('🧠 Consciousness visualization endpoints available');
-    logger.info('📊 Performance monitoring enabled');
+    // Apply Apollo GraphQL middleware
+    app.use('/graphql', expressMiddleware(server, {
+      context: async ({ req }) => {
+        return createContext({ req });
+      },
+    }));
+
+    const PORT = process.env.PORT || 4000;
+
+    // Start HTTP server
+    httpServer.listen(PORT, () => {
+      logger.info(`🚀 GraphQL Server ready at http://localhost:${PORT}/graphql`);
+      logger.info(`🔗 WebSocket subscriptions ready at ws://localhost:${PORT}/graphql`);
+      logger.info('🧠 Consciousness visualization endpoints available');
+      logger.info('📊 Performance monitoring enabled');
+    });
+    
+    // Start subscription simulation
+    startSubscriptionSimulation(metricsService, activityService);
     
     // Log performance metrics every 30 seconds in development
     setInterval(() => {

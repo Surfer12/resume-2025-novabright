@@ -106,7 +106,7 @@ export const resolvers = {
     },
     
     userUpdated: {
-      subscribe: async function* (_, { userId }) {
+      subscribe: async function* (_: any, { userId }: { userId: string }) {
         while (true) {
           await new Promise(resolve => setTimeout(resolve, 15000));
           
@@ -115,6 +115,8 @@ export const resolvers = {
             
             if (user) {
               yield { userUpdated: user };
+            } else {
+              yield { userUpdated: null };
             }
           } catch (error) {
             logger.error(`Error in userUpdated subscription for userId: ${userId}`, error);

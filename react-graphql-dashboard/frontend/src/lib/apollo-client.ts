@@ -11,12 +11,9 @@ import { createPersistedQueryLink } from '@apollo/client/link/persisted-queries'
 import { sha256 } from 'crypto-hash';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { onError } from '@apollo/client/link/error';
-import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
-import { createClient } from 'graphql-ws';
 
 // Environment configuration
 const API_ENDPOINT = process.env.VITE_GRAPHQL_ENDPOINT || 'http://localhost:4000/graphql';
-const WS_ENDPOINT = process.env.VITE_WS_ENDPOINT || 'ws://localhost:4000/graphql';
 
 // Performance optimization: Persisted queries for reduced bandwidth
 const persistedQueriesLink = createPersistedQueryLink({
@@ -56,19 +53,6 @@ const httpLink = createHttpLink({
   },
 });
 
-// WebSocket link for subscriptions
-const wsLink = typeof window !== 'undefined' ? new GraphQLWsLink(
-  createClient({
-    url: WS_ENDPOINT,
-    connectionParams: () => {
-      const token = localStorage.getItem('authToken');
-      return {
-        authorization: token ? `Bearer ${token}` : '',
-      };
-    },
-  })
-) : null;
-
 // Authentication link
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('authToken');
@@ -100,8 +84,8 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) 
   }
 });
 
-// Split link for HTTP vs WebSocket operations
-const httpSplitLink = split(
+// Split link for batching vs non-batching operations
+const splitLink = split(
   ({ query, operationName, getContext }) => {
     const definition = getMainDefinition(query);
     const context = getContext();
@@ -123,21 +107,6 @@ const httpSplitLink = split(
   batchHttpLink,
   httpLink
 );
-
-// Split between HTTP and WebSocket connections
-const splitLink = wsLink
-  ? split(
-      ({ query }) => {
-        const definition = getMainDefinition(query);
-        return (
-          definition.kind === 'OperationDefinition' &&
-          definition.operation === 'subscription'
-        );
-      },
-      wsLink,
-      httpSplitLink
-    )
-  : httpSplitLink;
 
 // Optimized cache configuration
 const cache = new InMemoryCache({
