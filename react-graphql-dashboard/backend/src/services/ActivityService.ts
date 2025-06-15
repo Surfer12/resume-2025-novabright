@@ -3,6 +3,8 @@ import { logger } from '../utils/logger';
 export interface Activity {
   id: string;
   userId: string;
+  type: 'LOGIN' | 'LOGOUT' | 'CREATE' | 'UPDATE' | 'DELETE' | 'VIEW' | 'EXPORT';
+  message: string;
   action: string;
   resource: string;
   timestamp: Date;
@@ -31,17 +33,25 @@ export class ActivityService {
   private initializeMockActivities() {
     const actions = ['login', 'logout', 'view_dashboard', 'export_data', 'update_settings', 'create_report'];
     const resources = ['dashboard', 'user_profile', 'reports', 'settings', 'analytics'];
+    const activityTypes: Array<'LOGIN' | 'LOGOUT' | 'CREATE' | 'UPDATE' | 'DELETE' | 'VIEW' | 'EXPORT'> = 
+      ['LOGIN', 'LOGOUT', 'CREATE', 'UPDATE', 'DELETE', 'VIEW', 'EXPORT'];
     const userIds = ['1', '2', '3', '4', '5'];
     const now = new Date();
 
     // Generate mock activities for the last 24 hours
     for (let i = 0; i < 200; i++) {
       const timestamp = new Date(now.getTime() - (Math.random() * 24 * 60 * 60 * 1000));
+      const action = actions[Math.floor(Math.random() * actions.length)];
+      const resource = resources[Math.floor(Math.random() * resources.length)];
+      const type = activityTypes[Math.floor(Math.random() * activityTypes.length)];
+      
       const activity: Activity = {
         id: `activity_${i}`,
         userId: userIds[Math.floor(Math.random() * userIds.length)],
-        action: actions[Math.floor(Math.random() * actions.length)],
-        resource: resources[Math.floor(Math.random() * resources.length)],
+        type,
+        message: `User performed ${action} on ${resource}`,
+        action,
+        resource,
         timestamp,
         metadata: {
           source: 'mock_data',

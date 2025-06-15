@@ -36,21 +36,21 @@ export const publishUserUpdate = (userId: string, user: any) => {
 export const subscriptionResolvers = {
   Subscription: {
     metricsUpdated: {
-      subscribe: () => pubsub.asyncIterableIterator([EVENTS.METRICS_UPDATED]),
+      subscribe: () => pubsub.asyncIterator([EVENTS.METRICS_UPDATED]),
     },
     
     activityAdded: {
-      subscribe: () => pubsub.asyncIterableIterator([EVENTS.ACTIVITY_ADDED]),
+      subscribe: () => pubsub.asyncIterator([EVENTS.ACTIVITY_ADDED]),
     },
     
     systemStatusChanged: {
-      subscribe: () => pubsub.asyncIterableIterator([EVENTS.SYSTEM_STATUS_CHANGED]),
+      subscribe: () => pubsub.asyncIterator([EVENTS.SYSTEM_STATUS_CHANGED]),
     },
     
     userUpdated: {
       subscribe: (_: any, { userId }: { userId: string }) => {
         logger.info(`User ${userId} subscribed to updates`);
-        return pubsub.asyncIterableIterator([`${EVENTS.USER_UPDATED}.${userId}`]);
+        return pubsub.asyncIterator([`${EVENTS.USER_UPDATED}.${userId}`]);
       },
     },
   },

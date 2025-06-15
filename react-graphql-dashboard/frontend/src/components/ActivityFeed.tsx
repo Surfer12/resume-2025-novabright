@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ActivityFeed: React.FC<any> = (props) => {
+const ActivityFeed: React.FC<any> = ({}) => {
   return (
     <div className="bg-white p-4 rounded-lg shadow">
       <p>Activity Feed Placeholder</p>

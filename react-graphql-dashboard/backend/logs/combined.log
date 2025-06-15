@@ -8831,3 +8831,78 @@
   "avgLatency": "4ms"
 }
 2025-06-15T18:44:22.431Z [[32minfo[39m]: [32mShutting down GraphQL server...[39m
+2025-06-15T19:52:26.694Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T19:52:26.696Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T19:52:26.696Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T19:52:26.697Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T19:52:26.697Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T19:52:26.697Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T19:52:26.697Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T19:52:26.698Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T19:52:26.730Z [[32minfo[39m]: [32m🚀 GraphQL Server ready at http://localhost:4000/[39m
+2025-06-15T19:52:26.731Z [[32minfo[39m]: [32m🧠 Consciousness visualization endpoints available[39m
+2025-06-15T19:52:26.731Z [[32minfo[39m]: [32m📊 Performance monitoring enabled[39m
+2025-06-15T19:52:26.731Z [[33mwarn[39m]: [33m⚠️  WebSocket subscriptions temporarily disabled - will be re-enabled once setup is fixed[39m
+2025-06-15T19:52:35.587Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T19:52:35.587Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "10ms",
+  "totalRequests": 1,
+  "avgLatency": "10ms"
+}
+2025-06-15T19:52:35.592Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T19:52:35.592Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "3ms",
+  "totalRequests": 2,
+  "avgLatency": "7ms"
+}
+2025-06-15T19:52:45.995Z [[32minfo[39m]: [32mShutting down GraphQL server...[39m
