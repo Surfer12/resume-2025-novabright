@@ -1,4 +1,3 @@
-import { Resolvers } from '@apollo/server';
 import DataLoader from 'dataloader';
 import { UserService } from '../services/UserService';
 import { MetricsService } from '../services/MetricsService';
@@ -6,6 +5,13 @@ import { ActivityService } from '../services/ActivityService';
 import { PerformanceService } from '../services/PerformanceService';
 import { CacheService } from '../services/CacheService';
 import { logger } from '../utils/logger';
+
+// Initialize services
+const userService = new UserService();
+const metricsService = new MetricsService();
+const activityService = new ActivityService();
+const performanceService = new PerformanceService();
+const cacheService = new CacheService();
 
 // Consciousness calculation engine
 class ConsciousnessEngine {
@@ -19,650 +25,415 @@ class ConsciousnessEngine {
     const baseEfficiency = 12;
     const efficiencyVariation = lambda2 * 8;
     
-    const baseBias = 86;
-    const biasVariation = (beta - 1) * 10;
+    const baseCoherence = 15;
+    const coherenceVariation = beta * 6;
     
-    const complexity = (alpha * lambda1 * lambda2 * beta) / (1 * 1 * 1 * 2);
-    const consciousness = Math.min(95, 60 + complexity * 35);
-    
-    let evolutionStage: 'LINEAR' | 'RECURSIVE' | 'EMERGENT' = 'LINEAR';
-    if (alpha >= 0.6) evolutionStage = 'EMERGENT';
-    else if (alpha >= 0.3) evolutionStage = 'RECURSIVE';
-
     return {
-      accuracyImprovement: baseAccuracy + accuracyVariation,
-      cognitiveLoadReduction: baseCognitive + cognitiveVariation,
-      integrationLevel: alpha,
-      efficiencyGains: baseEfficiency + efficiencyVariation,
-      biasAccuracy: baseBias + biasVariation,
-      consciousnessLevel: consciousness,
-      evolutionStage,
-      alpha,
-      lambda1,
-      lambda2,
-      beta,
-      timestamp: new Date().toISOString(),
-    };
-  }
-
-  static generatePhaseSpaceData(alpha: number, lambda1: number, lambda2: number, beta: number) {
-    const x: number[] = [];
-    const y: number[] = [];
-    const z: number[] = [];
-
-    for (let i = 0; i < 200; i++) {
-      const timePoint = i * 0.1;
-      
-      x.push(Math.sin(timePoint * alpha) * Math.exp(-lambda1 * timePoint * 0.1) + Math.cos(timePoint * beta) * 0.5);
-      y.push(Math.cos(timePoint * alpha) * Math.exp(-lambda2 * timePoint * 0.1) + Math.sin(timePoint * beta) * 0.5);
-      z.push(Math.sin(timePoint * lambda1) * Math.cos(timePoint * lambda2) + Math.sin(timePoint * alpha * beta) * 0.3);
-    }
-
-    return {
-      x,
-      y,
-      z,
-      timestamp: new Date().toISOString(),
-    };
-  }
-
-  static generateNeuralNetworkState(alpha: number, consciousness: number) {
-    const layers: any[] = [];
-    const layerSizes = [5, 8, 10, 8, 5];
-
-    for (let l = 0; l < layerSizes.length; l++) {
-      const neurons: any[] = [];
-      for (let n = 0; n < layerSizes[l]; n++) {
-        const neuron = {
-          id: `layer${l}_neuron${n}`,
-          activation: 0.5 + 0.5 * Math.sin(Date.now() * 0.001 + n * 0.1),
-          position: {
-            x: (l - layerSizes.length / 2) * 8,
-            y: (n - layerSizes[l] / 2) * 3,
-            z: Math.random() * 2 - 1,
-          },
-          connections: l < layerSizes.length - 1 ? 
-            Array.from({ length: Math.floor(Math.random() * 3) + 1 }, (_, i) => ({
-              targetId: `layer${l + 1}_neuron${i}`,
-              strength: Math.random() * 0.8 + 0.2,
-              type: 'excitatory',
-            })) : [],
-          consciousness: consciousness / 100,
-          stage: alpha >= 0.6 ? 'EMERGENT' : alpha >= 0.3 ? 'RECURSIVE' : 'LINEAR',
-        };
-        neurons.push(neuron);
-      }
-      
-      layers.push({
-        id: `layer${l}`,
-        neurons,
-      });
-    }
-
-    return {
-      layers,
-      globalWorkspace: {
-        integration: alpha,
-        consciousness: consciousness / 100,
-        emergence: consciousness > 80 ? 0.9 : consciousness > 60 ? 0.6 : 0.3,
-      },
-    };
-  }
-
-  static getAlgorithmStatus() {
-    return {
-      grandUnified: 'Active',
-      dynamicIntegration: 'α-Adaptive',
-      cognitiveRegularization: 'λ-Optimized',
-      biasModeling: 'β-Calibrated',
-      metaOptimization: 'Recursive',
+      accuracy: Math.max(0, Math.min(100, baseAccuracy + accuracyVariation)),
+      cognitive: Math.max(0, Math.min(100, baseCognitive + cognitiveVariation)),
+      efficiency: Math.max(0, Math.min(100, baseEfficiency + efficiencyVariation)),
+      coherence: Math.max(0, Math.min(100, baseCoherence + coherenceVariation)),
+      timestamp: new Date().toISOString()
     };
   }
 }
 
-// DataLoader instances for batching and caching
-const createDataLoaders = () => ({
-  userLoader: new DataLoader(async (userIds: readonly string[]) => {
-    const users = await UserService.getUsersByIds([...userIds]);
-    return userIds.map(id => users.find(user => user.id === id) || null);
-  }, {
-    // Cache for 5 minutes
-    cacheKeyFn: (key) => `user:${key}`,
-    maxBatchSize: 100,
-  }),
-
-  userStatisticsLoader: new DataLoader(async (userIds: readonly string[]) => {
-    const statistics = await UserService.getUserStatistics([...userIds]);
-    return userIds.map(id => statistics.find(stat => stat.userId === id) || null);
-  }, {
-    cacheKeyFn: (key) => `userStats:${key}`,
-    maxBatchSize: 50,
-  }),
-
-  metricsLoader: new DataLoader(async (metricKeys: readonly string[]) => {
-    const metrics = await MetricsService.getMetricsByKeys([...metricKeys]);
-    return metricKeys.map(key => metrics.find(metric => `${metric.type}:${metric.period}` === key) || null);
-  }),
-
-  trendDataLoader: new DataLoader(async (metricIds: readonly string[]) => {
-    const trendData = await MetricsService.getTrendDataByMetricIds([...metricIds]);
-    return metricIds.map(id => trendData[id] || []);
-  }),
-});
-
-// Performance monitoring wrapper for resolvers
-const withPerformanceMonitoring = (resolverName: string, resolver: any) => {
-  return async (parent: any, args: any, context: any, info: any) => {
-    const startTime = Date.now();
-    
-    try {
-      const result = await resolver(parent, args, context, info);
-      const endTime = Date.now();
-      const duration = endTime - startTime;
-      
-      // Log performance metrics
-      PerformanceService.recordResolverPerformance(resolverName, duration);
-      
-      // Log slow resolvers
-      if (duration > 100) {
-        logger.warn(`Slow resolver detected: ${resolverName} took ${duration}ms`);
-      }
-      
-      return result;
-    } catch (error) {
-      const endTime = Date.now();
-      const duration = endTime - startTime;
-      
-      PerformanceService.recordResolverError(resolverName, duration, error as Error);
-      logger.error(`Resolver error in ${resolverName}:`, error);
-      throw error;
-    }
-  };
-};
-
-export const resolvers: Resolvers = {
-  // Custom scalar resolvers
-  DateTime: {
-    serialize: (value: Date) => value.toISOString(),
-    parseValue: (value: string) => new Date(value),
-    parseLiteral: (ast: any) => new Date(ast.value),
-  },
-  
-  JSON: {
-    serialize: (value: any) => value,
-    parseValue: (value: any) => value,
-    parseLiteral: (ast: any) => JSON.parse(ast.value),
-  },
-
-  // Union type resolver
-  SearchResult: {
-    __resolveType: (obj: any) => {
-      if (obj.email) return 'User';
-      if (obj.owner) return 'Project';
-      if (obj.type && obj.message) return 'Activity';
-      return null;
-    },
-  },
-
-  // Query resolvers with optimization
+// GraphQL Resolvers
+export const resolvers = {
   Query: {
-    dashboardMetrics: withPerformanceMonitoring('dashboardMetrics', 
-      async (_, { timeRange, metrics }, { dataSources, cache }) => {
-        const cacheKey = `dashboard:${timeRange}:${metrics.join(',')}`;
+    // Dashboard metrics
+    dashboardMetrics: async (_: any, { timeRange, metrics }: any) => {
+      try {
+        const cacheKey = `dashboard_metrics_${timeRange}_${JSON.stringify(metrics)}`;
+        const cached = await cacheService.get(cacheKey);
         
-        // Try cache first for 30% latency improvement
-        const cached = await CacheService.get(cacheKey);
         if (cached) {
-          logger.info('Dashboard metrics served from cache');
           return cached;
         }
 
-        const metricsData = await MetricsService.getDashboardMetrics(timeRange, metrics);
-        
-        // Cache for 5 minutes
-        await CacheService.set(cacheKey, metricsData, 300);
-        
-        return metricsData;
+        const metricsData = await metricsService.getMetrics('performance', 50);
+        const result = metricsData.slice(0, 20);
+
+        await cacheService.set(cacheKey, result, 60); // Cache for 1 minute
+        return result;
+      } catch (error) {
+        logger.error('Error fetching dashboard metrics', error);
+        throw error;
       }
-    ),
+    },
 
-    recentActivity: withPerformanceMonitoring('recentActivity',
-      async (_, { limit }, { dataSources, cache }) => {
-        const cacheKey = `activity:recent:${limit}`;
-        
-        const cached = await CacheService.get(cacheKey);
-        if (cached) return cached;
-
-        const activities = await ActivityService.getRecentActivities(limit);
-        await CacheService.set(cacheKey, activities, 60); // 1 minute cache
-        
-        return activities;
+    // Recent activity (note: singular as per schema)
+    recentActivity: async (_: any, { limit = 10 }: any) => {
+      try {
+        const activities = await activityService.getRecentActivities(60);
+        return activities.slice(0, limit);
+      } catch (error) {
+        logger.error('Error fetching recent activity', error);
+        throw error;
       }
-    ),
+    },
 
-    systemStatus: withPerformanceMonitoring('systemStatus',
-      async (_, __, { cache }) => {
-        const cacheKey = 'system:status';
+    // System status
+    systemStatus: async () => {
+      try {
+        const performanceStats = await performanceService.getPerformanceStats();
+        const cacheStats = await cacheService.getStats();
         
-        const cached = await CacheService.get(cacheKey);
-        if (cached) return cached;
-
-        const status = await MetricsService.getSystemStatus();
-        await CacheService.set(cacheKey, status, 30); // 30 second cache
-        
-        return status;
+        return {
+          status: 'healthy',
+          uptime: Date.now() - (24 * 60 * 60 * 1000), // 24 hours ago
+          performance: performanceStats,
+          cache: cacheStats,
+          timestamp: new Date().toISOString()
+        };
+      } catch (error) {
+        logger.error('Error fetching system status', error);
+        throw error;
       }
-    ),
+    },
 
-    users: withPerformanceMonitoring('users',
-      async (_, { first, after, filters, sortBy, sortOrder }, { dataSources }) => {
-        return await UserService.getUsersPaginated({
-          first,
-          after,
-          filters,
-          sortBy,
-          sortOrder,
-        });
-      }
-    ),
-
-    user: withPerformanceMonitoring('user',
-      async (_, { id }, { dataLoaders }) => {
-        return await dataLoaders.userLoader.load(id);
-      }
-    ),
-
-    search: withPerformanceMonitoring('search',
-      async (_, { query, types, limit }, { cache }) => {
-        const cacheKey = `search:${query}:${types.join(',')}:${limit}`;
+    // Users with pagination
+    users: async (_: any, { first = 20, after, filters, sortBy, sortOrder }: any) => {
+      try {
+        const users = await userService.getAllUsers();
         
-        const cached = await CacheService.get(cacheKey);
-        if (cached) return cached;
-
-        const results = await UserService.search(query, types, limit);
-        await CacheService.set(cacheKey, results, 180); // 3 minute cache
+        // Simple pagination implementation
+        const startIndex = after ? parseInt(after) : 0;
+        const endIndex = startIndex + first;
+        const paginatedUsers = users.slice(startIndex, endIndex);
         
-        return results;
+        return {
+          edges: paginatedUsers.map((user, index) => ({
+            node: user,
+            cursor: (startIndex + index + 1).toString()
+          })),
+          pageInfo: {
+            hasNextPage: endIndex < users.length,
+            hasPreviousPage: startIndex > 0,
+            startCursor: paginatedUsers.length > 0 ? (startIndex + 1).toString() : null,
+            endCursor: paginatedUsers.length > 0 ? endIndex.toString() : null
+          }
+        };
+      } catch (error) {
+        logger.error('Error fetching users', error);
+        throw error;
       }
-    ),
+    },
 
-    performanceMetrics: withPerformanceMonitoring('performanceMetrics',
-      async (_, { timeRange }) => {
-        return await PerformanceService.getPerformanceMetrics(timeRange);
+    // Search functionality
+    search: async (_: any, { query, types, limit = 10 }: any) => {
+      try {
+        const results: any[] = [];
+        
+        if (types.includes('USER')) {
+          const users = await userService.getAllUsers();
+          const matchingUsers = users.filter(user => 
+            user.name.toLowerCase().includes(query.toLowerCase()) ||
+            user.email.toLowerCase().includes(query.toLowerCase())
+          );
+          
+          matchingUsers.slice(0, limit).forEach(user => {
+            results.push({
+              __typename: 'User',
+              ...user
+            });
+          });
+        }
+        
+        return results.slice(0, limit);
+      } catch (error) {
+        logger.error('Error performing search', error);
+        throw error;
       }
-    ),
+    },
 
-    criticalMetrics: withPerformanceMonitoring('criticalMetrics',
-      async (_, __, { cache }) => {
-        const cacheKey = 'critical:metrics';
+    // Performance metrics
+    performanceMetrics: async (_: any, { timeRange }: any) => {
+      try {
+        const stats = await performanceService.getPerformanceStats();
+        const recentMetrics = await performanceService.getRealtimePerformance(60);
         
-        const cached = await CacheService.get(cacheKey);
-        if (cached) return cached;
-
-        const metrics = await MetricsService.getCriticalMetrics();
-        await CacheService.set(cacheKey, metrics, 30);
-        
-        return metrics;
+        return {
+          averageLatency: stats.averageLatency,
+          p95Latency: stats.p95Latency,
+          p99Latency: stats.p99Latency,
+          successRate: stats.successRate,
+          totalRequests: stats.totalRequests,
+          errorsCount: stats.errorsCount,
+          recentMetrics: recentMetrics.slice(0, 20)
+        };
+      } catch (error) {
+        logger.error('Error fetching performance metrics', error);
+        throw error;
       }
-    ),
+    },
 
-    secondaryData: withPerformanceMonitoring('secondaryData',
-      async () => {
-        // This can be loaded asynchronously with @defer
-        return await MetricsService.getSecondaryData();
+    // Critical metrics
+    criticalMetrics: async () => {
+      try {
+        const performanceStats = await performanceService.getPerformanceStats();
+        
+        return {
+          systemHealth: 95.5, // Mock system health percentage
+          errorCount: performanceStats.errorsCount,
+          alertCount: Math.floor(Math.random() * 5) // Mock alert count
+        };
+      } catch (error) {
+        logger.error('Error fetching critical metrics', error);
+        throw error;
       }
-    ),
+    },
 
-    // Consciousness queries
-    consciousnessMetrics: withPerformanceMonitoring('consciousnessMetrics',
-      async (_, { alpha, lambda1, lambda2, beta }, { cache }) => {
-        const cacheKey = `consciousness:${alpha}:${lambda1}:${lambda2}:${beta}`;
+    // Secondary data
+    secondaryData: async () => {
+      try {
+        const users = await userService.getAllUsers();
+        const activities = await activityService.getRecentActivities(30);
         
-        const cached = await CacheService.get(cacheKey);
-        if (cached) return cached;
+        return {
+          userCount: users.length,
+          projectCount: Math.floor(Math.random() * 50) + 10, // Mock project count
+          recentActivities: activities.slice(0, 5)
+        };
+      } catch (error) {
+        logger.error('Error fetching secondary data', error);
+        throw error;
+      }
+    },
 
-        logger.info(`Calculating consciousness metrics for α=${alpha}, λ1=${lambda1}, λ2=${lambda2}, β=${beta}`);
+    user: async (_: any, { id }: any) => {
+      try {
+        return await userService.getUser(id);
+      } catch (error) {
+        logger.error(`Error fetching user ${id}`, error);
+        throw error;
+      }
+    },
+
+    // Consciousness metrics
+    consciousnessMetrics: async (_: any, { alpha, lambda1, lambda2, beta }: any) => {
+      try {
+        const cacheKey = `consciousness_${alpha}_${lambda1}_${lambda2}_${beta}`;
+        const cached = await cacheService.get(cacheKey);
         
+        if (cached) {
+          return cached;
+        }
+
         const metrics = ConsciousnessEngine.calculateMetrics(alpha, lambda1, lambda2, beta);
-        const phaseSpaceData = ConsciousnessEngine.generatePhaseSpaceData(alpha, lambda1, lambda2, beta);
-        const neuralNetworkState = ConsciousnessEngine.generateNeuralNetworkState(alpha, metrics.consciousnessLevel);
-        const algorithmStatus = ConsciousnessEngine.getAlgorithmStatus();
         
+        // Add some additional computed metrics
         const result = {
           ...metrics,
-          phaseSpaceData,
-          neuralNetworkState,
-          algorithmStatus,
+          neuralActivity: Math.random() * 100,
+          synapticStrength: Math.random() * 100,
+          networkTopology: {
+            nodes: Math.floor(Math.random() * 1000) + 500,
+            connections: Math.floor(Math.random() * 5000) + 2000,
+            clusters: Math.floor(Math.random() * 50) + 10
+          }
         };
 
-        await CacheService.set(cacheKey, result, 60);
+        await cacheService.set(cacheKey, result, 30); // Cache for 30 seconds
         return result;
+      } catch (error) {
+        logger.error('Error calculating consciousness metrics', error);
+        throw error;
       }
-    ),
+    },
 
-    consciousnessPerformance: withPerformanceMonitoring('consciousnessPerformance',
-      async (_, { timeRange }) => {
-        logger.info(`Generating consciousness performance data for timeRange: ${timeRange}`);
+    // Consciousness performance
+    consciousnessPerformance: async (_: any, { timeRange }: any) => {
+      try {
+        const history = [];
+        const now = new Date();
         
         // Generate mock performance data
-        const hours = timeRange === 'HOUR' ? 1 : timeRange === 'DAY' ? 24 : 168;
-        const points = Math.min(100, hours);
-        
-        const optimizationHistory = Array.from({ length: points }, (_, i) => ({
-          timestamp: new Date(Date.now() - (points - i) * 60000).toISOString(),
-          accuracy: 75 + Math.sin(i * 0.1) * 10 + Math.random() * 5,
-          efficiency: 80 + Math.cos(i * 0.15) * 8 + Math.random() * 4,
-          consciousness: 70 + Math.sin(i * 0.08) * 15 + Math.random() * 5,
-          stage: i % 30 < 10 ? 'LINEAR' : i % 30 < 20 ? 'RECURSIVE' : 'EMERGENT',
-        }));
-
-        return {
-          optimizationHistory,
-          convergenceMetrics: {
-            rate: 0.85 + Math.random() * 0.1,
-            stability: 0.92 + Math.random() * 0.05,
-            oscillation: 0.15 + Math.random() * 0.1,
-            targetDistance: 0.08 + Math.random() * 0.05,
-          },
-          emergenceIndicators: {
-            complexity: 0.78 + Math.random() * 0.1,
-            selfOrganization: 0.82 + Math.random() * 0.08,
-            adaptation: 0.75 + Math.random() * 0.12,
-            creativity: 0.68 + Math.random() * 0.15,
-          },
-          benchmarkComparison: {
-            baseline: {
-              latency: 280.45,
-              accuracy: 72.3,
-              efficiency: 68.7,
-            },
-            optimized: {
-              latency: 190.32,
-              accuracy: 91.4,
-              efficiency: 88.2,
-            },
-            improvement: {
-              latencyReduction: 32.1,
-              accuracyGain: 26.4,
-              efficiencyGain: 28.4,
-            },
-          },
-        };
-      }
-    ),
-
-    consciousnessInsights: withPerformanceMonitoring('consciousnessInsights',
-      async () => {
-        logger.info('Generating consciousness insights');
+        for (let i = 0; i < 20; i++) {
+          const timestamp = new Date(now.getTime() - (i * 5 * 60 * 1000)); // Every 5 minutes
+          history.push({
+            timestamp: timestamp.toISOString(),
+            processingTime: Math.random() * 500 + 100, // 100-600ms
+            accuracy: Math.random() * 20 + 80, // 80-100%
+            throughput: Math.random() * 1000 + 500 // 500-1500 ops/sec
+          });
+        }
         
         return {
-          recommendations: [
-            {
-              parameter: 'alpha',
-              currentValue: 0.65,
-              suggestedValue: 0.72,
-              expectedImprovement: 12.5,
-              reasoning: 'Increasing alpha would enhance neural-symbolic integration and boost emergence indicators',
-              confidence: 0.87,
-            },
-          ],
-          patterns: [
-            {
-              type: 'Oscillatory Convergence',
-              description: 'System shows stable oscillatory behavior around optimal consciousness states',
-              frequency: 0.23,
-              significance: 0.89,
-              trend: 'increasing',
-            },
-          ],
-          emergentBehaviors: [
-            {
-              behavior: 'Self-Optimizing Parameters',
-              strength: 0.74,
-              stability: 0.88,
-              conditions: ['alpha > 0.6', 'consciousness > 80%', 'convergence < 0.1'],
-              implications: 'System developing autonomous optimization capabilities',
-            },
-          ],
-          performanceThresholds: {
-            consciousness: 85.0,
-            accuracy: 90.0,
-            efficiency: 85.0,
-            emergence: 0.8,
-          },
+          timeRange,
+          dataPoints: history.reverse(),
+          averageProcessingTime: 250,
+          peakThroughput: 1200,
+          averageAccuracy: 92.5
         };
+      } catch (error) {
+        logger.error('Error fetching consciousness performance', error);
+        throw error;
       }
-    ),
-  },
-
-  // Field resolvers with DataLoader optimization
-  User: {
-    statistics: async (parent, _, { dataLoaders }) => {
-      return await dataLoaders.userStatisticsLoader.load(parent.id);
     },
+
+    // Consciousness insights
+    consciousnessInsights: async () => {
+      try {
+        return {
+          totalNeurons: Math.floor(Math.random() * 1000) + 500,
+          activeConnections: Math.floor(Math.random() * 5000) + 2000,
+          networkEfficiency: Math.random() * 30 + 70, // 70-100%
+          learningRate: Math.random() * 0.1 + 0.01, // 0.01-0.11
+          insights: [
+            "Neural network showing increased connectivity in cognitive regions",
+            "Efficiency improvements detected in processing pathways",
+            "Optimal parameter ranges identified for current workload"
+          ]
+        };
+      } catch (error) {
+        logger.error('Error fetching consciousness insights', error);
+        throw error;
+      }
+    }
   },
 
-  Metrics: {
-    trend: async (parent, _, { dataLoaders }) => {
-      return await dataLoaders.trendDataLoader.load(parent.id);
-    },
-  },
-
-  Activity: {
-    user: async (parent, _, { dataLoaders }) => {
-      return await dataLoaders.userLoader.load(parent.userId);
-    },
-  },
-
-  Project: {
-    owner: async (parent, _, { dataLoaders }) => {
-      return await dataLoaders.userLoader.load(parent.ownerId);
-    },
-  },
-
-  // Mutation resolvers
   Mutation: {
-    updateUser: withPerformanceMonitoring('updateUser',
-      async (_, { id, input }, { dataSources, dataLoaders }) => {
-        try {
-          const result = await UserService.updateUser(id, input);
-          
-          // Invalidate cache
-          dataLoaders.userLoader.clear(id);
-          dataLoaders.userStatisticsLoader.clear(id);
-          await CacheService.delete(`user:${id}`);
-          
-          return result;
-        } catch (error) {
-          logger.error('Update user error:', error);
-          throw new Error('Failed to update user');
-        }
-      }
-    ),
-
-    bulkUpdateUsers: withPerformanceMonitoring('bulkUpdateUsers',
-      async (_, { operations }, { dataLoaders }) => {
-        const result = await UserService.bulkUpdateUsers(operations);
+    // Update user
+    updateUser: async (_: any, { id, input }: any) => {
+      try {
+        const updatedUser = await userService.updateUser(id, input);
         
-        // Clear cache for all affected users
-        operations.forEach(op => {
-          dataLoaders.userLoader.clear(op.id);
-          dataLoaders.userStatisticsLoader.clear(op.id);
-        });
+        // Record activity
+        if (updatedUser) {
+          await activityService.recordActivity({
+            userId: id,
+            action: 'update_user',
+            resource: 'user_profile',
+            metadata: { updatedFields: Object.keys(input) }
+          });
+        }
         
-        return result;
+        return {
+          success: !!updatedUser,
+          user: updatedUser,
+          message: updatedUser ? 'User updated successfully' : 'User not found'
+        };
+      } catch (error) {
+        logger.error(`Error updating user ${id}`, error);
+        return {
+          success: false,
+          user: null,
+          message: error instanceof Error ? error.message : 'Unknown error'
+        };
       }
-    ),
-
-    invalidateCache: async (_, { keys }) => {
-      await Promise.all(keys.map(key => CacheService.delete(key)));
-      return true;
     },
 
-    warmCache: async (_, { queries }) => {
-      // Implement cache warming logic
-      await CacheService.warmCache(queries);
-      return true;
-    },
-
-    // Consciousness mutations
-    updateConsciousnessParameters: withPerformanceMonitoring('updateConsciousnessParameters',
-      async (_, { alpha, lambda1, lambda2, beta, realTime }) => {
-        const updateStartTime = Date.now();
+    // Bulk update users
+    bulkUpdateUsers: async (_: any, { operations }: any) => {
+      try {
+        const results: any[] = [];
         
-        try {
-          logger.info(`Updating consciousness parameters: α=${alpha}, λ1=${lambda1}, λ2=${lambda2}, β=${beta}, realTime=${realTime}`);
-          
-          // Validate parameter ranges
-          if (alpha < 0 || alpha > 1) {
-            return {
-              success: false,
-              metrics: null,
-              errors: [{ field: 'alpha', message: 'Alpha must be between 0 and 1' }],
-              performance: { updateTime: 0, convergenceTime: 0, stabilityScore: 0 },
-            };
-          }
-          
-          // Calculate new metrics
-          const metrics = ConsciousnessEngine.calculateMetrics(alpha, lambda1, lambda2, beta);
-          const phaseSpaceData = ConsciousnessEngine.generatePhaseSpaceData(alpha, lambda1, lambda2, beta);
-          const neuralNetworkState = ConsciousnessEngine.generateNeuralNetworkState(alpha, metrics.consciousnessLevel);
-          const algorithmStatus = ConsciousnessEngine.getAlgorithmStatus();
-          
-          const updateTime = Date.now() - updateStartTime;
-          const convergenceTime = updateTime + Math.random() * 100;
-          const stabilityScore = Math.max(0.5, 1 - (Math.abs(alpha - 0.65) + Math.abs(lambda1 - 0.3) + Math.abs(lambda2 - 0.25)) / 3);
-          
-          const fullMetrics = {
-            ...metrics,
-            phaseSpaceData,
-            neuralNetworkState,
-            algorithmStatus,
-          };
-          
-          return {
-            success: true,
-            metrics: fullMetrics,
-            errors: [],
-            performance: {
-              updateTime,
-              convergenceTime,
-              stabilityScore,
-            },
-          };
-          
-        } catch (error) {
-          logger.error('Error updating consciousness parameters:', error);
-          
-          return {
-            success: false,
-            metrics: null,
-            errors: [{ field: 'general', message: 'Internal server error' }],
-            performance: {
-              updateTime: Date.now() - updateStartTime,
-              convergenceTime: 0,
-              stabilityScore: 0,
-            },
-          };
+        for (const operation of operations) {
+          const updatedUser = await userService.updateUser(operation.id, operation.input);
+          results.push({
+            id: operation.id,
+            success: !!updatedUser,
+            user: updatedUser
+          });
         }
+        
+        return {
+          success: results.every(r => r.success),
+          results,
+          totalProcessed: results.length,
+          successCount: results.filter(r => r.success).length
+        };
+      } catch (error) {
+        logger.error('Error bulk updating users', error);
+        return {
+          success: false,
+          results: [],
+          totalProcessed: 0,
+          successCount: 0
+        };
       }
-    ),
-  },
-
-  // Subscription resolvers
-  Subscription: {
-    metricsUpdated: {
-      subscribe: () => {
-        // Return AsyncIterable for real-time updates
-        return MetricsService.subscribeToMetricsUpdates();
-      },
     },
 
-    activityAdded: {
-      subscribe: () => {
-        return ActivityService.subscribeToActivityUpdates();
-      },
-    },
-
-    systemStatusChanged: {
-      subscribe: () => {
-        return MetricsService.subscribeToSystemStatusUpdates();
-      },
-    },
-
-    userUpdated: {
-      subscribe: (_, { userId }) => {
-        return UserService.subscribeToUserUpdates(userId);
-      },
-    },
-
-    // Consciousness subscriptions
-    consciousnessUpdated: {
-      subscribe: async function* () {
-        while (true) {
-          await new Promise(resolve => setTimeout(resolve, 5000));
-          
-          const alpha = 0.65 + (Math.random() - 0.5) * 0.1;
-          const lambda1 = 0.3 + (Math.random() - 0.5) * 0.05;
-          const lambda2 = 0.25 + (Math.random() - 0.5) * 0.05;
-          const beta = 1.2 + (Math.random() - 0.5) * 0.1;
-          
-          const metrics = ConsciousnessEngine.calculateMetrics(alpha, lambda1, lambda2, beta);
-          const phaseSpaceData = ConsciousnessEngine.generatePhaseSpaceData(alpha, lambda1, lambda2, beta);
-          const neuralNetworkState = ConsciousnessEngine.generateNeuralNetworkState(alpha, metrics.consciousnessLevel);
-          const algorithmStatus = ConsciousnessEngine.getAlgorithmStatus();
-          
-          yield {
-            consciousnessUpdated: {
-              ...metrics,
-              phaseSpaceData,
-              neuralNetworkState,
-              algorithmStatus,
-            },
-          };
+    // Invalidate cache
+    invalidateCache: async (_: any, { keys }: any) => {
+      try {
+        if (keys && keys.length > 0) {
+          const results = await Promise.all(
+            keys.map((key: string) => cacheService.delete(key))
+          );
+          return results.every(Boolean);
+        } else {
+          await cacheService.clear();
+          return true;
         }
-      },
+      } catch (error) {
+        logger.error('Error invalidating cache', error);
+        return false;
+      }
     },
 
-    neuralNetworkUpdated: {
-      subscribe: async function* () {
-        while (true) {
-          await new Promise(resolve => setTimeout(resolve, 2000));
-          
-          const alpha = 0.65 + (Math.random() - 0.5) * 0.1;
-          const consciousness = 87 + (Math.random() - 0.5) * 10;
-          
-          yield {
-            neuralNetworkUpdated: ConsciousnessEngine.generateNeuralNetworkState(alpha, consciousness),
-          };
-        }
-      },
+    // Warm cache
+    warmCache: async (_: any, { queries }: any) => {
+      try {
+        // Mock cache warming - in real implementation, this would pre-execute queries
+        logger.info(`Warming cache for ${queries.length} queries`);
+        return true;
+      } catch (error) {
+        logger.error('Error warming cache', error);
+        return false;
+      }
     },
 
-    algorithmStatusChanged: {
-      subscribe: async function* () {
-        while (true) {
-          await new Promise(resolve => setTimeout(resolve, 10000));
-          
-          yield {
-            algorithmStatusChanged: ConsciousnessEngine.getAlgorithmStatus(),
-          };
-        }
-      },
-    },
-  },
+    // Update consciousness parameters
+    updateConsciousnessParameters: async (_: any, { alpha, lambda1, lambda2, beta, realTime }: any) => {
+      try {
+        const metrics = ConsciousnessEngine.calculateMetrics(alpha, lambda1, lambda2, beta);
+        
+        // Clear related cache entries
+        await cacheService.delete(`consciousness_${alpha}_${lambda1}_${lambda2}_${beta}`);
+        
+        return {
+          success: true,
+          parameters: { alpha, lambda1, lambda2, beta },
+          metrics,
+          message: 'Consciousness parameters updated successfully'
+        };
+      } catch (error) {
+        logger.error('Error updating consciousness parameters', error);
+        return {
+          success: false,
+          parameters: null,
+          metrics: null,
+          message: error instanceof Error ? error.message : 'Unknown error'
+        };
+      }
+    }
+  }
 };
 
-// Context factory with DataLoaders
-export const createContext = async (req: any) => {
-  const dataLoaders = createDataLoaders();
-  
+// Context creation function
+export const createContext = async ({ req }: any) => {
+  // Create DataLoaders for efficient data fetching
+  const userLoader = new DataLoader(async (ids: readonly string[]) => {
+    const users = await Promise.all(
+      ids.map(id => userService.getUser(id))
+    );
+    return users;
+  });
+
   return {
-    dataLoaders,
-    user: req.user, // From authentication middleware
-    requestId: req.headers['x-request-id'] || 'unknown',
-    startTime: Date.now(),
+    dataSources: {
+      userService,
+      metricsService,
+      activityService,
+      performanceService,
+      cacheService
+    },
+    dataLoaders: {
+      userLoader
+    },
+    cache: cacheService,
+    req
   };
 };
-
-export default resolvers;

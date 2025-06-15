@@ -1,0 +1,284 @@
+2025-06-15T16:47:55.179Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T16:47:55.181Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T16:47:55.181Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T16:47:55.182Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T16:47:55.182Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T16:47:55.206Z [[32minfo[39m]: [32m🚀 GraphQL Server ready at http://localhost:4000/[39m
+2025-06-15T16:47:55.207Z [[32minfo[39m]: [32m🧠 Consciousness visualization endpoints available[39m
+2025-06-15T16:47:55.207Z [[32minfo[39m]: [32m📊 Performance monitoring enabled[39m
+2025-06-15T16:48:14.129Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T16:48:14.131Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T16:48:14.131Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T16:48:14.132Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T16:48:14.132Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T16:48:14.159Z [[31merror[39m]: [31muncaughtException: listen EADDRINUSE: address already in use :::4000[39m
+[31mError: listen EADDRINUSE: address already in use :::4000[39m
+[31m    at Server.setupListenHandle [as _listen2] (node:net:1937:16)[39m
+[31m    at listenInCluster (node:net:1994:12)[39m
+[31m    at Server.listen (node:net:2099:7)[39m
+[31m    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16[39m
+[31m    at new Promise (<anonymous>)[39m
+[31m    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)[39m
+[31m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)[39m {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -48,
+    "syscall": "listen",
+    "address": "::",
+    "port": 4000
+  },
+  "stack": "Error: listen EADDRINUSE: address already in use :::4000\n    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n    at listenInCluster (node:net:1994:12)\n    at Server.listen (node:net:2099:7)\n    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16\n    at new Promise (<anonymous>)\n    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 09:48:14 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 34997,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 299483136,
+      "heapTotal": 150175744,
+      "heapUsed": 121099480,
+      "external": 7885387,
+      "arrayBuffers": 4886168
+    }
+  },
+  "os": {
+    "loadavg": [
+      6.74462890625,
+      11.63037109375,
+      12.64306640625
+    ],
+    "uptime": 5971
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1937,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1994,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2099,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": null,
+      "line": 67,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": null,
+      "file": null,
+      "function": "new Promise",
+      "line": null,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 9,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": "startStandaloneServer",
+      "line": 66,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/process/task_queues",
+      "function": "processTicksAndRejections",
+      "line": 105,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts",
+      "function": "async startServer",
+      "line": 62,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-15T16:49:11.295Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T16:49:11.296Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T16:49:11.297Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T16:49:11.298Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T16:49:11.298Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T16:49:11.323Z [[32minfo[39m]: [32m🚀 GraphQL Server ready at http://localhost:4000/[39m
+2025-06-15T16:49:11.323Z [[32minfo[39m]: [32m🧠 Consciousness visualization endpoints available[39m
+2025-06-15T16:49:11.323Z [[32minfo[39m]: [32m📊 Performance monitoring enabled[39m
+2025-06-15T16:50:48.553Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-15T16:50:48.555Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-15T16:50:48.555Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-15T16:50:48.556Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-15T16:50:48.556Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-15T16:50:48.582Z [[31merror[39m]: [31muncaughtException: listen EADDRINUSE: address already in use :::4000[39m
+[31mError: listen EADDRINUSE: address already in use :::4000[39m
+[31m    at Server.setupListenHandle [as _listen2] (node:net:1937:16)[39m
+[31m    at listenInCluster (node:net:1994:12)[39m
+[31m    at Server.listen (node:net:2099:7)[39m
+[31m    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16[39m
+[31m    at new Promise (<anonymous>)[39m
+[31m    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)[39m
+[31m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)[39m {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -48,
+    "syscall": "listen",
+    "address": "::",
+    "port": 4000
+  },
+  "stack": "Error: listen EADDRINUSE: address already in use :::4000\n    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n    at listenInCluster (node:net:1994:12)\n    at Server.listen (node:net:2099:7)\n    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16\n    at new Promise (<anonymous>)\n    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:62:21)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 09:50:48 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 36517,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 292421632,
+      "heapTotal": 150175744,
+      "heapUsed": 120923312,
+      "external": 7885259,
+      "arrayBuffers": 4886040
+    }
+  },
+  "os": {
+    "loadavg": [
+      6.6845703125,
+      9.56396484375,
+      11.61767578125
+    ],
+    "uptime": 6125
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1937,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1994,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2099,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": null,
+      "line": 67,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": null,
+      "file": null,
+      "function": "new Promise",
+      "line": null,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 9,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": "startStandaloneServer",
+      "line": 66,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/process/task_queues",
+      "function": "processTicksAndRejections",
+      "line": 105,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts",
+      "function": "async startServer",
+      "line": 62,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-15T16:52:53.658Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "19ms",
+  "totalRequests": 1,
+  "avgLatency": "19ms"
+}
+2025-06-15T16:52:58.847Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 2,
+  "avgLatency": "12ms"
+}
+2025-06-15T16:53:11.334Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 2,
+  "averageLatency": "12ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T16:53:41.335Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 2,
+  "averageLatency": "12ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
+2025-06-15T16:54:11.337Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 2,
+  "averageLatency": "12ms",
+  "errors": 0,
+  "errorRate": "0.00%"
+}
