@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react'
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
 import Plot from 'react-plotly.js';
+import { computeCoherencePenalty, efficiencyConsciousnessBalance } from './regularization';
 
 interface ConsciousnessVisualizationProps {
   className?: string;
@@ -15,6 +16,8 @@ interface ConsciousnessMetrics {
   biasAccuracy: number;
   consciousnessLevel: number;
   evolutionStage: 'linear' | 'recursive' | 'emergent';
+  R_cognitive: number;
+  R_efficiency: number;
 }
 
 interface ConsciousnessConnection {
@@ -296,6 +299,15 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
     if (alpha >= 0.6) evolutionStage = 'emergent';
     else if (alpha >= 0.3) evolutionStage = 'recursive';
 
+    // Compute regularization penalties
+    const integrationLevel = alpha; // For demonstration, use alpha as a proxy for integration
+    const efficiencyLevel = (baseEfficiency + efficiencyVariation) / 100; // Normalize to 0-1
+    const R_cognitive = computeCoherencePenalty(alpha, integrationLevel);
+    const R_efficiency = efficiencyConsciousnessBalance(lambda2, efficiencyLevel);
+
+    // Optionally, log or expose these for visualization/debugging
+    // console.log('R_cognitive:', R_cognitive, 'R_efficiency:', R_efficiency);
+
     return {
       accuracyImprovement: baseAccuracy + accuracyVariation,
       cognitiveLoadReduction: baseCognitive + cognitiveVariation,
@@ -304,7 +316,10 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
       biasAccuracy: baseBias + biasVariation,
       consciousnessLevel: consciousness,
       evolutionStage,
-    };
+      // Optionally add R_cognitive and R_efficiency to the metrics object if you want to display them
+      R_cognitive,
+      R_efficiency
+    } as ConsciousnessMetrics & { R_cognitive: number, R_efficiency: number };
   }, [alpha, lambda1, lambda2, beta]);
 
   // Update consciousness field animation
