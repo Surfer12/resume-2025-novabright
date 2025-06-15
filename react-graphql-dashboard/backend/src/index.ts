@@ -1,8 +1,17 @@
 import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
+import { expressMiddleware } from '@apollo/server/express4';
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import { ApolloServerPluginCacheControl } from '@apollo/server/plugin/cacheControl';
+import { makeExecutableSchema } from '@graphql-tools/schema';
+import { WebSocketServer } from 'ws';
+import { useServer } from 'graphql-ws/lib/use/ws';
+import express from 'express';
+import http from 'http';
+import cors from 'cors';
+import bodyParser from 'body-parser';
 import { typeDefs } from './schema/typedefs';
 import { resolvers, createContext } from './resolvers';
+import { consciousnessResolvers } from './resolvers/consciousness';
 import { logger } from './utils/logger';
 
 // Performance monitoring for development
@@ -12,13 +21,75 @@ const performanceMetrics = {
   errors: 0,
 };
 
+// Merge resolvers
+const mergedResolvers = {
+  Query: {
+    ...resolvers.Query,
+    ...consciousnessResolvers.Query,
+  },
+  Mutation: {
+    ...resolvers.Mutation,
+    ...consciousnessResolvers.Mutation,
+  },
+  Subscription: {
+    ...resolvers.Subscription,
+    ...consciousnessResolvers.Subscription,
+  },
+};
+
 async function startServer() {
   try {
+    // Create Express app and HTTP server
+    const app = express();
+    const httpServer = http.createServer(app);
+
+    // Create WebSocket server for subscriptions
+    const wsServer = new WebSocketServer({
+      server: httpServer,
+      path: '/graphql',
+    });
+
+    // Create executable schema
+    const schema = makeExecutableSchema({
+      typeDefs,
+      resolvers: mergedResolvers,
+    });
+
+    // Set up WebSocket server for subscriptions
+    const serverCleanup = useServer({ 
+      schema,
+      onConnect: async (ctx) => {
+        logger.info('Client connected to WebSocket');
+        return true;
+      },
+      onDisconnect: (ctx, code, reason) => {
+        logger.info(`Client disconnected from WebSocket: ${code} - ${reason}`);
+      },
+      onSubscribe: (ctx, msg) => {
+        logger.info(`Subscription started: ${msg.payload.operationName}`);
+        return true;
+      },
+      onError: (ctx, msg, errors) => {
+        logger.error('Subscription error', { errors });
+      },
+    }, wsServer);
+
     // Initialize Apollo Server with optimizations
     const server = new ApolloServer({
-      typeDefs,
-      resolvers,
+      schema,
       plugins: [
+        // Proper HTTP server drain plugin
+        ApolloServerPluginDrainHttpServer({ httpServer }),
+        // Cleanup for WebSocket server
+        {
+          async serverWillStart() {
+            return {
+              async drainServer() {
+                await serverCleanup.dispose();
+              },
+            };
+          },
+        },
         // Cache control for performance optimization
         ApolloServerPluginCacheControl({
           defaultMaxAge: 300, // 5 minutes default cache
@@ -58,16 +129,24 @@ async function startServer() {
       introspection: true,
     });
 
-    // Start the server
-    const { url } = await startStandaloneServer(server, {
-      listen: { port: 4000 },
-      context: async ({ req }) => {
-        // Create context for each request
-        return createContext({ req });
-      },
-    });
+    // Start the Apollo Server
+    await server.start();
 
-    logger.info(`🚀 GraphQL Server ready at ${url}`);
+    // Apply Express middleware
+    app.use(
+      '/graphql',
+      cors<cors.CorsRequest>(),
+      bodyParser.json(),
+      expressMiddleware(server, {
+        context: createContext,
+      })
+    );
+
+    // Start the HTTP server
+    await new Promise<void>((resolve) => httpServer.listen({ port: 4000 }, resolve));
+
+    logger.info(`🚀 GraphQL Server ready at http://localhost:4000/graphql`);
+    logger.info(`🔌 WebSocket server ready at ws://localhost:4000/graphql`);
     logger.info('🧠 Consciousness visualization endpoints available');
     logger.info('📊 Performance monitoring enabled');
     
