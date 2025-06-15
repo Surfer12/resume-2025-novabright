@@ -2448,3 +2448,870 @@
     }
   ]
 }
+2025-06-15T17:59:03.213Z [[31merror[39m]: [31muncaughtException: listen EADDRINUSE: address already in use :::4000[39m
+[31mError: listen EADDRINUSE: address already in use :::4000[39m
+[31m    at Server.setupListenHandle [as _listen2] (node:net:1937:16)[39m
+[31m    at listenInCluster (node:net:1994:12)[39m
+[31m    at Server.listen (node:net:2099:7)[39m
+[31m    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16[39m
+[31m    at new Promise (<anonymous>)[39m
+[31m    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)[39m
+[31m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:85:21)[39m {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -48,
+    "syscall": "listen",
+    "address": "::",
+    "port": 4000
+  },
+  "stack": "Error: listen EADDRINUSE: address already in use :::4000\n    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n    at listenInCluster (node:net:1994:12)\n    at Server.listen (node:net:2099:7)\n    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16\n    at new Promise (<anonymous>)\n    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:85:21)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 10:59:03 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 64261,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 292257792,
+      "heapTotal": 152535040,
+      "heapUsed": 117644168,
+      "external": 7875894,
+      "arrayBuffers": 4876675
+    }
+  },
+  "os": {
+    "loadavg": [
+      8.27587890625,
+      7.55029296875,
+      7.37646484375
+    ],
+    "uptime": 10220
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1937,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1994,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2099,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": null,
+      "line": 67,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": null,
+      "file": null,
+      "function": "new Promise",
+      "line": null,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 9,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": "startStandaloneServer",
+      "line": 66,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/process/task_queues",
+      "function": "processTicksAndRejections",
+      "line": 105,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts",
+      "function": "async startServer",
+      "line": 85,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-15T18:00:10.892Z [[31merror[39m]: [31muncaughtException: listen EADDRINUSE: address already in use :::4000[39m
+[31mError: listen EADDRINUSE: address already in use :::4000[39m
+[31m    at Server.setupListenHandle [as _listen2] (node:net:1937:16)[39m
+[31m    at listenInCluster (node:net:1994:12)[39m
+[31m    at Server.listen (node:net:2099:7)[39m
+[31m    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16[39m
+[31m    at new Promise (<anonymous>)[39m
+[31m    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)[39m
+[31m    at processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:85:21)[39m {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -48,
+    "syscall": "listen",
+    "address": "::",
+    "port": 4000
+  },
+  "stack": "Error: listen EADDRINUSE: address already in use :::4000\n    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n    at listenInCluster (node:net:1994:12)\n    at Server.listen (node:net:2099:7)\n    at /Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:67:16\n    at new Promise (<anonymous>)\n    at startStandaloneServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts:66:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async startServer (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts:85:21)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 11:00:10 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 64590,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 291192832,
+      "heapTotal": 149389312,
+      "heapUsed": 128369048,
+      "external": 7908893,
+      "arrayBuffers": 4909674
+    }
+  },
+  "os": {
+    "loadavg": [
+      7.66943359375,
+      7.50341796875,
+      7.36865234375
+    ],
+    "uptime": 10287
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1937,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1994,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "Server.listen",
+      "line": 2099,
+      "method": "listen",
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": null,
+      "line": 67,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": null,
+      "file": null,
+      "function": "new Promise",
+      "line": null,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 9,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/@apollo/server/src/standalone/index.ts",
+      "function": "startStandaloneServer",
+      "line": 66,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/process/task_queues",
+      "function": "processTicksAndRejections",
+      "line": 105,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts",
+      "function": "async startServer",
+      "line": 85,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-15T18:02:31.489Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot query field \"id\" on type \"Query\".",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "ExampleQuery"
+}
+2025-06-15T18:31:18.199Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    }
+  ],
+  "operation": "ExampleQuery"
+}
+2025-06-15T18:31:33.046Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "ConsciousnessUpdates"
+}
+2025-06-15T18:31:33.089Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Subscription \"ConsciousnessUpdates\" must select only one top level field.",
+      "locations": [
+        {
+          "line": 8,
+          "column": 3
+        },
+        {
+          "line": 19,
+          "column": 3
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"updateType\" on type \"ConsciousnessMetrics\".",
+      "locations": [
+        {
+          "line": 4,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"changedParameters\" on type \"ConsciousnessMetrics\".",
+      "locations": [
+        {
+          "line": 5,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"layerId\" on type \"NeuralNetworkState\". Did you mean \"layers\"?",
+      "locations": [
+        {
+          "line": 9,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"neuronId\" on type \"NeuralNetworkState\".",
+      "locations": [
+        {
+          "line": 10,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"activation\" on type \"NeuralNetworkState\".",
+      "locations": [
+        {
+          "line": 11,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"newConnections\" on type \"NeuralNetworkState\".",
+      "locations": [
+        {
+          "line": 12,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"algorithm\" on type \"AlgorithmStatus\".",
+      "locations": [
+        {
+          "line": 20,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"status\" on type \"AlgorithmStatus\".",
+      "locations": [
+        {
+          "line": 21,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"performance\" on type \"AlgorithmStatus\".",
+      "locations": [
+        {
+          "line": 22,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"timestamp\" on type \"AlgorithmStatus\".",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "ConsciousnessUpdates"
+}
+2025-06-15T18:31:35.955Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "ConsciousnessUpdates"
+}
+2025-06-15T18:31:35.992Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Subscription \"ConsciousnessUpdates\" must select only one top level field.",
+      "locations": [
+        {
+          "line": 8,
+          "column": 3
+        },
+        {
+          "line": 19,
+          "column": 3
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"updateType\" on type \"ConsciousnessMetrics\".",
+      "locations": [
+        {
+          "line": 4,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"changedParameters\" on type \"ConsciousnessMetrics\".",
+      "locations": [
+        {
+          "line": 5,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"layerId\" on type \"NeuralNetworkState\". Did you mean \"layers\"?",
+      "locations": [
+        {
+          "line": 9,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"neuronId\" on type \"NeuralNetworkState\".",
+      "locations": [
+        {
+          "line": 10,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"activation\" on type \"NeuralNetworkState\".",
+      "locations": [
+        {
+          "line": 11,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"newConnections\" on type \"NeuralNetworkState\".",
+      "locations": [
+        {
+          "line": 12,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"algorithm\" on type \"AlgorithmStatus\".",
+      "locations": [
+        {
+          "line": 20,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"status\" on type \"AlgorithmStatus\".",
+      "locations": [
+        {
+          "line": 21,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"performance\" on type \"AlgorithmStatus\".",
+      "locations": [
+        {
+          "line": 22,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"timestamp\" on type \"AlgorithmStatus\".",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "ConsciousnessUpdates"
+}
+2025-06-15T18:32:29.537Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "ConsciousnessUpdates"
+}
+2025-06-15T18:32:29.593Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Subscription \"ConsciousnessUpdates\" must select only one top level field.",
+      "locations": [
+        {
+          "line": 8,
+          "column": 3
+        },
+        {
+          "line": 19,
+          "column": 3
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"updateType\" on type \"ConsciousnessMetrics\".",
+      "locations": [
+        {
+          "line": 4,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"changedParameters\" on type \"ConsciousnessMetrics\".",
+      "locations": [
+        {
+          "line": 5,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"layerId\" on type \"NeuralNetworkState\". Did you mean \"layers\"?",
+      "locations": [
+        {
+          "line": 9,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"neuronId\" on type \"NeuralNetworkState\".",
+      "locations": [
+        {
+          "line": 10,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"activation\" on type \"NeuralNetworkState\".",
+      "locations": [
+        {
+          "line": 11,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"newConnections\" on type \"NeuralNetworkState\".",
+      "locations": [
+        {
+          "line": 12,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"algorithm\" on type \"AlgorithmStatus\".",
+      "locations": [
+        {
+          "line": 20,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"status\" on type \"AlgorithmStatus\".",
+      "locations": [
+        {
+          "line": 21,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"performance\" on type \"AlgorithmStatus\".",
+      "locations": [
+        {
+          "line": 22,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Cannot query field \"timestamp\" on type \"AlgorithmStatus\".",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "ConsciousnessUpdates"
+}

@@ -99,14 +99,20 @@ export const GET_USERS = gql`
   ${USER_FRAGMENT}
 `;
 
-// Real-time subscription for live updates (not cached)
-// Old subscription - will be removed
-// export const DASHBOARD_UPDATES_SUBSCRIPTION = gql`
-//   subscription DashboardUpdates {
+// TODO: Re-enable subscriptions once WebSocket support is properly configured
+// Temporarily commented out to prevent import errors
+
+// export const METRICS_UPDATED_SUBSCRIPTION = gql`
+//   subscription MetricsUpdatedSubscription {
 //     metricsUpdated {
 //       ...MetricsFragment
 //     }
-//     
+//   }
+//   ${METRICS_FRAGMENT}
+// `;
+
+// export const ACTIVITY_ADDED_SUBSCRIPTION = gql`
+//   subscription ActivityAddedSubscription {
 //     activityAdded {
 //       id
 //       type
@@ -116,7 +122,12 @@ export const GET_USERS = gql`
 //         ...UserFragment
 //       }
 //     }
-//     
+//   }
+//   ${USER_FRAGMENT}
+// `;
+
+// export const SYSTEM_STATUS_CHANGED_SUBSCRIPTION = gql`
+//   subscription SystemStatusChangedSubscription {
 //     systemStatusChanged {
 //       cpu
 //       memory
@@ -125,45 +136,7 @@ export const GET_USERS = gql`
 //       healthy
 //     }
 //   }
-//   ${METRICS_FRAGMENT}
-//   ${USER_FRAGMENT}
 // `;
-
-export const METRICS_UPDATED_SUBSCRIPTION = gql`
-  subscription MetricsUpdatedSubscription {
-    metricsUpdated {
-      ...MetricsFragment
-    }
-  }
-  ${METRICS_FRAGMENT}
-`;
-
-export const ACTIVITY_ADDED_SUBSCRIPTION = gql`
-  subscription ActivityAddedSubscription {
-    activityAdded {
-      id
-      type
-      message
-      timestamp
-      user {
-        ...UserFragment
-      }
-    }
-  }
-  ${USER_FRAGMENT}
-`;
-
-export const SYSTEM_STATUS_CHANGED_SUBSCRIPTION = gql`
-  subscription SystemStatusChangedSubscription {
-    systemStatusChanged {
-      cpu
-      memory
-      storage
-      network
-      healthy
-    }
-  }
-`;
 
 // Efficient search query with debouncing support
 export const SEARCH_QUERY = gql`

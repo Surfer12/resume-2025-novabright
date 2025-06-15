@@ -1,13 +1,6 @@
 import { ApolloServer } from '@apollo/server';
-import { expressMiddleware } from '@apollo/server/express4';
-import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import { startStandaloneServer } from '@apollo/server/standalone';
 import { ApolloServerPluginCacheControl } from '@apollo/server/plugin/cacheControl';
-import { createServer } from 'http';
-import express from 'express';
-import { WebSocketServer } from 'ws';
-import { useServer } from 'graphql-ws/lib/use/ws';
-import { makeExecutableSchema } from '@graphql-tools/schema';
-import cors from 'cors';
 import { typeDefs } from './schema/typedefs';
 import { resolvers, createContext } from './resolvers';
 import { logger } from './utils/logger';
@@ -28,7 +21,7 @@ const performanceMetrics = {
   errors: 0,
 };
 
-// Merge resolvers
+// Merge resolvers - temporarily comment out subscriptions
 const mergedResolvers = {
   Query: {
     ...resolvers.Query,
@@ -36,59 +29,19 @@ const mergedResolvers = {
   Mutation: {
     ...resolvers.Mutation,
   },
-  Subscription: {
-    ...subscriptionResolvers.Subscription,
-  },
+  // TODO: Re-enable subscriptions once WebSocket setup is fixed
+  // Subscription: {
+  //   ...subscriptionResolvers.Subscription,
+  // },
 };
-
-// Create executable schema
-const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers: mergedResolvers,
-});
 
 async function startServer() {
   try {
-    // Create Express app
-    const app = express();
-    
-    // Create HTTP server
-    const httpServer = createServer(app);
-    
-    // Create WebSocket server for subscriptions
-    const wsServer = new WebSocketServer({
-      server: httpServer,
-      path: '/graphql',
-    });
-    
-    // Set up WebSocket server for GraphQL subscriptions
-    const serverCleanup = useServer(
-      {
-        schema,
-        context: async (ctx: any) => {
-          // Create context for WebSocket connections
-          return createContext({ req: ctx.extra.request });
-        },
-      },
-      wsServer
-    );
-
     // Initialize Apollo Server with optimizations
     const server = new ApolloServer({
-      schema,
+      typeDefs,
+      resolvers: mergedResolvers,
       plugins: [
-        // Drain HTTP server plugin
-        ApolloServerPluginDrainHttpServer({ httpServer }),
-        // Clean up WebSocket server
-        {
-          async serverWillStart() {
-            return {
-              async drainServer() {
-                await serverCleanup.dispose();
-              },
-            };
-          },
-        },
         // Cache control for performance optimization
         ApolloServerPluginCacheControl({
           defaultMaxAge: 300, // 5 minutes default cache
@@ -128,37 +81,22 @@ async function startServer() {
       introspection: true,
     });
 
-    // Start Apollo Server
-    await server.start();
-
-    // Apply CORS middleware
-    app.use(cors({
-      origin: ['http://localhost:3000', 'http://localhost:5173'], // Allow both Vite and CRA dev servers
-      credentials: true,
-    }));
-
-    // Apply Express JSON middleware
-    app.use('/graphql', express.json());
-
-    // Apply Apollo GraphQL middleware
-    app.use('/graphql', expressMiddleware(server, {
+    // Start the server
+    const { url } = await startStandaloneServer(server, {
+      listen: { port: 4000 },
       context: async ({ req }) => {
+        // Create context for each request
         return createContext({ req });
       },
-    }));
-
-    const PORT = process.env.PORT || 4000;
-
-    // Start HTTP server
-    httpServer.listen(PORT, () => {
-      logger.info(`🚀 GraphQL Server ready at http://localhost:${PORT}/graphql`);
-      logger.info(`🔗 WebSocket subscriptions ready at ws://localhost:${PORT}/graphql`);
-      logger.info('🧠 Consciousness visualization endpoints available');
-      logger.info('📊 Performance monitoring enabled');
     });
+
+    logger.info(`🚀 GraphQL Server ready at ${url}`);
+    logger.info('🧠 Consciousness visualization endpoints available');
+    logger.info('📊 Performance monitoring enabled');
+    logger.warn('⚠️  WebSocket subscriptions temporarily disabled - will be re-enabled once setup is fixed');
     
-    // Start subscription simulation
-    startSubscriptionSimulation(metricsService, activityService);
+    // TODO: Re-enable subscription simulation once WebSocket setup is fixed
+    // startSubscriptionSimulation(metricsService, activityService);
     
     // Log performance metrics every 30 seconds in development
     setInterval(() => {

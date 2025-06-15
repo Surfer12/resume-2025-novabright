@@ -244,7 +244,7 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
         cancelAnimationFrame(animationId);
       }
     };
-  }, [scene, camera, renderer, neurons, time]);
+  }, [scene, camera, renderer, neurons]);
 
   // Initialize on mount
   useEffect(() => {
