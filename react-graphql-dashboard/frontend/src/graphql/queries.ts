@@ -28,7 +28,7 @@ export const METRICS_FRAGMENT = gql`
 // Optimized dashboard query with field selection and caching
 export const GET_DASHBOARD_DATA = gql`
   query GetDashboardData($timeRange: TimeRange!, $metrics: [MetricType!]!) {
-    dashboardMetrics(timeRange: $timeRange, metrics: $metrics) @cached(ttl: 300) {
+    dashboardMetrics(timeRange: $timeRange, metrics: $metrics) {
       ...MetricsFragment
       trend {
         timestamp
@@ -36,7 +36,7 @@ export const GET_DASHBOARD_DATA = gql`
       }
     }
     
-    recentActivity(limit: 10) @cached(ttl: 60) {
+    recentActivity(limit: 10) {
       id
       type
       message
@@ -46,7 +46,7 @@ export const GET_DASHBOARD_DATA = gql`
       }
     }
     
-    systemStatus @cached(ttl: 30) {
+    systemStatus {
       cpu
       memory
       storage
@@ -73,7 +73,7 @@ export const GET_USERS = gql`
       filters: $filters
       sortBy: $sortBy
       sortOrder: $sortOrder
-    ) @cached(ttl: 120) {
+    ) {
       edges {
         node {
           ...UserFragment
@@ -145,7 +145,7 @@ export const SEARCH_QUERY = gql`
     $types: [SearchType!] = [USER, PROJECT, ACTIVITY]
     $limit: Int = 10
   ) {
-    search(query: $query, types: $types, limit: $limit) @cached(ttl: 180) {
+    search(query: $query, types: $types, limit: $limit) {
       ... on User {
         ...UserFragment
         __typename
@@ -215,7 +215,7 @@ export const BULK_UPDATE_USERS = gql`
 // Performance analytics query for monitoring
 export const GET_PERFORMANCE_METRICS = gql`
   query GetPerformanceMetrics($timeRange: TimeRange!) {
-    performanceMetrics(timeRange: $timeRange) @cached(ttl: 60) {
+    performanceMetrics(timeRange: $timeRange) {
       queryLatency {
         average
         p95
@@ -261,7 +261,7 @@ export const GET_PERFORMANCE_METRICS = gql`
 export const GET_CRITICAL_DATA = gql`
   query GetCriticalData {
     # High priority data loaded first
-    criticalMetrics @cached(ttl: 30) {
+    criticalMetrics {
       systemHealth
       errorCount
       alertCount

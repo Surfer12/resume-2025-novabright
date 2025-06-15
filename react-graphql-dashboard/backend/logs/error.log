@@ -3315,3 +3315,1723 @@
   ],
   "operation": "ConsciousnessUpdates"
 }
+2025-06-15T18:34:10.295Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:10.296Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:34:10.301Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 45
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:34:10.305Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:10.307Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:10.308Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:34:10.312Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:10.314Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 45
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:34:40.298Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:40.310Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:40.311Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:40.316Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:35:10.416Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:35:10.425Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:35:10.981Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:35:10.991Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:35:30.304Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:35:30.305Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 45
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:35:30.996Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:35:30.999Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 45
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:36:00.408Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:36:01.984Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:36:03.363Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:36:03.364Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:36:04.006Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:36:04.008Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:36:33.463Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:36:34.980Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:37:03.575Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:37:05.976Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:37:33.689Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:37:36.988Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:38:03.799Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:38:07.977Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:38:33.818Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:38:37.990Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:39:03.829Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:39:08.003Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:39:33.843Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:39:38.015Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:40:03.954Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:40:06.175Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:40:06.176Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:40:06.746Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:40:06.751Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:40:08.027Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:40:12.901Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:40:12.903Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:40:38.972Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:41:09.974Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:41:40.974Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:42:10.989Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:42:41.967Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:43:12.965Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:43:43.960Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}

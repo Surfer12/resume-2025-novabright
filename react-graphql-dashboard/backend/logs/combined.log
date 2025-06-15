@@ -6062,3 +6062,2479 @@
   "errors": 8,
   "errorRate": "4.76%"
 }
+2025-06-15T18:33:10.886Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 168,
+  "averageLatency": "5ms",
+  "errors": 8,
+  "errorRate": "4.76%"
+}
+2025-06-15T18:33:12.938Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 169,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:33:17.936Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 170,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:33:22.937Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 171,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:33:27.937Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 172,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:33:32.937Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 173,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:33:37.936Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 174,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:33:40.886Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 174,
+  "averageLatency": "5ms",
+  "errors": 8,
+  "errorRate": "4.60%"
+}
+2025-06-15T18:33:42.938Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 175,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:33:52.717Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 176,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:33:57.717Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 177,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:02.715Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 178,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:07.715Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "2ms",
+  "totalRequests": 179,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:10.295Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:10.295Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "0ms",
+  "totalRequests": 180,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:10.296Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:34:10.296Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "0ms",
+  "totalRequests": 181,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:10.301Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 45
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:34:10.301Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "3ms",
+  "totalRequests": 182,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:10.305Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:10.306Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "4ms",
+  "totalRequests": 183,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:10.307Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:10.307Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "0ms",
+  "totalRequests": 184,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:10.308Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:34:10.308Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "0ms",
+  "totalRequests": 185,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:10.312Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:10.312Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 186,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:10.314Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 45
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:34:10.314Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "1ms",
+  "totalRequests": 187,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:10.887Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 187,
+  "averageLatency": "5ms",
+  "errors": 16,
+  "errorRate": "8.56%"
+}
+2025-06-15T18:34:12.716Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 188,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:17.718Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 189,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:22.715Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 190,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:24.558Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 191,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:27.718Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 192,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:29.553Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 193,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:32.717Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 194,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:40.298Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:40.298Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 195,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:40.310Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:40.310Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "9ms",
+  "totalRequests": 196,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:40.311Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:40.311Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "0ms",
+  "totalRequests": 197,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:40.316Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:34:40.316Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 198,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:34:40.888Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 198,
+  "averageLatency": "5ms",
+  "errors": 20,
+  "errorRate": "10.10%"
+}
+2025-06-15T18:35:10.416Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:35:10.417Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 199,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:35:10.425Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:35:10.425Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "5ms",
+  "totalRequests": 200,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:35:10.888Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 200,
+  "averageLatency": "5ms",
+  "errors": 22,
+  "errorRate": "11.00%"
+}
+2025-06-15T18:35:10.981Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "PersistedQueryNotFound",
+      "extensions": {
+        "http": {
+          "status": 200,
+          "headers": {}
+        },
+        "code": "PERSISTED_QUERY_NOT_FOUND"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:35:10.982Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 201,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:35:10.991Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:35:10.992Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "5ms",
+  "totalRequests": 202,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:35:30.304Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:35:30.304Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 203,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:35:30.305Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 45
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:35:30.305Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "0ms",
+  "totalRequests": 204,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:35:30.996Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:35:30.996Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "4ms",
+  "totalRequests": 205,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:35:30.999Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 45
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:35:30.999Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "2ms",
+  "totalRequests": 206,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:35:40.887Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 206,
+  "averageLatency": "5ms",
+  "errors": 28,
+  "errorRate": "13.59%"
+}
+2025-06-15T18:36:00.408Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:36:00.408Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 207,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:36:01.984Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 62
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 11,
+          "column": 29
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    },
+    {
+      "message": "Directive \"@cached\" may not be used on FIELD.",
+      "locations": [
+        {
+          "line": 22,
+          "column": 16
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:36:01.985Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "4ms",
+  "totalRequests": 208,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:36:03.363Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:36:03.363Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 209,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:36:03.364Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:36:03.365Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "2ms",
+  "totalRequests": 210,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:36:04.006Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:36:04.006Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 211,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:36:04.008Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:36:04.008Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "1ms",
+  "totalRequests": 212,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:36:10.888Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 212,
+  "averageLatency": "5ms",
+  "errors": 34,
+  "errorRate": "16.04%"
+}
+2025-06-15T18:36:24.915Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 213,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:36:33.463Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:36:33.463Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 214,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:36:34.980Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:36:34.980Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 215,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:36:40.889Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 215,
+  "averageLatency": "5ms",
+  "errors": 36,
+  "errorRate": "16.74%"
+}
+2025-06-15T18:37:03.575Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:37:03.575Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 216,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:37:05.976Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:37:05.976Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 217,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:37:10.889Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 217,
+  "averageLatency": "5ms",
+  "errors": 38,
+  "errorRate": "17.51%"
+}
+2025-06-15T18:37:33.689Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:37:33.689Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 218,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:37:36.988Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:37:36.988Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 219,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:37:40.889Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 219,
+  "averageLatency": "5ms",
+  "errors": 40,
+  "errorRate": "18.26%"
+}
+2025-06-15T18:38:03.799Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:38:03.800Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 220,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:38:07.977Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:38:07.978Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "5ms",
+  "totalRequests": 221,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:38:10.889Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 221,
+  "averageLatency": "5ms",
+  "errors": 42,
+  "errorRate": "19.00%"
+}
+2025-06-15T18:38:13.566Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 222,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:38:18.563Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 223,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:38:23.565Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 224,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:38:28.562Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 225,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:38:33.564Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 226,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:38:33.818Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:38:33.819Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 227,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:38:37.990Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:38:37.990Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "0ms",
+  "totalRequests": 228,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:38:38.564Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 229,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:38:40.890Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 229,
+  "averageLatency": "5ms",
+  "errors": 44,
+  "errorRate": "19.21%"
+}
+2025-06-15T18:38:43.565Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 230,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:38:48.565Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 231,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:38:53.563Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 232,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:38:58.563Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 233,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:03.564Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 234,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:03.829Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:39:03.829Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 235,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:08.003Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:39:08.003Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 236,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:08.563Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 237,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:10.890Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 237,
+  "averageLatency": "5ms",
+  "errors": 46,
+  "errorRate": "19.41%"
+}
+2025-06-15T18:39:13.565Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 238,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:18.565Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 239,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:23.561Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 240,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:28.562Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 241,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:33.563Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 242,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:33.843Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:39:33.843Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 243,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:38.015Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:39:38.016Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 244,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:38.558Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "2ms",
+  "totalRequests": 245,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:40.890Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 245,
+  "averageLatency": "5ms",
+  "errors": 48,
+  "errorRate": "19.59%"
+}
+2025-06-15T18:39:43.559Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "2ms",
+  "totalRequests": 246,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:48.564Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 247,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:53.562Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 248,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:39:58.563Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 249,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:40:03.954Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:40:03.954Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 250,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:40:06.175Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:40:06.175Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 251,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:40:06.176Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:40:06.176Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "0ms",
+  "totalRequests": 252,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:40:06.746Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:40:06.746Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 253,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:40:06.751Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:40:06.752Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "4ms",
+  "totalRequests": 254,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:40:08.027Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:40:08.027Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 255,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:40:10.786Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 256,
+  "avgLatency": "5ms"
+}
+2025-06-15T18:40:10.892Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 256,
+  "averageLatency": "5ms",
+  "errors": 54,
+  "errorRate": "21.09%"
+}
+2025-06-15T18:40:12.901Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:40:12.901Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "0ms",
+  "totalRequests": 257,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:40:12.903Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field PerformanceMetrics.queryLatency.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-15T18:40:12.903Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "1ms",
+  "totalRequests": 258,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:40:15.787Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 259,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:40:20.786Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 260,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:40:25.786Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 261,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:40:30.786Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 262,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:40:32.454Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 263,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:40:38.972Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:40:38.973Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 264,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:40:40.892Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 264,
+  "averageLatency": "4ms",
+  "errors": 57,
+  "errorRate": "21.59%"
+}
+2025-06-15T18:40:56.483Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 265,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:40:56.488Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "2ms",
+  "totalRequests": 266,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:41:09.974Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:41:09.974Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 267,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:41:10.892Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 267,
+  "averageLatency": "4ms",
+  "errors": 58,
+  "errorRate": "21.72%"
+}
+2025-06-15T18:41:40.893Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 267,
+  "averageLatency": "4ms",
+  "errors": 58,
+  "errorRate": "21.72%"
+}
+2025-06-15T18:41:40.974Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:41:40.974Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 268,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:42:10.894Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 268,
+  "averageLatency": "4ms",
+  "errors": 59,
+  "errorRate": "22.01%"
+}
+2025-06-15T18:42:10.989Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:42:10.989Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 269,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:42:40.893Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 269,
+  "averageLatency": "4ms",
+  "errors": 60,
+  "errorRate": "22.30%"
+}
+2025-06-15T18:42:41.967Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:42:41.967Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 270,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:43:10.890Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 270,
+  "averageLatency": "4ms",
+  "errors": 61,
+  "errorRate": "22.59%"
+}
+2025-06-15T18:43:12.965Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Activity.type.",
+      "locations": [
+        {
+          "line": 13,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "type"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:43:12.966Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 271,
+  "avgLatency": "4ms"
+}
+2025-06-15T18:43:40.890Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 271,
+  "averageLatency": "4ms",
+  "errors": 62,
+  "errorRate": "22.88%"
+}
+2025-06-15T18:43:43.960Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field SystemStatus.cpu.",
+      "locations": [
+        {
+          "line": 23,
+          "column": 5
+        }
+      ],
+      "path": [
+        "systemStatus",
+        "cpu"
+      ]
+    },
+    {
+      "message": "Cannot return null for non-nullable field Metrics.change.",
+      "locations": [
+        {
+          "line": 35,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "change"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-15T18:43:43.961Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 272,
+  "avgLatency": "4ms"
+}

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react';
-import { useQuery, useSubscription } from '@apollo/client';
+// import { useQuery, useSubscription } from '@apollo/client'; // Temporarily disabled
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
 import Plot from 'react-plotly.js';
-import { GET_CONSCIOUSNESS_METRICS, CONSCIOUSNESS_UPDATES_SUBSCRIPTION } from '../graphql/consciousness-queries';
+// import { GET_CONSCIOUSNESS_METRICS, CONSCIOUSNESS_UPDATES_SUBSCRIPTION } from '../graphql/consciousness-queries'; // Temporarily disabled
 
 interface ConsciousnessVisualizationProps {
   className?: string;
@@ -37,22 +37,22 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
   const [lambda2, setLambda2] = useState(0.25);
   const [beta, setBeta] = useState(1.2);
 
-  // GraphQL queries for consciousness metrics
-  const { data: consciousnessData, loading } = useQuery(GET_CONSCIOUSNESS_METRICS, {
-    variables: { alpha, lambda1, lambda2, beta },
-    fetchPolicy: 'cache-first',
-    pollInterval: realTime ? 5000 : 0,
-  });
+  // GraphQL queries for consciousness metrics - temporarily disabled
+  // const { data: consciousnessData, loading } = useQuery(GET_CONSCIOUSNESS_METRICS, {
+  //   variables: { alpha, lambda1, lambda2, beta },
+  //   fetchPolicy: 'cache-first',
+  //   pollInterval: realTime ? 5000 : 0,
+  // });
 
-  // Real-time subscription for consciousness updates
-  useSubscription(CONSCIOUSNESS_UPDATES_SUBSCRIPTION, {
-    skip: !realTime,
-    onData: ({ data }) => {
-      if (data.data?.consciousnessUpdated) {
-        console.info('Consciousness metrics updated via subscription');
-      }
-    },
-  });
+  // Real-time subscription for consciousness updates - temporarily disabled
+  // useSubscription(CONSCIOUSNESS_UPDATES_SUBSCRIPTION, {
+  //   skip: !realTime,
+  //   onData: ({ data }) => {
+  //     if (data.data?.consciousnessUpdated) {
+  //       console.info('Consciousness metrics updated via subscription');
+  //     }
+  //   },
+  // });
 
   // Stage colors for three-stage evolution
   const stageColors = useMemo(() => ({
@@ -409,17 +409,17 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
                 type: 'scatter3d',
                 line: {
                   color: phaseSpaceData.z,
-                  colorscale: [[0, '#00bbff'], [0.5, '#00ff88'], [1, '#ffff00']],
+                  colorscale: 'Viridis' as any, // Use string colorscale to avoid type issues
                   width: 6,
-                },
+                } as any,
                 marker: {
                   size: 3,
                   color: phaseSpaceData.z,
-                  colorscale: [[0, '#00bbff'], [0.5, '#00ff88'], [1, '#ffff00']],
+                  colorscale: 'Viridis' as any, // Use string colorscale to avoid type issues
                   opacity: 0.8,
-                },
+                } as any,
                 name: 'Consciousness Trajectory',
-              }]}
+              } as any]}
               layout={{
                 scene: {
                   xaxis: { title: 'Symbolic Processing', color: '#888' },

@@ -3,37 +3,22 @@ import {
   InMemoryCache,
   createHttpLink,
   from,
-  split,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BatchHttpLink } from '@apollo/client/link/batch-http';
-import { createPersistedQueryLink } from '@apollo/client/link/persisted-queries';
-import { sha256 } from 'crypto-hash';
-import { getMainDefinition } from '@apollo/client/utilities';
+// import { createPersistedQueryLink } from '@apollo/client/link/persisted-queries'; // Temporarily disabled
+// import { sha256 } from 'crypto-hash'; // Temporarily disabled
 import { onError } from '@apollo/client/link/error';
 
 // Environment configuration
 const API_ENDPOINT = process.env.VITE_GRAPHQL_ENDPOINT || 'http://localhost:4000/graphql';
 
-// Performance optimization: Persisted queries for reduced bandwidth
-const persistedQueriesLink = createPersistedQueryLink({
-  sha256,
-  useGETForHashedQueries: false, // Use POST for persisted queries to be compatible with batchHttpLink
-});
+// Performance optimization: Persisted queries for reduced bandwidth - TEMPORARILY DISABLED
+// const persistedQueriesLink = createPersistedQueryLink({
+//   sha256,
+//   useGETForHashedQueries: false, // Use POST for persisted queries
+// });
 
-// Batch HTTP link for query batching (reduces network round trips)
-const batchHttpLink = new BatchHttpLink({
-  uri: API_ENDPOINT,
-  batchMax: 10, // Batch up to 10 queries
-  batchInterval: 20, // 20ms batching window
-  batchKey: (operation) => {
-    // Group operations by priority for optimal batching
-    const context = operation.getContext();
-    return context.priority || 'default';
-  },
-});
-
-// Regular HTTP link for non-batchable operations
+// Regular HTTP link for all operations (no batching, no persisted queries)
 const httpLink = createHttpLink({
   uri: API_ENDPOINT,
   fetch: (uri, options) => {
@@ -83,30 +68,6 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) 
     }
   }
 });
-
-// Split link for batching vs non-batching operations
-const splitLink = split(
-  ({ query, operationName, getContext }) => {
-    const definition = getMainDefinition(query);
-    const context = getContext();
-    
-    // Don't batch mutations or subscriptions
-    if (definition.kind === 'OperationDefinition') {
-      if (definition.operation === 'mutation' || definition.operation === 'subscription') {
-        return false;
-      }
-    }
-    
-    // Don't batch real-time queries
-    if (context?.realtime) {
-      return false;
-    }
-    
-    return true;
-  },
-  batchHttpLink,
-  httpLink
-);
 
 // Optimized cache configuration
 const cache = new InMemoryCache({
@@ -165,13 +126,12 @@ const cache = new InMemoryCache({
   }),
 });
 
-// Create Apollo Client with all optimizations
+// Create Apollo Client with simplified configuration
 export const apolloClient = new ApolloClient({
   link: from([
     errorLink,
     authLink,
-    persistedQueriesLink,
-    splitLink,
+    httpLink, // Simple HTTP link only
   ]),
   cache,
   defaultOptions: {
