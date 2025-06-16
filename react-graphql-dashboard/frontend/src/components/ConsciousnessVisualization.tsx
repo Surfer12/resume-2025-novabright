@@ -48,6 +48,32 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
   const [beta, setBeta] = useState(1.2);
   const [showExplanation, setShowExplanation] = useState(false);
 
+  // Interactive N-back example state based on the new additive model
+  const [nBackInputs, setNBackInputs] = useState({
+    f_x: 0.4,
+    alpha: 0.5,
+    lambda1: 1.0,
+    r_cognitive: 0.3,
+    lambda2: 0.8,
+    r_efficiency: 0.2,
+    beta: 0.2,
+    g_x: 0.1,
+  });
+
+  const handleNBackChange = (field: keyof typeof nBackInputs, value: string) => {
+    setNBackInputs(prev => ({ ...prev, [field]: parseFloat(value) }));
+  };
+
+  const exampleCalcs = useMemo(() => {
+    const { f_x, alpha, lambda1, r_cognitive, lambda2, r_efficiency, beta, g_x } = nBackInputs;
+    const cognitive_term = lambda1 * r_cognitive;
+    const efficiency_term = lambda2 * r_efficiency;
+    const regularization_term = alpha * (cognitive_term + efficiency_term);
+    const emergent_term = beta * g_x;
+    const psi_x = f_x + regularization_term + emergent_term;
+    return { f_x, regularization_term, emergent_term, psi_x, cognitive_term, efficiency_term };
+  }, [nBackInputs]);
+
   // Stage colors for three-stage evolution
   const stageColors = useMemo(() => ({
     linear: new THREE.Color(0x4444ff),
@@ -675,6 +701,63 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
       <div className="px-8 pb-8">
         <ParameterImpactChart />
       </div>
+
+      {/* Interactive Numerical Example Panel - Updated for Additive Model */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="mx-8 mb-8 bg-gray-800/80 backdrop-blur-sm rounded-lg p-6 border border-gray-700 shadow-2xl"
+      >
+        <h3 className="text-xl font-semibold text-white mb-4">
+          Interactive Example: N-Back Task Calculation (Additive Model)
+        </h3>
+        <p className="text-sm text-gray-400 mb-6">
+          Adjust the inputs below to see how they affect the final Ψ(x) output in real-time, based on the conceptual formula: Ψ(x) = f(x) + α(λ₁R_cog + λ₂R_eff) + βg(x).
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {/* Input Controls */}
+          <div className="col-span-1 md:col-span-3 lg:col-span-1 space-y-4 bg-gray-900/40 p-4 rounded-lg">
+            {Object.keys(nBackInputs).map(key => (
+              <div key={key}>
+                <label className="text-xs text-gray-400 capitalize">{key.replace(/_/g, ' ')}</label>
+                <input
+                  type="range"
+                  min="0"
+                  max={key === 'beta' ? '2' : '1'}
+                  step="0.01"
+                  value={nBackInputs[key as keyof typeof nBackInputs]}
+                  onChange={(e) => handleNBackChange(key as keyof typeof nBackInputs, e.target.value)}
+                  className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider-blue"
+                />
+                <span className="text-blue-300 font-mono text-sm">{nBackInputs[key as keyof typeof nBackInputs].toFixed(2)}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Calculation Steps */}
+          <div className="col-span-1 md:col-span-3 lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-gray-900/50 p-4 rounded-lg">
+              <h4 className="font-semibold text-green-400 mb-2">1. Base Output</h4>
+              <p className="text-sm">f(x) = <span className="font-bold">{exampleCalcs.f_x.toFixed(2)}</span></p>
+            </div>
+            <div className="bg-gray-900/50 p-4 rounded-lg">
+              <h4 className="font-semibold text-green-400 mb-2">2. Weighted Regularization</h4>
+              <p className="text-xs">α(λ₁R_cog + λ₂R_eff)</p>
+              <p className="text-sm">= {nBackInputs.alpha.toFixed(2)} × ({exampleCalcs.cognitive_term.toFixed(2)} + {exampleCalcs.efficiency_term.toFixed(2)}) = <span className="font-bold">{exampleCalcs.regularization_term.toFixed(3)}</span></p>
+            </div>
+            <div className="bg-gray-900/50 p-4 rounded-lg">
+              <h4 className="font-semibold text-green-400 mb-2">3. Emergent Term</h4>
+              <p className="text-xs">β·g(x)</p>
+              <p className="text-sm">= {nBackInputs.beta.toFixed(2)} × {nBackInputs.g_x} = <span className="font-bold">{exampleCalcs.emergent_term.toFixed(3)}</span></p>
+            </div>
+            <div className="md:col-span-2 text-center mt-4 bg-gray-900 p-4 rounded-lg">
+              <h4 className="font-semibold text-xl text-green-400">Final Output: Ψ(x)</h4>
+              <p className="font-mono text-2xl mt-2">{exampleCalcs.f_x.toFixed(2)} + {exampleCalcs.regularization_term.toFixed(3)} + {exampleCalcs.emergent_term.toFixed(3)} = <span className="text-yellow-400 font-bold">{exampleCalcs.psi_x.toFixed(3)}</span></p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
 
       {/* Control Panel */}
       <motion.div 

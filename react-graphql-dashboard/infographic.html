@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Meta-Optimization Equation Infographic with AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+        }
+        .equation-text {
+            font-family: 'Times New Roman', Times, serif; /* Serif font for equation */
+            font-size: 1.3em; /* Slightly larger for readability */
+            color: #1e3a8a; /* Dark blue for equation text */
+        }
+        .component-title {
+            font-weight: 600;
+            color: #1e3a8a; /* Dark blue */
+        }
+        .description-text {
+            color: #374151; /* Dark gray */
+        }
+        .highlight-value {
+            color: #c026d3; /* Fuchsia for numerical values */
+            font-weight: bold;
+        }
+        .ai-explanation-value {
+            color: #166534; /* Dark Green for AI explanation values */
+            font-weight: bold;
+        }
+        .arrow-symbol {
+            font-size: 2rem;
+            color: #60a5fa; /* Lighter blue for arrows */
+            line-height: 1;
+        }
+        .section-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* md */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem; /* p-6 */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        .icon-placeholder { /* Basic styling for SVG icons */
+            width: 2.5rem; /* w-10 */
+            height: 2.5rem; /* h-10 */
+            margin-right: 0.75rem; /* mr-3 */
+            color: #3b82f6; /* Blue-500 */
+        }
+        .sub-component-card {
+            background-color: #eff6ff; /* Blue-50 */
+            border: 1px solid #bfdbfe; /* Blue-200 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 1rem; /* p-4 */
+            margin-top: 0.75rem; /* mt-3 */
+        }
+        .input-field {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #d1d5db; /* Gray-300 */
+            border-radius: 0.375rem; /* rounded-md */
+            margin-top: 0.25rem;
+            font-size: 0.875rem; /* text-sm */
+        }
+        .ai-button {
+            background-color: #2563eb; /* Blue-600 */
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.875rem; /* text-sm */
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        .ai-button:hover {
+            background-color: #1d4ed8; /* Blue-700 */
+        }
+        .ai-button.variable-explainer { /* Specific style for variable explainers */
+            padding: 0.3rem 0.6rem;
+            font-size: 0.75rem; /* Smaller font */
+            margin-top: 0.25rem;
+            margin-left: 0.5rem;
+        }
+         .ai-button.term-explainer { /* Specific style for equation term explainers */
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+            margin-left: 0.75rem; /* ml-3 */
+        }
+        .ai-button svg {
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.5rem;
+        }
+        .loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: none; /* Hidden by default */
+            margin: 10px auto; /* Centered for main loaders */
+        }
+        .inline-loader { /* For loaders next to buttons */
+            display: none;
+            width: 16px;
+            height: 16px;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .ai-response-area {
+            background-color: #e0f2fe; /* Light cyan */
+            border: 1px solid #7dd3fc; /* Cyan border */
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: #075985; /* Dark cyan text */
+        }
+        .variable-container { /* Container for label, input, and button */
+            margin-bottom: 1rem;
+        }
+        .variable-label-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+        }
+        .equation-term-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb; /* Gray 200 */
+        }
+        .equation-term-item:last-child {
+            border-bottom: none;
+        }
+        .equation-term-label {
+            font-weight: 500;
+            color: #1e3a8a; /* Dark blue */
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Times+New+Roman&display=swap" rel="stylesheet">
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <header class="text-center mb-8 md:mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-blue-700">The Core Equation for Cognitive-Computational Meta-Optimization</h1>
+        </header>
+
+        <section class="section-card mb-8">
+            <h2 class="text-2xl font-semibold text-center text-blue-600 mb-4">The Equation: Ψ(x)</h2>
+            <div class="equation-text text-center p-4 bg-blue-50 rounded-lg overflow-x-auto">
+                Ψ(x) = ∫ [ α(t)S(x) + (1-α(t))N(x) ] × exp(−[λ<sub>1</sub>R<sub>cognitive</sub> + λ<sub>2</sub>R<sub>efficiency</sub>]) × P(H|E,β) dt
+            </div>
+            <p class="text-center mt-3 description-text text-sm">This equation balances machine performance with human-interpretable reasoning to produce an optimized output.</p>
+        </section>
+
+        <section class="section-card mb-8">
+            <h2 class="text-xl font-semibold text-center text-blue-600 mb-6">Deep Dive into Equation Terms</h2>
+            <div id="equationTermExplanationList">
+                </div>
+        </section>
+
+
+        <section class="section-card text-center mb-8">
+             <div class="flex justify-center items-center mb-2">
+                <svg class="icon-placeholder" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                <h3 class="component-title text-2xl">Ψ(x): The Optimized Output (Overall Concept)</h3>
+            </div>
+            <p class="description-text">The final, refined output for a given input <span class="font-semibold">x</span>.</p>
+             <button class="ai-button" onclick="getAIExplanation('Psi_overall_concept', 'psiOverallConceptAIResponse', 'psiOverallConceptLoader')">
+                <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                ✨ Explain Overall Concept with AI
+            </button>
+            <div class="loader" id="psiOverallConceptLoader"></div>
+            <div class="ai-response-area" id="psiOverallConceptAIResponse" style="display:none;"></div>
+        </section>
+
+        <div class="text-center my-6 arrow-symbol">⬇️</div>
+
+        <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+
+            <div class="section-card">
+                <div class="flex items-center mb-3">
+                    <svg class="icon-placeholder" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    <h3 class="component-title text-xl">1. Hybrid Reasoning Component</h3>
+                </div>
+                <p class="equation-text text-sm mb-2">α(t)S(x) + (1-α(t))N(x)</p>
+                <p class="description-text text-sm mb-3">Blends symbolic and neural outputs.</p>
+                <button class="ai-button" onclick="getAIExplanation('Hybrid Reasoning Component', 'hybridReasoningAIResponse', 'hybridReasoningLoader')">
+                    <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    ✨ Explain Component with AI
+                </button>
+                <div class="loader" id="hybridReasoningLoader"></div>
+                <div class="ai-response-area" id="hybridReasoningAIResponse" style="display:none;"></div>
+            </div>
+
+            <div class="section-card">
+                 <div class="flex items-center mb-3">
+                    <svg class="icon-placeholder" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                    <h3 class="component-title text-xl">2. Cognitive & Efficiency Filter Component</h3>
+                </div>
+                <p class="equation-text text-sm mb-2">exp(−[λ<sub>1</sub>R<sub>cognitive</sub> + λ<sub>2</sub>R<sub>efficiency</sub>])</p>
+                <p class="description-text text-sm mb-3">Penalizes implausible or inefficient solutions.</p>
+                 <button class="ai-button" onclick="getAIExplanation('Cognitive & Efficiency Filter Component', 'filterAIResponse', 'filterLoader')">
+                    <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    ✨ Explain Component with AI
+                </button>
+                <div class="loader" id="filterLoader"></div>
+                <div class="ai-response-area" id="filterAIResponse" style="display:none;"></div>
+            </div>
+
+            <div class="section-card">
+                <div class="flex items-center mb-3">
+                    <svg class="icon-placeholder" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <h3 class="component-title text-xl">3. Human Bias Modeling Component</h3>
+                </div>
+                <p class="equation-text text-sm mb-2">P(H|E,β)</p>
+                <p class="description-text text-sm mb-3">Adjusts probability based on human cognitive biases.</p>
+                 <button class="ai-button" onclick="getAIExplanation('Human Bias Modeling Component', 'biasAIResponse', 'biasLoader')">
+                    <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    ✨ Explain Component with AI
+                </button>
+                <div class="loader" id="biasLoader"></div>
+                <div class="ai-response-area" id="biasAIResponse" style="display:none;"></div>
+            </div>
+        </div>
+
+        <section class="section-card mb-8">
+            <h2 class="text-xl font-semibold text-center text-blue-600 mb-6">Interactive "What If" Scenario Calculator</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2 mb-6">
+                <div class="variable-container">
+                    <div class="variable-label-container">
+                        <label for="s_x_calc" class="block text-sm font-medium text-gray-700">Symbolic Output S(x):</label>
+                        <button class="ai-button variable-explainer" onclick="getAIExplanation('S(x)_calc', 's_x_calc_AIResponse', 's_x_calc_Loader')">✨ AI</button>
+                    </div>
+                    <input type="number" id="s_x_calc" value="0.60" step="0.01" class="input-field">
+                    <div class="loader inline-loader" id="s_x_calc_Loader"></div>
+                    <div class="ai-response-area" id="s_x_calc_AIResponse" style="display:none; margin-top: 5px; font-size: 0.8rem;"></div>
+                </div>
+                <div class="variable-container">
+                    <div class="variable-label-container">
+                        <label for="n_x_calc" class="block text-sm font-medium text-gray-700">Neural Output N(x):</label>
+                        <button class="ai-button variable-explainer" onclick="getAIExplanation('N(x)_calc', 'n_x_calc_AIResponse', 'n_x_calc_Loader')">✨ AI</button>
+                    </div>
+                    <input type="number" id="n_x_calc" value="0.80" step="0.01" class="input-field">
+                    <div class="loader inline-loader" id="n_x_calc_Loader"></div>
+                    <div class="ai-response-area" id="n_x_calc_AIResponse" style="display:none; margin-top: 5px; font-size: 0.8rem;"></div>
+                </div>
+                <div class="variable-container">
+                    <div class="variable-label-container">
+                        <label for="alpha_t_calc" class="block text-sm font-medium text-gray-700">Weight α(t):</label>
+                        <button class="ai-button variable-explainer" onclick="getAIExplanation('alpha(t)_calc', 'alpha_t_calc_AIResponse', 'alpha_t_calc_Loader')">✨ AI</button>
+                    </div>
+                    <input type="number" id="alpha_t_calc" value="0.4" step="0.01" min="0" max="1" class="input-field">
+                    <div class="loader inline-loader" id="alpha_t_calc_Loader"></div>
+                    <div class="ai-response-area" id="alpha_t_calc_AIResponse" style="display:none; margin-top: 5px; font-size: 0.8rem;"></div>
+                </div>
+                <div class="variable-container">
+                    <div class="variable-label-container">
+                        <label for="r_cog_calc" class="block text-sm font-medium text-gray-700">Cognitive Penalty R<sub>cognitive</sub>:</label>
+                        <button class="ai-button variable-explainer" onclick="getAIExplanation('R_cognitive_calc', 'r_cog_calc_AIResponse', 'r_cog_calc_Loader')">✨ AI</button>
+                    </div>
+                    <input type="number" id="r_cog_calc" value="0.25" step="0.01" class="input-field">
+                    <div class="loader inline-loader" id="r_cog_calc_Loader"></div>
+                    <div class="ai-response-area" id="r_cog_calc_AIResponse" style="display:none; margin-top: 5px; font-size: 0.8rem;"></div>
+                </div>
+                <div class="variable-container">
+                    <div class="variable-label-container">
+                        <label for="r_eff_calc" class="block text-sm font-medium text-gray-700">Efficiency Penalty R<sub>efficiency</sub>:</label>
+                        <button class="ai-button variable-explainer" onclick="getAIExplanation('R_efficiency_calc', 'r_eff_calc_AIResponse', 'r_eff_calc_Loader')">✨ AI</button>
+                    </div>
+                    <input type="number" id="r_eff_calc" value="0.10" step="0.01" class="input-field">
+                    <div class="loader inline-loader" id="r_eff_calc_Loader"></div>
+                    <div class="ai-response-area" id="r_eff_calc_AIResponse" style="display:none; margin-top: 5px; font-size: 0.8rem;"></div>
+                </div>
+                <div class="variable-container">
+                    <div class="variable-label-container">
+                        <label for="lambda_1_calc" class="block text-sm font-medium text-gray-700">Weight λ<sub>1</sub> (Cognitive):</label>
+                        <button class="ai-button variable-explainer" onclick="getAIExplanation('lambda_1_calc', 'lambda_1_calc_AIResponse', 'lambda_1_calc_Loader')">✨ AI</button>
+                    </div>
+                    <input type="number" id="lambda_1_calc" value="0.8" step="0.01" class="input-field">
+                    <div class="loader inline-loader" id="lambda_1_calc_Loader"></div>
+                    <div class="ai-response-area" id="lambda_1_calc_AIResponse" style="display:none; margin-top: 5px; font-size: 0.8rem;"></div>
+                </div>
+                <div class="variable-container">
+                    <div class="variable-label-container">
+                        <label for="lambda_2_calc" class="block text-sm font-medium text-gray-700">Weight λ<sub>2</sub> (Efficiency):</label>
+                        <button class="ai-button variable-explainer" onclick="getAIExplanation('lambda_2_calc', 'lambda_2_calc_AIResponse', 'lambda_2_calc_Loader')">✨ AI</button>
+                    </div>
+                    <input type="number" id="lambda_2_calc" value="0.2" step="0.01" class="input-field">
+                    <div class="loader inline-loader" id="lambda_2_calc_Loader"></div>
+                    <div class="ai-response-area" id="lambda_2_calc_AIResponse" style="display:none; margin-top: 5px; font-size: 0.8rem;"></div>
+                </div>
+                <div class="variable-container">
+                    <div class="variable-label-container">
+                        <label for="p_h_e_calc" class="block text-sm font-medium text-gray-700">Base Probability P(H|E):</label>
+                        <button class="ai-button variable-explainer" onclick="getAIExplanation('P(H|E)_calc', 'p_h_e_calc_AIResponse', 'p_h_e_calc_Loader')">✨ AI</button>
+                    </div>
+                    <input type="number" id="p_h_e_calc" value="0.70" step="0.01" min="0" max="1" class="input-field">
+                    <div class="loader inline-loader" id="p_h_e_calc_Loader"></div>
+                    <div class="ai-response-area" id="p_h_e_calc_AIResponse" style="display:none; margin-top: 5px; font-size: 0.8rem;"></div>
+                </div>
+                <div class="variable-container">
+                    <div class="variable-label-container">
+                        <label for="beta_val_calc" class="block text-sm font-medium text-gray-700">Bias Parameter β:</label>
+                        <button class="ai-button variable-explainer" onclick="getAIExplanation('beta_calc', 'beta_val_calc_AIResponse', 'beta_val_calc_Loader')">✨ AI</button>
+                    </div>
+                    <input type="number" id="beta_val_calc" value="1.4" step="0.01" class="input-field">
+                    <div class="loader inline-loader" id="beta_val_calc_Loader"></div>
+                    <div class="ai-response-area" id="beta_val_calc_AIResponse" style="display:none; margin-top: 5px; font-size: 0.8rem;"></div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button class="ai-button bg-green-600 hover:bg-green-700" onclick="calculateAndExplainPsi()">
+                    Calculate Ψ(x) & ✨ Explain with AI
+                </button>
+            </div>
+
+            <div class="mt-6 bg-indigo-50 p-4 rounded-lg text-center">
+                <p class="text-lg font-semibold text-indigo-700">Calculated Ψ(x): <span id="psi_x_result" class="highlight-value">0.4507</span></p>
+                 <p class="description-text text-xs mt-1">
+                    Based on: Hybrid (<span id="hybrid_out_val" class="ai-explanation-value">0.72</span>)
+                    × Filter (<span id="filter_out_val" class="ai-explanation-value">0.8025</span>)
+                    × Biased P (<span id="bias_p_out_val" class="ai-explanation-value">0.7804</span>)
+                </p>
+            </div>
+            <div class="loader" id="psiExplainLoader"></div>
+            <div class="ai-response-area" id="psiExplainAIResponse" style="display:none;"></div>
+        </section>
+
+
+        <section class="section-card text-center mb-8">
+            <div class="flex justify-center items-center mb-2">
+                <svg class="icon-placeholder" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 class="component-title text-xl">∫ ... dt: Integration Over Time/Iterations (Concept)</h3>
+            </div>
+            <p class="description-text">The final output Ψ(x) evolves or aggregates across multiple steps. This calculator shows a single time step.</p>
+             <button class="ai-button" onclick="getAIExplanation('Integral_dt_concept', 'integralConceptAIResponse', 'integralConceptLoader')">
+                <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                ✨ Explain Concept with AI
+            </button>
+            <div class="loader" id="integralConceptLoader"></div>
+            <div class="ai-response-area" id="integralConceptAIResponse" style="display:none;"></div>
+        </section>
+
+        <section class="section-card">
+            <h2 class="text-xl font-semibold text-center text-blue-600 mb-4">Key Implications</h2>
+            <ul class="list-disc list-inside space-y-2 description-text text-sm md:text-base">
+                <li><span class="font-semibold text-blue-700">Balanced Intelligence:</span> Avoids over-reliance on one method.</li>
+                <li><span class="font-semibold text-blue-700">Enhanced Interpretability:</span> Promotes human-understandable outputs.</li>
+                <li><span class="font-semibold text-blue-700">Practical Efficiency:</span> Encourages resource-conscious solutions.</li>
+                <li><span class="font-semibold text-blue-700">Human Alignment:</span> Resonates with human cognitive patterns.</li>
+                <li><span class="font-semibold text-blue-700">Dynamic & Adaptive:</span> System can refine itself over iterations.</li>
+            </ul>
+        </section>
+
+        <footer class="text-center mt-12 py-4">
+            <p class="text-xs text-gray-500">Interactive Infographic: Meta-Optimization Equation with AI Insights.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Helper function to show loader and hide response area
+        function showLoader(loaderId, responseAreaId) {
+            const loader = document.getElementById(loaderId);
+            if (loader) loader.style.display = 'block';
+            
+            if (responseAreaId) {
+                const responseArea = document.getElementById(responseAreaId);
+                if (responseArea) {
+                    responseArea.style.display = 'none';
+                    responseArea.innerHTML = '';
+                }
+            }
+        }
+
+        // Helper function to hide loader
+        function hideLoader(loaderId) {
+            const loader = document.getElementById(loaderId);
+            if (loader) loader.style.display = 'none';
+        }
+
+        // Helper function to display AI response
+        function displayAIResponse(responseAreaId, text) {
+            const responseArea = document.getElementById(responseAreaId);
+            if (responseArea) {
+                responseArea.innerHTML = text.replace(/\n/g, '<br>'); // Preserve line breaks
+                responseArea.style.display = 'block';
+            }
+        }
+        
+        // Helper function to display error message
+        function displayError(responseAreaId, error) {
+            const responseArea = document.getElementById(responseAreaId);
+            if (responseArea) {
+                responseArea.innerHTML = '<p class="text-red-500">Error: ' + (error.message || 'Failed to fetch explanation.') + '</p>';
+                responseArea.style.display = 'block';
+            }
+            console.error("API Error:", error);
+        }
+
+        // Function to call Gemini API
+        async function callGeminiAPI(prompt) {
+            const apiKey = ""; // Per instruction, leave empty for Canvas environment
+            const apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + apiKey;
+            
+            const payload = {
+                contents: [{ role: "user", parts: [{ text: prompt }] }]
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorBody = await response.json();
+                    console.error("API Error Response:", errorBody);
+                    throw new Error('API request failed with status ' + response.status + ': ' + (errorBody?.error?.message || response.statusText));
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    return result.candidates[0].content.parts[0].text;
+                } else {
+                    console.error("Unexpected API response structure:", result);
+                    throw new Error('No content found in API response.');
+                }
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                throw error; // Re-throw to be caught by the caller
+            }
+        }
+        
+        const equationTerms = [
+            { id: 'Psi_eq_term', label: 'Ψ(x) (The Optimized Output)', description: "Explain the overall meaning of Ψ(x) as the final output of this meta-optimization equation. What does it ultimately represent for a system designed with this formula? " },
+            { id: 'Integral_eq_term', label: '∫ (The Integral Symbol)', description: "Explain the role of the integral symbol (∫) in this equation. What does integration over 'dt' signify in the context of this system's operation (e.g., time, iterations, accumulation)?" },
+            { id: 'alpha_t_eq_term', label: 'α(t) (Dynamic Weighting Factor)', description: "Explain the 'Dynamic Weighting Factor α(t)'. How does it balance symbolic S(x) and neural N(x) contributions? Why is the '(t)' significant?" },
+            { id: 'S_x_eq_term', label: 'S(x) (Symbolic Reasoning Output)', description: "Explain 'Symbolic Reasoning Output S(x)'. What kind of AI processing does this term represent? Provide examples." },
+            { id: 'N_x_eq_term', label: 'N(x) (Neural Network Output)', description: "Explain 'Neural Network Output N(x)'. What kind of AI processing does this term represent? Provide examples." },
+            { id: 'exp_eq_term', label: 'exp(−[...]) (Exponential Regularization)', description: "Explain the 'Exponential Regularization Factor exp(−[λ₁R_cognitive + λ₂R_efficiency])'. How does this term act as a filter or penalty? Why use an exponential function?" },
+            { id: 'lambda1_eq_term', label: 'λ₁ (Cognitive Plausibility Weight)', description: "Explain 'λ₁', the weight for cognitive plausibility. How does it control the influence of the R_cognitive penalty?" },
+            { id: 'R_cognitive_eq_term', label: 'R<sub>cognitive</sub> (Cognitive Plausibility Penalty)', description: "Explain 'R_cognitive', the penalty for violating cognitive plausibility. What kind of violations might this term penalize?" },
+            { id: 'lambda2_eq_term', label: 'λ₂ (Computational Efficiency Weight)', description: "Explain 'λ₂', the weight for computational efficiency. How does it control the influence of the R_efficiency penalty?" },
+            { id: 'R_efficiency_eq_term', label: 'R<sub>efficiency</sub> (Computational Efficiency Penalty)', description: "Explain 'R_efficiency', the penalty for computational inefficiency. What factors might this term penalize (e.g., time, resources)?" },
+            { id: 'P_H_E_beta_eq_term', label: 'P(H|E,β) (Bias-Adjusted Probability)', description: "Explain the 'Bias-Adjusted Probability P(H|E,β)'. How does this term incorporate human-like biases (via β) into the hypothesis evaluation?" },
+            { id: 'dt_eq_term', label: 'dt (Integration Variable)', description: "Explain 'dt', the integration variable. What does it typically represent in the context of this equation (e.g., discrete time steps, iterative refinements)?" }
+        ];
+
+        function populateEquationTerms() {
+            const container = document.getElementById('equationTermExplanationList');
+            if (!container) return;
+
+            equationTerms.forEach(term => {
+                const termElement = document.createElement('div');
+                termElement.className = 'equation-term-item';
+                
+                const labelSpan = document.createElement('span');
+                labelSpan.className = 'equation-term-label';
+                labelSpan.innerHTML = term.label; // Use innerHTML for subscript
+                
+                const buttonContainer = document.createElement('div');
+                buttonContainer.className = 'flex items-center';
+
+                const button = document.createElement('button');
+                button.className = 'ai-button term-explainer';
+                button.innerHTML = `<svg fill="currentColor" viewBox="0 0 20 20" style="width:0.8rem; height:0.8rem; margin-right:0.3rem;"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> AI`;
+                const loaderId = `${term.id}_Loader`;
+                const responseId = `${term.id}_AIResponse`;
+                button.onclick = () => getAIExplanation(term.id, responseId, loaderId);
+                
+                const loader = document.createElement('div');
+                loader.className = 'loader inline-loader';
+                loader.id = loaderId;
+
+                buttonContainer.appendChild(button);
+                buttonContainer.appendChild(loader);
+                
+                termElement.appendChild(labelSpan);
+                termElement.appendChild(buttonContainer);
+                
+                const responseArea = document.createElement('div');
+                responseArea.className = 'ai-response-area w-full mt-2'; // Added w-full and mt-2
+                responseArea.id = responseId;
+                responseArea.style.display = 'none';
+                
+                const wrapperDiv = document.createElement('div'); // Wrapper for term and its response
+                wrapperDiv.appendChild(termElement);
+                wrapperDiv.appendChild(responseArea);
+
+                container.appendChild(wrapperDiv);
+            });
+        }
+
+
+        // AI Explanation for components and variables
+        async function getAIExplanation(itemName, responseAreaId, loaderId) {
+            showLoader(loaderId, responseAreaId);
+            let prompt = '';
+            const basePromptEnd = "Keep the explanation concise (1-2 short paragraphs), suitable for an infographic context, focusing on its role and significance within the meta-optimization equation: Ψ(x) = ∫ [ α(t)S(x) + (1-α(t))N(x) ] × exp(−[λ₁R_cognitive + λ₂R_efficiency]) × P(H|E,β) dt.";
+
+            // Find term description from equationTerms array if it's an equation term
+            const termData = equationTerms.find(t => t.id === itemName);
+            if (termData) {
+                prompt = termData.description + " " + basePromptEnd;
+            } else {
+                // Fallback for existing component/calculator variable explanations
+                switch(itemName) {
+                    case 'Psi_overall_concept':
+                        prompt = "Explain the overall concept and purpose of Ψ(x) in the meta-optimization equation. What does it ultimately represent for a system designed with this formula? " + basePromptEnd;
+                        break;
+                    case 'Hybrid Reasoning Component':
+                        prompt = "Explain the 'Hybrid Reasoning Component' (α(t)S(x) + (1-α(t))N(x)) of the meta-optimization equation Ψ(x) in more detail. Discuss its importance as a whole block. " + basePromptEnd;
+                        break;
+                    case 'Cognitive & Efficiency Filter Component':
+                        prompt = "Explain the 'Cognitive & Efficiency Filter Component' (exp(−[λ₁R_cognitive + λ₂R_efficiency])) of the meta-optimization equation Ψ(x) in detail. Discuss its role as a whole block. " + basePromptEnd;
+                        break;
+                    case 'Human Bias Modeling Component':
+                        prompt = "Explain the 'Human Bias Modeling Component' (P(H|E,β)) of the meta-optimization equation Ψ(x). What is its purpose as a whole block? " + basePromptEnd;
+                        break;
+                    case 'Integral_dt_concept':
+                         prompt = "Explain the combined concept of '∫ ... dt' (Integration Over Time/Iterations) in the meta-optimization equation Ψ(x). Why is this integration important for the system's evolution or deliberation? " + basePromptEnd;
+                        break;
+                    // Calculator Variable Explanations (add _calc suffix to distinguish if needed, or keep as is if prompts are general enough)
+                    case 'S(x)_calc': prompt = "Explain the 'Symbolic Output S(x)' variable. " + basePromptEnd; break;
+                    case 'N(x)_calc': prompt = "Explain the 'Neural Output N(x)' variable. " + basePromptEnd; break;
+                    case 'alpha(t)_calc': prompt = "Explain the 'Weight α(t)' variable. " + basePromptEnd; break;
+                    case 'R_cognitive_calc': prompt = "Explain the 'Cognitive Penalty R_cognitive' variable. " + basePromptEnd; break;
+                    case 'R_efficiency_calc': prompt = "Explain the 'Efficiency Penalty R_efficiency' variable. " + basePromptEnd; break;
+                    case 'lambda_1_calc':  prompt = "Explain the 'Weight λ₁' (for R_cognitive). " + basePromptEnd; break;
+                    case 'lambda_2_calc': prompt = "Explain the 'Weight λ₂' (for R_efficiency). " + basePromptEnd; break;
+                    case 'P(H|E)_calc': prompt = "Explain the 'Base Probability P(H|E)'. " + basePromptEnd; break;
+                    case 'beta_calc': prompt = "Explain the 'Bias Parameter β'. " + basePromptEnd; break;
+                    default:
+                        console.error("Unknown item for AI explanation:", itemName);
+                        hideLoader(loaderId);
+                        if(responseAreaId) displayError(responseAreaId, {message: "Invalid item for explanation."});
+                        return;
+                }
+            }
+
+
+            try {
+                const explanation = await callGeminiAPI(prompt);
+                displayAIResponse(responseAreaId, explanation);
+            } catch (error) {
+                 displayError(responseAreaId, error);
+            } finally {
+                hideLoader(loaderId);
+            }
+        }
+
+        // Calculate Psi(x) values
+        function calculatePsiValues() {
+            const s_x = parseFloat(document.getElementById('s_x_calc').value) || 0;
+            const n_x = parseFloat(document.getElementById('n_x_calc').value) || 0;
+            const alpha_t = parseFloat(document.getElementById('alpha_t_calc').value) || 0;
+            const r_cog = parseFloat(document.getElementById('r_cog_calc').value) || 0;
+            const r_eff = parseFloat(document.getElementById('r_eff_calc').value) || 0;
+            const lambda_1 = parseFloat(document.getElementById('lambda_1_calc').value) || 0;
+            const lambda_2 = parseFloat(document.getElementById('lambda_2_calc').value) || 0;
+            const p_h_e = parseFloat(document.getElementById('p_h_e_calc').value) || 0;
+            const beta_val = parseFloat(document.getElementById('beta_val_calc').value) || 0;
+
+            // 1. Hybrid Output
+            const hybrid_output = alpha_t * s_x + (1 - alpha_t) * n_x;
+
+            // 2. Total Penalty
+            const total_penalty = lambda_1 * r_cog + lambda_2 * r_eff;
+            const exp_factor = Math.exp(-total_penalty);
+
+            // 3. Biased Probability
+            let biased_probability = 0.5; 
+            if (p_h_e > 0 && p_h_e < 1) { 
+                 const p_h_e_pow_beta = Math.pow(p_h_e, beta_val);
+                 const one_minus_p_h_e_pow_beta = Math.pow(1 - p_h_e, beta_val);
+                 if (p_h_e_pow_beta + one_minus_p_h_e_pow_beta !== 0) {
+                    biased_probability = p_h_e_pow_beta / (p_h_e_pow_beta + one_minus_p_h_e_pow_beta);
+                 } else if (p_h_e_pow_beta > 0) { 
+                    biased_probability = 1;
+                 } 
+            } else if (p_h_e === 1) {
+                biased_probability = 1;
+            } else if (p_h_e === 0) {
+                biased_probability = 0;
+            }
+            
+            // Final Psi(x)
+            const psi_x = hybrid_output * exp_factor * biased_probability;
+
+            return {
+                s_x, n_x, alpha_t, r_cog, r_eff, lambda_1, lambda_2, p_h_e, beta_val,
+                hybrid_output, exp_factor, biased_probability, psi_x
+            };
+        }
+
+        // Calculate Psi(x) and get AI explanation for it
+        async function calculateAndExplainPsi() {
+            const responseAreaId = 'psiExplainAIResponse';
+            const loaderId = 'psiExplainLoader';
+            showLoader(loaderId, responseAreaId);
+
+            const values = calculatePsiValues();
+
+            document.getElementById('psi_x_result').textContent = values.psi_x.toFixed(4);
+            document.getElementById('hybrid_out_val').textContent = values.hybrid_output.toFixed(4);
+            document.getElementById('filter_out_val').textContent = values.exp_factor.toFixed(4);
+            document.getElementById('bias_p_out_val').textContent = values.biased_probability.toFixed(4);
+
+            const prompt = "The meta-optimization equation Ψ(x) = ∫ [ α(t)S(x) + (1-α(t))N(x) ] × exp(−[λ₁R_cognitive + λ₂R_efficiency]) × P(H|E,β) dt has been evaluated for a single time step with the following inputs:\n" +
+            "- Symbolic Output S(x): " + values.s_x + "\n" +
+            "- Neural Output N(x): " + values.n_x + "\n" +
+            "- Weight α(t): " + values.alpha_t + "\n" +
+            "- Cognitive Penalty R_cognitive: " + values.r_cog + "\n" +
+            "- Efficiency Penalty R_efficiency: " + values.r_eff + "\n" +
+            "- Weight λ₁ (cognitive): " + values.lambda_1 + "\n" +
+            "- Weight λ₂ (efficiency): " + values.lambda_2 + "\n" +
+            "- Base Probability P(H|E): " + values.p_h_e + "\n" +
+            "- Bias Parameter β: " + values.beta_val + "\n\n" +
+            "This resulted in:\n" +
+            "- Hybrid Output (αS + (1-α)N): " + values.hybrid_output.toFixed(4) + "\n" +
+            "- Exponential Filter Factor: " + values.exp_factor.toFixed(4) + "\n" +
+            "- Biased Probability P(H|E,β): " + values.biased_probability.toFixed(4) + "\n" +
+            "- Final Calculated Ψ(x): " + values.psi_x.toFixed(4) + "\n\n" +
+            "Explain in a few sentences the significance of this final Ψ(x) value (" + values.psi_x.toFixed(4) + ").\n" +
+            "How do the input parameters (especially highlight any that seem to have a strong influence based on these numbers) contribute to this specific result?\n" +
+            "What does this outcome imply in the context of balancing symbolic/neural reasoning, cognitive plausibility, efficiency, and human bias?\n" +
+            "Keep the explanation concise and clear for an infographic.";
+
+            try {
+                const explanation = await callGeminiAPI(prompt);
+                displayAIResponse(responseAreaId, explanation);
+            } catch (error) {
+                 displayError(responseAreaId, error);
+            } finally {
+                hideLoader(loaderId);
+            }
+        }
+        
+        // Initial setup on page load
+        window.onload = () => {
+            populateEquationTerms(); // Dynamically create the equation term explanation section
+            const values = calculatePsiValues(); // Perform initial calculation for the "What If" scenario
+            document.getElementById('psi_x_result').textContent = values.psi_x.toFixed(4);
+            document.getElementById('hybrid_out_val').textContent = values.hybrid_output.toFixed(4);
+            document.getElementById('filter_out_val').textContent = values.exp_factor.toFixed(4);
+            document.getElementById('bias_p_out_val').textContent = values.biased_probability.toFixed(4);
+        };
+
+    </script>
+</body>
+</html> 
