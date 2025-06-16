@@ -7895,3 +7895,148 @@
     }
   ]
 }
+2025-06-16T04:21:54.412Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T04:23:35.829Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T04:24:05.827Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T04:24:29.351Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T04:37:46.996Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot query field \"id\" on type \"Query\".",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "extensions": {
+        "http": {
+          "status": 400,
+          "headers": {}
+        },
+        "code": "GRAPHQL_VALIDATION_FAILED"
+      }
+    }
+  ],
+  "operation": "ExampleQuery"
+}
+2025-06-16T04:39:21.026Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Variable \"$updateUserId\" of non-null type \"ID!\" must not be null.",
+      "locations": [
+        {
+          "line": 1,
+          "column": 21
+        }
+      ],
+      "extensions": {
+        "code": "BAD_USER_INPUT"
+      }
+    },
+    {
+      "message": "Variable \"$input\" of non-null type \"UpdateUserInput!\" must not be null.",
+      "locations": [
+        {
+          "line": 1,
+          "column": 41
+        }
+      ],
+      "extensions": {
+        "code": "BAD_USER_INPUT"
+      }
+    }
+  ],
+  "operation": "UpdateUser"
+}
+2025-06-16T04:39:26.928Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
