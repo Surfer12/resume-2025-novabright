@@ -5773,3 +5773,79 @@
   ],
   "operation": "GetPerformanceMetrics"
 }
+2025-06-16T03:22:24.073Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:22:24.080Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field LatencyMetrics.trend.",
+      "locations": [
+        {
+          "line": 7,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency",
+        "trend"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-16T03:22:25.198Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Metrics.value.",
+      "locations": [
+        {
+          "line": 34,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "value"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:22:25.201Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field LatencyMetrics.trend.",
+      "locations": [
+        {
+          "line": 7,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency",
+        "trend"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}

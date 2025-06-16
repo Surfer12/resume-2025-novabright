@@ -9869,3 +9869,145 @@
   "errors": 0,
   "errorRate": "0.00%"
 }
+2025-06-16T03:22:23.400Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-16T03:22:23.402Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-16T03:22:23.402Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-16T03:22:23.403Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-16T03:22:23.403Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-16T03:22:23.403Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-16T03:22:23.403Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-16T03:22:23.404Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-16T03:22:23.442Z [[32minfo[39m]: [32m🚀 GraphQL Server ready at http://localhost:4000/[39m
+2025-06-16T03:22:23.442Z [[32minfo[39m]: [32m🧠 Consciousness visualization endpoints available[39m
+2025-06-16T03:22:23.442Z [[32minfo[39m]: [32m📊 Performance monitoring enabled[39m
+2025-06-16T03:22:23.442Z [[33mwarn[39m]: [33m⚠️  WebSocket subscriptions temporarily disabled - will be re-enabled once setup is fixed[39m
+2025-06-16T03:22:24.073Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:22:24.074Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "10ms",
+  "totalRequests": 1,
+  "avgLatency": "10ms"
+}
+2025-06-16T03:22:24.080Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field LatencyMetrics.trend.",
+      "locations": [
+        {
+          "line": 7,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency",
+        "trend"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-16T03:22:24.081Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "4ms",
+  "totalRequests": 2,
+  "avgLatency": "7ms"
+}
+2025-06-16T03:22:25.198Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Metrics.value.",
+      "locations": [
+        {
+          "line": 34,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "value"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:22:25.198Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 3,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:22:25.201Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field LatencyMetrics.trend.",
+      "locations": [
+        {
+          "line": 7,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency",
+        "trend"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-16T03:22:25.201Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "2ms",
+  "totalRequests": 4,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:22:43.371Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "19ms",
+  "totalRequests": 5,
+  "avgLatency": "7ms"
+}
+2025-06-16T03:22:53.443Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 5,
+  "averageLatency": "7ms",
+  "errors": 4,
+  "errorRate": "80.00%"
+}
+2025-06-16T03:23:02.726Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "9ms",
+  "totalRequests": 6,
+  "avgLatency": "8ms"
+}
+2025-06-16T03:23:23.444Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 6,
+  "averageLatency": "8ms",
+  "errors": 4,
+  "errorRate": "66.67%"
+}
+2025-06-16T03:23:53.446Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 6,
+  "averageLatency": "8ms",
+  "errors": 4,
+  "errorRate": "66.67%"
+}
