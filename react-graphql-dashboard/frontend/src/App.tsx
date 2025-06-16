@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 // Lazy load components for better performance
 const Dashboard = React.lazy(() => import('./components/Dashboard'));
-const ConsciousnessVisualization = React.lazy(() => import('./components/SimpleConsciousnessVisualization'));
+const ConsciousnessVisualization = React.lazy(() => import('./components/ConsciousnessVisualization'));
 
 // Loading component with consciousness theme
 const LoadingComponent: React.FC = () => (

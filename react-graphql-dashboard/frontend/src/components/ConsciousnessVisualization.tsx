@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import * as THREE from 'three';
 import Plot from 'react-plotly.js';
 import { computeCoherencePenalty, efficiencyConsciousnessBalance } from './regularization';
+import ParameterImpactChart from './ParameterImpactChart';
 
 interface ConsciousnessVisualizationProps {
   className?: string;
@@ -38,12 +39,14 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
   const [consciousnessConnections, setConsciousnessConnections] = useState<ConsciousnessConnection[]>([]);
   const [consciousnessField, setConsciousnessField] = useState<THREE.Points | null>(null);
   const [globalWorkspace, setGlobalWorkspace] = useState<THREE.Mesh | null>(null);
+  const mindsEyeRef = useRef<HTMLCanvasElement>(null);
   
   // Control parameters
   const [alpha, setAlpha] = useState(0.65);
   const [lambda1, setLambda1] = useState(0.3);
   const [lambda2, setLambda2] = useState(0.25);
   const [beta, setBeta] = useState(1.2);
+  const [showExplanation, setShowExplanation] = useState(false);
 
   // Stage colors for three-stage evolution
   const stageColors = useMemo(() => ({
@@ -340,6 +343,64 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
     };
   }, [scene, camera, renderer, neurons, consciousnessConnections, globalWorkspace]);
 
+  // Animation loop for Mind's Eye canvas
+  useEffect(() => {
+    const canvas = mindsEyeRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    let frame = 0;
+
+    const animateMind = () => {
+      frame++;
+      ctx.fillStyle = 'rgba(10, 10, 20, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+
+      // Focus point (related to efficiency lambda2)
+      const focus = 1 - lambda2;
+      const focusRadius = focus * 10;
+      ctx.fillStyle = `rgba(255, 255, 0, ${0.1 + focus * 0.2})`;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, focusRadius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Creativity streams (related to symbolic/neural balance alpha)
+      const streamCount = 20;
+      for(let i=0; i<streamCount; i++) {
+        const angle = (i/streamCount) * Math.PI * 2 + frame * 0.001;
+        const startRadius = focusRadius + 10;
+        const length = 20 + (Math.sin(frame * 0.01 + i) + 1) * 50 * (1 - Math.abs(alpha - 0.5) * 2);
+        
+        const startX = centerX + Math.cos(angle) * startRadius;
+        const startY = centerY + Math.sin(angle) * startRadius;
+        const endX = centerX + Math.cos(angle) * (startRadius + length);
+        const endY = centerY + Math.sin(angle) * (startRadius + length);
+
+        const gradient = ctx.createLinearGradient(startX, startY, endX, endY);
+        gradient.addColorStop(0, `rgba(0, 255, 136, 0)`);
+        gradient.addColorStop(0.5, `rgba(0, 255, 136, ${0.4 * (1 - Math.abs(alpha - 0.5) * 2)})`);
+        gradient.addColorStop(1, `rgba(0, 255, 136, 0)`);
+        
+        ctx.strokeStyle = gradient;
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(endX, endY);
+        ctx.stroke();
+      }
+
+      animationId = requestAnimationFrame(animateMind);
+    };
+
+    let animationId = requestAnimationFrame(animateMind);
+    return () => cancelAnimationFrame(animationId);
+  }, [alpha, lambda2]);
+
   // Initialize on mount
   useEffect(() => {
     initializeNeuralNetwork();
@@ -446,9 +507,36 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
       </motion.div>
 
       {/* Mathematical Formula */}
-      <div className="mx-8 mt-6 bg-gray-900/80 backdrop-blur-sm p-4 rounded-lg text-center font-mono text-blue-400 border border-gray-700">
+      <div className="mx-8 mt-6 bg-gray-900/80 backdrop-blur-sm p-4 rounded-lg text-center font-mono text-blue-400 border border-gray-700 relative">
         Ψ(x) = ∫[α(t)S(x) + (1-α(t))N(x)] × exp(-[λ₁R_cognitive + λ₂R_efficiency]) × P(H|E,β) dt
+        <button 
+          onClick={() => setShowExplanation(!showExplanation)}
+          className="absolute top-2 right-2 text-xs bg-blue-500/50 text-white px-2 py-1 rounded-full hover:bg-blue-500/80 transition-colors"
+          title="Toggle Explanation"
+        >
+          {showExplanation ? 'Hide' : 'Explain'}
+        </button>
       </div>
+
+      {/* Formula Explanation */}
+      <AnimatePresence>
+        {showExplanation && (
+          <motion.div
+            initial={{ opacity: 0, y: -10, height: 0 }}
+            animate={{ opacity: 1, y: 0, height: 'auto' }}
+            exit={{ opacity: 0, y: -10, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="mx-8 my-4 bg-gray-800/50 p-4 rounded-lg border border-gray-700 text-sm text-gray-300"
+          >
+            <p><strong>Ψ(x):</strong> The overall cognitive output—how the system performs a task.</p>
+            <p><strong>α(t)S(x) + (1-α(t))N(x):</strong> A dynamic blend of <strong>Symbolic Reasoning (S)</strong> and <strong>Neural Network processing (N)</strong>. The <strong>α</strong> parameter balances which system leads.</p>
+            <p><strong>exp(-[...]):</strong> A "penalty" term that ensures the AI stays grounded.</p>
+            <p><strong>λ₁R_cognitive:</strong> A penalty for not being "human-like" enough (cognitive plausibility).</p>
+            <p><strong>λ₂R_efficiency:</strong> A penalty for using too much computational power.</p>
+            <p><strong>P(H|E,β):</strong> A probabilistic model that simulates and corrects for human-like biases (<strong>β</strong>).</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Main Visualization Grid */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 p-8">
@@ -486,6 +574,24 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
                 α = {metrics.integrationLevel.toFixed(2)}
               </span>
             </div>
+          </div>
+        </motion.div>
+
+        {/* Mind's Eye Visualization */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3 }}
+          className="bg-gray-800/80 backdrop-blur-sm rounded-lg p-6 border border-gray-700 shadow-2xl"
+        >
+          <h3 className="text-xl font-semibold text-green-400 mb-4 drop-shadow-glow">
+            The Mind's Eye: A Metaphorical View
+          </h3>
+          <p className="text-sm text-gray-400 mb-4">
+            An abstract representation of the system's cognitive state. Focus (yellow core) is driven by efficiency (λ₂), while creative exploration (green streams) is driven by the symbolic/neural balance (α).
+          </p>
+          <div className="h-[500px] bg-gray-900/50 rounded-lg border border-gray-800">
+            <canvas ref={mindsEyeRef} className="w-full h-full" />
           </div>
         </motion.div>
 
@@ -563,6 +669,11 @@ const ConsciousnessVisualization: React.FC<ConsciousnessVisualizationProps> = ({
             </div>
           </div>
         </motion.div>
+      </div>
+
+      {/* Parameter Impact Chart */}
+      <div className="px-8 pb-8">
+        <ParameterImpactChart />
       </div>
 
       {/* Control Panel */}
