@@ -308,6 +308,22 @@
   ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, #00cc66, #0099cc);
   }
+
+  .glass-pane {
+    @apply bg-gray-800/50 backdrop-blur-sm border border-gray-700/80;
+  }
+
+  .brand-gradient-text {
+    @apply bg-gradient-to-r from-sky-400 to-violet-400 bg-clip-text text-transparent;
+  }
+
+  .slider-thumb {
+    @apply appearance-none w-5 h-5 bg-violet-400 rounded-full cursor-pointer border-2 border-white;
+  }
+
+  .slider-thumb::-webkit-slider-thumb {
+    margin-top: -8px;
+  }
 }
 
 @layer utilities {

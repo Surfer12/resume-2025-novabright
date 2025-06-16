@@ -35,7 +35,7 @@ export class ActivityService {
     const resources = ['dashboard', 'user_profile', 'reports', 'settings', 'analytics'];
     const activityTypes: Array<'LOGIN' | 'LOGOUT' | 'CREATE' | 'UPDATE' | 'DELETE' | 'VIEW' | 'EXPORT'> = 
       ['LOGIN', 'LOGOUT', 'CREATE', 'UPDATE', 'DELETE', 'VIEW', 'EXPORT'];
-    const userIds = ['1', '2', '3', '4', '5'];
+    const userIds = ['1', '2'];
     const now = new Date();
 
     // Generate mock activities for the last 24 hours

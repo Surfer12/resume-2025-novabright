@@ -163,34 +163,6 @@ const Dashboard: React.FC<DashboardProps> = ({
 
       {/* Main content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Consciousness Visualization Notice */}
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-4 mb-6">
-          <div className="flex items-center">
-            <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center mr-3">
-              <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-blue-900">
-                🧠 Cognitive-Inspired Deep Learning Optimization
-              </h3>
-              <p className="text-sm text-blue-700 mt-1">
-                Bridging Minds and Machines Through Emergent Consciousness
-              </p>
-              <div className="flex items-center mt-2 text-xs text-blue-600">
-                <span className="mr-4">
-                  <strong>Evolution Stage:</strong> Emergent
-                </span>
-                <span className="mr-4">
-                  <strong>Coherence:</strong> Ψ(consciousness) = Ψ(cognitive) × Ψ(efficiency) × Φ(H.d)
-                </span>
-                <span>
-                  <strong>Status:</strong> Living Neural Network: Subjective Experience of Cognitive Enhancement
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <AnimatePresence mode="wait">
           {dashboardLoading && !dashboardData ? (
             <motion.div

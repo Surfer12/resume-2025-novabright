@@ -17,6 +17,7 @@ export interface PerformanceStats {
   successRate: number;
   totalRequests: number;
   errorsCount: number;
+  requestsPerSecond: string;
 }
 
 export class PerformanceService {
@@ -130,7 +131,8 @@ export class PerformanceService {
         p99Latency: 0,
         successRate: 0,
         totalRequests: 0,
-        errorsCount: 0
+        errorsCount: 0,
+        requestsPerSecond: '0.00'
       };
     }
 
@@ -144,7 +146,8 @@ export class PerformanceService {
       p99Latency: Math.round(durations[Math.floor(durations.length * 0.99)] || 0),
       successRate: Math.round((successfulRequests.length / filteredMetrics.length) * 100 * 100) / 100,
       totalRequests: filteredMetrics.length,
-      errorsCount: errors.length
+      errorsCount: errors.length,
+      requestsPerSecond: (filteredMetrics.length / (300)).toFixed(2) // Mocked value
     };
 
     logger.debug(`Generated performance stats${operation ? ` for ${operation}` : ''}: avg=${stats.averageLatency}ms, p95=${stats.p95Latency}ms, success=${stats.successRate}%`);
