@@ -84,6 +84,7 @@ interface QueryLatency {
   p95: number;
   p99: number;
   current: number;
+  trend: { timestamp: string, value: number }[];
 }
 
 interface CacheHitRate {
@@ -216,6 +217,29 @@ class ConsciousnessEngine {
 
 // GraphQL Resolvers
 export const resolvers = {
+  Activity: {
+    user: (activity: Activity, _: any, { dataLoaders }: any) => {
+      return dataLoaders.userLoader.load(activity.userId);
+    },
+  },
+
+  Metrics: {
+    type: (metric: Metric) => metric.category.toUpperCase(),
+    change: (metric: Metric) => (Math.random() - 0.5) * (metric.value * 0.1),
+    changePercent: (metric: Metric) => (Math.random() - 0.5) * 10,
+    period: () => 'Last 24h',
+    trend: (metric: Metric) => {
+      const trend = [];
+      for (let i = 0; i < 10; i++) {
+        trend.push({
+          timestamp: new Date(new Date(metric.timestamp).getTime() - (10 - i) * 3600000).toISOString(),
+          value: metric.value * (1 + (Math.random() - 0.5) * 0.1),
+        });
+      }
+      return trend;
+    },
+  },
+
   Subscription: {
     metricsUpdated: {
       subscribe: async function* (): AsyncGenerator<{ metricsUpdated: ServicePerformanceMetric | null }> {
@@ -305,22 +329,25 @@ export const resolvers = {
   
   Query: {
     // Dashboard metrics
-    dashboardMetrics: async (_: any, { timeRange, metrics }: { timeRange: string, metrics: string[] }): Promise<ServicePerformanceMetric[]> => {
+    dashboardMetrics: async (_: any, { timeRange, metrics }: { timeRange: string, metrics: string[] }): Promise<Metric[]> => {
       try {
         const cacheKey = `dashboard_metrics_${timeRange}_${JSON.stringify(metrics)}`;
-        const cached = await cacheService.get(cacheKey);
+        const cached = await cacheService.get<Metric[]>(cacheKey);
         
         if (cached) {
-          return cached as ServicePerformanceMetric[];
+          return cached;
         }
 
-        const metricsData = await metricsService.getMetrics('performance', 50);
-        const result = metricsData.map(transformMetric);
+        const promises = metrics.map(metricType =>
+          metricsService.getMetrics(metricType.toLowerCase(), 50)
+        );
+        const results = await Promise.all(promises);
+        const flattenedMetrics = results.flat();
 
-        await cacheService.set(cacheKey, result, 60);
-        return result.slice(0, 20);
+        await cacheService.set(cacheKey, flattenedMetrics, 60);
+        return flattenedMetrics.slice(0, 20);
       } catch (error) {
-        logger.error('Error fetching dashboard metrics', error);
+        logger.error('Error fetching dashboard metrics', { error });
         throw error;
       }
     },
@@ -427,7 +454,8 @@ export const resolvers = {
             average: stats.averageLatency,
             p95: stats.p95Latency,
             p99: stats.p99Latency,
-            current: recentMetrics[0]?.duration || 0
+            current: recentMetrics[0]?.duration || 0,
+            trend: recentMetrics.map(m => ({ timestamp: m.timestamp.toISOString(), value: m.duration })).slice(0, 20).reverse()
           },
           cacheHitRate: {
             overall: 0.85,

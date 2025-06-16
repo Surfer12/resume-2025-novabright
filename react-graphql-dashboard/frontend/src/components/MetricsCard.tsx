@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 interface MetricsCardProps {
   metric: {
@@ -6,25 +7,56 @@ interface MetricsCardProps {
     type?: string;
     value?: string | number;
     changePercent?: number;
-    // Add other expected metric properties here
+    changeIndicator: 'up' | 'down' | 'stable';
   };
 }
 
+const getMetricIcon = (type?: string) => {
+  switch (type) {
+    case 'CPU':
+      return '🧠';
+    case 'MEMORY':
+      return '💾';
+    case 'NETWORK':
+      return '🌐';
+    case 'STORAGE':
+      return '💽';
+    case 'REQUESTS':
+        return '🚀';
+    default:
+      return '⚙️';
+  }
+};
+
 const MetricsCard: React.FC<MetricsCardProps> = ({ metric }) => {
-  // Provide default values for metric properties to prevent runtime errors
-  const type = metric?.type || 'Metric Type';
+  const type = metric?.type || 'Metric';
   const value = metric?.value !== undefined ? String(metric.value) : 'N/A';
   const changePercent = metric?.changePercent;
-  const changeColor = changePercent && changePercent > 0 ? 'text-green-500' : changePercent && changePercent < 0 ? 'text-red-500' : 'text-gray-500';
+
+  const changeColor =
+    metric.changeIndicator === 'up' ? 'text-green-400' :
+    metric.changeIndicator === 'down' ? 'text-red-400' : 'text-gray-500';
+
+  const ChangeArrow =
+    metric.changeIndicator === 'up' ? '↑' :
+    metric.changeIndicator === 'down' ? '↓' : '-';
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow">
-      <h3 className="text-lg font-semibold text-gray-700">{type}</h3>
-      <p className="text-2xl font-bold text-gray-900">{value}</p>
-      <p className={`text-sm ${changeColor}`}>
-        {changePercent !== undefined ? `${changePercent.toFixed(1)}%` : '-'}
-      </p>
-    </div>
+    <motion.div
+      className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-4 shadow-lg border border-gray-700/80 transition-all duration-300 hover:border-green-400/50 hover:shadow-green-400/10"
+      whileHover={{ y: -5 }}
+    >
+      <div className="flex items-center justify-between mb-2">
+        <h3 className="text-sm font-medium text-gray-400 uppercase tracking-wider flex items-center">
+          <span className="mr-2 text-lg">{getMetricIcon(type)}</span>
+          {type}
+        </h3>
+        <p className={`text-sm font-semibold flex items-center ${changeColor}`}>
+          {ChangeArrow} {changePercent !== undefined ? `${Math.abs(changePercent).toFixed(1)}%` : ''}
+        </p>
+      </div>
+      <p className="text-3xl font-bold text-white tracking-tight">{value}</p>
+    </motion.div>
   );
 };
 

@@ -134,24 +134,23 @@ const Dashboard: React.FC<DashboardProps> = ({
   // Error boundary fallback
   if (dashboardError) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-          <div className="text-red-500 text-center mb-4">
-            <svg className="w-12 h-12 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-            </svg>
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
+        <div className="bg-gray-800 border border-red-500/50 p-8 rounded-lg shadow-2xl max-w-md w-full text-center">
+          <div className="text-red-500 mb-4">
+            <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
           </div>
-          <h3 className="text-lg font-semibold text-gray-900 text-center mb-2">
+          <h3 className="text-xl font-semibold text-white mb-2">
             Dashboard Error
           </h3>
-          <p className="text-gray-600 text-center mb-4">
-            {dashboardError.message}
+          <p className="text-gray-400 mb-6">
+            There was an issue fetching data from the server. The backend might be offline or returning errors.
           </p>
           <button
             onClick={handleRefresh}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+            className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+            disabled={dashboardLoading}
           >
-            Retry
+            {dashboardLoading ? 'Retrying...' : 'Retry Connection'}
           </button>
         </div>
       </div>
@@ -159,43 +158,8 @@ const Dashboard: React.FC<DashboardProps> = ({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">
-                Cognitive Dashboard
-              </h1>
-              <p className="text-sm text-gray-600">
-                Consciousness Visualization • Performance Dashboard/Consciousness Visualization
-              </p>
-              <p className="text-xs text-yellow-600 mt-1">
-                30% Latency Improvement Achieved
-              </p>
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              {/* Performance indicator */}
-              {performanceData?.performanceMetrics?.queryLatency && (
-                <div className="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
-                  Avg: {performanceData.performanceMetrics.queryLatency.average}ms
-                </div>
-              )}
-              
-              {/* Refresh button */}
-              <button
-                onClick={handleRefresh}
-                disabled={dashboardLoading}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors"
-              >
-                {dashboardLoading ? 'Refreshing...' : 'Refresh'}
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-gray-300">
+      {/* Header is now part of the App component, so it's removed from here to avoid duplication */}
 
       {/* Main content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -237,10 +201,10 @@ const Dashboard: React.FC<DashboardProps> = ({
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
             >
               {[...Array(4)].map((_, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow animate-pulse">
-                  <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
-                  <div className="h-8 bg-gray-200 rounded w-3/4 mb-2"></div>
-                  <div className="h-3 bg-gray-200 rounded w-1/4"></div>
+                <div key={index} className="bg-gray-800/50 p-6 rounded-lg shadow-lg animate-pulse border border-gray-700">
+                  <div className="h-4 bg-gray-700 rounded w-1/2 mb-3"></div>
+                  <div className="h-8 bg-gray-700 rounded w-3/4 mb-3"></div>
+                  <div className="h-3 bg-gray-700 rounded w-1/4"></div>
                 </div>
               ))}
             </motion.div>
@@ -254,7 +218,7 @@ const Dashboard: React.FC<DashboardProps> = ({
             >
               {/* Metrics Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <Suspense fallback={<div className="bg-white p-6 rounded-lg shadow animate-pulse h-32" />}>
+                <Suspense fallback={<div className="bg-gray-800/50 p-6 rounded-lg shadow-lg animate-pulse h-32 border border-gray-700" />}>
                   {metrics.map((metric: ProcessedDashboardMetric) => (
                     <MetricsCard
                       key={metric.id}
@@ -267,7 +231,7 @@ const Dashboard: React.FC<DashboardProps> = ({
               {/* Charts and Status */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
                 <div className="lg:col-span-2">
-                  <Suspense fallback={<div className="bg-white p-6 rounded-lg shadow animate-pulse h-96" />}>
+                  <Suspense fallback={<div className="bg-gray-800/50 p-6 rounded-lg shadow-lg animate-pulse h-96 border border-gray-700" />}>
                     <PerformanceChart
                       data={metrics}
                       performanceData={performanceData?.performanceMetrics}
@@ -276,7 +240,7 @@ const Dashboard: React.FC<DashboardProps> = ({
                 </div>
                 
                 <div>
-                  <Suspense fallback={<div className="bg-white p-6 rounded-lg shadow animate-pulse h-96" />}>
+                  <Suspense fallback={<div className="bg-gray-800/50 p-6 rounded-lg shadow-lg animate-pulse h-96 border border-gray-700" />}>
                     <SystemStatus
                       status={systemHealth}
                       loading={dashboardLoading}
@@ -286,7 +250,7 @@ const Dashboard: React.FC<DashboardProps> = ({
               </div>
 
               {/* Activity Feed */}
-              <div className="bg-white rounded-lg shadow">
+              <div className="bg-gray-800/50 rounded-lg shadow-lg border border-gray-700">
                 <Suspense fallback={<div className="p-6 animate-pulse h-64" />}>
                   <ActivityFeed
                     activities={dashboardData?.recentActivity || []}

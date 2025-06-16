@@ -10011,3 +10011,881 @@
   "errors": 4,
   "errorRate": "66.67%"
 }
+2025-06-16T03:24:23.448Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 6,
+  "averageLatency": "8ms",
+  "errors": 4,
+  "errorRate": "66.67%"
+}
+2025-06-16T03:24:53.449Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 6,
+  "averageLatency": "8ms",
+  "errors": 4,
+  "errorRate": "66.67%"
+}
+2025-06-16T03:25:23.450Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 6,
+  "averageLatency": "8ms",
+  "errors": 4,
+  "errorRate": "66.67%"
+}
+2025-06-16T03:25:53.452Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 6,
+  "averageLatency": "8ms",
+  "errors": 4,
+  "errorRate": "66.67%"
+}
+2025-06-16T03:26:23.454Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 6,
+  "averageLatency": "8ms",
+  "errors": 4,
+  "errorRate": "66.67%"
+}
+2025-06-16T03:26:30.756Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:26:30.756Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 7,
+  "avgLatency": "7ms"
+}
+2025-06-16T03:26:30.759Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field LatencyMetrics.trend.",
+      "locations": [
+        {
+          "line": 7,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency",
+        "trend"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-16T03:26:30.759Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "1ms",
+  "totalRequests": 8,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:26:53.454Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 8,
+  "averageLatency": "6ms",
+  "errors": 6,
+  "errorRate": "75.00%"
+}
+2025-06-16T03:27:05.718Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "9ms",
+  "totalRequests": 9,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:27:10.849Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "4ms",
+  "totalRequests": 10,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:27:16.373Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "7ms",
+  "totalRequests": 11,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:27:17.171Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 12,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:27:17.797Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 13,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:27:18.075Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 14,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:27:23.206Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 15,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:27:23.456Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 15,
+  "averageLatency": "6ms",
+  "errors": 6,
+  "errorRate": "40.00%"
+}
+2025-06-16T03:27:28.208Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 16,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:27:33.208Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 17,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:27:35.233Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field ConsciousnessInsights.emergentBehaviors.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "consciousnessInsights",
+        "emergentBehaviors"
+      ]
+    }
+  ],
+  "operation": "EmergentBehaviors"
+}
+2025-06-16T03:27:35.233Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "EmergentBehaviors",
+  "duration": "2ms",
+  "totalRequests": 18,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:27:38.208Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 19,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:27:43.209Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "5ms",
+  "totalRequests": 20,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:27:53.456Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 20,
+  "averageLatency": "6ms",
+  "errors": 7,
+  "errorRate": "35.00%"
+}
+2025-06-16T03:28:05.295Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:28:05.296Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 21,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:28:05.297Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field LatencyMetrics.trend.",
+      "locations": [
+        {
+          "line": 7,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency",
+        "trend"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-16T03:28:05.297Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "1ms",
+  "totalRequests": 22,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:28:23.458Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 22,
+  "averageLatency": "5ms",
+  "errors": 9,
+  "errorRate": "40.91%"
+}
+2025-06-16T03:28:35.360Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Metrics.value.",
+      "locations": [
+        {
+          "line": 34,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "value"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:28:35.360Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 23,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:28:53.459Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 23,
+  "averageLatency": "5ms",
+  "errors": 10,
+  "errorRate": "43.48%"
+}
+2025-06-16T03:29:05.459Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:29:05.459Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 24,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:29:23.460Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 24,
+  "averageLatency": "5ms",
+  "errors": 11,
+  "errorRate": "45.83%"
+}
+2025-06-16T03:29:35.566Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Metrics.value.",
+      "locations": [
+        {
+          "line": 34,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "value"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:29:35.566Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 25,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:29:53.461Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 25,
+  "averageLatency": "5ms",
+  "errors": 12,
+  "errorRate": "48.00%"
+}
+2025-06-16T03:29:54.880Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Metrics.value.",
+      "locations": [
+        {
+          "line": 34,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "value"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:29:54.880Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "3ms",
+  "totalRequests": 26,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:29:54.883Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field LatencyMetrics.trend.",
+      "locations": [
+        {
+          "line": 7,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "queryLatency",
+        "trend"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-16T03:29:54.883Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "1ms",
+  "totalRequests": 27,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:29:58.078Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "6ms",
+  "totalRequests": 28,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:30:23.463Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 28,
+  "averageLatency": "5ms",
+  "errors": 14,
+  "errorRate": "50.00%"
+}
+2025-06-16T03:30:24.977Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:30:24.977Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 29,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:30:53.464Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 29,
+  "averageLatency": "5ms",
+  "errors": 15,
+  "errorRate": "51.72%"
+}
+2025-06-16T03:30:55.055Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Metrics.value.",
+      "locations": [
+        {
+          "line": 34,
+          "column": 3
+        }
+      ],
+      "path": [
+        "dashboardMetrics",
+        0,
+        "value"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:30:55.055Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 30,
+  "avgLatency": "4ms"
+}
+2025-06-16T03:31:32.665Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-16T03:31:32.667Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-16T03:31:32.667Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-16T03:31:32.668Z [[32minfo[39m]: [32mPerformanceService initialized with 500 mock metrics[39m
+2025-06-16T03:31:32.668Z [[32minfo[39m]: [32mCacheService initialized[39m
+2025-06-16T03:31:32.669Z [[32minfo[39m]: [32mUserService initialized with 2 mock users[39m
+2025-06-16T03:31:32.669Z [[32minfo[39m]: [32mMetricsService initialized with mock data for 4 categories[39m
+2025-06-16T03:31:32.669Z [[32minfo[39m]: [32mActivityService initialized with 200 mock activities[39m
+2025-06-16T03:31:32.708Z [[32minfo[39m]: [32m🚀 GraphQL Server ready at http://localhost:4000/[39m
+2025-06-16T03:31:32.709Z [[32minfo[39m]: [32m🧠 Consciousness visualization endpoints available[39m
+2025-06-16T03:31:32.709Z [[32minfo[39m]: [32m📊 Performance monitoring enabled[39m
+2025-06-16T03:31:32.709Z [[33mwarn[39m]: [33m⚠️  WebSocket subscriptions temporarily disabled - will be re-enabled once setup is fixed[39m
+2025-06-16T03:31:55.287Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:31:55.287Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "8ms",
+  "totalRequests": 1,
+  "avgLatency": "8ms"
+}
+2025-06-16T03:31:59.473Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:31:59.473Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 2,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:31:59.482Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field CacheMetrics.byQuery.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "cacheHitRate",
+        "byQuery"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-16T03:31:59.483Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "8ms",
+  "totalRequests": 3,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:32:00.741Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:32:00.742Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 4,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:32:00.745Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field CacheMetrics.byQuery.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "cacheHitRate",
+        "byQuery"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-16T03:32:00.745Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "2ms",
+  "totalRequests": 5,
+  "avgLatency": "4ms"
+}
+2025-06-16T03:32:02.726Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "28ms",
+  "totalRequests": 6,
+  "avgLatency": "8ms"
+}
+2025-06-16T03:32:02.728Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 6,
+  "averageLatency": "8ms",
+  "errors": 5,
+  "errorRate": "83.33%"
+}
+2025-06-16T03:32:04.426Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:32:04.426Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 7,
+  "avgLatency": "7ms"
+}
+2025-06-16T03:32:04.430Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field CacheMetrics.byQuery.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "cacheHitRate",
+        "byQuery"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-16T03:32:04.430Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "2ms",
+  "totalRequests": 8,
+  "avgLatency": "7ms"
+}
+2025-06-16T03:32:18.653Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:32:18.654Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "2ms",
+  "totalRequests": 9,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:32:18.660Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field CacheMetrics.byQuery.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "cacheHitRate",
+        "byQuery"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-16T03:32:18.660Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "3ms",
+  "totalRequests": 10,
+  "avgLatency": "6ms"
+}
+2025-06-16T03:32:32.729Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 10,
+  "averageLatency": "6ms",
+  "errors": 9,
+  "errorRate": "90.00%"
+}
+2025-06-16T03:32:48.728Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:32:48.728Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 11,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:33:01.022Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:33:01.022Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 12,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:33:01.023Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field CacheMetrics.byQuery.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "cacheHitRate",
+        "byQuery"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-16T03:33:01.023Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "1ms",
+  "totalRequests": 13,
+  "avgLatency": "5ms"
+}
+2025-06-16T03:33:02.729Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 13,
+  "averageLatency": "5ms",
+  "errors": 12,
+  "errorRate": "92.31%"
+}
+2025-06-16T03:33:02.839Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:33:02.839Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "1ms",
+  "totalRequests": 14,
+  "avgLatency": "4ms"
+}
+2025-06-16T03:33:02.842Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field CacheMetrics.byQuery.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 7
+        }
+      ],
+      "path": [
+        "performanceMetrics",
+        "cacheHitRate",
+        "byQuery"
+      ]
+    }
+  ],
+  "operation": "GetPerformanceMetrics"
+}
+2025-06-16T03:33:02.842Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetPerformanceMetrics",
+  "duration": "2ms",
+  "totalRequests": 15,
+  "avgLatency": "4ms"
+}
+2025-06-16T03:33:06.313Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "IntrospectionQuery",
+  "duration": "3ms",
+  "totalRequests": 16,
+  "avgLatency": "4ms"
+}
+2025-06-16T03:33:32.730Z [[32minfo[39m]: [32mPerformance Metrics[39m {
+  "totalRequests": 16,
+  "averageLatency": "4ms",
+  "errors": 14,
+  "errorRate": "87.50%"
+}
+2025-06-16T03:33:32.915Z [[31merror[39m]: [31mGraphQL Error[39m {
+  "errors": [
+    {
+      "message": "Cannot return null for non-nullable field Activity.user.",
+      "locations": [
+        {
+          "line": 16,
+          "column": 5
+        }
+      ],
+      "path": [
+        "recentActivity",
+        0,
+        "user"
+      ]
+    }
+  ],
+  "operation": "GetDashboardData"
+}
+2025-06-16T03:33:32.915Z [[32minfo[39m]: [32mGraphQL Request[39m {
+  "operation": "GetDashboardData",
+  "duration": "0ms",
+  "totalRequests": 17,
+  "avgLatency": "4ms"
+}
