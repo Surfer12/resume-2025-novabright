@@ -6855,3 +6855,1043 @@
   ],
   "operation": "GetDashboardData"
 }
+2025-06-16T03:57:37.293Z [[31merror[39m]: [31muncaughtException: write EPIPE[39m
+[31mError: write EPIPE[39m
+[31m    at afterWriteDispatched (node:internal/stream_base_commons:159:15)[39m
+[31m    at writeGeneric (node:internal/stream_base_commons:150:3)[39m
+[31m    at Socket._writeGeneric (node:net:971:11)[39m
+[31m    at Socket._write (node:net:983:8)[39m
+[31m    at writeOrBuffer (node:internal/streams/writable:572:12)[39m
+[31m    at _write (node:internal/streams/writable:501:10)[39m
+[31m    at Socket.Writable.write (node:internal/streams/writable:510:10)[39m
+[31m    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)[39m
+[31m    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)[39m
+[31m    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)[39m {
+  "error": {
+    "errno": -32,
+    "code": "EPIPE",
+    "syscall": "write"
+  },
+  "stack": "Error: write EPIPE\n    at afterWriteDispatched (node:internal/stream_base_commons:159:15)\n    at writeGeneric (node:internal/stream_base_commons:150:3)\n    at Socket._writeGeneric (node:net:971:11)\n    at Socket._write (node:net:983:8)\n    at writeOrBuffer (node:internal/streams/writable:572:12)\n    at _write (node:internal/streams/writable:501:10)\n    at Socket.Writable.write (node:internal/streams/writable:510:10)\n    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)\n    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)\n    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 20:57:37 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 56271,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 279183360,
+      "heapTotal": 153731072,
+      "heapUsed": 119510432,
+      "external": 7886160,
+      "arrayBuffers": 4867303
+    }
+  },
+  "os": {
+    "loadavg": [
+      11.20947265625,
+      10.38232421875,
+      10.3017578125
+    ],
+    "uptime": 12005
+  },
+  "trace": [
+    {
+      "column": 15,
+      "file": "node:internal/stream_base_commons",
+      "function": "afterWriteDispatched",
+      "line": 159,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 3,
+      "file": "node:internal/stream_base_commons",
+      "function": "writeGeneric",
+      "line": 150,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "node:net",
+      "function": "Socket._writeGeneric",
+      "line": 971,
+      "method": "_writeGeneric",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:net",
+      "function": "Socket._write",
+      "line": 983,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/streams/writable",
+      "function": "writeOrBuffer",
+      "line": 572,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "_write",
+      "line": 501,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "Socket.Writable.write",
+      "line": 510,
+      "method": "Writable.write",
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js",
+      "function": "Console.log",
+      "line": 87,
+      "method": "log",
+      "native": false
+    },
+    {
+      "column": 19,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js",
+      "function": "Console._write",
+      "line": 82,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 139,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js",
+      "function": "doWrite",
+      "line": 390,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-16T03:57:37.294Z [[31merror[39m]: [31muncaughtException: write EPIPE[39m
+[31mError: write EPIPE[39m
+[31m    at afterWriteDispatched (node:internal/stream_base_commons:159:15)[39m
+[31m    at writeGeneric (node:internal/stream_base_commons:150:3)[39m
+[31m    at Socket._writeGeneric (node:net:971:11)[39m
+[31m    at Socket._write (node:net:983:8)[39m
+[31m    at writeOrBuffer (node:internal/streams/writable:572:12)[39m
+[31m    at _write (node:internal/streams/writable:501:10)[39m
+[31m    at Socket.Writable.write (node:internal/streams/writable:510:10)[39m
+[31m    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)[39m
+[31m    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)[39m
+[31m    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)[39m {
+  "error": {
+    "errno": -32,
+    "code": "EPIPE",
+    "syscall": "write"
+  },
+  "stack": "Error: write EPIPE\n    at afterWriteDispatched (node:internal/stream_base_commons:159:15)\n    at writeGeneric (node:internal/stream_base_commons:150:3)\n    at Socket._writeGeneric (node:net:971:11)\n    at Socket._write (node:net:983:8)\n    at writeOrBuffer (node:internal/streams/writable:572:12)\n    at _write (node:internal/streams/writable:501:10)\n    at Socket.Writable.write (node:internal/streams/writable:510:10)\n    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)\n    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)\n    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 20:57:37 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 56271,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 279281664,
+      "heapTotal": 153731072,
+      "heapUsed": 119819528,
+      "external": 7858162,
+      "arrayBuffers": 4877347
+    }
+  },
+  "os": {
+    "loadavg": [
+      11.20947265625,
+      10.38232421875,
+      10.3017578125
+    ],
+    "uptime": 12005
+  },
+  "trace": [
+    {
+      "column": 15,
+      "file": "node:internal/stream_base_commons",
+      "function": "afterWriteDispatched",
+      "line": 159,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 3,
+      "file": "node:internal/stream_base_commons",
+      "function": "writeGeneric",
+      "line": 150,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "node:net",
+      "function": "Socket._writeGeneric",
+      "line": 971,
+      "method": "_writeGeneric",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:net",
+      "function": "Socket._write",
+      "line": 983,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/streams/writable",
+      "function": "writeOrBuffer",
+      "line": 572,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "_write",
+      "line": 501,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "Socket.Writable.write",
+      "line": 510,
+      "method": "Writable.write",
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js",
+      "function": "Console.log",
+      "line": 87,
+      "method": "log",
+      "native": false
+    },
+    {
+      "column": 19,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js",
+      "function": "Console._write",
+      "line": 82,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 139,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js",
+      "function": "doWrite",
+      "line": 390,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-16T03:57:37.295Z [[31merror[39m]: [31muncaughtException: write EPIPE[39m
+[31mError: write EPIPE[39m
+[31m    at afterWriteDispatched (node:internal/stream_base_commons:159:15)[39m
+[31m    at writeGeneric (node:internal/stream_base_commons:150:3)[39m
+[31m    at Socket._writeGeneric (node:net:971:11)[39m
+[31m    at Socket._write (node:net:983:8)[39m
+[31m    at writeOrBuffer (node:internal/streams/writable:572:12)[39m
+[31m    at _write (node:internal/streams/writable:501:10)[39m
+[31m    at Socket.Writable.write (node:internal/streams/writable:510:10)[39m
+[31m    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)[39m
+[31m    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)[39m
+[31m    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)[39m {
+  "error": {
+    "errno": -32,
+    "code": "EPIPE",
+    "syscall": "write"
+  },
+  "stack": "Error: write EPIPE\n    at afterWriteDispatched (node:internal/stream_base_commons:159:15)\n    at writeGeneric (node:internal/stream_base_commons:150:3)\n    at Socket._writeGeneric (node:net:971:11)\n    at Socket._write (node:net:983:8)\n    at writeOrBuffer (node:internal/streams/writable:572:12)\n    at _write (node:internal/streams/writable:501:10)\n    at Socket.Writable.write (node:internal/streams/writable:510:10)\n    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)\n    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)\n    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 20:57:37 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 56271,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 279330816,
+      "heapTotal": 153731072,
+      "heapUsed": 120050480,
+      "external": 7868182,
+      "arrayBuffers": 4887367
+    }
+  },
+  "os": {
+    "loadavg": [
+      11.20947265625,
+      10.38232421875,
+      10.3017578125
+    ],
+    "uptime": 12005
+  },
+  "trace": [
+    {
+      "column": 15,
+      "file": "node:internal/stream_base_commons",
+      "function": "afterWriteDispatched",
+      "line": 159,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 3,
+      "file": "node:internal/stream_base_commons",
+      "function": "writeGeneric",
+      "line": 150,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "node:net",
+      "function": "Socket._writeGeneric",
+      "line": 971,
+      "method": "_writeGeneric",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:net",
+      "function": "Socket._write",
+      "line": 983,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/streams/writable",
+      "function": "writeOrBuffer",
+      "line": 572,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "_write",
+      "line": 501,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "Socket.Writable.write",
+      "line": 510,
+      "method": "Writable.write",
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js",
+      "function": "Console.log",
+      "line": 87,
+      "method": "log",
+      "native": false
+    },
+    {
+      "column": 19,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js",
+      "function": "Console._write",
+      "line": 82,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 139,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js",
+      "function": "doWrite",
+      "line": 390,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-16T03:57:37.295Z [[31merror[39m]: [31muncaughtException: write EPIPE[39m
+[31mError: write EPIPE[39m
+[31m    at afterWriteDispatched (node:internal/stream_base_commons:159:15)[39m
+[31m    at writeGeneric (node:internal/stream_base_commons:150:3)[39m
+[31m    at Socket._writeGeneric (node:net:971:11)[39m
+[31m    at Socket._write (node:net:983:8)[39m
+[31m    at writeOrBuffer (node:internal/streams/writable:572:12)[39m
+[31m    at _write (node:internal/streams/writable:501:10)[39m
+[31m    at Socket.Writable.write (node:internal/streams/writable:510:10)[39m
+[31m    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)[39m
+[31m    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)[39m
+[31m    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)[39m {
+  "error": {
+    "errno": -32,
+    "code": "EPIPE",
+    "syscall": "write"
+  },
+  "stack": "Error: write EPIPE\n    at afterWriteDispatched (node:internal/stream_base_commons:159:15)\n    at writeGeneric (node:internal/stream_base_commons:150:3)\n    at Socket._writeGeneric (node:net:971:11)\n    at Socket._write (node:net:983:8)\n    at writeOrBuffer (node:internal/streams/writable:572:12)\n    at _write (node:internal/streams/writable:501:10)\n    at Socket.Writable.write (node:internal/streams/writable:510:10)\n    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)\n    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)\n    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 20:57:37 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 56271,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 279347200,
+      "heapTotal": 153731072,
+      "heapUsed": 120260464,
+      "external": 7878202,
+      "arrayBuffers": 4897387
+    }
+  },
+  "os": {
+    "loadavg": [
+      11.20947265625,
+      10.38232421875,
+      10.3017578125
+    ],
+    "uptime": 12005
+  },
+  "trace": [
+    {
+      "column": 15,
+      "file": "node:internal/stream_base_commons",
+      "function": "afterWriteDispatched",
+      "line": 159,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 3,
+      "file": "node:internal/stream_base_commons",
+      "function": "writeGeneric",
+      "line": 150,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "node:net",
+      "function": "Socket._writeGeneric",
+      "line": 971,
+      "method": "_writeGeneric",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:net",
+      "function": "Socket._write",
+      "line": 983,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/streams/writable",
+      "function": "writeOrBuffer",
+      "line": 572,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "_write",
+      "line": 501,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "Socket.Writable.write",
+      "line": 510,
+      "method": "Writable.write",
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js",
+      "function": "Console.log",
+      "line": 87,
+      "method": "log",
+      "native": false
+    },
+    {
+      "column": 19,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js",
+      "function": "Console._write",
+      "line": 82,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 139,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js",
+      "function": "doWrite",
+      "line": 390,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-16T03:57:37.296Z [[31merror[39m]: [31muncaughtException: write EPIPE[39m
+[31mError: write EPIPE[39m
+[31m    at afterWriteDispatched (node:internal/stream_base_commons:159:15)[39m
+[31m    at writeGeneric (node:internal/stream_base_commons:150:3)[39m
+[31m    at Socket._writeGeneric (node:net:971:11)[39m
+[31m    at Socket._write (node:net:983:8)[39m
+[31m    at writeOrBuffer (node:internal/streams/writable:572:12)[39m
+[31m    at _write (node:internal/streams/writable:501:10)[39m
+[31m    at Socket.Writable.write (node:internal/streams/writable:510:10)[39m
+[31m    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)[39m
+[31m    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)[39m
+[31m    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)[39m {
+  "error": {
+    "errno": -32,
+    "code": "EPIPE",
+    "syscall": "write"
+  },
+  "stack": "Error: write EPIPE\n    at afterWriteDispatched (node:internal/stream_base_commons:159:15)\n    at writeGeneric (node:internal/stream_base_commons:150:3)\n    at Socket._writeGeneric (node:net:971:11)\n    at Socket._write (node:net:983:8)\n    at writeOrBuffer (node:internal/streams/writable:572:12)\n    at _write (node:internal/streams/writable:501:10)\n    at Socket.Writable.write (node:internal/streams/writable:510:10)\n    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)\n    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)\n    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 20:57:37 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 56271,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 279379968,
+      "heapTotal": 153731072,
+      "heapUsed": 120473072,
+      "external": 7888222,
+      "arrayBuffers": 4907407
+    }
+  },
+  "os": {
+    "loadavg": [
+      11.20947265625,
+      10.38232421875,
+      10.3017578125
+    ],
+    "uptime": 12005
+  },
+  "trace": [
+    {
+      "column": 15,
+      "file": "node:internal/stream_base_commons",
+      "function": "afterWriteDispatched",
+      "line": 159,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 3,
+      "file": "node:internal/stream_base_commons",
+      "function": "writeGeneric",
+      "line": 150,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "node:net",
+      "function": "Socket._writeGeneric",
+      "line": 971,
+      "method": "_writeGeneric",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:net",
+      "function": "Socket._write",
+      "line": 983,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/streams/writable",
+      "function": "writeOrBuffer",
+      "line": 572,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "_write",
+      "line": 501,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "Socket.Writable.write",
+      "line": 510,
+      "method": "Writable.write",
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js",
+      "function": "Console.log",
+      "line": 87,
+      "method": "log",
+      "native": false
+    },
+    {
+      "column": 19,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js",
+      "function": "Console._write",
+      "line": 82,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 139,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js",
+      "function": "doWrite",
+      "line": 390,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-16T03:57:37.296Z [[31merror[39m]: [31muncaughtException: write EPIPE[39m
+[31mError: write EPIPE[39m
+[31m    at afterWriteDispatched (node:internal/stream_base_commons:159:15)[39m
+[31m    at writeGeneric (node:internal/stream_base_commons:150:3)[39m
+[31m    at Socket._writeGeneric (node:net:971:11)[39m
+[31m    at Socket._write (node:net:983:8)[39m
+[31m    at writeOrBuffer (node:internal/streams/writable:572:12)[39m
+[31m    at _write (node:internal/streams/writable:501:10)[39m
+[31m    at Socket.Writable.write (node:internal/streams/writable:510:10)[39m
+[31m    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)[39m
+[31m    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)[39m
+[31m    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)[39m {
+  "error": {
+    "errno": -32,
+    "code": "EPIPE",
+    "syscall": "write"
+  },
+  "stack": "Error: write EPIPE\n    at afterWriteDispatched (node:internal/stream_base_commons:159:15)\n    at writeGeneric (node:internal/stream_base_commons:150:3)\n    at Socket._writeGeneric (node:net:971:11)\n    at Socket._write (node:net:983:8)\n    at writeOrBuffer (node:internal/streams/writable:572:12)\n    at _write (node:internal/streams/writable:501:10)\n    at Socket.Writable.write (node:internal/streams/writable:510:10)\n    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)\n    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)\n    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 20:57:37 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 56271,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 279396352,
+      "heapTotal": 153731072,
+      "heapUsed": 120665312,
+      "external": 7898242,
+      "arrayBuffers": 4917427
+    }
+  },
+  "os": {
+    "loadavg": [
+      11.20947265625,
+      10.38232421875,
+      10.3017578125
+    ],
+    "uptime": 12005
+  },
+  "trace": [
+    {
+      "column": 15,
+      "file": "node:internal/stream_base_commons",
+      "function": "afterWriteDispatched",
+      "line": 159,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 3,
+      "file": "node:internal/stream_base_commons",
+      "function": "writeGeneric",
+      "line": 150,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "node:net",
+      "function": "Socket._writeGeneric",
+      "line": 971,
+      "method": "_writeGeneric",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:net",
+      "function": "Socket._write",
+      "line": 983,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/streams/writable",
+      "function": "writeOrBuffer",
+      "line": 572,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "_write",
+      "line": 501,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "Socket.Writable.write",
+      "line": 510,
+      "method": "Writable.write",
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js",
+      "function": "Console.log",
+      "line": 87,
+      "method": "log",
+      "native": false
+    },
+    {
+      "column": 19,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js",
+      "function": "Console._write",
+      "line": 82,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 139,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js",
+      "function": "doWrite",
+      "line": 390,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-16T03:57:37.296Z [[31merror[39m]: [31muncaughtException: write EPIPE[39m
+[31mError: write EPIPE[39m
+[31m    at afterWriteDispatched (node:internal/stream_base_commons:159:15)[39m
+[31m    at writeGeneric (node:internal/stream_base_commons:150:3)[39m
+[31m    at Socket._writeGeneric (node:net:971:11)[39m
+[31m    at Socket._write (node:net:983:8)[39m
+[31m    at writeOrBuffer (node:internal/streams/writable:572:12)[39m
+[31m    at _write (node:internal/streams/writable:501:10)[39m
+[31m    at Socket.Writable.write (node:internal/streams/writable:510:10)[39m
+[31m    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)[39m
+[31m    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)[39m
+[31m    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)[39m {
+  "error": {
+    "errno": -32,
+    "code": "EPIPE",
+    "syscall": "write"
+  },
+  "stack": "Error: write EPIPE\n    at afterWriteDispatched (node:internal/stream_base_commons:159:15)\n    at writeGeneric (node:internal/stream_base_commons:150:3)\n    at Socket._writeGeneric (node:net:971:11)\n    at Socket._write (node:net:983:8)\n    at writeOrBuffer (node:internal/streams/writable:572:12)\n    at _write (node:internal/streams/writable:501:10)\n    at Socket.Writable.write (node:internal/streams/writable:510:10)\n    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)\n    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)\n    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 20:57:37 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 56271,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 279429120,
+      "heapTotal": 153731072,
+      "heapUsed": 120867376,
+      "external": 7908262,
+      "arrayBuffers": 4927447
+    }
+  },
+  "os": {
+    "loadavg": [
+      11.20947265625,
+      10.38232421875,
+      10.3017578125
+    ],
+    "uptime": 12005
+  },
+  "trace": [
+    {
+      "column": 15,
+      "file": "node:internal/stream_base_commons",
+      "function": "afterWriteDispatched",
+      "line": 159,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 3,
+      "file": "node:internal/stream_base_commons",
+      "function": "writeGeneric",
+      "line": 150,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "node:net",
+      "function": "Socket._writeGeneric",
+      "line": 971,
+      "method": "_writeGeneric",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:net",
+      "function": "Socket._write",
+      "line": 983,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/streams/writable",
+      "function": "writeOrBuffer",
+      "line": 572,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "_write",
+      "line": 501,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "Socket.Writable.write",
+      "line": 510,
+      "method": "Writable.write",
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js",
+      "function": "Console.log",
+      "line": 87,
+      "method": "log",
+      "native": false
+    },
+    {
+      "column": 19,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js",
+      "function": "Console._write",
+      "line": 82,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 139,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js",
+      "function": "doWrite",
+      "line": 390,
+      "method": null,
+      "native": false
+    }
+  ]
+}
+2025-06-16T03:57:37.297Z [[31merror[39m]: [31muncaughtException: write EPIPE[39m
+[31mError: write EPIPE[39m
+[31m    at afterWriteDispatched (node:internal/stream_base_commons:159:15)[39m
+[31m    at writeGeneric (node:internal/stream_base_commons:150:3)[39m
+[31m    at Socket._writeGeneric (node:net:971:11)[39m
+[31m    at Socket._write (node:net:983:8)[39m
+[31m    at writeOrBuffer (node:internal/streams/writable:572:12)[39m
+[31m    at _write (node:internal/streams/writable:501:10)[39m
+[31m    at Socket.Writable.write (node:internal/streams/writable:510:10)[39m
+[31m    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)[39m
+[31m    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)[39m
+[31m    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)[39m {
+  "error": {
+    "errno": -32,
+    "code": "EPIPE",
+    "syscall": "write"
+  },
+  "stack": "Error: write EPIPE\n    at afterWriteDispatched (node:internal/stream_base_commons:159:15)\n    at writeGeneric (node:internal/stream_base_commons:150:3)\n    at Socket._writeGeneric (node:net:971:11)\n    at Socket._write (node:net:983:8)\n    at writeOrBuffer (node:internal/streams/writable:572:12)\n    at _write (node:internal/streams/writable:501:10)\n    at Socket.Writable.write (node:internal/streams/writable:510:10)\n    at Console.log (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js:87:23)\n    at Console._write (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js:82:19)\n    at doWrite (/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)",
+  "exception": true,
+  "date": "Sun Jun 15 2025 20:57:37 GMT-0700 (Pacific Daylight Time)",
+  "process": {
+    "pid": 56271,
+    "uid": 501,
+    "gid": 20,
+    "cwd": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend",
+    "execPath": "/usr/local/bin/node",
+    "version": "v22.14.0",
+    "argv": [
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/.bin/ts-node",
+      "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/backend/src/index.ts"
+    ],
+    "memoryUsage": {
+      "rss": 279445504,
+      "heapTotal": 153731072,
+      "heapUsed": 121059664,
+      "external": 7918282,
+      "arrayBuffers": 4937467
+    }
+  },
+  "os": {
+    "loadavg": [
+      11.20947265625,
+      10.38232421875,
+      10.3017578125
+    ],
+    "uptime": 12005
+  },
+  "trace": [
+    {
+      "column": 15,
+      "file": "node:internal/stream_base_commons",
+      "function": "afterWriteDispatched",
+      "line": 159,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 3,
+      "file": "node:internal/stream_base_commons",
+      "function": "writeGeneric",
+      "line": 150,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "node:net",
+      "function": "Socket._writeGeneric",
+      "line": 971,
+      "method": "_writeGeneric",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:net",
+      "function": "Socket._write",
+      "line": 983,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/streams/writable",
+      "function": "writeOrBuffer",
+      "line": 572,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "_write",
+      "line": 501,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "Socket.Writable.write",
+      "line": 510,
+      "method": "Writable.write",
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston/lib/winston/transports/console.js",
+      "function": "Console.log",
+      "line": 87,
+      "method": "log",
+      "native": false
+    },
+    {
+      "column": 19,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/modern.js",
+      "function": "Console._write",
+      "line": 82,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 139,
+      "file": "/Users/ryandavidoates/resume-2025-novabright/react-graphql-dashboard/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js",
+      "function": "doWrite",
+      "line": 390,
+      "method": null,
+      "native": false
+    }
+  ]
+}
