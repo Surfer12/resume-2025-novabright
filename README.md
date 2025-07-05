@@ -1,4 +1,4 @@
-Disclaimer: Files have been compiled alongside Anthropic and have not been personally vetted for clarity as of 06/27/25, review by this unique human is in progress. 
+Disclaimer: Files have been written and altered with Claude Sonnet with Thinking enabled as well as without. These models from Anthropic can be unpredictable and the results have not been personally vetted for clarity as of 07/04/25. Review by this unique human is in progress. 
 
 # Repository Organization Summary
 
